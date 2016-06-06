@@ -1,0 +1,5 @@
+django==1.9
+mod-wsgi==4.5.2
+gunicorn==19.5
+newrelic
+uWSGI==2.0.13.1

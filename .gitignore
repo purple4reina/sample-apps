@@ -1,0 +1,6 @@
+*.py[co]
+*.log
+*.pid
+
+env/
+*.sqlite3
