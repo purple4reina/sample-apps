@@ -8,6 +8,26 @@
             <script type="text/javascript" src='{% static "simple/simple.js" %}'></script>
     </head>
     <body>
+
         <p>Hello World!</p>
+
+        <p>
+            There are currently <strong id="connections"></strong> people
+            chatting!
+        </p>
+
+        <p>
+            Write your message here:
+            <form id="messageForm">
+                <input type="text" id="sendmessage" name="text">
+                <button type="submit">Send</button>
+            </form>
+        </p>
+
+        <p>
+            Here are some messages from users:
+            <div id="messages"></div>
+        </p>
+
     </body>
 </html>
