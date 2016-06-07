@@ -1,0 +1,3 @@
+# Django Channels
+
+An exploration of what is possible....
