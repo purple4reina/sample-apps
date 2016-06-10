@@ -52,7 +52,7 @@ Using rabbitmq running in a docker container with `docker run -d --net=host -p 5
     * There is an entry for 'method': 'analytic_event_data' that includes in the DATA the three times the tasks.sleepy was called
 
 + running `init.d/celeryd start` inside a docker container, without agent, then calling `python call_tasks.py` locally
-  - Start the celeryd in container with `docker run -it -v $PWD:/data --net=host celery ./init.d/celeryd start`
+  - Start the celeryd in container with `docker run -it -v $PWD:/data --net=host celery ./scripts/start_initd_celeryd.sh`
   - Must set `CELERY_APP` env var
   - Changes to the init.d/celeryd script (from what is found in github) are seen in [init.d/celeryd](init.d/celeryd)
 
