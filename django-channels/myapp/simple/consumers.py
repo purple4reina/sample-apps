@@ -65,3 +65,6 @@ def http_request(message):
         'Hello world! You asked for "%s"' % message.content['path'].strip('/'))
     for chunk in AsgiHandler.encode_response(response):
         message.reply_channel.send(chunk)
+
+def my_custom_consumer(message):
+    print 'I got a message!'

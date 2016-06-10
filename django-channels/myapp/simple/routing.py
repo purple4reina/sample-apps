@@ -9,4 +9,7 @@ channel_routing = {
     # isn't very helpful since it removes access to all the awesomeness of
     # django views
     #'http.request': consumers.http_request,
+
+    # a custom channel
+    'my.custom.channel': consumers.my_custom_consumer,
 }

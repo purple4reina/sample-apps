@@ -21,4 +21,5 @@ import simple.views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', simple.views.home),
+    url(r'^custom$', simple.views.custom_channel),
 ]
