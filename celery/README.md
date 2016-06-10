@@ -51,6 +51,11 @@ Using rabbitmq running in a docker container with `docker run -d --net=host -p 5
   - I see in the audit.log (by doing a docker exec on the container and tailing audit.log) that the harvest is happening as expected and the transactions are being sent to the collector
     * There is an entry for 'method': 'analytic_event_data' that includes in the DATA the three times the tasks.sleepy was called
 
++ running `init.d/celeryd start` inside a docker container, without agent, then calling `python call_tasks.py` locally
+  - Start the celeryd in container with `docker run -it -v $PWD:/data --net=host celery ./init.d/celeryd start`
+  - Must set `CELERY_APP` env var
+  - Changes to the init.d/celeryd script (from what is found in github) are seen in [init.d/celeryd](init.d/celeryd)
+
 + running `celery multi` locally, with agent, but with a higher concurrency
   - Start celery multi with `NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program celery multi start node1 -A tasks --concurrency=3 -l info`
   - The audit.log shows three different payloads going out about the celery commands, one for each of the workers that were created
