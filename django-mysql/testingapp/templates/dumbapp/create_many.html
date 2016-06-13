@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Create Many</title>
+    </head>
+
+    <body>
+
+        {% if err %}
+
+            <p>{{ err }}</p>
+
+        {% else %}
+
+        <p>
+            Initially there were {{ initial_num }} Dumbo's.
+        </p>
+
+        <p>
+            {{ number }} Dumbo's were added.
+        </p>
+
+        <p>
+            There are now {{ current_num }} Dumbo's.
+        </p>
+
+        {% endif %}
+    </body>
+</html>

@@ -1,0 +1,97 @@
+# ---------- #
+# These are the packages being used in Ed's environment as found here:
+# https://raw.githubusercontent.com/mozilla/treeherder/f61a608237cf63ae8279a2d8c319edb5d7630f26/requirements/common.txt
+# ---------- #
+
+
+# Packages that are shared between deployment and dev environments.
+
+gunicorn==19.4.5 --hash=sha256:c57f1b005a4b90933303c8deed9bedeb509331aa6a0a990023a5796e52bd8988
+
+whitenoise==3.0 --hash=sha256:2537cf2b0c12e1c8beaa23605076344a89d08b686592abffddb6ba13b284a8c6
+
+# Used by the Whitenoise CLI tool to provide Brotli-compressed versions of static files.
+# There is not yet an official package on PyPI:
+# https://github.com/google/brotli/issues/72
+https://github.com/google/brotli/archive/v0.3.0.zip#egg=Brotli==0.3.0 \
+    --hash=sha256:0e1e88c74b5a4c9c39123fe8adfdce6262c80524398367420475716389d70791
+
+Django==1.8.13 --hash=sha256:dad5da0cd7f3cca7da3ac42a19abba30f5cc10fae4976e474051e7085b4e95d1
+
+celery==3.1.23 --hash=sha256:eaf5dee3becbc35c7754a2d4482d53bdf72ea3f85dd258525259983262081474
+
+kombu==3.0.35 --hash=sha256:2c59a5e087d5895675cdb4d6a38a0aa147f0411366e68330a76e480ba3b25727
+
+simplejson==3.8.2 --hash=sha256:d58439c548433adcda98e695be53e526ba940a4b9c44fb9a05d92cd495cdd47f
+
+newrelic==2.64.0.48 --hash=sha256:9ea89da0a16032074dcdc5c39b0b74a821c3c935f5b93781723e7b5dd38e3406
+
+# Required by datasource
+MySQL-python==1.2.5 --hash=sha256:811040b647e5d5686f84db415efd697e6250008b112b6909ba77ac059e140c74
+
+# Required by celery
+billiard==3.3.0.23 --hash=sha256:692a2a5a55ee39a42bcb7557930e2541da85df9ea81c6e24827f63b80cd39d0b
+pytz==2016.4 --hash=sha256:8781cdd3ca70f5a536884e051797ca213b9ff479a5c1cc57240adf37cc1eff1b
+
+# Required by kombu
+amqp==1.4.9 --hash=sha256:e0ed0ce6b8ffe5690a2e856c7908dc557e0e605283d6885dd1361d79f2928908
+anyjson==0.3.3 --hash=sha256:37812d863c9ad3e35c0734c42e0bf0320ce8c3bed82cd20ad54cb34d158157ba
+
+# Required by mozlog
+blessings==1.6 --hash=sha256:edc5713061f10966048bf6b40d9a514b381e0ba849c64e034c4ef6c1847d3007
+
+jsonschema==2.5.1 --hash=sha256:71e7b3bcf9fca408bcb65bb60892f375d3abdd2e4f296eeeb8fe0bbbfcde598e
+
+djangorestframework==3.3.3 --hash=sha256:4f47056ad798103fc9fb049dff8a67a91963bd215d31bad12ad72b891559ab16
+
+django-rest-swagger==0.3.6 --hash=sha256:3221a674416c6016d77b187a28515cd5eadff89b9dfa16af50dc650853714efc
+
+django-cors-headers==1.1.0 --hash=sha256:fcd96e2be47c8eef34c650e007a6d546e19e7ee61041b89edbbbbe7619aa3987
+
+django-browserid==2.0.1 --hash=sha256:ab3a6cb78121b34816a99548596b9b66d8fec9b51d5709a21d15b243ea6ad8ad
+
+jsonfield==1.0.3 --hash=sha256:7e7f73a675c518712badd783279e26d164140f3fc2ed7a32102c3d08a6a2a4a7
+
+mozlog==3.1 --hash=sha256:fc4e02a40bf485f25e9d3f9c55007bc36eb27bfa5a107512df5f190e8905bd75
+
+futures==3.0.5 --hash=sha256:f7f16b6bf9653a918a03f1f2c2d62aac0cd64b1bc088e93ea279517f6b61120b
+
+https://github.com/jeads/datasource/archive/v0.10.0.tar.gz#egg=datasource==0.10.0 \
+    --hash=sha256:7b62a9517c25750d03809076053758d5740de45a8c6c6d9194c2c0885b4a3ea2
+
+# Required by jsonschema
+functools32==3.2.3-2 --hash=sha256:89d824aa6c358c421a234d7f9ee0bd75933a67c29588ce50aaa3acdf4d403fa0
+
+# Required by django-rest-swagger
+Unipath==1.1 --hash=sha256:e6257e508d8abbfb6ddd8ec357e33589f1f48b1599127f23b017124d90b0fff7
+
+# Required by django-rest-swagger
+PyYAML==3.11 --hash=sha256:19bb3ac350ef878dda84a62d37c7d5c17a137386dde9c2ce7249c7a21d7f6ac9
+
+# Used directly plus required by django-browserid, WebTest & responses
+requests==2.10.0 --hash=sha256:09bc1b5f3a56cd8c48d433213a8cba51a67d12936568f73b5f1793fcb0c0979e
+
+# Required by django.contrib.migrations
+sqlparse==0.1.19 --hash=sha256:d896be1a1c7f24bffe08d7a64e6f0176b260e281c5f3685afe7826f8bada4ee8
+
+django-environ==0.4.0 --hash=sha256:70cf521f87e64f4dd2aeb87ced006dc98f621e2cdb38134fbcbcf6309fde6244
+
+# required by mohawk & django-environ
+six==1.10.0 --hash=sha256:0ff78c403d9bccf5a425a6d31a12aa6b47f1c21ca4dc2573a7e2f32a97335eb1
+
+# Required by hawkrest and requests-hawk
+mohawk==0.3.2.1 --hash=sha256:46e98d8349f927b40227f1a9f0021509fedcf0398e1feb22dac954010f625f1d
+
+hawkrest==0.0.9 --hash=sha256:3b7f7c464a9d36c3d23873b8572d97a407960265635ab74880e14069eecb7f11
+
+python-dateutil==2.5.3 --hash=sha256:598499a75be2e5e18a66f12c00dd47a069de24794effeda4228bfc760f44f527
+
+requests-hawk==1.0.0 --hash=sha256:c2626ab31ebef0c81b97781c44c2275bfcc6d8e8520fc4ced495f0f386f8fe26
+
+django-filter==0.13.0 --hash=sha256:f5e10bea3b30e43a9b0b7efdca8e91cb0c1d5bf4d316e8fb6c0c22300d30c7dd
+
+djangorestframework-filters==0.8.0 --hash=sha256:c4d77bc01af20cc7551f704f35db5aa872f6ba717e43ddd21a1de5f448838244
+
+pylibmc==1.5.1 --hash=sha256:ecba261859c3e1ba3365389cb4f4dfffb7e02120a9f57a288cacf2f42c45cdd6
+
+django-pylibmc==0.6.1 --hash=sha256:9cffdee703aaf9ebc029d9dbdee8abdd0723564b95e4b2ac59e4a668b8e58f93

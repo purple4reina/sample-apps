@@ -1,0 +1,6 @@
+[client]
+database = db
+user = reina
+password = password
+host = 192.168.59.103
+default-character-set = utf8
