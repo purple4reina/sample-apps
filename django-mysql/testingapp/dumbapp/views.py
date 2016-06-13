@@ -27,3 +27,14 @@ def create_many(request, number):
         'current_num': current_num,
         'number': number,
     })
+
+
+def delete_all(request):
+    initial_num = Dumbo.objects.count()
+    Dumbo.objects.all().delete()
+    current_num = Dumbo.objects.count()
+
+    return render(request, 'dumbapp/delete_all.html', {
+        'initial_num': initial_num,
+        'current_num': current_num,
+    })
