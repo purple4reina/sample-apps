@@ -82,6 +82,7 @@ DATABASES = {
         'OPTIONS': {
             'read_default_file': os.path.join(BASE_DIR, 'testingapp/mysql.cnf'),
         },
+        'CONN_MAX_AGE': 3,
     }
 }
 

@@ -4,3 +4,11 @@ user = reina
 password = password
 host = 192.168.59.103
 default-character-set = utf8
+
+# connect directly to the server
+port = 3306
+
+# go through toxiproxy
+#port = 33306
+
+wait_timeout = 2
