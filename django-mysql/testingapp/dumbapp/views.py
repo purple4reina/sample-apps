@@ -2,6 +2,7 @@ import time
 
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.conf import settings
 
 from .models import Dumbo
 import toxiproxy_controller
@@ -11,7 +12,7 @@ def timeing(fn):
         start = time.time()
         ret = fn(*args, **kwargs)
         print 'It took %s seconds!' % (time.time() - start)
-        if False:
+        if settings.USE_TOXIPROXY:
             print 'current toxic is: %s' % toxiproxy_controller.get_toxic()
         return ret
     return wrap
@@ -30,7 +31,7 @@ def create_many(request, number):
 
     Dumbo.objects.bulk_create([
         Dumbo(name='Dumbo %s' % time.time()) for _ in xrange(number)
-    ], batch_size=99)
+    ])
 
     current_num = Dumbo.objects.count()
 
@@ -59,4 +60,11 @@ def hit(request):
     A simple hit to the db, returning empty page, helpful for simple testing
     """
     Dumbo.objects.count()
+    return HttpResponse('OK')
+
+
+@timeing
+def go_away(request):
+    with toxiproxy_controller.NoMySqlServer():
+        Dumbo.objects.create(name='Dumbo %s' % time.time())
     return HttpResponse('OK')

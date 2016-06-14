@@ -9,14 +9,7 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 
 import os
 
-import toxiproxy_controller
-
 from django.core.wsgi import get_wsgi_application
-
-# enable toxiproxy, this needs to be done before the server runs
-if False:
-    print 'setting up toxiproxy...'
-    toxiproxy_controller.enable_latency()
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'testingapp.settings')
 

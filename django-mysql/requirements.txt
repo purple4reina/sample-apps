@@ -1,12 +1,26 @@
 Django==1.8.13
+MySQL-python==1.2.5
+appnope==0.1.0
+backports.shutil-get-terminal-size==1.0.0
+decorator==4.0.10
+django-extensions==1.6.7
 djangorestframework==3.3.3
 future==0.15.2
+gnureadline==6.3.3
 gunicorn==19.4.5
+ipython-genutils==0.1.0
+ipython==4.2.0
 mysql==0.0.1
-MySQL-python==1.2.5
 newrelic==2.64.0.48
+pathlib2==2.1.0
+pexpect==4.1.0
+pickleshare==0.7.2
+ptyprocess==0.5.1
 requests==2.10.0
+simplegeneric==0.8.1
+six==1.10.0
 sqlparse==0.1.19
+traitlets==4.2.1
 
 # if this fails try:
 # pip install git+git://github.com/douglas/toxiproxy-python.git

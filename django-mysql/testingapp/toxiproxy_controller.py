@@ -2,6 +2,8 @@ import os
 import sys
 import toxiproxy
 
+import django.db
+
 DOCKER_IP = os.environ.get(
     'DOCKER_HOST', 'localhost').strip('tcp://').split(':')[0]
 PROXY_NAME = 'mysql_proxy'
@@ -87,10 +89,49 @@ def stop_toxiproxies():
 def get_toxic():
     tp = get_toxiproxy_server()
     api = tp.api_server
-    resp = api.get(
-        '/proxies/%s/toxics/%s' % (PROXY_NAME, TOXIC_NAME),
+    try:
+        resp = api.get(
+            '/proxies/%s/toxics/%s' % (PROXY_NAME, TOXIC_NAME),
+        )
+        return resp.json()
+    except:
+        return
+
+
+def stop_mysql():
+    """
+    disabling the proxy should then also "bring down" the mysql server
+    """
+    tp = get_toxiproxy_server()
+    api = tp.api_server
+
+    tp.reset()
+
+    disable = {
+        'enabled': False,
+    }
+
+    print 'stopping connections to mysql server...'
+    api.post(
+        '/proxies/%s' % PROXY_NAME,
+        json=disable,
     )
-    return resp.json()
+
+
+class NoMySqlServer(object):
+
+    def __enter__(self):
+        dbwrapper = django.db.connections['default']
+        dbwrapper.connect()
+
+        # cut the connection between django and the mysql server
+        stop_mysql()
+
+        # for some reason this is required
+        dbwrapper.is_usable()
+
+    def __exit__(self, *args, **kwargs):
+        stop_toxiproxies()
 
 
 if __name__ == '__main__':

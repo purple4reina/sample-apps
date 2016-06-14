@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_extensions',
+
     'dumbapp',
 )
 
@@ -82,10 +84,36 @@ DATABASES = {
         'OPTIONS': {
             'read_default_file': os.path.join(BASE_DIR, 'testingapp/mysql.cnf'),
         },
-        'CONN_MAX_AGE': 3,
+        #'CONN_MAX_AGE': None,
+        'PORT': 3306,
     }
 }
 
+USE_TOXIPROXY = True
+
+if USE_TOXIPROXY:
+    # connect to the mysql database through the toxiproxy server
+    DATABASES['default']['PORT'] = 33306
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            # ensure that all logging goes to the console when run with
+            # gunicorn
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
