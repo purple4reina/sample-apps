@@ -8,4 +8,6 @@ urlpatterns = [
     url(r'^delete_all/$', views.delete_all),
     url(r'^hit/$', views.hit),
     url(r'^go_away/$', views.go_away),
+    url(r'^latency/(?P<latency>\w+)/$', views.latency_connection),
+    url(r'^latency/$', views.latency_connection),  # uses default latency value
 ]

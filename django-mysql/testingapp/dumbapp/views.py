@@ -1,4 +1,5 @@
 import time
+import newrelic.agent
 
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -66,5 +67,19 @@ def hit(request):
 @timeing
 def go_away(request):
     with toxiproxy_controller.NoMySqlServer():
+        try:
+            Dumbo.objects.create(name='Dumbo %s' % time.time())
+        except:
+            print 'shutting down...'
+            newrelic.agent.shutdown_agent(timeout=5)
+            print 're-raising error...'
+            raise
+    return HttpResponse('OK')
+
+
+@timeing
+def latency_connection(request, latency=None):
+    with toxiproxy_controller.MySqlLatency(latency):
+        print 'hitting the db now...'
         Dumbo.objects.create(name='Dumbo %s' % time.time())
     return HttpResponse('OK')

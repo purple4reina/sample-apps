@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'django_extensions',
 
     'dumbapp',
+    'restapi',
+    'agent',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,7 +86,7 @@ DATABASES = {
         'OPTIONS': {
             'read_default_file': os.path.join(BASE_DIR, 'testingapp/mysql.cnf'),
         },
-        #'CONN_MAX_AGE': None,
+        'CONN_MAX_AGE': None,
         'PORT': 3306,
     }
 }

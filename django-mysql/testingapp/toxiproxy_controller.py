@@ -98,7 +98,7 @@ def get_toxic():
         return
 
 
-def stop_mysql():
+def stop_mysql_toxic():
     """
     disabling the proxy should then also "bring down" the mysql server
     """
@@ -118,20 +118,45 @@ def stop_mysql():
     )
 
 
+def stop_mysql():
+    dbwrapper = django.db.connections['default']
+    dbwrapper.connect()
+
+    # cut the connection between django and the mysql server
+    stop_mysql_toxic()
+
+    # for some reason this is required
+    dbwrapper.is_usable()
+
+
 class NoMySqlServer(object):
 
     def __enter__(self):
-        dbwrapper = django.db.connections['default']
-        dbwrapper.connect()
-
-        # cut the connection between django and the mysql server
         stop_mysql()
-
-        # for some reason this is required
-        dbwrapper.is_usable()
 
     def __exit__(self, *args, **kwargs):
         stop_toxiproxies()
+
+
+class MySqlLatency(object):
+
+    def __init__(self, latency=None):
+        self.latency = latency or LATENCY
+
+    def __enter__(self):
+        enable_latency(self.latency)
+
+    def __exit__(self, *args, **kwargs):
+        stop_toxiproxies()
+
+
+class NoToxic(object):
+
+    def __enter__(self):
+        stop_toxiproxies()
+
+    def __exit__(self, *args, **kwargs):
+        pass
 
 
 if __name__ == '__main__':
