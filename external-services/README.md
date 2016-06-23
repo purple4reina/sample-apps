@@ -14,21 +14,21 @@ virtualenv env
 source env/bin/activate
 ```
 
-1. Create small non instrumented package by moving a file to site-packages.
+2. Create small non instrumented package by moving a file to site-packages.
 
 ```
 cp mytest_package.py env/lib/python2.7/site-packages/
 ```
 
-1. Make sure you have newrelic!
+3. Make sure you have newrelic!
 
 ```
 pip install newrelic
 ```
 
-1. Update the `newrelic.ini` file to use your license key.
+4. Update the `newrelic.ini` file to use your license key.
 
-1. Run the task
+5. Run the task
 
 ```
 NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-python run_background_task.py
