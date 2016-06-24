@@ -24,7 +24,7 @@ add another:
 Some notes on the differences between what Ed has given us here and what can be downloaded of treeherder from github.
 
 ### Similarities
-
+The source for the treeherder app is pretty much the same, just might be a different git HEAD.
 
 ### Differences
 + It looks like there are some differences in the code itself, I assume due to differing git HEADs
