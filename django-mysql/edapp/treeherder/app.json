@@ -1,0 +1,6 @@
+{
+  "name": "Treeherder",
+  "description": "Treeherder as run on Heroku",
+  "image": "heroku/cedar",
+  "addons": []
+}
