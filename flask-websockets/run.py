@@ -105,14 +105,26 @@ def both():
     ws = request.environ.get('wsgi.websocket')
     pcolor.print_blue('/index/...')
     if ws:
+        cnt = 0
         while True:
-            now = int(str(int(time.time()))[-5:])
-            pcolor.print_green('sending message {} ...'.format(now))
+            cnt += 1
+            pcolor.print_green('sending message {} ...'.format(cnt))
             ws.send('{}Here is a message! {}{}\n'.format(
-                colors.GREEN, now, colors.COLOR_OFF))
+                colors.GREEN, cnt, colors.COLOR_OFF))
             time.sleep(1)
     else:
         return 'Hello World'
+
+
+@app.route('/http/')
+def just_an_http_point():
+    pcolor.print_blue('/http/...')
+    cnt = 30
+    while cnt >= 0:
+        pcolor.print_green(cnt)
+        time.sleep(1)
+        cnt -= 1
+    return 'Hello World'
 
 
 if __name__ == '__main__':

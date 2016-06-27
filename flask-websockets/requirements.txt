@@ -1,0 +1,11 @@
+Flask==0.11.1
+Jinja2==2.8
+MarkupSafe==0.23
+Werkzeug==0.11.10
+click==6.6
+gevent==1.1.1
+gevent-websocket==0.9.5
+greenlet==0.4.10
+itsdangerous==0.24
+newrelic==2.67.0.0
+wsgiref==0.1.2
