@@ -100,6 +100,21 @@ def socket():
     return 'Hello World!'
 
 
+@app.route('/index/')
+def both():
+    ws = request.environ.get('wsgi.websocket')
+    pcolor.print_blue('/index/...')
+    if ws:
+        while True:
+            now = int(str(int(time.time()))[-5:])
+            pcolor.print_green('sending message {} ...'.format(now))
+            ws.send('{}Here is a message! {}{}\n'.format(
+                colors.GREEN, now, colors.COLOR_OFF))
+            time.sleep(1)
+    else:
+        return 'Hello World'
+
+
 if __name__ == '__main__':
 
     try:
