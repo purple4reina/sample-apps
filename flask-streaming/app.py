@@ -15,7 +15,7 @@ def countdown_iter(count):
 
 @app.route('/')
 def long_list():
-    return flask.Response(countdown_iter(1000))
+    return flask.Response(countdown_iter(10))
 
 
 if __name__ == '__main__':
