@@ -17,25 +17,25 @@ return](http://flask.pocoo.org/docs/0.11/patterns/streaming/).
 
 1. Set up virtual env and source it
 
-```
-virtual env
-source env/bin/activate
-```
+    ```
+    virtual env
+    source env/bin/activate
+    ```
 
 1. Install dependencies
 
-```
-pip install -r requirements.txt
-```
+    ```
+    pip install -r requirements.txt
+    ```
 
 1. Run the server without the agent
 
-```
-python app.py
-```
+    ```
+    python app.py
+    ```
 
 1. Run the server with the agent
 
-```
-NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-python app.py
-```
+    ```
+    NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-python app.py
+    ```
