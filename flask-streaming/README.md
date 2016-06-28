@@ -28,42 +28,26 @@ return](http://flask.pocoo.org/docs/0.11/patterns/streaming/).
     pip install -r requirements.txt
     ```
 
-1. Run the server without the agent
+1. Run the server with the agent
 
     ```
     python app.py
     ```
 
-1. Run the server with the agent
-
-    ```
-    NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-python app.py
-    ```
-
-1. View the page at http://localhost:5000
-
 
 ## Websockets
 
-To hit the endpoint with a websocket using the commandline use curl:
+The application includes a node.js script to allow easy command line
+websocket connections to the websocket endpoint. To use, you must first
+download and install [Node.js](https://nodejs.org/en/download/). Then, install
+the websocket package dependency with `npm install ws`.
 
-```
-curl -i -H "Connection: Upgrade" \
-    -H "Upgrade: websocket" \
-    -H "Host: localhost:5000" \
-    -H "Origin:http://localhost:5000" \
-    -H "Sec-WebSocket-Version: 13" \
-    -H "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==" \
-    http://localhost:5000
-```
+To connect via websocket to http//localhost:5000, run `node
+websocket_connect.js`.
 
-Notice that when running the developement server using `python app.py` it
-returns an empty reply. However, try running the server with the agent thus:
 
-```
-FLASK_APP=app FLASK_DEBUG=1 NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program flask run
-```
+## Middleware
 
-Then hit it again with the curl command. It will return the contents of the
-page as expected, including the RUM. No errors. However, it is not using
-`gevent-websocket`.
+There is an optional middleware available to the application. It exchanges the word "Hello" with "Goodbye".
+
+## Observations

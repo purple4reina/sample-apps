@@ -65,3 +65,6 @@ env/
 
 # any exported docker images
 *-image.tar
+
+# for node stuff
+node_modules
