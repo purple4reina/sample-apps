@@ -1,3 +1,6 @@
+from testingtools import printcolor as pc
+
+
 class HelloGoodbyeIter:
 
     def __init__(self, result):
@@ -9,6 +12,7 @@ class HelloGoodbyeIter:
         return self
 
     def next(self):
+        pc.print_green('changing hellos to goodbyes')
         return hello_to_goodbye(self._next())
 
 class HelloGoodbyer:
