@@ -65,4 +65,5 @@ FLASK_APP=app FLASK_DEBUG=1 NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin ru
 ```
 
 Then hit it again with the curl command. It will return the contents of the
-page as expected, including the RUM. No errors.
+page as expected, including the RUM. No errors. However, it is not using
+`gevent-websocket`.
