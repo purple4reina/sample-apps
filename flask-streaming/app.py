@@ -1,4 +1,6 @@
 import flask
+from gevent.pywsgi import WSGIServer
+from geventwebsocket.handler import WebSocketHandler
 
 app = flask.Flask(__name__)
 
@@ -17,4 +19,8 @@ def long_list():
 
 
 if __name__ == '__main__':
-    app.run()
+    WSGIServer(
+        ('0.0.0.0', 5000),
+        app,
+        handler_class=WebSocketHandler,
+    ).serve_forever()
