@@ -1,13 +1,15 @@
-#!/usr/bin/env python2.7
+from testingtools import printcolor as pcolor
+import newrelic.agent
+pcolor.print_red('Starting agent...')
+newrelic.agent.initialize(config_file='newrelic.ini')
+pcolor.print_red('Initializing agent...')
+newrelic.agent.register_application()
 
-# pip install  newrelic    gevent  gevent-websocket flask
-# my versions: (2.50.0.39) (1.0.2) (0.9.3)          (0.10.1)
 from flask import Flask, request
 from gevent.pywsgi import WSGIServer
+from geventwebsocket.exceptions import WebSocketError
 from geventwebsocket.handler import WebSocketHandler
-from testingtools import printcolor as pcolor
 from testingtools import colors
-import newrelic.agent
 import sys
 import time
 
@@ -103,17 +105,19 @@ def socket():
 @app.route('/index/')
 def both():
     ws = request.environ.get('wsgi.websocket')
-    pcolor.print_blue('/index/...')
+    pcolor.print_yellow('/index/...')
     if ws:
-        cnt = 0
-        while True:
-            cnt += 1
-            pcolor.print_green('sending message {} ...'.format(cnt))
-            ws.send('{}Here is a message! {}{}\n'.format(
-                colors.GREEN, cnt, colors.COLOR_OFF))
-            time.sleep(1)
-    else:
-        return 'Hello World'
+        try:
+            cnt = 1
+            while True:
+                cnt += 1
+                pcolor.print_green('sending message {} ...'.format(cnt))
+                ws.send('{}Here is a message! {}{}\n'.format(
+                    colors.GREEN, cnt, colors.COLOR_OFF))
+                time.sleep(1)
+        except WebSocketError:
+            pass
+    return 'Hello World'
 
 
 @app.route('/http/')
@@ -137,11 +141,6 @@ if __name__ == '__main__':
     except ValueError:
         print 'Give me an integer please!'
         sys.exit(1)
-
-    pcolor.print_red('Starting agent...')
-    newrelic.agent.initialize(config_file='newrelic.ini')
-    pcolor.print_red('Initializing agent...')
-    newrelic.agent.register_application()
 
     pcolor.print_red('Running app... on port {}'.format(port))
     WSGIServer(
