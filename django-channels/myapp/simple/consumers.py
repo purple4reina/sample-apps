@@ -18,6 +18,8 @@ def _encode_text(conn=0, msg=''):
         }
     )
 
+def _get_group_name(message):
+    return message.content['path'].strip('/') or 'None'
 
 @channel_session
 def ws_connect(message):
@@ -26,7 +28,7 @@ def ws_connect(message):
     print 'connecting...'
     CONNECTIONS += 1
 
-    path = message.content['path'].strip('/')
+    path = _get_group_name(message)
     Group(path).add(message.reply_channel)
     Group(path).send({
         'text': _encode_text(CONNECTIONS),
@@ -37,10 +39,13 @@ def ws_receive(message):
     global CONNECTIONS
     print 'message received to websocket... "%s"' % message.content['text']
 
-    path = message.content['path'].strip('/')
-    Group(path).send({
-        'text': _encode_text(CONNECTIONS, message.content['text']),
-    })
+    path = _get_group_name(message)
+
+    text = message.content.get('text')
+    if text:
+        Group(path).send({
+            'text': _encode_text(CONNECTIONS, message.content['text']),
+        })
 
 @channel_session
 def ws_disconnect(message):
@@ -49,7 +54,7 @@ def ws_disconnect(message):
     print 'disconnecting...'
     CONNECTIONS -= 1
 
-    path = message.content['path'].strip('/')
+    path = _get_group_name(message)
     Group(path).discard(message.reply_channel)
     Group(path).send({
         'text': _encode_text(CONNECTIONS),
