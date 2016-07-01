@@ -1,8 +1,20 @@
-from testingtools import printcolor as pcolor
+try:
+    from testingtools.printcolor import (
+        print_red, print_blue, print_green, print_purple, print_yellow,
+    )
+except ImportError:
+    def _print(text):
+        print text
+    print_red = _print
+    print_blue = _print
+    print_green = _print
+    print_purple = _print
+    print_yellow = _print
+
 import newrelic.agent
-pcolor.print_red('Starting agent...')
+print_red('Starting agent...')
 newrelic.agent.initialize(config_file='newrelic.ini')
-pcolor.print_red('Initializing agent...')
+print_red('Initializing agent...')
 newrelic.agent.register_application()
 
 from flask import Flask, request
@@ -17,13 +29,10 @@ import time
 app = Flask(__name__)
 
 
-def simple():
-    return 'hello world'
-
-
 @app.route('/')
-def index():
-    pcolor.print_blue('/')
+def home():
+    # the original html given in the forum post
+    print_blue('/')
     return """
 <!DOCTYPE HTML>
 <html>
@@ -65,69 +74,42 @@ def index():
 
 @app.route('/chat/')
 def api():
+    # The endpoint the above html will connect to with a websocket
     try:
-        pcolor.print_blue('/chat/ ...')
+        print_blue('/chat/ ...')
         if request.environ.get('wsgi.websocket'):
             websocket = request.environ['wsgi.websocket']
             while True:
-                pcolor.print_green('waiting for message')
+                print_green('waiting for message')
                 message = websocket.receive()
-                pcolor.print_green('message received! {}'.format(message))
+                print_green('message received! {}'.format(message))
                 websocket.send('sending message')
-                pcolor.print_green('message sent!')
+                print_green('message sent!')
         else:
-            pcolor.print_purple('not a websocket')
+            print_purple('not a websocket')
     except Exception as e:
-        pcolor.print_red('oooops! error! {}'.format(e))
+        print_red('oooops! error! {}'.format(e))
     return 'Hello World'
 
 
-@app.route('/socket/')
-def socket():
-    # just a websocket endpoint, sends messages back every second
-    pcolor.print_blue('/socket/ ...')
-    try:
-        ws = request.environ.get('wsgi.websocket')
-        if ws:
-            while True:
-                now = int(str(int(time.time()))[-5:])
-                pcolor.print_green('sending message {} ...'.format(now))
-                ws.send('{}Here is a message! {}{}\n'.format(
-                    colors.GREEN, now, colors.COLOR_OFF))
-                time.sleep(1)
-        else:
-            pcolor.print_purple('not a websocket request')
-    except Exception as e:
-        pcolor.print_red('ooops! {}'.format(e))
-    return 'Hello World!'
-
-
 @app.route('/index/')
-def both():
+def index():
+    # An endpoint that can accept either websocket or http requests
+    print_blue('/index/...')
+
     ws = request.environ.get('wsgi.websocket')
-    pcolor.print_yellow('/index/...')
+    print_blue('...websocket' if ws else '...not websocket')
+
     if ws:
         try:
             cnt = 1
             while True:
                 cnt += 1
-                pcolor.print_green('sending message {} ...'.format(cnt))
-                ws.send('{}Here is a message! {}{}\n'.format(
-                    colors.GREEN, cnt, colors.COLOR_OFF))
+                print_green('sending message {} ...'.format(cnt))
+                ws.send('Here is a message! {}'.format(cnt))
                 time.sleep(1)
         except WebSocketError:
             pass
-    return 'Hello World'
-
-
-@app.route('/http/')
-def just_an_http_point():
-    pcolor.print_blue('/http/...')
-    cnt = 30
-    while cnt >= 0:
-        pcolor.print_green(cnt)
-        time.sleep(1)
-        cnt -= 1
     return 'Hello World'
 
 
@@ -142,7 +124,7 @@ if __name__ == '__main__':
         print 'Give me an integer please!'
         sys.exit(1)
 
-    pcolor.print_red('Running app... on port {}'.format(port))
+    print_red('Running app... on port {}'.format(port))
     WSGIServer(
         ('0.0.0.0', port),
         app,
