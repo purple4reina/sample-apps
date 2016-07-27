@@ -1,0 +1,7 @@
+for var in `env | grep AWS`
+do
+    unset ${var%=*}
+done
+
+export AWS_ACCESS_KEY_ID=AKIAILNCVKYEV22F7Q3A
+export AWS_SECRET_ACCESS_KEY=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
