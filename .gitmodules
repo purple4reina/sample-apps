@@ -1,0 +1,6 @@
+[submodule "c-ext/system-error-ticket"]
+	path = c-ext/system-error-ticket
+	url = git@source.datanerd.us:toffermann/system-error-ticket.git
+[submodule "c-ext/NewRelic"]
+	path = c-ext/NewRelic
+	url = git@github.com:Mobeye/NewRelic.git
