@@ -1,0 +1,21 @@
+
+
+Running Python agent test.
+
+Any significant errors in performing the test will be shown below. If no
+errors occurred in the execution of this script and data is still not
+reporting through to the UI against the application:
+
+  Python Agent Test
+
+after 5 minutes then check the log file:
+
+  /tmp/python-agent-test.log
+
+for debugging information. Supply the log file to New Relic support if
+requesting help with resolving any issues with the test not reporting
+data to the New Relic UI.
+
+Registration successful. Reporting to:
+
+  https://rpm.newrelic.com/accounts/1390920/applications/21627132
