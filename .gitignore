@@ -68,3 +68,5 @@ env/
 
 # for node stuff
 node_modules
+
+.vagrant
