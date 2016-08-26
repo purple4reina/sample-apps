@@ -40,6 +40,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'myapp.middleware.angry_dog',
+    'myapp.middleware.happy_go_lucky',
+    'myapp.middleware.SimpleMiddleware',
+    #'myapp.middleware.SimpleMiddlewareClass',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
