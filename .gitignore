@@ -48,8 +48,10 @@ coverage.xml
 *.pot
 
 # Django stuff:
+# And databases stuff
 *.log
 *.sqlite3
+*.db
 
 # Sphinx documentation
 docs/_build/
