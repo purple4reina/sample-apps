@@ -153,24 +153,53 @@ def test_all_types():
 
 
     # (8)
-    # uri, localhost, default port
+    # socket, no port, default location
     #   already ready already
-    #   not yet working on this branch
-    with psycopg2.connect('postgres://localhost') as conn:
-        pass
-
-    return ''
-
-@app.route('/socket')
-def socket():
-    # localhost, socket
-    # This totally isn't working so I'm giving up
+    #   (None, None) -> ('localhost', 'default')
     with psycopg2.connect(
-            database='root', user='root', password='root') as conn:
+            database='rabolofia', user='rabolofia',
+            password='rabolofia') as conn:
+        pass
+
+    # (9)
+    # socket, port 5432, default location
+    #   already ready already
+    #   (None, '5432') -> ('localhost', 'default')
+    with psycopg2.connect(
+            database='rabolofia', user='rabolofia',
+            password='rabolofia', port=5432) as conn:
+        pass
+
+    # (10)
+    # socket, no port, give socket dir
+    #   already ready already
+    #   ('/tmp', None) -> ('localhost', '/tmp/.s.PGSQL.5432')
+    with psycopg2.connect(
+            database='rabolofia', user='rabolofia',
+            password='rabolofia', host='/tmp') as conn:
+        pass
+
+    # (11)
+    # socket, port 8888, give socket dir
+    #   edit /usr/local/var/postgres/postgresql.conf to change the port, then
+    #   restart by killing original postgres process
+    #   ('/tmp', '8888') -> ('localhost', '/tmp/.s.PGSQL.8888')
+    with psycopg2.connect(
+            database='rabolofia', user='rabolofia',
+            password='rabolofia', host='/tmp', port=8888) as conn:
+        pass
+
+    # (12)
+    # socket, port 8888, default location
+    #   edit /usr/local/var/postgres/postgresql.conf to change the port, then
+    #   restart by killing original postgres process
+    #   (None, '8888') -> ('localhost', 'default')
+    with psycopg2.connect(
+            database='rabolofia', user='rabolofia',
+            password='rabolofia', port=8888) as conn:
         pass
 
     return ''
-
 
 if __name__ == '__main__':
     app.run(debug=True)
