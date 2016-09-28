@@ -14,7 +14,7 @@ source env/bin/activate
 cp ../requirements.txt .
 pip install -r requirements.txt
 
-cat > app.py <<EOL
+cat > app.py <<EOF
 import flask
 
 app = flask.Flask(__name__)
@@ -25,4 +25,8 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True)
-EOL
+EOF
+
+cat > README.md <<EOF
+# ${name_title}
+EOF
