@@ -20,7 +20,7 @@ def client_init():
 
 client = client_init()
 
-class HelloWorld5(object):
+class HelloWorld6(object):
 
     @moto.mock_s3
     def index(self):
@@ -33,4 +33,4 @@ class HelloWorld5(object):
     index.exposed = True
 
 if __name__ == '__main__':
-    cherrypy.quickstart(HelloWorld5())
+    cherrypy.quickstart(HelloWorld6())
