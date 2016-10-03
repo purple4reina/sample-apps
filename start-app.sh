@@ -2,6 +2,17 @@
 
 name=$1
 name_title=`python -c "print '${name}'.replace('-', ' ').replace('_', ' ').title()"`
+echo Starting app $name_title
+shift
+
+option=$1
+case $option in
+    --link)
+        link=$2
+        echo link:  $link
+        echo Including link $link
+        ;;
+esac
 
 mkdir $name
 cd $name
@@ -30,3 +41,9 @@ EOF
 cat > README.md <<EOF
 # ${name_title}
 EOF
+
+if [[ $link != "" ]]
+then
+    echo >> README.md
+    echo $link >> README.md
+fi
