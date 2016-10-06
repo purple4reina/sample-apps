@@ -49,9 +49,9 @@ def api(func, s=True, p=False):
 
 
 class Root:
-    
+
     def __init__(self):
-        
+
         """Amazon S3 Init"""
         self.s3 = boto3.client(
             service_name            = "s3",
@@ -80,7 +80,7 @@ class Root:
             This is the test method.
             File should be on kwargs[archive]
         """
-        
+
         fup = self.s3.upload_fileobj(
             Bucket = "mytestbucket",
             Key = "nrtests/%s" % kwargs.get("archive").filename,
@@ -89,11 +89,11 @@ class Root:
                 "ACL": "public-read"
             }
         )
-        
+
 
 def handle_error():
     """Unanticipated Error Handler"""
-    
+
     cherrypy.response.status = 500
     cherrypy.response.body = [e.encode() for e in [
         "GLOBALEXCEPTIIONCATCHER",
@@ -103,7 +103,7 @@ def handle_error():
 
 def error_page(status, message, traceback, version):
     """Renders default error page"""
-    
+
     return "%s" % message
 
 if __name__ == "__main__":
