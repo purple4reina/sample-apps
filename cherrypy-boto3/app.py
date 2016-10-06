@@ -27,10 +27,13 @@ class HelloWorld6(object):
         client.create_bucket(Bucket=TEST_BUCKET)
         with open('app.py', 'rb') as data:
             client.upload_fileobj(data, TEST_BUCKET, 'mykey')
+        return '*'
 
-        return ''
+    def bototest(self):
+        return self.index()
 
     index.exposed = True
+    bototest.exposed = True
 
 if __name__ == '__main__':
     cherrypy.quickstart(HelloWorld6())

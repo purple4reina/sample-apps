@@ -11,6 +11,8 @@ from cherrypy import HTTPError, HTTPRedirect, InternalRedirect
 
 import newrelic.agent
 
+import moto
+
 
 """API Decorator"""
 # Prepare decorator to accept multiple parameters
@@ -74,31 +76,39 @@ class Root:
 
         return nfo
 
+    @moto.mock_s3
     @api()
     def bototest(self, *args, **kwargs):
         """
             This is the test method.
             File should be on kwargs[archive]
         """
-
-        fup = self.s3.upload_fileobj(
-            Bucket = "mytestbucket",
-            Key = "nrtests/%s" % kwargs.get("archive").filename,
-            Fileobj = kwargs.get("archive").file,
-            ExtraArgs = {
-                "ACL": "public-read"
-            }
-        )
+        try:
+            self.s3.create_bucket(Bucket='mytestbucket')
+            with open('empty') as f:
+                fup = self.s3.upload_fileobj(
+                    Bucket = 'mytestbucket',
+                    Key = 'mytestkey', #"nrtests/%s" % kwargs.get("archive").filename,
+                    Fileobj = f, #kwargs.get("archive").file,
+                    #ExtraArgs = {
+                    #    "ACL": "public-read"
+                    #}
+                )
+        except Exception as e:
+            print('e: ', e)
+            #raise
 
 
 def handle_error():
     """Unanticipated Error Handler"""
+    print('--------------------error--------------------')
 
     cherrypy.response.status = 500
     cherrypy.response.body = [e.encode() for e in [
-        "GLOBALEXCEPTIIONCATCHER",
-        "<br/>",
-        "DEBUG: %s" % debug.inserted_id
+        #"GLOBALEXCEPTIIONCATCHER",
+        #"<br/>",
+        #"DEBUG: %s" % debug.inserted_id
+        '*'
     ]]
 
 def error_page(status, message, traceback, version):
@@ -108,6 +118,7 @@ def error_page(status, message, traceback, version):
 
 if __name__ == "__main__":
     # Local Developer Mode
+    newrelic.agent.initialize('../newrelic.ini')
 
     cherrypy.quickstart(Root(), '/', config={
         'global': {
