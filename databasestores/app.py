@@ -34,20 +34,22 @@ def sqlite():
 @app.route('/psycopg2')
 def psycopg():
     with psycopg2.connect(
-            database='rabolofia', user='rabolofia', password='') as conn:
+            host='localhost', database='rabolofia', user='rabolofia',
+            password='') as conn:
         with conn.cursor() as c:
             _create_db(c, conn=conn)
             _insert_db(c)
             conn.commit()
 
     with psycopg2.connect(
-            database='rabolofia', user='rabolofia', password='') as conn:
+            host='localhost', database='rabolofia', user='rabolofia',
+            password='') as conn:
         with conn.cursor() as c:
             _create_db(c, conn=conn)
             _insert_db(c)
             conn.commit()
 
-    return ''
+    return '*'
 
 def _insert_db(c):
     number = str(time.time()).replace('.', '')[:-11:-1]
@@ -81,7 +83,7 @@ def pg_port():
     # start db with:
     #   `docker run -d --name packnsend-postgresql -p 5433:5432 --network="bridge" postgresql`
     with psycopg2.connect(
-            database=DBUSER, user=DBUSER, password=DBUSER,
+            database=DBUSER, user=DBUSER, password=DBUSER, port=5433,
             host=DOCKER_HOST) as conn:
         pass
     return ''
