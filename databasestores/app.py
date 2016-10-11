@@ -42,7 +42,7 @@ def psycopg():
             conn.commit()
 
     with psycopg2.connect(
-            host='localhost', database='rabolofia', user='rabolofia',
+            host='localhost', database='python-agent', user='rabolofia',
             password='') as conn:
         with conn.cursor() as c:
             _create_db(c, conn=conn)
