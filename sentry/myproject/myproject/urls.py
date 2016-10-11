@@ -20,6 +20,6 @@ import app.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/', app.views.HelloView.as_view()),
-    url(r'^world/', app.views.WorldView.as_view()),
+    url(r'^api/', app.views.APIView.as_view()),
+    url(r'^client/', app.views.ClientView.as_view()),
 ]
