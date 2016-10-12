@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import raven
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,6 +27,13 @@ SECRET_KEY = 'xy3@dcwlciu8u@$m%=mz!9p!+&$t8wt@fyklfinr4-3-e5x#8!'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+RAVEN_CONFIG = {
+    'dsn': 'http://cd41583c0f224a86b115f724a253f87f:c3c28a972f7349bc960ee141c161240b@192.168.99.100:8080/2',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.dirname(__file__)),
+}
 
 
 # Application definition

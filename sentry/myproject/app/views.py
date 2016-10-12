@@ -1,33 +1,32 @@
+import random
 import requests
 import cPickle as pickle
+
+import newrelic.agent
 
 from django.shortcuts import HttpResponse
 from django.views.generic import View
 
-from .models import Wiggle
+class Pickler(object):
+    @classmethod
+    def pickle(cls, obj):
+        pickled_obj = pickle.dumps(obj)
+        unpickled_obj = pickle.loads(pickled_obj)
+        return unpickled_obj
 
-QUERY_SET = None
+class Clarinet(object):
+
+    def __init__(self):
+        self.keys = random.randrange(10000)
+        print self.keys
 
 class APIView(View):
 
-    def pickle_it(self, new_obj):
-        global QUERY_SET
-
-        if QUERY_SET:
-            old_obj = pickle.loads(QUERY_SET)
-
-        old_str = QUERY_SET
-        QUERY_SET = pickle.dumps(new_obj)
-        assert old_str != QUERY_SET
-
-        return old_obj
-
     def get(self, request):
-        Wiggle.objects.create()
-        new_obj = Wiggle.objects.last()
-        old_obj = self.pickle_it(new_obj)
-        print old_obj.id
-        assert old_obj.id != new_obj.id
+        this_obj = Clarinet()
+        keys = this_obj.keys
+        new_obj = Pickler.pickle(this_obj)
+        assert new_obj.keys == keys
         return HttpResponse('{}')
 
 class ClientView(View):
