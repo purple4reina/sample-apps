@@ -22,4 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', app.views.APIView.as_view()),
     url(r'^client/', app.views.ClientView.as_view()),
+    url(r'^func/', app.views.function_view),
+    url(r'^error/', app.views.error_view),
 ]

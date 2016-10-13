@@ -39,3 +39,9 @@ class ClientView(View):
     def get(self, request):
         data = self.get_api_data()
         return HttpResponse(str(data))
+
+def function_view(request):
+    return HttpResponse('*')
+
+def error_view(request):
+    raise RuntimeError('oooops')

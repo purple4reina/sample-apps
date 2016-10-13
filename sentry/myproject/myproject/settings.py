@@ -30,20 +30,10 @@ ALLOWED_HOSTS = []
 
 RAVEN_CONFIG = {
     'dsn': 'http://cd41583c0f224a86b115f724a253f87f:c3c28a972f7349bc960ee141c161240b@192.168.99.100:8080/2',
-    # If you are using git, you can also automatically configure the
-    # release based on the git info.
-    'release': raven.fetch_git_sha(os.path.dirname(__file__)),
 }
 
 
 # Application definition
-
-CACHES = {
-    'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '192.168.99.100:2376',
-    },
-}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -52,17 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'rest_framework.authtoken',
-
-    'app',
+    'raven.contrib.django.raven_compat',
 ]
-
-REST_FRAMEWORK = {
-'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    )
-}
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
