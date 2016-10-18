@@ -144,7 +144,7 @@ def is_prime(num, r=None):
         if r.exists(num):
             _log('Using cached value')
             cached_str_value = r.get(num)
-            cached_value = True if cached_str_value == 'True' else False
+            cached_value = cached_str_value == 'True'
             return cached_value
 
     if num <= 1:

@@ -1,0 +1,2 @@
+-e git+git@source.datanerd.us:python-agent/python_agent.git@7bf861e2a02221954796b7de7811945a41c8488d#egg=newrelic
+redis==2.10.5
