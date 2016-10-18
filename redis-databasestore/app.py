@@ -121,15 +121,16 @@ def connection():
 
 @newrelic.agent.function_trace()
 def use_it():
-    r = redis.StrictRedis(host=REDIS_HOST, db=2)
+    r = redis.StrictRedis(host=REDIS_HOST, db=0)
+    max_num = 10**2
 
     _log('Find some prime numbers')
 
-    num = random.randint(1, 10**15)
+    num = random.randint(1, max_num)
     _log('Testing', num)
     cnt = 1
     while not is_prime(num, r):
-        num = random.randint(1, 10**15)
+        num = random.randint(1, max_num)
         _log('Testing', num)
         cnt += 1
     _log(num, 'is prime!!')
@@ -140,10 +141,11 @@ def use_it():
 @newrelic.agent.function_trace()
 def is_prime(num, r=None):
     if r:
-        value = r.get(num)
-        if value:
-            _log('Using cached value *********')
-            return value
+        if r.exists(num):
+            _log('Using cached value')
+            cached_str_value = r.get(num)
+            cached_value = True if cached_str_value == 'True' else False
+            return cached_value
 
     if num <= 1:
         value = False
@@ -160,9 +162,48 @@ def is_prime(num, r=None):
             value = True
 
     if r:
+        _log('Adding key to the cache')
         r.set(num, value)
 
     return value
+
+def change_db():
+    r = redis.Redis(host=REDIS_HOST, db=0)
+    num_keys_1 = 1000
+    num_keys_2 = 20
+
+    _log('Selecting db 1')
+    rv = r.execute_command('SELECT 1')
+    _log('Response', rv)
+
+    _log('Clean it out')
+    r.flushdb()
+    _log('Adding stuff to it')
+    for i in xrange(num_keys_1):
+        r.set(i, i)
+
+    _log('Save number of keys')
+    size_1 = r.dbsize()
+    _log('There are', size_1, 'keys')
+    assert size_1 == num_keys_1
+
+    _log('Selecting db 2')
+    rv = r.execute_command('SELECT 2')
+    _log('Response', rv)
+
+    _log('Clean it out')
+    r.flushdb()
+    _log('Adding stuff to it')
+    for i in xrange(num_keys_2):
+        r.set(i, i)
+
+    _log('Save number of keys')
+    size_2 = r.dbsize()
+    _log('There are', size_2, 'keys')
+    assert size_2 == num_keys_2
+
+    assert size_1 != size_2
+
 
 def main():
     # do some calls on the redis.Redis class
@@ -185,6 +226,9 @@ def main():
 
     _log('Put it to use!')
     use_it()
+
+    _log('Trying to change the db')
+    change_db()
 
 if __name__ == '__main__':
     app = newrelic.agent.application()
