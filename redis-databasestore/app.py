@@ -168,6 +168,11 @@ def is_prime(num, r=None):
     return value
 
 def change_db():
+    # Despite changing databases this still works because there is only one
+    # Connection object in the connection pool. If a different Connection is
+    # used for each of these calls, the assertions would fail. A particular
+    # Connection will save the db, but it will not share that context with
+    # other Connections in the pool.
     r = redis.Redis(host=REDIS_HOST, db=0)
     r.flushall()
 

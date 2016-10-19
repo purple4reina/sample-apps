@@ -8,15 +8,17 @@ import redis
 import time
 
 REDIS_HOST = '172.17.0.8'
+NUMBER_OF_GETS = 10**5
 
 def _log(*msg):
     print '--> ' + ' '.join(map(str, msg))
 
 def main():
-    r = redis.StrictRedis(host=REDIS_HOST, db=0)
-    num_gets = 10**6
+    r = redis.StrictRedis(host=REDIS_HOST)
+    r.flushall()
 
-    for num in xrange(num_gets):
+    for num in xrange(NUMBER_OF_GETS):
+        r.delete(num)
         r.set(num, num)
         r.get(num)
 
