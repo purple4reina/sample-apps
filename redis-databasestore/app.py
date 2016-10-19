@@ -169,6 +169,8 @@ def is_prime(num, r=None):
 
 def change_db():
     r = redis.Redis(host=REDIS_HOST, db=0)
+    r.flushall()
+
     num_keys_1 = 1000
     num_keys_2 = 20
 
@@ -176,8 +178,6 @@ def change_db():
     rv = r.execute_command('SELECT 1')
     _log('Response', rv)
 
-    _log('Clean it out')
-    r.flushdb()
     _log('Adding stuff to it')
     for i in xrange(num_keys_1):
         r.set(i, i)
@@ -191,8 +191,6 @@ def change_db():
     rv = r.execute_command('SELECT 2')
     _log('Response', rv)
 
-    _log('Clean it out')
-    r.flushdb()
     _log('Adding stuff to it')
     for i in xrange(num_keys_2):
         r.set(i, i)
@@ -224,8 +222,8 @@ def main():
     #_log('Playing with redis.Connection')
     #connection()
 
-    _log('Put it to use!')
-    use_it()
+    #_log('Put it to use!')
+    #use_it()
 
     _log('Trying to change the db')
     change_db()
