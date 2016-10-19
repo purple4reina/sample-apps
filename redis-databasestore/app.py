@@ -207,6 +207,20 @@ def change_db():
 
     assert size_1 != size_2
 
+def simple():
+    r = redis.StrictRedis(host=REDIS_HOST)
+    r.flushall()
+
+    key = 'dog'
+    value = 'cat'
+
+    _log('Setting key', key, 'to value', value)
+    r.set(key, value)
+    _log('Getting key', key)
+    get_value = r.get(key)
+    _log('Key', key, 'was set to', get_value)
+
+    assert get_value == value
 
 def main():
     # do some calls on the redis.Redis class
@@ -230,8 +244,11 @@ def main():
     #_log('Put it to use!')
     #use_it()
 
-    _log('Trying to change the db')
-    change_db()
+    #_log('Trying to change the db')
+    #change_db()
+
+    _log('Doing a simple call')
+    simple()
 
 if __name__ == '__main__':
     app = newrelic.agent.application()
