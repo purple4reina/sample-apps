@@ -6,7 +6,6 @@ newrelic.agent.register_application(timeout=10.0)
 
 import random
 import redis
-import requests
 
 REDIS_HOST = '172.17.0.8'
 
@@ -209,6 +208,8 @@ def change_db():
 
 def simple():
     r = redis.StrictRedis(host=REDIS_HOST)
+
+    _log('Flushing all databases')
     r.flushall()
 
     key = 'dog'
