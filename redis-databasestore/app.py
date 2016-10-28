@@ -7,7 +7,8 @@ newrelic.agent.register_application(timeout=10.0)
 import random
 import redis
 
-REDIS_HOST = '172.17.0.8'
+REDIS_HOST = '172.17.0.8'  # if using docker use this one
+REDIS_HOST = 'localhost'
 
 def _log(*msg):
     print '-' * random.randint(1, 10) + '> ' + ' '.join(map(str, msg))
@@ -223,33 +224,45 @@ def simple():
 
     assert get_value == value
 
+def execute_command():
+    assert redis.VERSION == (2, 9, 1)
+
+    r = redis.StrictRedis(host=REDIS_HOST)
+    _log(r.execute_command('CLIENT', 'LIST', parse='LIST'))
+
+def default_port():
+    r = redis.StrictRedis.from_url('redis://localhost:6379')
+    _log('What did it say about the port?',
+            r.connection_pool.connection_kwargs)
+    _log('Getting something')
+    r.get('something')
+
+def sockets():
+    _log('Trying a regular socket')
+    r = redis.StrictRedis.from_url('unix:///tmp/redis.sock')
+    try:
+        r.get('hello')
+    except:
+        _log('Nope!')
+    else:
+        _log('Yup!')
+
+    _log('What about weird sockets')
+    r = redis.StrictRedis.from_url('unix:///tmp/redis.sock?smellysocks=1')
+    try:
+        r.get('hello')
+    except:
+        _log('Nope!')
+    else:
+        _log('Yup!')
+
+def client_list():
+    client = redis.StrictRedis(host=REDIS_HOST)
+    _log(client.execute_command('CLIENT', 'LIST', parse='LIST'))
+
 def main():
-    # do some calls on the redis.Redis class
-    #_log('Playing with redis.Redis')
-    #redis_class()
-
-    ## do some calls on the redis.StrictRedis class
-    #_log('Playing with redis.StrictRedis')
-    #strict_redis_class()
-
-    ## There's also a `from_url` classmethod, do some calls on that
-    #_log('Playing with redis.StrictRedis.from_url')
-    #from_url()
-
-    #_log('Playing with multiple databases')
-    #multi_db()
-
-    #_log('Playing with redis.Connection')
-    #connection()
-
-    #_log('Put it to use!')
-    #use_it()
-
-    #_log('Trying to change the db')
-    #change_db()
-
-    _log('Doing a simple call')
-    simple()
+    _log('Multi-part commands')
+    client_list()
 
 if __name__ == '__main__':
     app = newrelic.agent.application()
