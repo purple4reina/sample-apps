@@ -260,9 +260,21 @@ def client_list():
     client = redis.StrictRedis(host=REDIS_HOST)
     _log(client.execute_command('CLIENT', 'LIST', parse='LIST'))
 
+def db_None():
+    client = redis.StrictRedis(host=REDIS_HOST, db=None)
+
+    try:
+        _log('Set something')
+        client.set('hello', 'world')
+    except:
+        _log('FAIL!')
+        raise
+    else:
+        _log('SUCCESS!')
+
 def main():
-    _log('Multi-part commands')
-    client_list()
+    _log('What happens if db=None?')
+    db_None()
 
 if __name__ == '__main__':
     app = newrelic.agent.application()
