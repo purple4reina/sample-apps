@@ -261,11 +261,11 @@ def client_list():
     _log(client.execute_command('CLIENT', 'LIST', parse='LIST'))
 
 def db_None():
-    client = redis.StrictRedis(host=REDIS_HOST, db=None)
+    client = redis.StrictRedis(host='', port='')
 
     try:
-        _log('Set something')
-        client.set('hello', 'world')
+        _log(client.connection_pool.connection_kwargs)
+        _log(client.execute_command('CLIENT', 'LIST', parse='LIST'))
     except:
         _log('FAIL!')
         raise
@@ -273,7 +273,7 @@ def db_None():
         _log('SUCCESS!')
 
 def main():
-    _log('What happens if db=None?')
+    _log('What happens if something is None?')
     db_None()
 
 if __name__ == '__main__':
