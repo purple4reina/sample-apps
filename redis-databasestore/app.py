@@ -261,7 +261,7 @@ def client_list():
     _log(client.execute_command('CLIENT', 'LIST', parse='LIST'))
 
 def db_None():
-    client = redis.StrictRedis(host='', port='')
+    client = redis.StrictRedis()
 
     try:
         _log(client.connection_pool.connection_kwargs)
