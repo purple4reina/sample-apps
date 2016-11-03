@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  app:
+    image: python-base
+    depends_on:
+      - mysql
+    volumes:
+      - .:/data
+    command: python /data/app.py
+    build: .
+  mysql:
+    image: mysql
