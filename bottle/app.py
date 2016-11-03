@@ -4,7 +4,7 @@ import customer_files
 app = bottle.Bottle()
 
 @customer_files.get('/', app)
-def orangehat():
+def dryerasers():
     return '*'
 
 if __name__ == '__main__':

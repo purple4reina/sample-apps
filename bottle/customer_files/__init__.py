@@ -1,5 +1,6 @@
-import newrelic.agent
 import bottle
+
+from functools import wraps
 
 #from lib.consts import OPTIONS, POST, PUT, DELETE
 OPTIONS = 'OPTIONS'
@@ -16,7 +17,6 @@ def _options_router(route, method, app=None):
         @app.route(route, method=method)
         @app.route(route, method=OPTIONS)
         def wrap(*args, **kwargs):
-            newrelic.agent.set_transaction_name(f.__name__)
             if bottle.request.method == OPTIONS:
                 return ""
             return f(*args, **kwargs)
@@ -42,9 +42,8 @@ def get(route, app=None):
 
     def wrapper(f):
         @app.get(route)
+        @wraps(f)
         def wrap(*args, **kwargs):
-            newrelic.agent.set_transaction_name(
-                    '%s:%s' % (f.__module__, f.__name__))
             return f(*args, **kwargs)
         return wrap
     return wrapper
