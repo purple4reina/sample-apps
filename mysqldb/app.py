@@ -15,7 +15,7 @@ def instance_info():
             host='mysql',
             user=PYAGENT,
             passwd=PYAGENT,
-            db='') as connection:
+            db=PYAGENT) as connection:
         pass
 
 def main():
