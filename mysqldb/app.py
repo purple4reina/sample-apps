@@ -1,5 +1,5 @@
 import newrelic.agent
-newrelic.agent.initialize('/data/newrelic.ini')
+newrelic.agent.initialize('newrelic.ini')
 newrelic.agent.register_application(timeout=10.0)
 
 import MySQLdb
@@ -12,11 +12,13 @@ def _log(*msg):
 
 def instance_info():
     with MySQLdb.connect(
-            host='mysql',
             user=PYAGENT,
             passwd=PYAGENT,
-            db=PYAGENT) as connection:
-        pass
+            db=PYAGENT) as cursor:
+
+        cursor.execute("""drop table if exists datastore_mysqldb""")
+        cursor.execute("""create table datastore_mysqldb """
+                """(a integer, b real, c text)""")
 
 def main():
     _log('MySQLdb anyone?')
