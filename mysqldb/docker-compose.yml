@@ -3,11 +3,13 @@ version: '2'
 services:
   app:
     image: python-base
+    build: .
     depends_on:
       - mysql
     volumes:
       - .:/data
+      - .:/etc/mysql
+    entrypoint: /data/entrypoint.sh
     command: python /data/app.py
-    build: .
   mysql:
     image: mysql
