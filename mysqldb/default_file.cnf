@@ -1,0 +1,4 @@
+[client]
+#host=my.bogus.host
+#port=3306
+#database=reina

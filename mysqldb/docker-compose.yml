@@ -5,11 +5,14 @@ services:
     image: python-base
     build: .
     depends_on:
-      - mysql
+      - mysql_one
+      - mysql_two
     volumes:
       - .:/data
-      - .:/etc/mysql
+      - $PYAGENT_DIR:/agent
     entrypoint: /data/entrypoint.sh
     command: python /data/app.py
-  mysql:
+  mysql_one:
+    image: mysql
+  mysql_two:
     image: mysql

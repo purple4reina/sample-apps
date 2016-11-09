@@ -1,6 +1,7 @@
+import newrelic
 import newrelic.agent
 newrelic.agent.initialize('/data/newrelic.ini')
-newrelic.agent.register_application(timeout=10.0)
+APP = newrelic.agent.register_application(timeout=10.0)
 
 import MySQLdb
 import random
@@ -10,31 +11,31 @@ PYAGENT = 'python_agent'
 def _log(*msg):
     print '-' * random.randint(1, 10) + '> ' + ' '.join(map(str, msg))
 
+def _exercise_db(cursor):
+    cursor.execute("""drop table if exists datastore_mysqldb""")
+    cursor.execute("""create table datastore_mysqldb """
+            """(a integer, b real, c text)""")
+
 def instance_info():
     kwargs = dict(
-        host='mysql',
         user=PYAGENT,
         passwd=PYAGENT,
         db=PYAGENT,
     )
 
-    try:
-        with MySQLdb.connect(**kwargs) as cursor:
+    _log('MySQL host "mysql_one"')
+    with MySQLdb.connect(host='mysql_one', **kwargs) as cursor:
+        _exercise_db(cursor)
 
-            cursor.execute("""drop table if exists datastore_mysqldb""")
-            cursor.execute("""create table datastore_mysqldb """
-                    """(a integer, b real, c text)""")
-    except:
-        _log('Something went wrong!')
-        raise
-    else:
-        _log('Success!')
+    _log('MySQL host "mysql_two"')
+    with MySQLdb.connect(host='mysql_two', **kwargs) as cursor:
+        _exercise_db(cursor)
 
 def main():
     _log('MySQLdb anyone?')
     instance_info()
 
 if __name__ == '__main__':
-    app = newrelic.agent.application()
-    with newrelic.agent.BackgroundTask(app, 'mysql'):
+    _log('Using agent version', newrelic.version)
+    with newrelic.agent.BackgroundTask(APP, 'mysql'):
         main()
