@@ -1,6 +1,10 @@
+click==6.6
 Flask==0.10.1
+gevent==1.1.2
+greenlet==0.4.10
+gunicorn==19.6.0
 itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
-newrelic==2.64.0.48
+-e git+git@source.datanerd.us:python-agent/python_agent.git@5eaf2706b28ec0dc85d8524817e3f028deb7153f#egg=newrelic
 Werkzeug==0.11.9
