@@ -6,6 +6,7 @@ Included directories:
 1. `system-error-ticket`: Submodule for Tom's investigations, https://source.datanerd.us/toffermann/system-error-ticket
 2. `NewRelic`: Module made by customer to demonstrate the bug, https://github.com/Mobeye/NewRelic
 3. `application`: My reproduction
+4. `simple_repro`: Allan's reproduction https://source.datanerd.us/gist/afeldman/a6d912964634c71a2a05
 
 
 ## Offending packages
@@ -69,3 +70,23 @@ Previous Django version
 
 Python 2.7 and 3.4 or pervious
 + Django 1.9.6, **Python 2.7.11**, newrelic 2.60.0.46, mod-wsgi 4.5.2
+
+
+## Simple Reproduction
+
+To start the app in the simple reproduction case:
+
+```bash
+cd simple_repro
+
+# create a virtual environment using python 3.5
+virtualenv env --python=/usr/local/bin/python3.5
+source env/bin/activate
+pip3 install -r requirements.txt
+
+# start the uwsgi server, must be started from the simple_repro directory only
+./startapp.sh
+```
+
+This will run the `uwsgi` server in the background using Python 3.5 and then
+`curl` the application once a second.
