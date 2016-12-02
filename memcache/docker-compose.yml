@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  app:
+    image: python-base
+    build: .
+    depends_on:
+      - memcache1
+      - memcache2
+      - memcache3
+    volumes:
+      - .:/data
+    command: python /data/app.py
+  memcache1:
+    image: memcached
+  memcache2:
+    image: memcached
+  memcache3:
+    image: memcached
