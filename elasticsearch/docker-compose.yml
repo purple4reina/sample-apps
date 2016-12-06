@@ -1,0 +1,20 @@
+version: '2'
+services:
+  packnsend:
+    build: .
+    image: python-base
+    depends_on:
+      - elasticsearch_1
+      - elasticsearch_2
+      - elasticsearch_3
+    volumes:
+      - .:/data
+    environment:
+      NEW_RELIC_CONFIG_FILE: /data/newrelic.ini
+    command: python /data/app.py
+  elasticsearch_1:
+    image: elasticsearch
+  elasticsearch_2:
+    image: elasticsearch
+  elasticsearch_3:
+    image: elasticsearch
