@@ -1,7 +1,6 @@
 Chameleon==3.0
 Mako==1.0.6
 MarkupSafe==0.23
--e git+git@source.datanerd.us:rabolofia/sample-apps.git@4793c4affbddf6930dd9338bb728de84658b2da0#egg=MyProject&subdirectory=pyramid/MyProject
 newrelic==2.76.0.55
 PasteDeploy==1.5.2
 Pygments==2.1.3

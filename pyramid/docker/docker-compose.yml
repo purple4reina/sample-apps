@@ -1,0 +1,14 @@
+version: '2'
+services:
+  server:
+    build: .
+    depends_on:
+      - mongo
+    volumes:
+      - ..:/data
+    environment:
+      NEW_RELIC_CONFIG_FILE: /data/newrelic.ini
+      PYTHONPATH: /data/MyProject
+    command: /data/docker/start_server.sh
+  mongo:
+    image: mongodb
