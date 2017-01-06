@@ -26,6 +26,22 @@ Traceback (most recent call last):
 TypeError: if no direction is specified, key_or_list must be an instance of list
 ```
 
-To recreate:
+### To recreate
 + run app with the agent `USE_AGENT=True ./startapp.sh`
 + run app without the agent `USE_AGENT=False ./startapp.sh`
+
+### Solution
+
+They should replace
+
+```python
+if type(func) == MethodType:
+```
+
+with
+
+```python
+if inspect.ismethod(func):
+```
+
+in their code. The End.

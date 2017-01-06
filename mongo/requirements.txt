@@ -1,2 +1,2 @@
-newrelic==2.76.0.55
+newrelic==2.74.0.54
 pymongo==2.7.2

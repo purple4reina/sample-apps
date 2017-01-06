@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from pymongo.errors import AutoReconnect
 from types import MethodType
 from functools import wraps
+import inspect
 
 # There's auto reconnect logic handling on the collection object. When we get
 # the collection we wrap it like so:
