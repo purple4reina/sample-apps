@@ -9,6 +9,7 @@ services:
       - .:/data
     environment:
       NEW_RELIC_CONFIG_FILE: /data/newrelic.ini
+      USE_AGENT: $USE_AGENT
     command: python /data/app.py
   mongo:
     image: mongodb
