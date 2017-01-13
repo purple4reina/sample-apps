@@ -6,5 +6,5 @@ gunicorn==19.6.0
 itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
--e git+git@source.datanerd.us:python-agent/python_agent.git@5eaf2706b28ec0dc85d8524817e3f028deb7153f#egg=newrelic
 Werkzeug==0.11.9
+newrelic
