@@ -1,0 +1,2 @@
+gunicorn==19.6.0
+newrelic==2.78.0.57
