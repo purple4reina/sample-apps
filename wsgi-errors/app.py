@@ -1,5 +1,6 @@
 import newrelic.agent
 
+@newrelic.agent.wsgi_application()
 def application(environ, start_response):
     path = environ.get('PATH_INFO')
     method = environ.get('REQUEST_METHOD')
@@ -30,4 +31,4 @@ def application(environ, start_response):
     response_headers = [('Content-type', 'text/plain')]
     start_response(status, response_headers)
     print '[%s]: "%s", status: %s' % (method, path, status)
-    return ['*']
+    return [b'*']

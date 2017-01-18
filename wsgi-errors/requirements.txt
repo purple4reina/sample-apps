@@ -1,2 +1,4 @@
 gunicorn==19.6.0
+mod-wsgi==4.5.13
 newrelic==2.78.0.57
+uWSGI==2.0.14
