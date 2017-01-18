@@ -54,7 +54,7 @@ comparisons.
 |-----|-----|-----|-----|
 |**/okay**|Yes|Good|n/a|
 |**/unhandled**|Yes|Bad|Yes|
-|**/handled**|Yes|Bad|No|
+|**/handled**|Yes|Good|No|
 |**/record\_exception**|Yes|Bad|Yes|
 
 ### uWSGI w/o `@newrelic.agent.wsgi_application` wrapper
@@ -72,5 +72,5 @@ comparisons.
 |-----|-----|-----|-----|
 |**/okay**|Yes|Good|n/a|
 |**/unhandled**|Yes|Bad|Yes|
-|**/handled**|Yes|Bad|No|
+|**/handled**|Yes|Good|No|
 |**/record\_exception**|Yes|Bad|Yes|
