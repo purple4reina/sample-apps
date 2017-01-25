@@ -1,23 +1,23 @@
 import time
 from testingtools import printcolor as pcolor
 
-import newrelic.agent
-
+import tornado.gen
+import tornado.httpclient
 import tornado.ioloop
-import tornado.web
 import tornado.options
+import tornado.web
 import tornado.websocket
 
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write('Hello World')
+        self.write('*')
 
 
 class SlowHandler(tornado.web.RequestHandler):
     def get(self):
         pcolor.print_blue('/slow/...')
-        cnt = 30
+        cnt = 5
         while cnt:
             cnt -= 1
             pcolor.print_blue('Sl%sw' % ('o' * cnt))
@@ -58,6 +58,16 @@ class AsyncHandler(tornado.web.RequestHandler):
         pcolor.print_yellow('async done sleeping')
 
 
+class CoroutineHandler(tornado.web.RequestHandler):
+
+    @tornado.gen.coroutine
+    def get(self):
+        client = tornado.httpclient.AsyncHTTPClient()
+        print 'API call...'
+        resp = yield client.fetch('http://localhost:5000')
+        print 'Response code: %s' % resp.code
+        time.sleep(2)
+
 def make_app():
     return tornado.web.Application(
         [
@@ -66,6 +76,7 @@ def make_app():
             (r'/error/', ErrorHandler),
             (r'/socket/', WebSocketHandler),
             (r'/async/', AsyncHandler),
+            (r'/coroutine/', CoroutineHandler),
         ],
         debug=True,
     )
@@ -74,11 +85,6 @@ def make_app():
 if __name__ == '__main__':
     # sets up debugging to stdout
     tornado.options.parse_command_line()
-
-    # start agent
-    newrelic.agent.initialize(config_file='newrelic.ini')
-    # initialize
-    newrelic.agent.register_application()
 
     app = make_app()
     app.listen(8888)
