@@ -20,7 +20,7 @@ cd $name
 cp ../newrelic.ini newrelic.ini
 sed -i '' "s/app_name = .*/app_name = ${name_title}/g" newrelic.ini
 
-virtualenv env
+virtualenv env --python=python2.7
 source env/bin/activate
 cp ../requirements.txt .
 pip install -r requirements.txt

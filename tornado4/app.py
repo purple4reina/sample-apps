@@ -62,21 +62,32 @@ class CoroutineHandler(tornado.web.RequestHandler):
 
     @tornado.gen.coroutine
     def get(self):
+        tornado.httpclient.AsyncHTTPClient.configure(
+                'tornado.simple_httpclient.SimpleAsyncHTTPClient')
         client = tornado.httpclient.AsyncHTTPClient()
-        print 'API call...'
         resp = yield client.fetch('http://localhost:5000')
-        print 'Response code: %s' % resp.code
-        time.sleep(2)
+        self.write(resp.body)
+
+class CurlCoroutineHandler(CoroutineHandler):
+
+    @tornado.gen.coroutine
+    def get(self):
+        tornado.httpclient.AsyncHTTPClient.configure(
+                'tornado.curl_httpclient.CurlAsyncHTTPClient')
+        client = tornado.httpclient.AsyncHTTPClient()
+        resp = yield client.fetch('http://localhost:5000')
+        self.write(resp.body)
 
 def make_app():
     return tornado.web.Application(
         [
             (r'/', MainHandler),
-            (r'/slow/', SlowHandler),
-            (r'/error/', ErrorHandler),
-            (r'/socket/', WebSocketHandler),
-            (r'/async/', AsyncHandler),
-            (r'/coroutine/', CoroutineHandler),
+            (r'/slow/?', SlowHandler),
+            (r'/error/?', ErrorHandler),
+            (r'/socket/?', WebSocketHandler),
+            (r'/async/?', AsyncHandler),
+            (r'/coroutine/?', CoroutineHandler),
+            (r'/coroutine/curl/?', CurlCoroutineHandler),
         ],
         debug=True,
     )
