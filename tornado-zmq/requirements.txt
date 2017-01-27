@@ -1,0 +1,12 @@
+appdirs==1.4.0
+backports-abc==0.5
+certifi==2017.1.23
+newrelic==2.78.0.57
+packaging==16.8
+pycurl==7.43.0
+pyparsing==2.1.10
+pyzmq==16.0.2
+singledispatch==3.4.0.3
+six==1.10.0
+tornado==4.4.2
+zmq==0.0.0
