@@ -1,7 +1,7 @@
 #!/bin/bash
 
 name=$1
-name_title=`python -c "print '${name}'.replace('-', ' ').replace('_', ' ').title()"`
+name_title=`python2.7 -c "print '${name}'.replace('-', ' ').replace('_', ' ').title()"`
 echo Starting app $name_title
 shift
 
