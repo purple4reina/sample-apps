@@ -1,0 +1,13 @@
+appdirs==1.4.0
+click==6.7
+Flask==0.12
+gevent==1.2.1
+greenlet==0.4.11
+itsdangerous==0.24
+Jinja2==2.9.5
+MarkupSafe==0.23
+newrelic==2.78.0.57
+packaging==16.8
+pyparsing==2.1.10
+six==1.10.0
+Werkzeug==0.11.15
