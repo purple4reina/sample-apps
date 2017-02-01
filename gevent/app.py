@@ -1,10 +1,12 @@
-from gevent import monkey; monkey.patch_all()
+from gevent import monkey
+monkey.patch_socket()
+monkey.patch_ssl()
 
 import flask
 
 app = flask.Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def a():
     return '*'
 
