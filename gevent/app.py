@@ -1,6 +1,10 @@
 from gevent import monkey
-monkey.patch_socket()
-monkey.patch_ssl()
+monkey.patch_all()
+
+import os
+import newrelic.agent
+newrelic.agent.initialize(os.environ.get('NEW_RELIC_CONFIG_FILE'))
+newrelic.agent.register_application(timeout=10.0)
 
 import flask
 
