@@ -1,0 +1,1801 @@
+Starting program: /Users/rabolofia/Documents/sample-apps/cherrypy/env/bin/uwsgi --socket 127.0.0.1:8080 --protocol http --wsgi-file app.py --callable wsgiapp --enable-threads --single-interpreter --wsgi-env-behavior holy --honour-stdin
+warning: `/BinaryCache/coreTLS/coreTLS-35.40.1~1/Objects/coretls.build/coretls.build/Objects-normal/x86_64/system_coretls_vers.o': can't open to read symbols: No such file or directory.
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_ciphersuites.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_handshake.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_record.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_stream_parser.a"
+warning: `/Users/rabolofia/Documents/python_agent/build/temp.macosx-10.10-intel-2.7/newrelic/packages/wrapt/_wrappers.o': can't read symbols: File format not recognized.
+warning: `/Users/rabolofia/Documents/python_agent/build/temp.macosx-10.10-intel-2.7/newrelic/core/_thread_utilization.o': can't read symbols: File format not recognized.
+warning: `/Users/rabolofia/Documents/python_agent/build/temp.macosx-10.10-intel-2.7/newrelic/common/_monotonic.o': can't read symbols: File format not recognized.
+[New Thread 0x102f of process 65980]
+[New Thread 0x1203 of process 65980]
+
+Thread 1 hit Catchpoint 1 (signal SIGUSR1), 0x00007fff93372c82 in __kill () from /usr/lib/system/libsystem_kernel.dylib
+inverted range
+Num     Type           Disp Enb Address            What
+1       catchpoint     keep y                      signal "SIGUSR1" 
+	catchpoint already hit 1 time
+        delete 2-$delete_to
+        set $delete_to=$delete_to+1
+        source id
+        commands
+          bt
+          continue
+        end
+        continue
+Num     Type           Disp Enb Address            What
+1       catchpoint     keep y                      signal "SIGUSR1" 
+	catchpoint already hit 1 time
+        delete 2-$delete_to
+        set $delete_to=$delete_to+1
+        source id
+        commands
+          bt
+          continue
+        end
+        continue
+No symbol table is loaded.  Use the "file" command.
+Type commands for breakpoint(s) 1, one per line.
+End with a line saying just "end".
+Num     Type           Disp Enb Address            What
+1       catchpoint     keep y                      signal "SIGUSR1" 
+	catchpoint already hit 1 time
+        if $delete_to>2
+          delete 2-$delete_to
+        end
+        set $delete_to=$delete_to+1
+        source id
+        commands
+          bt
+          continue
+        end
+        continue
+Continuing.
+[New Thread 0x1133 of process 65980]
+
+Thread 1 hit Catchpoint 1 (signal SIGUSR1), 0x00007fff93372c82 in __kill () from /usr/lib/system/libsystem_kernel.dylib
+Hardware watchpoint 2: *4388859248
+
+Thread 1 hit Hardware watchpoint 2: *4388859248
+
+Old value = 1
+New value = 0
+0x000000010018bbc4 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018bbc4 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001abcc9 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x000000010018bbd0 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001abcc9 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010018bbd0 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001abcc9 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010018bbd0 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x0000000100067f32 in uwsgi_request_wsgi ()
+#8  0x00000001000036dd in wsgi_req_recv ()
+#9  0x000000010004edda in simple_loop_run ()
+#10 0x000000010005635b in uwsgi_ignition ()
+#11 0x0000000100056153 in uwsgi_worker_run ()
+#12 0x0000000100053b41 in uwsgi_run ()
+#13 0x000000010005180e in main ()
+
+Thread 1 hit Catchpoint 1 (signal SIGUSR1), 0x00007fff9337421a in kevent () from /usr/lib/system/libsystem_kernel.dylib
+Hardware watchpoint 3: *4379844232
+[New Thread 0x132b of process 65980]
+[New Thread 0x1503 of process 65980]
+[New Thread 0x1603 of process 65980]
+[New Thread 0x1703 of process 65980]
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 0
+0x000000010018db46 in PyDict_DelItemString () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018db46 in PyDict_DelItemString () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x000000010018b746 in PyDict_Merge () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x000000010018aef1 in PyDict_SetItem () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x000000010018c4f1 in PyDict_SetItemString () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x0000000100068f57 in uwsgi_request_subhandler_wsgi ()
+#5  0x0000000100067eb0 in uwsgi_request_wsgi ()
+#6  0x00000001000036dd in wsgi_req_recv ()
+#7  0x000000010004edda in simple_loop_run ()
+#8  0x000000010005635b in uwsgi_ignition ()
+#9  0x0000000100056153 in uwsgi_worker_run ()
+#10 0x0000000100053b41 in uwsgi_run ()
+#11 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 0
+New value = 1
+0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001049c6aa6 in WraptFunctionWrapperBase_new () from /Users/rabolofia/Documents/python_agent/newrelic/packages/wrapt/_wrappers.so
+#2  0x00000001001a2f03 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010015cbfe in PyObject_CallFunctionObjArgs () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001049c6906 in WraptFunctionWrapperBase_descr_get () from /Users/rabolofia/Documents/python_agent/newrelic/packages/wrapt/_wrappers.so
+#6  0x00000001001aa23b in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x00000001001a6d52 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x0000000100065c87 in python_call ()
+#11 0x0000000100067eb0 in uwsgi_request_wsgi ()
+#12 0x00000001000036dd in wsgi_req_recv ()
+#13 0x000000010004edda in simple_loop_run ()
+#14 0x000000010005635b in uwsgi_ignition ()
+#15 0x0000000100056153 in uwsgi_worker_run ()
+#16 0x0000000100053b41 in uwsgi_run ()
+#17 0x000000010005180e in main ()
+
+Thread 1 hit Catchpoint 1 (signal SIGUSR1), 0x00007fff93372c82 in __kill () from /usr/lib/system/libsystem_kernel.dylib
+Hardware watchpoint 4: *4413640328
+
+Thread 1 hit Catchpoint 1 (signal SIGUSR1), 0x00007fff93372c82 in __kill () from /usr/lib/system/libsystem_kernel.dylib
+Hardware watchpoint 5: *4413654472
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 0
+0x00000001049c6250 in WraptObjectProxy_clear () from /Users/rabolofia/Documents/python_agent/newrelic/packages/wrapt/_wrappers.so
+#0  0x00000001049c6250 in WraptObjectProxy_clear () from /Users/rabolofia/Documents/python_agent/newrelic/packages/wrapt/_wrappers.so
+#1  0x00000001049c6622 in WraptFunctionWrapperBase_clear () from /Users/rabolofia/Documents/python_agent/newrelic/packages/wrapt/_wrappers.so
+#2  0x00000001049c639b in WraptFunctionWrapperBase_dealloc () from /Users/rabolofia/Documents/python_agent/newrelic/packages/wrapt/_wrappers.so
+#3  0x00000001001abd25 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001a6d7d in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x0000000100065c87 in python_call ()
+#8  0x0000000100067eb0 in uwsgi_request_wsgi ()
+#9  0x00000001000036dd in wsgi_req_recv ()
+#10 0x000000010004edda in simple_loop_run ()
+#11 0x000000010005635b in uwsgi_ignition ()
+#12 0x0000000100056153 in uwsgi_worker_run ()
+#13 0x0000000100053b41 in uwsgi_run ()
+#14 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 0
+New value = 1
+0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001e09d4 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dd341 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#6  0x0000000100067ec7 in uwsgi_request_wsgi ()
+#7  0x00000001000036dd in wsgi_req_recv ()
+#8  0x000000010004edda in simple_loop_run ()
+#9  0x000000010005635b in uwsgi_ignition ()
+#10 0x0000000100056153 in uwsgi_worker_run ()
+#11 0x0000000100053b41 in uwsgi_run ()
+#12 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 0
+0x00000001001de7ae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x00000001001de7ae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#4  0x0000000100067ec7 in uwsgi_request_wsgi ()
+#5  0x00000001000036dd in wsgi_req_recv ()
+#6  0x000000010004edda in simple_loop_run ()
+#7  0x000000010005635b in uwsgi_ignition ()
+#8  0x0000000100056153 in uwsgi_worker_run ()
+#9  0x0000000100053b41 in uwsgi_run ()
+#10 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 0
+New value = 1
+0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001e09d4 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dd341 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#8  0x0000000100067ec7 in uwsgi_request_wsgi ()
+#9  0x00000001000036dd in wsgi_req_recv ()
+#10 0x000000010004edda in simple_loop_run ()
+#11 0x000000010005635b in uwsgi_ignition ()
+#12 0x0000000100056153 in uwsgi_worker_run ()
+#13 0x0000000100053b41 in uwsgi_run ()
+#14 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 0
+0x00000001001de7ae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x00000001001de7ae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#6  0x0000000100067ec7 in uwsgi_request_wsgi ()
+#7  0x00000001000036dd in wsgi_req_recv ()
+#8  0x000000010004edda in simple_loop_run ()
+#9  0x000000010005635b in uwsgi_ignition ()
+#10 0x0000000100056153 in uwsgi_worker_run ()
+#11 0x0000000100053b41 in uwsgi_run ()
+#12 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 0
+New value = 1
+0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001d9ec4 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001e0bf1 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a9f97 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#16 0x0000000100067ec7 in uwsgi_request_wsgi ()
+#17 0x00000001000036dd in wsgi_req_recv ()
+#18 0x000000010004edda in simple_loop_run ()
+#19 0x000000010005635b in uwsgi_ignition ()
+#20 0x0000000100056153 in uwsgi_worker_run ()
+#21 0x0000000100053b41 in uwsgi_run ()
+#22 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x00000001001dacb6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x00000001001dacb6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001e0bf1 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a9f97 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#16 0x0000000100067ec7 in uwsgi_request_wsgi ()
+#17 0x00000001000036dd in wsgi_req_recv ()
+#18 0x000000010004edda in simple_loop_run ()
+#19 0x000000010005635b in uwsgi_ignition ()
+#20 0x0000000100056153 in uwsgi_worker_run ()
+#21 0x0000000100053b41 in uwsgi_run ()
+#22 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x00000001001dd783 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x00000001001dd783 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001e0bf1 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a9f97 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#16 0x0000000100067ec7 in uwsgi_request_wsgi ()
+#17 0x00000001000036dd in wsgi_req_recv ()
+#18 0x000000010004edda in simple_loop_run ()
+#19 0x000000010005635b in uwsgi_ignition ()
+#20 0x0000000100056153 in uwsgi_worker_run ()
+#21 0x0000000100053b41 in uwsgi_run ()
+#22 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 0
+0x000000010017cc09 in PyFrame_GetLineNumber () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010017cc09 in PyFrame_GetLineNumber () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001da564 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001e0bf1 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a9f97 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#16 0x0000000100067ec7 in uwsgi_request_wsgi ()
+#17 0x00000001000036dd in wsgi_req_recv ()
+#18 0x000000010004edda in simple_loop_run ()
+#19 0x000000010005635b in uwsgi_ignition ()
+#20 0x0000000100056153 in uwsgi_worker_run ()
+#21 0x0000000100053b41 in uwsgi_run ()
+#22 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 0
+New value = 1
+0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001d9ec4 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001e0bf1 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a9f97 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#16 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#17 0x00000001000036dd in wsgi_req_recv ()
+#18 0x000000010004edda in simple_loop_run ()
+#19 0x000000010005635b in uwsgi_ignition ()
+#20 0x0000000100056153 in uwsgi_worker_run ()
+#21 0x0000000100053b41 in uwsgi_run ()
+#22 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x00000001001dacb6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x00000001001dacb6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001e0bf1 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a9f97 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#16 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#17 0x00000001000036dd in wsgi_req_recv ()
+#18 0x000000010004edda in simple_loop_run ()
+#19 0x000000010005635b in uwsgi_ignition ()
+#20 0x0000000100056153 in uwsgi_worker_run ()
+#21 0x0000000100053b41 in uwsgi_run ()
+#22 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x00000001001dd783 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x00000001001dd783 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001e0bf1 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a9f97 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#16 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#17 0x00000001000036dd in wsgi_req_recv ()
+#18 0x000000010004edda in simple_loop_run ()
+#19 0x000000010005635b in uwsgi_ignition ()
+#20 0x0000000100056153 in uwsgi_worker_run ()
+#21 0x0000000100053b41 in uwsgi_run ()
+#22 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 0
+0x000000010017cc09 in PyFrame_GetLineNumber () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010017cc09 in PyFrame_GetLineNumber () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100200c49 in PySys_WriteStdout () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x0000000100200c30 in PySys_WriteStdout () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001de150 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001daafd in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x0000000100175a9a in PyGen_NeedsFinalizing () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010015ff99 in PyIter_Next () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010006909d in uwsgi_response_subhandler_wsgi ()
+#9  0x0000000100067ef5 in uwsgi_request_wsgi ()
+#10 0x00000001000036dd in wsgi_req_recv ()
+#11 0x000000010004edda in simple_loop_run ()
+#12 0x000000010005635b in uwsgi_ignition ()
+#13 0x0000000100056153 in uwsgi_worker_run ()
+#14 0x0000000100053b41 in uwsgi_run ()
+#15 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 0
+New value = 1
+0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001e09d4 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dd341 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#12 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#13 0x00000001000036dd in wsgi_req_recv ()
+#14 0x000000010004edda in simple_loop_run ()
+#15 0x000000010005635b in uwsgi_ignition ()
+#16 0x0000000100056153 in uwsgi_worker_run ()
+#17 0x0000000100053b41 in uwsgi_run ()
+#18 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 0
+0x00000001001de7ae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x00000001001de7ae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#10 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#11 0x00000001000036dd in wsgi_req_recv ()
+#12 0x000000010004edda in simple_loop_run ()
+#13 0x000000010005635b in uwsgi_ignition ()
+#14 0x0000000100056153 in uwsgi_worker_run ()
+#15 0x0000000100053b41 in uwsgi_run ()
+#16 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 0
+New value = 1
+0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018a65f in PyDict_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001912fc in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#23 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#24 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#25 0x00000001000036dd in wsgi_req_recv ()
+#26 0x000000010004edda in simple_loop_run ()
+#27 0x000000010005635b in uwsgi_ignition ()
+#28 0x0000000100056153 in uwsgi_worker_run ()
+#29 0x0000000100053b41 in uwsgi_run ()
+#30 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#23 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#24 0x00000001000036dd in wsgi_req_recv ()
+#25 0x000000010004edda in simple_loop_run ()
+#26 0x000000010005635b in uwsgi_ignition ()
+#27 0x0000000100056153 in uwsgi_worker_run ()
+#28 0x0000000100053b41 in uwsgi_run ()
+#29 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001a77b0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001a2f87 in _PyType_Lookup () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd399 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#21 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#22 0x00000001000036dd in wsgi_req_recv ()
+#23 0x000000010004edda in simple_loop_run ()
+#24 0x000000010005635b in uwsgi_ignition ()
+#25 0x0000000100056153 in uwsgi_worker_run ()
+#26 0x0000000100053b41 in uwsgi_run ()
+#27 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191136 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191136 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001dc530 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010015cbfe in PyObject_CallFunctionObjArgs () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001dccae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#18 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#19 0x00000001000036dd in wsgi_req_recv ()
+#20 0x000000010004edda in simple_loop_run ()
+#21 0x000000010005635b in uwsgi_ignition ()
+#22 0x0000000100056153 in uwsgi_worker_run ()
+#23 0x0000000100053b41 in uwsgi_run ()
+#24 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191166 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191166 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001dc530 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010015cbfe in PyObject_CallFunctionObjArgs () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001dccae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#18 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#19 0x00000001000036dd in wsgi_req_recv ()
+#20 0x000000010004edda in simple_loop_run ()
+#21 0x000000010005635b in uwsgi_ignition ()
+#22 0x0000000100056153 in uwsgi_worker_run ()
+#23 0x0000000100053b41 in uwsgi_run ()
+#24 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191136 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191136 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001dc530 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010015cbfe in PyObject_CallFunctionObjArgs () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001dccae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#18 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#19 0x00000001000036dd in wsgi_req_recv ()
+#20 0x000000010004edda in simple_loop_run ()
+#21 0x000000010005635b in uwsgi_ignition ()
+#22 0x0000000100056153 in uwsgi_worker_run ()
+#23 0x0000000100053b41 in uwsgi_run ()
+#24 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191166 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191166 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001dc530 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010015cbfe in PyObject_CallFunctionObjArgs () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001dccae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#18 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#19 0x00000001000036dd in wsgi_req_recv ()
+#20 0x000000010004edda in simple_loop_run ()
+#21 0x000000010005635b in uwsgi_ignition ()
+#22 0x0000000100056153 in uwsgi_worker_run ()
+#23 0x0000000100053b41 in uwsgi_run ()
+#24 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191340 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010015cbfe in PyObject_CallFunctionObjArgs () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001dccae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#19 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#20 0x00000001000036dd in wsgi_req_recv ()
+#21 0x000000010004edda in simple_loop_run ()
+#22 0x000000010005635b in uwsgi_ignition ()
+#23 0x0000000100056153 in uwsgi_worker_run ()
+#24 0x0000000100053b41 in uwsgi_run ()
+#25 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191389 in _PyObject_GenericSetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x0000000100190e2c in PyObject_SetAttr () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dc23f in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010015cbfe in PyObject_CallFunctionObjArgs () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001dccae in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#19 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#20 0x00000001000036dd in wsgi_req_recv ()
+#21 0x000000010004edda in simple_loop_run ()
+#22 0x000000010005635b in uwsgi_ignition ()
+#23 0x0000000100056153 in uwsgi_worker_run ()
+#24 0x0000000100053b41 in uwsgi_run ()
+#25 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 2
+0x0000000100191136 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191136 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001dc530 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010015cbfe in PyObject_CallFunctionObjArgs () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001dddfa in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#18 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#19 0x00000001000036dd in wsgi_req_recv ()
+#20 0x000000010004edda in simple_loop_run ()
+#21 0x000000010005635b in uwsgi_ignition ()
+#22 0x0000000100056153 in uwsgi_worker_run ()
+#23 0x0000000100053b41 in uwsgi_run ()
+#24 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 2
+New value = 1
+0x0000000100191166 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x0000000100191166 in _PyObject_GenericGetAttrWithDict () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001dc530 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010015cbfe in PyObject_CallFunctionObjArgs () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001dddfa in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#18 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#19 0x00000001000036dd in wsgi_req_recv ()
+#20 0x000000010004edda in simple_loop_run ()
+#21 0x000000010005635b in uwsgi_ignition ()
+#22 0x0000000100056153 in uwsgi_worker_run ()
+#23 0x0000000100053b41 in uwsgi_run ()
+#24 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 3: *4379844232
+
+Old value = 1
+New value = 0
+0x00000001001abcc0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x00000001001abcc0 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x000000010016af80 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x00000001001dde0c in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001e0c82 in _PyEval_SliceIndex () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001dd9a6 in PyEval_EvalFrameEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001da352 in PyEval_EvalCodeEx () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010017e5de in PyFunction_SetClosure () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010016b2f7 in PyMethod_New () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x000000010016050a in PyObject_Call () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x00000001001e03df in PyEval_CallObjectWithKeywords () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x0000000100069219 in uwsgi_response_subhandler_wsgi ()
+#12 0x0000000100067ef5 in uwsgi_request_wsgi ()
+#13 0x00000001000036dd in wsgi_req_recv ()
+#14 0x000000010004edda in simple_loop_run ()
+#15 0x000000010005635b in uwsgi_ignition ()
+#16 0x0000000100056153 in uwsgi_worker_run ()
+#17 0x0000000100053b41 in uwsgi_run ()
+#18 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 5: *4413654472
+
+Old value = 1
+New value = 0
+0x000000010018bbc4 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018bbc4 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001abcc9 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x000000010018bbd0 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001abcc9 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010018bbd0 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001abcc9 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010018bbd0 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x0000000100067f32 in uwsgi_request_wsgi ()
+#8  0x00000001000036dd in wsgi_req_recv ()
+#9  0x000000010004edda in simple_loop_run ()
+#10 0x000000010005635b in uwsgi_ignition ()
+#11 0x0000000100056153 in uwsgi_worker_run ()
+#12 0x0000000100053b41 in uwsgi_run ()
+#13 0x000000010005180e in main ()
+
+Thread 1 hit Hardware watchpoint 4: *4413640328
+
+Old value = 1
+New value = 0
+0x000000010018bbc4 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x000000010018bbc4 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001abcc9 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x000000010018bbd0 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x00000001001abcc9 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x000000010018bbd0 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x00000001001abcc9 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x000000010018bbd0 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x00000001001abcc9 in _PyObject_SlotCompare () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x000000010018bbd0 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x0000000100067f32 in uwsgi_request_wsgi ()
+#10 0x00000001000036dd in wsgi_req_recv ()
+#11 0x000000010004edda in simple_loop_run ()
+#12 0x000000010005635b in uwsgi_ignition ()
+#13 0x0000000100056153 in uwsgi_worker_run ()
+#14 0x0000000100053b41 in uwsgi_run ()
+#15 0x000000010005180e in main ()
+
+Thread 4 received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0x1133 of process 65980]
+0x000000010018bba6 in _PyDict_Contains () from /System/Library/Frameworks/Python.framework/Versions/2.7/Python
+Num     Type           Disp Enb Address            What
+1       catchpoint     keep y                      signal "SIGUSR1" 
+	catchpoint already hit 5 times
+        if $delete_to>2
+          delete 2-$delete_to
+        end
+        set $delete_to=$delete_to+1
+        source id
+        commands
+          bt
+          continue
+        end
+        continue
+2       hw watchpoint  keep y                      *4388859248
+	breakpoint already hit 1 time
+        bt
+        continue
+3       hw watchpoint  keep y                      *4379844232
+	breakpoint already hit 53 times
+        bt
+        continue
+4       hw watchpoint  keep y                      *4413640328
+	breakpoint already hit 1 time
+        bt
+        continue
+5       hw watchpoint  keep y                      *4413654472
+	breakpoint already hit 1 time
+        bt
+        continue
