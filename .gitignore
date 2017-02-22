@@ -73,3 +73,6 @@ env2/
 node_modules
 
 .vagrant
+
+# just a file in the cherrypy dir that I don't want tracked
+cherrypy/id
