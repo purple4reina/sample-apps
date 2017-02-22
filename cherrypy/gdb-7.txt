@@ -1,0 +1,29 @@
+
+Starting program: /Users/rabolofia/Documents/sample-apps/cherrypy/env/bin/uwsgi --socket 127.0.0.1:8080 --protocol http --wsgi-file app.py --callable wsgiapp --enable-threads --single-interpreter --wsgi-env-behavior holy --honour-stdin
+warning: `/BinaryCache/coreTLS/coreTLS-35.40.1~1/Objects/coretls.build/coretls.build/Objects-normal/x86_64/system_coretls_vers.o': can't open to read symbols: No such file or directory.
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_ciphersuites.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_handshake.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_record.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_stream_parser.a"
+warning: `/Users/rabolofia/Documents/python_agent/build/temp.macosx-10.10-intel-2.7/newrelic/packages/wrapt/_wrappers.o': can't read symbols: File format not recognized.
+warning: `/Users/rabolofia/Documents/python_agent/build/temp.macosx-10.10-intel-2.7/newrelic/core/_thread_utilization.o': can't read symbols: File format not recognized.
+warning: `/Users/rabolofia/Documents/python_agent/build/temp.macosx-10.10-intel-2.7/newrelic/common/_monotonic.o': can't read symbols: File format not recognized.
+[New Thread 0x102f of process 42266]
+
+Thread 1 hit Breakpoint 1, 0x0000000100063d94 in uwsgi_python_create_env_holy ()
+Continuing.
+[New Thread 0x120b of process 42266]
+[New Thread 0x1303 of process 42266]
+
+Thread 1 hit Catchpoint 3 (signal SIGUSR1), 0x00007fff9337421a in kevent () from /usr/lib/system/libsystem_kernel.dylib
+[New Thread 0x1153 of process 42266]
+[New Thread 0x1503 of process 42266]
+[New Thread 0x1603 of process 42266]
+[New Thread 0x1703 of process 42266]
+
+Thread 1 hit Breakpoint 1, 0x0000000100063d94 in uwsgi_python_create_env_holy ()
+Continuing.
+
+Thread 4 received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0x1303 of process 42266]
+0x000000010018ca3b in dict_dealloc () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python

@@ -1,0 +1,38 @@
+set breakpoint pending on
+
+break uwsgi_python_create_env_holy
+break PyEval_EvalFrameEx
+commands 2
+set $frame_ptr = $rdi
+set $code_object_ptr = *((char**)($frame_ptr+0x20))
+set $filename_str_ptr = *((char**)($code_object_ptr+0x50))
+set $line_no = *((int*)($code_object_ptr+0x60))
+set $filename_str = (char*)($filename_str_ptr + 0x24)
+
+p/s $filename_str
+p $line_no
+continue
+end
+
+disable 2
+
+catch signal SIGUSR1
+commands 3
+delete 5-99
+source id
+commands
+bt
+continue
+end
+continue
+end
+
+set height 0
+set logging on
+set logging redirect on
+
+run
+c
+disable 1
+enable 2
+c

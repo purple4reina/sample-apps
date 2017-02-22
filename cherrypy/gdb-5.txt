@@ -1,0 +1,2343 @@
+
+Starting program: /Users/rabolofia/Documents/sample-apps/cherrypy/env/bin/uwsgi --socket 127.0.0.1:8080 --protocol http --wsgi-file app.py --callable wsgiapp --enable-threads --single-interpreter --wsgi-env-behavior holy --honour-stdin
+warning: `/BinaryCache/coreTLS/coreTLS-35.40.1~1/Objects/coretls.build/coretls.build/Objects-normal/x86_64/system_coretls_vers.o': can't open to read symbols: No such file or directory.
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_ciphersuites.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_handshake.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_record.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_stream_parser.a"
+warning: `/Users/rabolofia/Documents/python_agent/build/temp.macosx-10.10-intel-2.7/newrelic/packages/wrapt/_wrappers.o': can't read symbols: File format not recognized.
+warning: `/Users/rabolofia/Documents/python_agent/build/temp.macosx-10.10-intel-2.7/newrelic/core/_thread_utilization.o': can't read symbols: File format not recognized.
+warning: `/Users/rabolofia/Documents/python_agent/build/temp.macosx-10.10-intel-2.7/newrelic/common/_monotonic.o': can't read symbols: File format not recognized.
+[New Thread 0x102f of process 37992]
+
+Thread 1 hit Breakpoint 1, 0x0000000100063d94 in uwsgi_python_create_env_holy ()
+Continuing.
+[New Thread 0x120b of process 37992]
+[New Thread 0x1303 of process 37992]
+
+Thread 1 hit Catchpoint 3 (signal SIGUSR1), 0x00007fff9337421a in kevent () from /usr/lib/system/libsystem_kernel.dylib
+[New Thread 0x1153 of process 37992]
+[New Thread 0x1503 of process 37992]
+[New Thread 0x1603 of process 37992]
+[New Thread 0x1703 of process 37992]
+
+Thread 1 hit Breakpoint 1, 0x0000000100063d94 in uwsgi_python_create_env_holy ()
+Continuing.
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1 = 0x104fd8284 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$2 = 1199
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$3 = 0x10580225c "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$4 = 1298
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$5 = 0x104fed444 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$6 = 184
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$7 = 0x104fed134 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$8 = 52
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$9 = 0x104fed0c4 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$10 = 25
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$11 = 0x102339854 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py"
+$12 = 134
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$13 = 0x104fd80c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$14 = 1248
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$15 = 0x104fd280c "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$16 = 142
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$17 = 0x104fbde8c "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$18 = 16
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$19 = 0x10252673c "/Users/rabolofia/Documents/python_agent/newrelic/core/config.py"
+$20 = 426
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$21 = 0x10253d80c "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$22 = 684
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$23 = 0x102536944 "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$24 = 117
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$25 = 0x104fbf364 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$26 = 82
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$27 = 0x104fbf0c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$28 = 38
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$29 = 0x104fd2a7c "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$30 = 54
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$31 = 0x104fed444 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$32 = 184
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$33 = 0x104fed0c4 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$34 = 25
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$35 = 0x104f99054 "/Users/rabolofia/Documents/python_agent/newrelic/core/stats_engine.py"
+$36 = 245
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$37 = 0x104efda64 "/Users/rabolofia/Documents/python_agent/newrelic/core/stats_engine.py"
+$38 = 159
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$39 = 0x104efd984 "/Users/rabolofia/Documents/python_agent/newrelic/core/stats_engine.py"
+$40 = 147
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$41 = 0x104fd20bc "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$42 = 66
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$43 = 0x102536ae4 "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$44 = 260
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$45 = 0x10252673c "/Users/rabolofia/Documents/python_agent/newrelic/core/config.py"
+$46 = 426
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$47 = 0x104fd218c "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$48 = 70
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$49 = 0x102536ae4 "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$50 = 260
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$51 = 0x10252673c "/Users/rabolofia/Documents/python_agent/newrelic/core/config.py"
+$52 = 426
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$53 = 0x102536b4c "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$54 = 269
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$55 = 0x102602594 "/Users/rabolofia/Documents/python_agent/newrelic/core/application.py"
+$56 = 127
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$57 = 0x104fd225c "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$58 = 81
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$59 = 0x102536c1c "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$60 = 291
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$61 = 0x10252673c "/Users/rabolofia/Documents/python_agent/newrelic/core/config.py"
+$62 = 426
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$63 = 0x102602834 "/Users/rabolofia/Documents/python_agent/newrelic/core/application.py"
+$64 = 543
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$65 = 0x104fd218c "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$66 = 70
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$67 = 0x102536ae4 "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$68 = 260
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$69 = 0x10252673c "/Users/rabolofia/Documents/python_agent/newrelic/core/config.py"
+$70 = 426
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$71 = 0x102536b4c "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$72 = 269
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$73 = 0x102602594 "/Users/rabolofia/Documents/python_agent/newrelic/core/application.py"
+$74 = 127
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$75 = 0x104fbf214 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$76 = 75
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$77 = 0x104fd2c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$78 = 208
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$79 = 0x105802124 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$80 = 1254
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$81 = 0x104fbf914 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$82 = 779
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$83 = 0x1058170c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/function_trace.py"
+$84 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$85 = 0x10580f944 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$86 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$87 = 0x10580fae4 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$88 = 26
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$89 = 0x104fe8c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$90 = 1149
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$91 = 0x1023a8284 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$92 = 359
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$93 = 0x1023a8214 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$94 = 268
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$95 = 0x1023a8134 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$96 = 109
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$97 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$98 = 59
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$99 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$100 = 67
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$101 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$102 = 67
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$103 = 0x1023a80c4 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$104 = 62
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$105 = 0x1058170c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/function_trace.py"
+$106 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$107 = 0x10580f944 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$108 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$109 = 0x10580fae4 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$110 = 26
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$111 = 0x104fe8c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$112 = 1149
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$113 = 0x104dfe0dc "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptree.py"
+$114 = 152
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$115 = 0x104fd8284 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$116 = 1199
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$117 = 0x10580225c "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$118 = 1298
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$119 = 0x104fed444 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$120 = 184
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$121 = 0x104fed134 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$122 = 52
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$123 = 0x104fed0c4 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$124 = 25
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$125 = 0x102339854 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py"
+$126 = 134
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$127 = 0x104fd80c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$128 = 1248
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$129 = 0x104fd280c "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$130 = 142
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$131 = 0x104fbde8c "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$132 = 16
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$133 = 0x10252673c "/Users/rabolofia/Documents/python_agent/newrelic/core/config.py"
+$134 = 426
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$135 = 0x10253d80c "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$136 = 684
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$137 = 0x102536944 "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$138 = 117
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$139 = 0x104fbf364 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$140 = 82
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$141 = 0x104fbf0c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$142 = 38
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$143 = 0x104fd2a7c "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$144 = 54
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$145 = 0x104fed444 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$146 = 184
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$147 = 0x104fed0c4 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$148 = 25
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$149 = 0x104f99054 "/Users/rabolofia/Documents/python_agent/newrelic/core/stats_engine.py"
+$150 = 245
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$151 = 0x104efda64 "/Users/rabolofia/Documents/python_agent/newrelic/core/stats_engine.py"
+$152 = 159
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$153 = 0x104efd984 "/Users/rabolofia/Documents/python_agent/newrelic/core/stats_engine.py"
+$154 = 147
+[Switching to Thread 0x1303 of process 37992]
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$155 = 0x102725ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/mimetools.py"
+$156 = 24
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$157 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$158 = 88
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$159 = 0x102725154 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py"
+$160 = 271
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$161 = 0x1026503d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py"
+$162 = 410
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$163 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$164 = 224
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$165 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$166 = 214
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$167 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$168 = 202
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$169 = 0x102725154 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py"
+$170 = 257
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$171 = 0x1026503d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py"
+$172 = 410
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$173 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$174 = 224
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$175 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$176 = 214
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$177 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$178 = 202
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$179 = 0x102725154 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py"
+$180 = 257
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$181 = 0x1026503d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py"
+$182 = 410
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$183 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$184 = 224
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$185 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$186 = 214
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$187 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$188 = 290
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$189 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$190 = 290
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$191 = 0x102725ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/mimetools.py"
+$192 = 33
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$193 = 0x102725ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/mimetools.py"
+$194 = 50
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$195 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$196 = 290
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$197 = 0x102725154 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py"
+$198 = 517
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$199 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$200 = 290
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$201 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$202 = 290
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$203 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$204 = 290
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$205 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$206 = 1145
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$207 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$208 = 1360
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$209 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$210 = 1346
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$211 = 0x104a7f494 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/response.py"
+$212 = 261
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$213 = 0x1049f3c04 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$214 = 144
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$215 = 0x1003cccd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py"
+$216 = 548
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$217 = 0x1003c0504 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py"
+$218 = 128
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$219 = 0x1003d2dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py"
+$220 = 70
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$221 = 0x102725154 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py"
+$222 = 703
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$223 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$224 = 459
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$225 = 0x1049f3b7c "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$226 = 150
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$227 = 0x1049f3b7c "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$228 = 150
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$229 = 0x104a7fd9c "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/response.py"
+$230 = 75
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$231 = 0x1049f3c04 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$232 = 144
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$233 = 0x1003cccd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py"
+$234 = 548
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$235 = 0x1003c0504 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py"
+$236 = 128
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$237 = 0x1003d2dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py"
+$238 = 70
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$239 = 0x1049f3384 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$240 = 190
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$241 = 0x1003cccd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py"
+$242 = 548
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$243 = 0x1003c0504 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py"
+$244 = 128
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$245 = 0x1003d2dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py"
+$246 = 70
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$247 = 0x1049f32fc "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$248 = 193
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$249 = 0x1023658d4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/packages/six.py"
+$250 = 267
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$251 = 0x1049f35a4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$252 = 180
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$253 = 0x1049f36b4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$254 = 182
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$255 = 0x1049f36b4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$256 = 182
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$257 = 0x1049f340c "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$258 = 184
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$259 = 0x1049f32fc "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$260 = 193
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$261 = 0x1049f35a4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$262 = 180
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$263 = 0x1049f36b4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$264 = 182
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$265 = 0x1049f36b4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$266 = 182
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$267 = 0x1049f340c "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$268 = 184
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$269 = 0x1049f32fc "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$270 = 193
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$271 = 0x10271b494 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/util/retry.py"
+$272 = 192
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$273 = 0x104c9aaa4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/adapters.py"
+$274 = 196
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$275 = 0x104c7ff54 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/models.py"
+$276 = 536
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$277 = 0x104c6bb94 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/structures.py"
+$278 = 42
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$279 = 0x1003cccd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py"
+$280 = 548
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$281 = 0x1003c0504 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py"
+$282 = 128
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$283 = 0x1003d2dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py"
+$284 = 70
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$285 = 0x104c74054 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$286 = 415
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$287 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$288 = 1233
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$289 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$290 = 864
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$291 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$292 = 114
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$293 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$294 = 132
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$295 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$296 = 59
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$297 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$298 = 1726
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$299 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$300 = 1196
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$301 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$302 = 1191
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$303 = 0x104c6bb94 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/structures.py"
+$304 = 42
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$305 = 0x1003cccd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py"
+$306 = 548
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$307 = 0x1003c0504 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/abc.py"
+$308 = 128
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$309 = 0x1003d2dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_weakrefset.py"
+$310 = 70
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$311 = 0x1049f32fc "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$312 = 193
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$313 = 0x1023658d4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/packages/six.py"
+$314 = 267
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$315 = 0x1049f35a4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$316 = 180
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$317 = 0x1049f36b4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$318 = 182
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$319 = 0x1049f36b4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$320 = 182
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$321 = 0x104c6bd74 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/structures.py"
+$322 = 48
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$323 = 0x1049f32fc "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$324 = 193
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$325 = 0x1049f35a4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$326 = 180
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$327 = 0x1049f36b4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$328 = 182
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$329 = 0x1049f36b4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$330 = 182
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$331 = 0x104c6bd74 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/structures.py"
+$332 = 48
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$333 = 0x1049f32fc "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$334 = 193
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$335 = 0x104ac4674 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/utils.py"
+$336 = 306
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$337 = 0x1003cccd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py"
+$338 = 379
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$339 = 0x104c700cc "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/structures.py"
+$340 = 53
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$341 = 0x104abbcfc "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cgi.py"
+$342 = 303
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$343 = 0x104abbcfc "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cgi.py"
+$344 = 291
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$345 = 0x104abbcfc "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cgi.py"
+$346 = 291
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$347 = 0x102086eac "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/encodings/utf_8.py"
+$348 = 15
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$349 = 0x104c6be64 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$350 = 114
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$351 = 0x104c03504 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$352 = 33
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$353 = 0x10253c654 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urlparse.py"
+$354 = 137
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$355 = 0x10253c654 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urlparse.py"
+$356 = 168
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$357 = 0x102530dd4 "<string>"
+$358 = 8
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$359 = 0x104c6bc0c "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$360 = 100
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$361 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$362 = 1651
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$363 = 0x104c6bc84 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$364 = 107
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$365 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$366 = 43
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$367 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$368 = 147
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$369 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$370 = 64
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$371 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$372 = 1571
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$373 = 0x104c6bc84 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$374 = 107
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$375 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$376 = 300
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$377 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$378 = 233
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$379 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$380 = 300
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$381 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$382 = 233
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$383 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$384 = 187
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$385 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$386 = 64
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$387 = 0x104c46ad4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/hooks.py"
+$388 = 29
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$389 = 0x104c6be64 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$390 = 114
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$391 = 0x104c03504 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$392 = 33
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$393 = 0x10253c654 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urlparse.py"
+$394 = 137
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$395 = 0x10253c654 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urlparse.py"
+$396 = 168
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$397 = 0x102530dd4 "<string>"
+$398 = 8
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$399 = 0x104c6bc0c "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$400 = 100
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$401 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$402 = 1651
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$403 = 0x104c6bc84 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$404 = 107
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$405 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$406 = 43
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$407 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$408 = 147
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$409 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$410 = 64
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$411 = 0x104c42dd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cookielib.py"
+$412 = 1571
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$413 = 0x104c6bc84 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/cookies.py"
+$414 = 107
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$415 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$416 = 300
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$417 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$418 = 233
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$419 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$420 = 300
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$421 = 0x1027759d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/rfc822.py"
+$422 = 233
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$423 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$424 = 187
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$425 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$426 = 64
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$427 = 0x104c7fedc "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/sessions.py"
+$428 = 92
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$429 = 0x104c8648c "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/models.py"
+$430 = 622
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$431 = 0x1003cccd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py"
+$432 = 386
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$433 = 0x104c700cc "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/structures.py"
+$434 = 53
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$435 = 0x104c867d4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/models.py"
+$436 = 714
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$437 = 0x104c8666c "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/models.py"
+$438 = 639
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$439 = 0x104ac4754 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/utils.py"
+$440 = 344
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$441 = 0x104c865f4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/models.py"
+$442 = 649
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$443 = 0x104a7fd14 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/response.py"
+$444 = 239
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$445 = 0x10275ccb4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/util/response.py"
+$446 = 1
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$447 = 0x104a7f73c "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/response.py"
+$448 = 143
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$449 = 0x1003cccd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_abcoll.py"
+$450 = 379
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$451 = 0x1049f35a4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/_collections.py"
+$452 = 180
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$453 = 0x102725154 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py"
+$454 = 564
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$455 = 0x1026503d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py"
+$456 = 340
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$457 = 0x102725154 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py"
+$458 = 547
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$459 = 0x1026503d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py"
+$460 = 280
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$461 = 0x1026503d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py"
+$462 = 296
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$463 = 0x102670cfc "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ssl.py"
+$464 = 814
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$465 = 0x1026503d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py"
+$466 = 289
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$467 = 0x1026503d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py"
+$468 = 280
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$469 = 0x102725154 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py"
+$470 = 553
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$471 = 0x104a7fc04 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/response.py"
+$472 = 119
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$473 = 0x1023250e4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/connectionpool.py"
+$474 = 233
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$475 = 0x10266e4d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/Queue.py"
+$476 = 107
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$477 = 0x10266e4d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/Queue.py"
+$478 = 237
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$479 = 0x10266e4d4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/Queue.py"
+$480 = 240
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$481 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$482 = 373
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$483 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$484 = 300
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$485 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$486 = 64
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$487 = 0x104c865f4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/models.py"
+$488 = 649
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$489 = 0x104a7fd14 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/response.py"
+$490 = 239
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$491 = 0x10275ccb4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/packages/urllib3/util/response.py"
+$492 = 1
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$493 = 0x1003aead4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/warnings.py"
+$494 = 377
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$495 = 0x104c867d4 "/Users/rabolofia/Documents/python_agent/newrelic/packages/requests/models.py"
+$496 = 714
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$497 = 0x104ca5e54 "/Users/rabolofia/Documents/python_agent/newrelic/core/internal_metrics.py"
+$498 = 80
+
+Thread 4 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$499 = 0x104efdbb4 "/Users/rabolofia/Documents/python_agent/newrelic/core/stats_engine.py"
+$500 = 172
+[Switching to Thread 0xf03 of process 37992]
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$501 = 0x104fd20bc "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$502 = 66
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$503 = 0x102536ae4 "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$504 = 260
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$505 = 0x10252673c "/Users/rabolofia/Documents/python_agent/newrelic/core/config.py"
+$506 = 426
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$507 = 0x104fd218c "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$508 = 70
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$509 = 0x102536ae4 "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$510 = 260
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$511 = 0x10252673c "/Users/rabolofia/Documents/python_agent/newrelic/core/config.py"
+$512 = 426
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$513 = 0x102536b4c "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$514 = 269
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$515 = 0x102602594 "/Users/rabolofia/Documents/python_agent/newrelic/core/application.py"
+$516 = 127
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$517 = 0x104fd225c "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$518 = 81
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$519 = 0x102536c1c "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$520 = 291
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$521 = 0x10252673c "/Users/rabolofia/Documents/python_agent/newrelic/core/config.py"
+$522 = 426
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$523 = 0x102602834 "/Users/rabolofia/Documents/python_agent/newrelic/core/application.py"
+$524 = 543
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$525 = 0x104fd218c "/Users/rabolofia/Documents/python_agent/newrelic/api/application.py"
+$526 = 70
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$527 = 0x102536ae4 "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$528 = 260
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$529 = 0x10252673c "/Users/rabolofia/Documents/python_agent/newrelic/core/config.py"
+$530 = 426
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$531 = 0x102536b4c "/Users/rabolofia/Documents/python_agent/newrelic/core/agent.py"
+$532 = 269
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$533 = 0x102602594 "/Users/rabolofia/Documents/python_agent/newrelic/core/application.py"
+$534 = 127
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$535 = 0x104fbf214 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$536 = 75
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$537 = 0x104fd2c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$538 = 208
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$539 = 0x105802124 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$540 = 1254
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$541 = 0x104fbf914 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$542 = 779
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$543 = 0x1058170c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/function_trace.py"
+$544 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$545 = 0x10580f944 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$546 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$547 = 0x10580fae4 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$548 = 26
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$549 = 0x104fe8c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$550 = 1149
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$551 = 0x1023a8284 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$552 = 359
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$553 = 0x1023a8214 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$554 = 268
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$555 = 0x1023a8134 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$556 = 109
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$557 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$558 = 59
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$559 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$560 = 67
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$561 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$562 = 67
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$563 = 0x1023a80c4 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$564 = 62
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$565 = 0x1058170c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/function_trace.py"
+$566 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$567 = 0x10580f944 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$568 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$569 = 0x10580fae4 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$570 = 26
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$571 = 0x104fe8c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$572 = 1149
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$573 = 0x104d3b384 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$574 = 440
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$575 = 0x104de651c "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$576 = 148
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$577 = 0x104de6164 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$578 = 161
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$579 = 0x104d3b73c "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$580 = 187
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$581 = 0x104de6e24 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$582 = 100
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$583 = 0x104d3b0dc "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$584 = 432
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$585 = 0x104d3bd9c "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$586 = 237
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$587 = 0x1058ddd44 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$588 = 62
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$589 = 0x1058dda74 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$590 = 89
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$591 = 0x1058ddd44 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$592 = 62
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$593 = 0x1058dda74 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$594 = 89
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$595 = 0x104d3be24 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$596 = 307
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$597 = 0x1059083b4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$598 = 522
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$599 = 0x1059083b4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$600 = 522
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$601 = 0x104dfe1ec "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptree.py"
+$602 = 124
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$603 = 0x10599d684 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$604 = 478
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$605 = 0x1059b7294 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/reprconf.py"
+$606 = 121
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$607 = 0x10599def4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$608 = 886
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$609 = 0x104a73454 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/email/utils.py"
+$610 = 124
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$611 = 0x104c5a254 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/Cookie.py"
+$612 = 582
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$613 = 0x105871c24 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/__init__.py"
+$614 = 212
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$615 = 0x1059dd0e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$616 = 201
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$617 = 0x1059c2714 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$618 = 103
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$619 = 0x1059c2f84 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$620 = 210
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$621 = 0x1059c2f84 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$622 = 210
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$623 = 0x1059eb714 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/plugins.py"
+$624 = 714
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$625 = 0x1059c2954 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$626 = 121
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$627 = 0x1059dd0e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$628 = 201
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$629 = 0x1059c2714 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$630 = 103
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$631 = 0x1059c2f84 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$632 = 210
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$633 = 0x1059c2f84 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$634 = 210
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$635 = 0x1058717a4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/__init__.py"
+$636 = 115
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$637 = 0x1059c2954 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$638 = 121
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$639 = 0x10590cc24 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$640 = 42
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$641 = 0x104d3baf4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$642 = 357
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$643 = 0x10599d7a4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$644 = 509
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$645 = 0x1058dd054 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cperror.py"
+$646 = 367
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$647 = 0x10590c204 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$648 = 250
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$649 = 0x104d3b9e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$650 = 385
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$651 = 0x104d3b9e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$652 = 385
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$653 = 0x104d3b9e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$654 = 385
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$655 = 0x104d3b9e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$656 = 385
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$657 = 0x104d3b9e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$658 = 385
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$659 = 0x104c5a254 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/Cookie.py"
+$660 = 582
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$661 = 0x104df8e24 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptree.py"
+$662 = 83
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$663 = 0x10599d834 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$664 = 624
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$665 = 0x10599d9e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$666 = 711
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$667 = 0x10599d294 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$668 = 116
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$669 = 0x105934054 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$670 = 78
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$671 = 0x105934294 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$672 = 84
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$673 = 0x10599da74 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$674 = 751
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$675 = 0x104dfe384 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptree.py"
+$676 = 105
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$677 = 0x1059234d4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpdispatch.py"
+$678 = 291
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$679 = 0x105928c0c "/Users/rabolofia/Documents/python_agent/newrelic/hooks/framework_cherrypy.py"
+$680 = 86
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$681 = 0x10580225c "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$682 = 1298
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$683 = 0x104fed444 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$684 = 184
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$685 = 0x104fed134 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$686 = 52
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$687 = 0x104fed0c4 "/Users/rabolofia/Documents/python_agent/newrelic/core/transaction_cache.py"
+$688 = 25
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$689 = 0x102339854 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/weakref.py"
+$690 = 134
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$691 = 0x1059235f4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpdispatch.py"
+$692 = 303
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$693 = 0x105923564 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpdispatch.py"
+$694 = 401
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$695 = 0x1058d7e64 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpdispatch.py"
+$696 = 27
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$697 = 0x1058fa684 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpdispatch.py"
+$698 = 35
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$699 = 0x105923204 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpdispatch.py"
+$700 = 237
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$701 = 0x1059ac7a4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpreqbody.py"
+$702 = 952
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$703 = 0x1059a97a4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpreqbody.py"
+$704 = 405
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$705 = 0x105908cb4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$706 = 446
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$707 = 0x105908b94 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$708 = 382
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$709 = 0x10590c0e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$710 = 222
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$711 = 0x10590c5f4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$712 = 163
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$713 = 0x10590c684 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$714 = 157
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$715 = 0x104abbcfc "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cgi.py"
+$716 = 303
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$717 = 0x104abbcfc "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cgi.py"
+$718 = 291
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$719 = 0x104abbcfc "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cgi.py"
+$720 = 291
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$721 = 0x10590c954 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$722 = 135
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$723 = 0x105908b94 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$724 = 382
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$725 = 0x105908cb4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$726 = 446
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$727 = 0x105908b94 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$728 = 382
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$729 = 0x10590c0e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$730 = 222
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$731 = 0x1059b7174 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/reprconf.py"
+$732 = 67
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$733 = 0x1059344d4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$734 = 445
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$735 = 0x105934444 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$736 = 449
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$737 = 0x105934444 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$738 = 449
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$739 = 0x105934444 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$740 = 449
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$741 = 0x105934444 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$742 = 449
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$743 = 0x105934564 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$744 = 455
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$745 = 0x10592e174 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$746 = 142
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$747 = 0x105923c24 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$748 = 101
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$749 = 0x105934714 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$750 = 87
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$751 = 0x10592e204 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$752 = 40
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$753 = 0x10592e174 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$754 = 142
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$755 = 0x105923c24 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$756 = 101
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$757 = 0x105934714 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$758 = 87
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$759 = 0x10592e204 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$760 = 40
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$761 = 0x10592e174 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$762 = 142
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$763 = 0x105923c24 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$764 = 101
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$765 = 0x105934714 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$766 = 87
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$767 = 0x10592e204 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$768 = 40
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$769 = 0x10592e174 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$770 = 142
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$771 = 0x105923c24 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptools.py"
+$772 = 101
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$773 = 0x105934714 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$774 = 87
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$775 = 0x10592e204 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$776 = 40
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$777 = 0x1059349e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$778 = 91
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$779 = 0x10599d954 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$780 = 692
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$781 = 0x105908e64 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$782 = 346
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$783 = 0x105908ef4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$784 = 298
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$785 = 0x1059349e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$786 = 91
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$787 = 0x1059349e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$788 = 91
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$789 = 0x10592e564 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$790 = 53
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$791 = 0x10592e9e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$792 = 61
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$793 = 0x10593ab04 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/cptools.py"
+$794 = 466
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$795 = 0x10592e9e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$796 = 61
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$797 = 0x105941714 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/encoding.py"
+$798 = 76
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$799 = 0x1059419e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/encoding.py"
+$800 = 218
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$801 = 0x1058fa9e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpdispatch.py"
+$802 = 58
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$803 = 0x1058fa204 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpdispatch.py"
+$804 = 32
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$805 = 0x105923174 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpdispatch.py"
+$806 = 231
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$807 = 0x1020a0864 "app.py"
+$808 = 7
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$809 = 0x105908cb4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$810 = 446
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$811 = 0x105908b94 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$812 = 382
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$813 = 0x10590c0e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$814 = 222
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$815 = 0x10590c5f4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$816 = 163
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$817 = 0x10590c684 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$818 = 157
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$819 = 0x104abbcfc "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cgi.py"
+$820 = 303
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$821 = 0x104abbcfc "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cgi.py"
+$822 = 291
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$823 = 0x104abbcfc "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/cgi.py"
+$824 = 291
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$825 = 0x10590c954 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$826 = 135
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$827 = 0x105941954 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/encoding.py"
+$828 = 123
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$829 = 0x105908c24 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$830 = 379
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$831 = 0x105908cb4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$832 = 446
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$833 = 0x105908b94 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$834 = 382
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$835 = 0x10590c0e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$836 = 222
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$837 = 0x1059418c4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/encoding.py"
+$838 = 107
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$839 = 0x10590c834 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$840 = 147
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$841 = 0x1058fa0e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$842 = 150
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$843 = 0x105908d44 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$844 = 373
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$845 = 0x10599ddd4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$846 = 813
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$847 = 0x1059349e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$848 = 91
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$849 = 0x1059a9174 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$850 = 918
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$851 = 0x10590c204 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$852 = 250
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$853 = 0x1058ddcb4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$854 = 52
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$855 = 0x1058dda74 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$856 = 89
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$857 = 0x1058ddcb4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$858 = 52
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$859 = 0x1058dda74 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$860 = 89
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$861 = 0x1059084d4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$862 = 485
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$863 = 0x1059a9054 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$864 = 902
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$865 = 0x10599dd44 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$866 = 806
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$867 = 0x10599dd44 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$868 = 806
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$869 = 0x1058ddcb4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$870 = 52
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$871 = 0x1058dda74 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$872 = 89
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$873 = 0x10599ddd4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$874 = 813
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$875 = 0x1059085f4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$876 = 456
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$877 = 0x105908564 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$878 = 460
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$879 = 0x105908564 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$880 = 460
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$881 = 0x105908564 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$882 = 460
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$883 = 0x105908564 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$884 = 460
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$885 = 0x105908564 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/lib/httputil.py"
+$886 = 460
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$887 = 0x104c5a254 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/Cookie.py"
+$888 = 603
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$889 = 0x1059349e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$890 = 91
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$891 = 0x1058d7684 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/__init__.py"
+$892 = 333
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$893 = 0x105871e64 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/__init__.py"
+$894 = 230
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$895 = 0x10590c564 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cplogging.py"
+$896 = 225
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$897 = 0x1058ddcb4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$898 = 52
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$899 = 0x1058dda74 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpcompat.py"
+$900 = 89
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$901 = 0x10590c9e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cplogging.py"
+$902 = 306
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$903 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$904 = 1216
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$905 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$906 = 1360
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$907 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$908 = 1346
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$909 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$910 = 1267
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$911 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$912 = 1233
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$913 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$914 = 70
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$915 = 0x1003a9054 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/posixpath.py"
+$916 = 44
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$917 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$918 = 1254
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$919 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$920 = 237
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$921 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$922 = 148
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$923 = 0x1003a9054 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/posixpath.py"
+$924 = 112
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$925 = 0x1003a9054 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/posixpath.py"
+$926 = 97
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$927 = 0x1003a9cd4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/genericpath.py"
+$928 = 93
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$929 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$930 = 1143
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$931 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$932 = 958
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$933 = 0x104a440e4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/process.py"
+$934 = 59
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$935 = 0x104a440e4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/process.py"
+$936 = 161
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$937 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$938 = 1288
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$939 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$940 = 607
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$941 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$942 = 1320
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$943 = 0x1058d7a74 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cplogging.py"
+$944 = 131
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$945 = 0x1058d7a74 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cplogging.py"
+$946 = 131
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$947 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$948 = 746
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$949 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$950 = 607
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$951 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$952 = 703
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$953 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$954 = 147
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$955 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$956 = 64
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$957 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$958 = 849
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$959 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$960 = 723
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$961 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$962 = 452
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$963 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$964 = 312
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$965 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$966 = 446
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$967 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$968 = 838
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$969 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$970 = 703
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$971 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$972 = 147
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$973 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$974 = 64
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$975 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$976 = 710
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$977 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$978 = 187
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$979 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$980 = 64
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$981 = 0x102086164 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/logging/__init__.py"
+$982 = 710
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$983 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$984 = 187
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$985 = 0x102363ed4 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py"
+$986 = 64
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$987 = 0x10599dd44 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$988 = 806
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$989 = 0x104fd8214 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$990 = 1317
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$991 = 0x104fbf4b4 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$992 = 433
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$993 = 0x104fd8214 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$994 = 1317
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$995 = 0x104fbf4b4 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$996 = 433
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$997 = 0x104d3bd14 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$998 = 281
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$999 = 0x10580fb4c "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1000 = 51
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1001 = 0x10580fb4c "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1002 = 51
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1003 = 0x104fbf754 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$1004 = 725
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1005 = 0x10580fb4c "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1006 = 51
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1007 = 0x10580fb4c "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1008 = 51
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1009 = 0x104fbf754 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$1010 = 725
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1011 = 0x104fbf7c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$1012 = 730
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1013 = 0x1058170c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/function_trace.py"
+$1014 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1015 = 0x10580f944 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1016 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1017 = 0x10580fae4 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1018 = 26
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1019 = 0x104fe8c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$1020 = 1149
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1021 = 0x104fbf7c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$1022 = 730
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1023 = 0x1058170c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/function_trace.py"
+$1024 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1025 = 0x10580f944 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1026 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1027 = 0x10580fae4 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1028 = 26
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1029 = 0x104fe8c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$1030 = 1149
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1031 = 0x104de61ec "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$1032 = 172
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1033 = 0x104de60dc "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$1034 = 176
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1035 = 0x104d3b73c "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$1036 = 187
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1037 = 0x104d3bc8c "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$1038 = 284
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1039 = 0x104fbf7c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$1040 = 730
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1041 = 0x104fbf7c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$1042 = 730
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1043 = 0x104de60dc "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$1044 = 176
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1045 = 0x104d3b73c "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$1046 = 187
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1047 = 0x104d3bc8c "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$1048 = 284
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1049 = 0x10580fb4c "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1050 = 51
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1051 = 0x10580fb4c "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1052 = 51
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1053 = 0x104fbf834 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$1054 = 756
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1055 = 0x1058170c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/function_trace.py"
+$1056 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1057 = 0x10580f944 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1058 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1059 = 0x10580fae4 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1060 = 26
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1061 = 0x104fe8c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$1062 = 1149
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1063 = 0x1023a8284 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$1064 = 359
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1065 = 0x1023a8214 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$1066 = 268
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1067 = 0x1023a8134 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$1068 = 109
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1069 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$1070 = 59
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1071 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$1072 = 67
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1073 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$1074 = 67
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1075 = 0x1023a80c4 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$1076 = 62
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1077 = 0x1058170c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/function_trace.py"
+$1078 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1079 = 0x10580f944 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1080 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1081 = 0x10580fae4 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1082 = 26
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1083 = 0x104fe8c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$1084 = 1149
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1085 = 0x104fbf834 "/Users/rabolofia/Documents/python_agent/newrelic/api/web_transaction.py"
+$1086 = 756
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1087 = 0x1058170c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/function_trace.py"
+$1088 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1089 = 0x10580f944 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1090 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1091 = 0x10580fae4 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1092 = 26
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1093 = 0x104fe8c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$1094 = 1149
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1095 = 0x1023a8284 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$1096 = 359
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1097 = 0x1023a8214 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$1098 = 268
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1099 = 0x1023a8134 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$1100 = 109
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1101 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$1102 = 59
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1103 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$1104 = 67
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1105 = 0x1023b2754 "/usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/python2.7/inspect.py"
+$1106 = 67
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1107 = 0x1023a80c4 "/Users/rabolofia/Documents/python_agent/newrelic/common/object_names.py"
+$1108 = 62
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1109 = 0x1058170c4 "/Users/rabolofia/Documents/python_agent/newrelic/api/function_trace.py"
+$1110 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1111 = 0x10580f944 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1112 = 11
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1113 = 0x10580fae4 "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1114 = 26
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1115 = 0x104fe8c84 "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$1116 = 1149
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1117 = 0x104de6054 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$1118 = 183
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1119 = 0x104d3bc04 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cpwsgi.py"
+$1120 = 291
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1121 = 0x104dfe274 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cptree.py"
+$1122 = 139
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1123 = 0x1059dd0e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$1124 = 201
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1125 = 0x1059c2714 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$1126 = 103
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1127 = 0x1059c2f84 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$1128 = 210
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1129 = 0x1059c2f84 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$1130 = 210
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1131 = 0x105871834 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/__init__.py"
+$1132 = 118
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1133 = 0x1059c2954 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/process/wspbus.py"
+$1134 = 121
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1135 = 0x10599d714 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$1136 = 501
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1137 = 0x1059349e4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/_cprequest.py"
+$1138 = 91
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1139 = 0x105871cb4 "/Users/rabolofia/Documents/sample-apps/cherrypy/env/lib/python2.7/site-packages/cherrypy/__init__.py"
+$1140 = 216
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1141 = 0x10580fb4c "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1142 = 51
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1143 = 0x10580fb4c "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1144 = 51
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1145 = 0x104fd2cec "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$1146 = 270
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1147 = 0x10580fb4c "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1148 = 51
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1149 = 0x10580fb4c "/Users/rabolofia/Documents/python_agent/newrelic/api/time_trace.py"
+$1150 = 51
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1151 = 0x104fd2cec "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$1152 = 270
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1153 = 0x104fd2b4c "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$1154 = 197
+
+Thread 1 hit Breakpoint 2, 0x00000001001db27f in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+$1155 = 0x104fd2b4c "/Users/rabolofia/Documents/python_agent/newrelic/api/transaction.py"
+$1156 = 197
+
+Thread 4 received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0x1303 of process 37992]
+0x000000010018e253 in dict_get () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python

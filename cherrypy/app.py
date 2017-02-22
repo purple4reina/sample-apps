@@ -1,7 +1,9 @@
 import newrelic.agent
 newrelic.agent.initialize('newrelic.ini')
+print('newrelic.agent.__file__: ', newrelic.agent.__file__)
 
 import cherrypy
+print('cherrypy.__file__: ', cherrypy.__file__)
 
 class HelloWorld(object):
     def index(self):
