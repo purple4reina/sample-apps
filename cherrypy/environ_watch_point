@@ -1,0 +1,17 @@
+break uwsgi_python_create_env_holy
+run
+
+finish
+set $environ = $rax
+watch *$environ if *$environ == 0
+commands 2
+bt
+continue
+end
+disable 1
+
+set height 0
+set logging on
+set logging redirect on
+
+continue
