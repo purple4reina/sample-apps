@@ -38,3 +38,27 @@ def app_str(environ, start_response):
     response_headers = [('Content-type', 'text/plain')]
     start_response(status, response_headers)
     return PAGE_CONTENTS
+
+def app_list_exc_1(environ, start_response):
+    time.sleep(0.5)
+    status = '200 OK'
+    response_headers = [('Content-type', 'text/plain')]
+    start_response(status, response_headers)
+    1/0
+    return [PAGE_CONTENTS]
+
+def app_list_exc_2(environ, start_response):
+    time.sleep(0.5)
+    status = '200 OK'
+    response_headers = [('Content-type', 'text/plain')]
+    1/0
+    start_response(status, response_headers)
+    return [PAGE_CONTENTS]
+
+def app_iter_exc_1(environ, start_response):
+    time.sleep(0.5)
+    status = '200 OK'
+    response_headers = [('Content-type', 'text/plain')]
+    start_response(status, response_headers)
+    1/0
+    yield PAGE_CONTENTS
