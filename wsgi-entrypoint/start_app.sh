@@ -96,5 +96,10 @@ fi
 
 export NEW_RELIC_APP_NAME="$SERVER-$APP-${DISABLE_BROWSER:-false}-$PORT"
 
+git_branch="$(cd $PYAGENT_DIR ; git branch | grep \* | cut -d ' ' -f2)"
+git_describe="$(cd $PYAGENT_DIR ; git rev-parse HEAD)"
+export GIT_SHA="${git_branch} (${git_describe})"
+echo "Using transaction names: $GIT_SHA"
+
 echo "Running command:  $CMD"
 exec $CMD
