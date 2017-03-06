@@ -5,7 +5,7 @@ app = flask.Flask(__name__)
 
 def newrelic_in_headers(headers):
     for header in headers.keys():
-        if header.lower() == 'x-newrelic-app-data':
+        if header == 'X-NewRelic-App-Data':
             return True
     return False
 
