@@ -76,3 +76,6 @@ node_modules
 
 # just a file in the cherrypy dir that I don't want tracked
 cherrypy/id
+
+# specific to the buildout app
+buildout/bin
