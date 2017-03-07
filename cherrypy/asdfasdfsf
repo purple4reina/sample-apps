@@ -1,0 +1,3 @@
+uwsgi_request_subhandler_wsgi
+0x37e
+disable 1
