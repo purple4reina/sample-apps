@@ -7,3 +7,6 @@
 [submodule "django-piston/customer-repo"]
     path = django-piston/customer-repo
     url = git@github.com:ssatturi/newrelic-django-piston.git
+[submodule "django-shorturls"]
+	path = django-shorturls
+	url = git@source.datanerd.us:afeldman/django-shorturls.git
