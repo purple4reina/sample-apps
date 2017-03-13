@@ -1,0 +1,5 @@
+appdirs==1.4.3
+-e git+git@source.datanerd.us:python-agent/python_agent.git@4823c1a096685f9f6710e78fe29537fd9a921d2c#egg=newrelic
+packaging==16.8
+pyparsing==2.2.0
+six==1.10.0
