@@ -1,0 +1,15 @@
+catch signal SIGUSR1
+
+commands 1
+source id
+commands 2
+bt
+end
+continue
+end
+
+set height 0
+set logging on
+set logging redirect on
+
+run
