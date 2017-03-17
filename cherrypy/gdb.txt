@@ -1,1 +1,145 @@
 
+warning: `/BinaryCache/coreTLS/coreTLS-35.40.1~1/Objects/coretls.build/coretls.build/Objects-normal/x86_64/system_coretls_vers.o': can't open to read symbols: No such file or directory.
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_ciphersuites.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_handshake.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_record.a"
+warning: Could not open OSO archive file "/BinaryCache/coreTLS/coreTLS-35.40.1~1/Symbols/BuiltProducts/libcoretls_stream_parser.a"
+[New Thread 0x1027 of process 44161]
+[New Thread 0x1203 of process 44161]
+[New Thread 0x1303 of process 44161]
+
+Thread 1 hit Catchpoint 1 (signal SIGUSR1), 0x00007fff8ce4d21a in kevent () from /usr/lib/system/libsystem_kernel.dylib
+Hardware watchpoint 2: *4367376464
+[New Thread 0x1143 of process 44161]
+[New Thread 0x1503 of process 44161]
+[New Thread 0x1603 of process 44161]
+[New Thread 0x1703 of process 44161]
+
+Thread 1 hit Hardware watchpoint 2: *4367376464
+
+Old value = 1
+New value = 2
+0x00000001001bf205 in _PyObject_GenericSetAttrWithDict () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#0  0x00000001001bf205 in _PyObject_GenericSetAttrWithDict () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#1  0x00000001001bed14 in PyObject_SetAttr () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#2  0x000000010020bd9e in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#3  0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#4  0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#5  0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#6  0x0000000100198c97 in instancemethod_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#7  0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#8  0x00000001001d5914 in slot_tp_init () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#9  0x00000001001d2b6c in type_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#10 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#11 0x000000010020effb in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#12 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#13 0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#14 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#15 0x000000010020effb in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#16 0x0000000100212681 in fast_function () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#17 0x000000010020e82d in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#18 0x0000000100212681 in fast_function () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#19 0x000000010020e82d in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#20 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#21 0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#22 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#23 0x0000000100198c97 in instancemethod_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#24 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#25 0x00000001001d4ec9 in slot_tp_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#26 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#27 0x000000010020e761 in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#28 0x0000000100212681 in fast_function () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#29 0x000000010020e82d in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#30 0x0000000100212681 in fast_function () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#31 0x000000010020e82d in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#32 0x0000000100212681 in fast_function () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#33 0x000000010020e82d in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#34 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#35 0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#36 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#37 0x0000000100198c97 in instancemethod_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#38 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#39 0x00000001001d5914 in slot_tp_init () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#40 0x00000001001d2b6c in type_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#41 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#42 0x000000010020e761 in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#43 0x0000000100212681 in fast_function () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#44 0x000000010020e82d in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#45 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#46 0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#47 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#48 0x0000000100198c97 in instancemethod_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#49 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#50 0x00000001001d4ec9 in slot_tp_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#51 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#52 0x000000010020effb in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#53 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#54 0x00000001002125ee in fast_function () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#55 0x000000010020e82d in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#56 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#57 0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#58 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#59 0x0000000100198c97 in instancemethod_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#60 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#61 0x00000001001d5914 in slot_tp_init () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#62 0x00000001001d2b6c in type_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#63 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#64 0x000000010020e761 in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#65 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#66 0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#67 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#68 0x0000000100198c97 in instancemethod_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#69 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#70 0x00000001001d4ec9 in slot_tp_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#71 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#72 0x000000010020e761 in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#73 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#74 0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#75 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#76 0x000000010020effb in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#77 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#78 0x00000001002125ee in fast_function () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#79 0x000000010020e82d in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#80 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#81 0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#82 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#83 0x0000000100198c97 in instancemethod_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#84 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#85 0x00000001001d4ec9 in slot_tp_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#86 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#87 0x00000001001d4ec9 in slot_tp_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#88 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#89 0x000000010020e761 in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#90 0x0000000100212681 in fast_function () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#91 0x000000010020e82d in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#92 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#93 0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#94 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#95 0x0000000100198c97 in instancemethod_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#96 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#97 0x00000001001d5914 in slot_tp_init () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#98 0x00000001001d2b6c in type_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#99 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#100 0x000000010020e761 in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#101 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#102 0x00000001002125ee in fast_function () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#103 0x000000010020e82d in PyEval_EvalFrameEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#104 0x0000000100208089 in PyEval_EvalCodeEx () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#105 0x00000001001ac3e5 in function_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#106 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#107 0x0000000100198c97 in instancemethod_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#108 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#109 0x00000001001d4ec9 in slot_tp_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#110 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#111 0x00000001001d4ec9 in slot_tp_call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#112 0x000000010018ddf0 in PyObject_Call () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#113 0x0000000100211fc3 in PyEval_CallObjectWithKeywords () from /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/Python
+#114 0x0000000100066041 in python_call (callable=0x104502960, args=0x10450e050, catch=6929008, wsgi_req=0x10143c300) at plugins/python/pyutils.c:264
+#115 0x00000001000682a8 in uwsgi_request_wsgi (wsgi_req=0x1003f5078) at plugins/python/wsgi_handlers.c:401
+#116 0x0000000100002fbd in wsgi_req_recv (queue=<optimized out>, wsgi_req=0x1003f5078) at core/utils.c:1427
+#117 0x000000010004ee9a in simple_loop_run (arg1=0x0) at core/loop.c:144
+#118 0x000000010005669b in uwsgi_ignition () at core/uwsgi.c:3563
+#119 0x0000000100056493 in uwsgi_worker_run () at core/uwsgi.c:3491
+#120 0x0000000100053d61 in uwsgi_run () at core/uwsgi.c:3401
+#121 0x00000001000518de in main (argc=72409376, argv=0x0, envp=0xffffffffffffffe8) at core/uwsgi.c:2009
+quit
