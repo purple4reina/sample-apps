@@ -62,6 +62,8 @@ target/
 # virtualenv
 env/
 env2/
+env2.7/
+env3.6/
 
 # celery stuff
 *.pid
