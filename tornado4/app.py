@@ -1,9 +1,6 @@
-from newrelic.agent import function_trace
-
 import tornado.ioloop
 import tornado.options
 import tornado.web
-import tornado.httpclient
 
 
 class MainHandler(tornado.web.RequestHandler):
