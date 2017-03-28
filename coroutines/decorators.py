@@ -1,6 +1,4 @@
 from newrelic.agent import transient_function_wrapper
-from newrelic.core.database_utils import SQLConnections
-from newrelic.common.encoding_utils import unpack_field
 
 
 def print_nice_transaction_trace():
