@@ -2,37 +2,43 @@ import asyncio
 import newrelic.agent
 import time
 
-from decorators import print_nice_transaction_trace, validate_tt_parenting
+from decorators import print_nice_transaction_trace
 
 
+@newrelic.agent.coroutine_trace()
 #@newrelic.agent.function_trace()
 async def sleep(n):
+    print(' sleep')
     await asyncio.sleep(n)
+    print(' slept')
 
 
-#@newrelic.agent.coroutine_trace()
-@newrelic.agent.function_trace()
+@newrelic.agent.coroutine_trace()
+#@newrelic.agent.function_trace()
 async def coro():
     print('enter')
-    for i in range(2):
-        await sleep(0.00001)
+    for i in range(1):
+        await sleep(1)
     print('exit')
 
 
-tt = (
-    '__main__:main', [
-        ('__main__:coro', []),
-        ('__main__:coro', []),
-    ]
-)
+@newrelic.agent.coroutine_trace()
+async def child():
+    await asyncio.sleep(0)
 
 
-@print_nice_transaction_trace()
+@newrelic.agent.coroutine_trace()
+async def parent():
+    await child()
+
+
+#@print_nice_transaction_trace()
 @newrelic.agent.background_task()
 def main():
     ioloop = asyncio.get_event_loop()
     ioloop.run_until_complete(asyncio.gather(
-        coro(), coro(),
+        parent(),
+        parent(),
     ))
     ioloop.close()
 
