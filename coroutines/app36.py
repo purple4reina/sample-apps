@@ -6,7 +6,6 @@ from decorators import print_nice_transaction_trace
 
 
 @newrelic.agent.coroutine_trace()
-#@newrelic.agent.function_trace()
 async def sleep(n):
     print(' sleep')
     await asyncio.sleep(n)
@@ -14,7 +13,6 @@ async def sleep(n):
 
 
 @newrelic.agent.coroutine_trace()
-#@newrelic.agent.function_trace()
 async def coro():
     print('enter')
     for i in range(1):
@@ -32,7 +30,6 @@ async def parent():
     await child()
 
 
-#@print_nice_transaction_trace()
 @newrelic.agent.background_task()
 def main():
     ioloop = asyncio.get_event_loop()
