@@ -73,7 +73,7 @@ def example_4():
         time.sleep(1)
 
 
-def example_4():
+def example_5():
     parent = _ft('parent')
     child_1 = _ft('child_1')
     child_2 = _ft('child_2')
@@ -92,11 +92,11 @@ def example_4():
 @print_nice_transaction_trace()
 @newrelic.agent.background_task()
 def main():
-    example_1()
-    example_2()
+    #example_1()
+    #example_2()
     example_3()
-    example_4()
-    example_4()
+    #example_4()
+    #example_5()
 
 
 if __name__ == '__main__':
