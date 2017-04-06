@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from newrelic.agent import transient_function_wrapper
 
 
