@@ -1,4 +1,3 @@
-import time
 import tornado.gen
 import tornado.ioloop
 import tornado.options
@@ -9,9 +8,7 @@ import tornado.httpclient
 class MainHandler(tornado.web.RequestHandler):
     @tornado.web.asynchronous
     def get(self):
-        self.write('*')
-        time.sleep(0.1)
-        self.finish()
+        self.finish('*')
 
 
 class FetchHandler(tornado.web.RequestHandler):
