@@ -15,8 +15,10 @@ def print_nice_transaction_trace():
 
         if level == 0:
             name = node.base_name
-        else:
+        elif hasattr(node, 'name'):
             name = node.name
+        else:
+            name = node.operation
         print('    ' * level + name, end='\t')
         print_node_time()
         print_exclusive_time()
@@ -40,3 +42,23 @@ def print_nice_transaction_trace():
         return result
 
     return _print_nice_transaction_trace
+
+
+def print_metrics():
+
+    @transient_function_wrapper('newrelic.core.stats_engine',
+            'StatsEngine.record_transaction')
+    def _print_metrics(wrapped, instance, args, kwargs):
+        try:
+            result = wrapped(*args, **kwargs)
+        except:
+            raise
+        else:
+            metrics = instance.stats_table
+
+            for key, value in metrics.items():
+                print(key[0], '\t', key[1])
+
+        return result
+
+    return _print_metrics
