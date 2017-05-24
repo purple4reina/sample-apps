@@ -9,6 +9,10 @@ https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
 
 import os
 
+# For testing 2.86.1.66 version bug
+#import newrelic.agent
+#newrelic.agent.initialize('newrelic.ini')
+
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
