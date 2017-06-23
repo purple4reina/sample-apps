@@ -12,10 +12,9 @@ import pika
 
 def main():
 
-    @print_metrics()
-    @newrelic.agent.background_task()
     def callback(ch, method, properties, body):
         print 'received: ', body
+        print 'headers: ', properties.headers
 
     with pika.BlockingConnection(
             pika.ConnectionParameters('localhost')) as connection:
