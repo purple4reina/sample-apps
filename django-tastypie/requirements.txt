@@ -1,0 +1,7 @@
+Django==1.11.3
+django-tastypie==0.14.0
+newrelic==2.64.0.48
+python-dateutil==2.6.1
+python-mimeparse==1.6.0
+pytz==2017.2
+six==1.10.0
