@@ -1,5 +1,8 @@
 import newrelic.agent
 
+newrelic.agent.initialize('newrelic.ini')
+newrelic.agent.register_application(timeout=10)
+
 
 @newrelic.agent.background_task()
 def main():
@@ -7,7 +10,4 @@ def main():
 
 
 if __name__ == '__main__':
-    newrelic.agent.initialize('newrelic.ini')
-    newrelic.agent.register_application(timeout=10)
-
     main()
