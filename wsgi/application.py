@@ -1,9 +1,7 @@
 import newrelic.agent
 newrelic.agent.initialize('newrelic.ini')
 
-
 class Application(object):
-
     def application(self, environ, start_response):
         status = '200 OK'
         response_headers = [('Content-type', 'text/plain')]
