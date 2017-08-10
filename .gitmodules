@@ -10,3 +10,7 @@
 [submodule "django-shorturls"]
 	path = django-shorturls
 	url = git@source.datanerd.us:afeldman/django-shorturls.git
+[submodule "grpc/grpc"]
+	path = grpc/grpc
+	url = https://github.com/grpc/grpc
+	branch = v1.4.x
