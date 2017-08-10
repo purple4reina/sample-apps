@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/data
+    depends_on:
+      - mysql
+    command: /env/bin/python /data/app.py
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
