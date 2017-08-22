@@ -1,3 +1,7 @@
+import newrelic.agent
+newrelic.agent.initialize('newrelic.ini')
+app = newrelic.agent.register_application(timeout=10)
+
 import grpc
 import time
 
@@ -12,7 +16,8 @@ import route_guide_pb2_grpc
 class RouteGuideServicer(route_guide_pb2_grpc.RouteGuideServicer):
 
     def GetFeature(self, request, context):
-        print 'Got feature request: %s' % id(request)
+        print 'Got feature request: longitude=%s, latitude=%s' % (
+                request.longitude, request.latitude)
         return route_guide_pb2.Feature(name='hello world')
 
 

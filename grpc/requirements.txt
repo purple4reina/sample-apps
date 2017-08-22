@@ -1,9 +1,11 @@
 enum34==1.1.6
 futures==3.1.1
+gevent==1.2.2
+greenlet==0.4.12
 grpc==0.3.post19
 grpcio==1.4.0
 grpcio-tools==1.4.0
 msgpack-python==0.4.8
-newrelic==2.90.0.75
+-e git+git@source.datanerd.us:python-agent/python_agent.git@75ec87c350b26b4fd48e596d75a5ba6a7fe7234d#egg=newrelic
 protobuf==3.3.0
 six==1.10.0
