@@ -25,3 +25,8 @@ stuff from it.
 You will also need the code from my `utils.decorators` module in order to get
 the nicely printed transaction trace. If you don't want it, just comment it
 out.
+
+Be sure to replace your license key in the `newrelic.ini` file. I don't want
+your stuff in my account.
+
+Run the app my doing `python app.py`. Enjoy!
