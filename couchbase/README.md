@@ -12,9 +12,9 @@ Use the provided `start_couchbase.sh` and `stop_couchbase.sh` scripts. This
 will run couchbase in a docker container.
 
 After starting the service, go to http://<DOCKER_IP>:8091 to setup your server.
-_This is really important!_ Just run quickly through the quick start and select
-the default options. You can get the ip of your docker vm by doing
-`echo $DOCKER_HOST`.
+_This is really important and must be done each time you start the service!_
+Just run quickly through the quick start and select the default options. You
+can get the ip of your docker vm by doing `echo $DOCKER_HOST`.
 
 
 ## Sample app
