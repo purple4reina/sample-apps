@@ -5,14 +5,13 @@ newrelic.agent.register_application(timeout=10.0)
 import aiohttp
 import asyncio
 
-URLS = ['http://localhost:5000', 'http://amazon.com', 'http://newrelic.com']
+URLS = ['http://0.0.0.0:8080']
 
 
 async def fetch(url):
     async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            print('\nurl: ', url)
-            print('response.headers: ', response.headers)
+        async with session.get(url, timeout=0.1) as response:
+            print('url: ', url)
             return await response.text()
 
 
