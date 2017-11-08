@@ -17,7 +17,7 @@ class FetchHandler(tornado.web.RequestHandler):
         client = tornado.httpclient.AsyncHTTPClient()
         resp = yield client.fetch('http://localhost:8888')
         self.write('*')
-        print 'resp.code: ', resp.code
+        print('resp.code: ', resp.code)
 
 
 def make_app():
