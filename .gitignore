@@ -63,6 +63,7 @@ target/
 env/
 env2/
 env2.7/
+env3/
 env3.6/
 
 # celery stuff
