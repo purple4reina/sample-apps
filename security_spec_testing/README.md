@@ -101,4 +101,25 @@ ticket](https://newrelic.atlassian.net/browse/PYTHON-2597).
 
 ## Secure by Default
 
+### Are our settings secure by default?
 
+There are some things we do differently by default. They are stated upon
+startup when in high security mode.
+
++ `strip_exception_messages.enabled`: We want to always capture these things by
+  default so I don't want to suggest we change this setting.
++ `custom_insights_events.enabled`: If people want to send insights events,
+  should they enable this setting?
+
+### Documented suggestions
+
+I don't see anything explicit in the docs about "if you want HSM then you
+should do these things exactly". There is however a list of things that HSM
+changes. Note that this is a SHOULD so we don't have to do it.
+
+
+## Datastore queries (SQL obfuscation)
+
+We do obfuscate queries in the ways described in the spec. However, I am
+concerned that there could be some bugs in it as I found yesterday. I believe
+we should implement the cross agent tests for these.
