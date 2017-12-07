@@ -123,3 +123,19 @@ changes. Note that this is a SHOULD so we don't have to do it.
 We do obfuscate queries in the ways described in the spec. However, I am
 concerned that there could be some bugs in it as I found yesterday. I believe
 we should implement the cross agent tests for these.
+
+
+## Datastore Segment API
+
+We provide an API for databases that includes sql traces but it isn't public
+yet.
+
+We provide an API for datastores that does not include sql traces that is
+public. We do not need to worry about this API because it does not collect the
+query.
+
+This section says we should use a `slow_query_whitelist` but it's only a
+should. We do not do this. We are not going to do this.
+
+
+## Infrastructure Context

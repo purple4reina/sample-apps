@@ -1,6 +1,7 @@
 import newrelic.agent as nr
 
 import flask
+import redis
 import requests
 import sqlite3
 
@@ -81,6 +82,14 @@ def notice_error():
         raise Exception('hello world')
     except:
         nr.record_exception(params={'hello': 'world'})
+    return '*'
+
+
+@app.route('/redis')
+def redis_trace():
+    r = redis.StrictRedis(host='localhost', port=6379, db=0)
+    print(r.set('hello', 'world'))
+    print(r.get('hello'))
     return '*'
 
 
