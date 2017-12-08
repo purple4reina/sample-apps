@@ -139,3 +139,63 @@ should. We do not do this. We are not going to do this.
 
 
 ## Infrastructure Context
+
+Gathering host for datastore traces. This is very specific to each package we
+instrument. I recall when we did this implementation last summer and fall that
+we were very careful. We should be good here.
+
+
+## Custom Attributes
+
+Do not allow users to send any custom attributes or events.
+
+API method and comments:
++ `register_data_source`: These produce metrics. HSM does not prevent metrics.
++ `capture_request_params`: This basically just sets
+  `transaction.capture_params = True` and has the vulnerability where you can
+  set `transaction.settings.high_security = False` before running it. (see
+  [Jira](https://newrelic.atlassian.net/browse/PYTHON-2596))
++ `add_custom_parameter`: Has PYTHON-2596 vuln.
++ `record_exception`: I can get the error message to be sent if I include a
+  `strip_exception_messages.whitelist = module:classname` in my ini file. [Jira
+  filed](https://newrelic.atlassian.net/browse/PYTHON-2604)
++ `record_custom_event`: I can do `txn.settings.custom_insights_events.enabled
+  = True` and it will record the event! [filed
+  Jira](https://newrelic.atlassian.net/browse/PYTHON-2605)
+
++ `add_user_attribute`: Alias to `add_custom_parameter`
+
++ `function_trace`: I wanna see if you can send params when in HSM. Oh. I can.
+  [Filed](https://newrelic.atlassian.net/browse/PYTHON-2606)
+
+I went through everything in `newrelic/agent.py` to double check it. I filed
+several tickets as listed above.
+
+
+## Background jobs
+
+This section applies to our Celery (BackgroundTask) and Pika
+(MessageTransaction) instrumentation.
+
++ `MessageTransaction` and `pika`: The Messaging spec says that we always send all the
+  `message.*` attributes. Even though this doesn't make sense to me, that is
+  the spec and Allan says he cleared it with security.
++ `BackgroundTask` and `celery`: Our Celery instrumentation just creates
+  background tasks with nothing special. There are no parameters or attributes
+  or headers or anything of the sort that we would ever send up.
+
+
+## URI Request Parameters (URI Search Params)
+
++ Already confirmed that all request parameters are removed.
++ `fragmentid`: I searched the repo and didn't find anything about `fragmentid`
+  or `fragment`. There is some mention in some cross agent test fixtures
+  though. This is also a MAY.
+
+
+## Request / Response Headers
+
+You can change `txn.capture_params` to True sometime before the end of the
+transaction and we should end up recording all headers. Actually no. Because it
+relies on `self.high_security` during `WebTransaction.__init__` to save the
+headers to `self._request_params`, this hack doesn't actually work. We're good.

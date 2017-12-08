@@ -32,6 +32,7 @@ def sql():
                 "('2006-01-05','BUY','NEWR',100,35.14)")
 
         c.execute('SELECT * FROM stocks WHERE trans="BUY"')
+        print(c.fetchall())
         conn.commit()
     return '*'
 
@@ -54,7 +55,7 @@ def error():
 
 @app.route('/event')
 def record_custom_event():
-    event_type = 'Rey-Event'
+    event_type = 'ReyEventhello'
     params = {'hello': 'event'}
     txn = nr.current_transaction()
     txn.settings.custom_insights_events.enabled = True
@@ -90,6 +91,23 @@ def redis_trace():
     r = redis.StrictRedis(host='localhost', port=6379, db=0)
     print(r.set('hello', 'world'))
     print(r.get('hello'))
+    return '*'
+
+
+@app.route('/custom_metric')
+def custom_metric():
+    nr.record_custom_metric('ReyMetric/hello', 1)
+    return '*'
+
+
+@app.route('/function')
+def func_trace():
+
+    @nr.function_trace(params={'hello': 'world'})
+    def thing():
+        pass
+
+    thing()
     return '*'
 
 
