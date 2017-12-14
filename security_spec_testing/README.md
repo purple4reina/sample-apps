@@ -88,7 +88,7 @@ NR attributes:
   `WebTransaction.__init__`.
 + `notice_error` aka `record_exception`: When in high security mode, I see that
   if you use `record_exception` we ignore any `params` passed in and we do not
-  send the test of the error message. However, I did find a vulnerability where
+  send the text of the error message. However, I did find a vulnerability where
   you can manually set `transaction.settings.high_security = False` then we do
   in fact pass up the params! Filed a [Jira
   Ticket](https://newrelic.atlassian.net/browse/PYTHON-2596) for that.

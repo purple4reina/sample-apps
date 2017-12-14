@@ -16,7 +16,9 @@ def index():
             print('attr: ', attr)
         print('txn._request_uri: ', txn._request_uri)
     print('flask.request.headers:\n', flask.request.headers)
-    return '*'
+    resp = flask.make_response('*')
+    resp.headers['Content-Type'] = 'hello world'
+    return resp
 
 
 @app.route('/sql')
