@@ -13,23 +13,21 @@ if DOCKER_HOST:
 
 def _create_table(cur):
     cur.execute('DROP TABLE people')
-    cur.execute('CREATE TABLE people (name text, number bigint)')
+    cur.execute('CREATE TABLE people (name text, ssn text)')
 
 
 @newrelic.agent.background_task()
 def main():
     # docker run -d -p 5432:5432 --network="bridge" postgresql
-    with psycopg2.connect(
-            database=DBUSER, user=DBUSER, password=DBUSER,
+    with psycopg2.connect(database=DBUSER, user=DBUSER, password=DBUSER,
             host=DOCKER_HOST) as conn:
         cur = conn.cursor()
-        _create_table(cur)
         cur.execute(
-                'INSERT INTO people (name, number) VALUES (%s, %s)',
-                ['Jane Doe', 123456789000000])
-        cur.execute('SELECT * FROM people')
-        for record in cur:
-            print('record: ', record)
+                """
+                 INSERT INTO people (name, ssn) VALUES (%s, %s);
+                 SELECT (name, ssn) FROM people
+                """, ['Jane Doe', '123-45-6789'])
+        print(cur.fetchall())
 
 
 if __name__ == '__main__':
