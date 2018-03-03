@@ -27,4 +27,7 @@ echo Ready
 echo Installing local version of agent code
 pip install -e /agent
 
+echo Installing requirements
+pip install MySQL-python
+
 $@

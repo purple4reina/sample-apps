@@ -1,41 +1,45 @@
-import newrelic
+import os
 import newrelic.agent
-newrelic.agent.initialize('/data/newrelic.ini')
-APP = newrelic.agent.register_application(timeout=10.0)
+newrelic.agent.initialize('newrelic.ini')
+newrelic.agent.register_application(timeout=10.0)
 
 import MySQLdb
-import random
 
-PYAGENT = 'python_agent'
+DBUSER = 'python_agent'
+DOCKER_HOST = os.environ.get('DOCKER_HOST')
+if DOCKER_HOST:
+    DOCKER_HOST = DOCKER_HOST.lstrip('tcp:/').split(':', 1)[0]
 
-def _log(*msg):
-    print '-' * random.randint(1, 10) + '> ' + ' '.join(map(str, msg))
 
-def _exercise_db(cursor):
-    cursor.execute("""drop table if exists datastore_mysqldb""")
-    cursor.execute("""create table datastore_mysqldb """
-            """(a integer, b real, c text)""")
+def _create_table():
+    db = MySQLdb.connect(db=DBUSER, user=DBUSER, passwd=DBUSER,
+            host=DOCKER_HOST)
+    cur = db.cursor()
+    cur.execute('DROP TABLE people')
+    cur.execute('CREATE TABLE people (name text, ssn text)')
+    cur.close()
+    db.commit()
+    db.close()
 
-def instance_info():
-    kwargs = dict(
-        user=PYAGENT,
-        passwd=PYAGENT,
-        db=PYAGENT,
-    )
 
-    _log('MySQL host "mysql_one"')
-    with MySQLdb.connect(host='mysql_one', **kwargs) as cursor:
-        _exercise_db(cursor)
-
-    _log('MySQL host "mysql_two"')
-    with MySQLdb.connect(host='mysql_two', **kwargs) as cursor:
-        _exercise_db(cursor)
-
+@newrelic.agent.background_task()
 def main():
-    _log('MySQLdb anyone?')
-    instance_info()
+    # docker run -d -p 5432:5432 --network="bridge" postgresql
+    db = MySQLdb.connect(db=DBUSER, user=DBUSER, passwd=DBUSER,
+            host=DOCKER_HOST)
+    cur = db.cursor()
+    cur.executemany(
+            """
+             SELECT name, ssn FROM people;
+             INSERT INTO people (name, ssn) VALUES (%s, %s);
+            """, [('Jane Doe', '123-45-6789',)])
+    cur.close()
+    db.commit()
+    db.close()
+
 
 if __name__ == '__main__':
-    _log('Using agent version', newrelic.version)
-    with newrelic.agent.BackgroundTask(APP, 'mysql'):
-        main()
+    print('----------------------------------------')
+    _create_table()
+    main()
+    print('----------------------------------------')
