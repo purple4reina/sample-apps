@@ -24,7 +24,7 @@ def _create_table():
 
 @newrelic.agent.background_task()
 def main():
-    # docker run -d -p 5432:5432 --network="bridge" postgresql
+    # docker run -d -p 3306:3306 --network="bridge" mysql
     db = MySQLdb.connect(db=DBUSER, user=DBUSER, passwd=DBUSER,
             host=DOCKER_HOST)
     cur = db.cursor()
