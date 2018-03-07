@@ -25,8 +25,10 @@ def main():
         cur.execute(
                 """
                  INSERT INTO people (name, ssn) VALUES (%s, %s);
+                 INSERT INTO people (name, ssn) VALUES (%s, %s);
+                 COMMIT;
                  SELECT (name, ssn) FROM people
-                """, ['Jane Doe', '123-45-6789'])
+                """, ['Jane Doe', '123-45-6789']+['Jane Doe', '123-45-6789'])
         print(cur.fetchall())
 
 
