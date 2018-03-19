@@ -1,0 +1,10 @@
+# An example of the bad payloads being sent with celery from a mac
+
+POST https://collector.newrelic.com/agent_listener/invoke_raw_method?protocol_version=15&license_key=f22d2225a3f83c67a9e12d7da3b0dac65c9d6149&marshal_format=json&method=preconnect HTTP/1.1
+Host: collector.newrelic.com
+Content-Length: 2
+Accept-Encoding: gzip, deflate
+Content-Encoding: identity
+Accept: */*
+User-Agent: NewRelic-PythonAgent/3.0.0.0 (Python 2.7.13 darwin)
+Connection: keep-alive
