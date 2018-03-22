@@ -1,0 +1,15 @@
+[{
+    "name": "collector",
+    "listen": "0.0.0.0:22220",
+    "upstream": "collector.newrelic.com:443"
+},
+{
+    "name": "staging-collector",
+    "listen": "0.0.0.0:22221",
+    "upstream": "staging-collector.newrelic.com:443"
+},
+{
+    "name": "example",
+    "listen": "0.0.0.0:22222",
+    "upstream": "example.com:80"
+}]
