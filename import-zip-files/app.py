@@ -1,16 +1,16 @@
 import sys
-sys.path.insert(0, 'mymodule.zip')
+sys.path.insert(0, 'requests.zip')
 
 import newrelic.agent
 newrelic.agent.initialize('newrelic.ini')
 newrelic.agent.register_application(timeout=10.0)
 
-import mymodule
+import requests
 
 
 @newrelic.agent.background_task()
 def main():
-    resp = mymodule.fetch('http://example.com')
+    resp = requests.get('http://example.com')
     assert resp.status_code == 200
 
 
