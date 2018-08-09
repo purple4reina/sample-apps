@@ -27,7 +27,7 @@ uwsgi --ini uwsgi.ini
 ```
 
 Then go to `http://192.168.99.100:8000/` in your browser (possibly replacing
-the IP with the value from $DOCKER_HOST)
+the IP with the value from `$DOCKER_HOST`)
 
 Alternatively, you can `docker exec` into the container and use curl.
 
