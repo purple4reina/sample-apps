@@ -38,3 +38,11 @@ But the second item in the tuple is never being used!
 
 The tests in `tests.cross_agent.test_rules` should be augmented to reflect
 this.
+
+## Language agent transaction segment terms rules
+
+https://newrelic.atlassian.net/wiki/spaces/eng/pages/81789286/Language+agent+transaction+segment+terms+rules
+
+The file `segments.py` demonstrates the use of segment term rules in the agent.
+In the APM UI these are called "URL whitelist terms" and can be edited from
+https://rpm.newrelic.com/accounts/1178500/applications/126045053/url_rules#.
