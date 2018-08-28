@@ -9,6 +9,11 @@ async def index(request):
     return json({'hello': 'world'})
 
 
+@app.middleware('request')
+async def request_middleware(request):
+    return json({'oops': 'wrong'})
+
+
 @app.websocket('/ws')
 async def feed(request, ws):
     data = 'hello!'
