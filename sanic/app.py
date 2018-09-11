@@ -9,8 +9,8 @@ app = Sanic()
 @app.route('/')
 async def index(request):
     async def streaming_fn(response):
-        response.write('foo')
-        response.write('bar')
+        await response.write('foo')
+        await response.write('bar')
     return stream(streaming_fn)
 
 
