@@ -108,3 +108,5 @@ terraform.tfvars
 # End of https://www.gitignore.io/api/terraform
 
 terraform/build/
+terraform/function/bin
+terraform/function/newrelic*
