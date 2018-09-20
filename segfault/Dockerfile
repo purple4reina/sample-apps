@@ -1,11 +1,10 @@
 FROM python:2.7.15
 
-ADD requirements.txt /
-RUN pip install -r /requirements.txt
-
 ENV NEW_RELIC_CONFIG_FILE /data/newrelic.ini
 WORKDIR /data
 EXPOSE 8000
+
+RUN pip install uwsgi==2.0.17.1
 
 CMD newrelic-admin run-program uwsgi \
     --http :8000 \
@@ -17,3 +16,4 @@ CMD newrelic-admin run-program uwsgi \
     --master
 
 ADD . /data
+RUN pip install /data/newrelic-4.5.0.0.tar.gz
