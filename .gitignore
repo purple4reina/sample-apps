@@ -110,3 +110,5 @@ terraform.tfvars
 terraform/build/
 terraform/function/bin
 terraform/function/newrelic*
+
+segfault/newrelic*.tar.gz
