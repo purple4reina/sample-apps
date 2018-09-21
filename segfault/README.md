@@ -44,3 +44,23 @@ index d2237b4..8c9a830 100644
 
          self._data_sources = {}
 ```
+
+Ends up the segfault happens when making a request to the data collector. I was
+able to reproduce the issue by just making a request call to
+https://example.com. Notice that http://example.com does not segfault.
+
+Additionally, notice that this issue only happens when run in docker. To
+reproduce do:
+
+```
+$ docker build -t segfault .
+$ docker run -it --network=bridge -p 8000:8000 segfault
+```
+
+Then exercise the application by curling the docker host:
+
+```
+$ echo $DOCKER_HOST
+tcp://192.168.99.100:2376
+$ curl http://192.168.99.100:8000
+```
