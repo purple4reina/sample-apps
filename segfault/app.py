@@ -3,8 +3,7 @@ import requests
 
 
 def myatexit():
-    resp = requests.get('https://example.com')
-    print('resp.status_code: ', resp.status_code)
+    requests.get('https://example.com')
 
 
 def application(environ, start_response):
