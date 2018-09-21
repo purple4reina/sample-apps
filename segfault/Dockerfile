@@ -2,9 +2,8 @@ FROM python:2.7.15
 #FROM python:3.6.6
 
 WORKDIR /data
-EXPOSE 8000
 
-RUN pip install uwsgi==2.0.17.1 requests==2.19.1
+RUN pip install uwsgi==2.0.17.1
 
 CMD uwsgi \
     --http :8000 \
