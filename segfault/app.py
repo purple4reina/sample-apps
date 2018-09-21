@@ -3,7 +3,7 @@ import requests
 
 
 def myatexit():
-    resp = requests.post('https://example.com')
+    resp = requests.get('https://example.com')
     print('resp.status_code: ', resp.status_code)
 
 
