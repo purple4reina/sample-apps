@@ -1,4 +1,5 @@
-FROM python:3.6.6
+FROM python:2.7.15
+#FROM python:3.6.6
 
 WORKDIR /data
 EXPOSE 8000

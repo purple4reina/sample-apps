@@ -1,9 +1,15 @@
 import atexit
-import requests
+
+try:
+    # PY3
+    from http.client import HTTPSConnection
+except ImportError:
+    # PY2
+    from httplib import HTTPSConnection
 
 
 def myatexit():
-    requests.get('https://example.com')
+    HTTPSConnection('https://example.com', port=443)
 
 
 def application(environ, start_response):
