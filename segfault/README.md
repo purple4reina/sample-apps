@@ -64,3 +64,29 @@ $ echo $DOCKER_HOST
 tcp://192.168.99.100:2376
 $ curl http://192.168.99.100:8000
 ```
+
+## Possible workarounds?
+
+There are no actual workarounds that will fix this issue. It is something that
+uwsgi must fix. Allan has opened a pull request to do so
+https://github.com/unbit/uwsgi/pull/1879.
+
+There is a way to get rid of the segfault, but customers will still lose all
+data for the final harvest down as part of atexit.
+
+1. Add the `--skip-atexit-teardown` option to uwsgi startup command
+2. Remove the agent's uwsgi atexit callback with:
+
+   ```python
+    import newrelic.core.agent
+
+    def remove_uwsgi_atexit():
+        def noop_atexit():
+            pass
+        import uwsgi
+        uwsgi.atexit = noop_atexit
+
+    newrelic.core.agent.Agent.run_on_startup(remove_uwsgi_atexit)
+    ```
+
+    Do this **before** initializing or registering the agent.
