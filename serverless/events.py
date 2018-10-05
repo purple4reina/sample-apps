@@ -1,3 +1,5 @@
+# Find more info at https://godoc.org/github.com/aws/aws-lambda-go/events
+
 KINESIS_DATA_FIREHOSE_CLOUDWATCH_LOGS_PROCESSOR = {
   "records": [
     {
