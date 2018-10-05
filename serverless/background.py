@@ -1,11 +1,13 @@
 import newrelic.agent
 newrelic.agent.initialize('newrelic.ini')
 
+from context import Context
+
 
 @newrelic.agent.lambda_handler()
 def handler(event, context):
-    pass
+    return {}
 
 
 if __name__ == '__main__':
-    handler({}, {})
+    handler({}, Context())
