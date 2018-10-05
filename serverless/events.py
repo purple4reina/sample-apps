@@ -1314,3 +1314,17 @@ MOBILE_BACKEND = {
   "operation": "echo",
   "message": "Hello world!"
 }
+
+LIST_TYPE = [
+    "list1",
+    "list2",
+    "list3"
+]
+
+STR_TYPE = "string type"
+
+INT_TYPE = 123456
+
+FLOAT_TYPE = 123.456
+
+NONE_TYPE = None
