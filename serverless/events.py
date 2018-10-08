@@ -1,4 +1,6 @@
-# Find more info at https://godoc.org/github.com/aws/aws-lambda-go/events
+#
+# From the aws lambda page to test your lambdas
+#
 
 KINESIS_DATA_FIREHOSE_CLOUDWATCH_LOGS_PROCESSOR = {
   "records": [
@@ -1317,6 +1319,10 @@ MOBILE_BACKEND = {
   "message": "Hello world!"
 }
 
+#
+# Blank event types
+#
+
 LIST_TYPE = [
     "list1",
     "list2",
@@ -1330,3 +1336,252 @@ INT_TYPE = 123456
 FLOAT_TYPE = 123.456
 
 NONE_TYPE = None
+
+#
+# Find more info at https://godoc.org/github.com/aws/aws-lambda-go/events
+#
+
+S3_EVENT = {
+  "Records": [
+    {
+      "eventVersion": "2.0",
+      "eventSource": "aws:s3",
+      "awsRegion": "us-east-1",
+      "eventTime": "1970-01-01T00:00:00.123Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "EXAMPLE"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "127.0.0.1"
+      },
+      "responseElements": {
+        "x-amz-request-id": "C3D13FE58DE4C810",
+        "x-amz-id-2": "FMyUVURIY8/IgAtTv8xRjskZQpcIZ9KG4V5Wp6S7S/JRWeUWerMUE5JgHvANOjpD"
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "testConfigRule",
+        "bucket": {
+          "name": "sourcebucket",
+          "ownerIdentity": {
+            "principalId": "EXAMPLE"
+          },
+          "arn": "arn:aws:s3:::mybucket"
+        },
+        "object": {
+          "key": "HappyFace.jpg",
+          "size": 1024,
+          "urlDecodedKey": "HappyFace.jpg",
+          "versionId": "version",
+          "eTag": "d41d8cd98f00b204e9800998ecf8427e",
+          "sequencer": "Happy Sequencer"
+        }
+      }
+    }
+  ]
+}
+
+# cloudwatch events
+
+CLOUDWATCH_LOGS_EVENT = {  # represents raw data from a cloudwatch logs event
+  "awslogs": {
+    # "data" contains gzipped base64 json representing the bulk of a cloudwatch
+    # logs event. It will unmarshall into
+    # https://github.com/aws/aws-lambda-go/blob/master/events/cloudwatch_logs.go
+    "data": "H4sIAAAAAAAAAHWPwQqCQBCGX0Xm7EFtK+smZBEUgXoLCdMhFtKV3akI8d0bLYmibvPPN3wz00CJxmQnTO41whwWQRIctmEcB6sQbFC3CjW3XW8kxpOpP+OC22d1Wml1qZkQGtoMsScxaczKN3plG8zlaHIta5KqWsozoTYw3/djzwhpLwivWFGHGpAFe7DL68JlBUk+l7KSN7tCOEJ4M3/qOI49vMHj+zCKdlFqLaU2ZHV2a4Ct/an0/ivdX8oYc1UVX860fQDQiMdxRQEAAA=="
+  }
+}
+
+KINESIS_EVENT = {
+  "Records": [
+    {
+        "kinesis": {
+          "kinesisSchemaVersion": "1.0",
+          "partitionKey": "s1",
+          "sequenceNumber": "49568167373333333333333333333333333333333333333333333333",
+          "data": "SGVsbG8gV29ybGQ=",
+          "approximateArrivalTimestamp": 1480641523.477
+        },
+        "eventSource": "aws:kinesis",
+        "eventVersion": "1.0",
+        "eventID": "shardId-000000000000:49568167373333333333333333333333333333333333333333333333",
+        "eventName": "aws:kinesis:record",
+        "invokeIdentityArn": "arn:aws:iam::123456789012:role/LambdaRole",
+        "awsRegion": "us-east-1",
+        "eventSourceARN": "arn:aws:kinesis:us-east-1:123456789012:stream/simple-stream"
+    },
+    {
+        "kinesis": {
+          "kinesisSchemaVersion": "1.0",
+          "partitionKey": "s1",
+          "sequenceNumber": "49568167373333333334444444444444444444444444444444444444",
+          "data": "SGVsbG8gV29ybGQ=",
+          "approximateArrivalTimestamp": 1480841523.477
+        },
+        "eventSource": "aws:kinesis",
+        "eventVersion": "1.0",
+        "eventID": "shardId-000000000000:49568167373333333334444444444444444444444444444444444444",
+        "eventName": "aws:kinesis:record",
+        "invokeIdentityArn": "arn:aws:iam::123456789012:role/LambdaRole",
+        "awsRegion": "us-east-1",
+        "eventSourceARN": "arn:aws:kinesis:us-east-1:123456789012:stream/simple-stream"
+    }
+  ]
+}
+
+# kinesis firehose events
+# aws api gateway
+
+DYNAMODB_EVENT = {
+  "Records": [
+    {
+      "eventID": "f07f8ca4b0b26cb9c4e5e77e69f274ee",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-east-1",
+      "userIdentity":{
+        "type":"Service",
+        "principalId":"dynamodb.amazonaws.com"
+      },
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1480642020,
+        "Keys": {
+          "val": {
+            "S": "data"
+          },
+          "key": {
+            "S": "binary"
+          }
+        },
+        "NewImage": {
+          "val": {
+            "S": "data"
+          },
+          "asdf1": {
+            "B": "AAEqQQ=="
+          },
+          "asdf2": {
+            "BS": [
+              "AAEqQQ==",
+              "QSoBAA=="
+            ]
+          },
+          "key": {
+            "S": "binary"
+          }
+        },
+        "SequenceNumber": "1405400000000002063282832",
+        "SizeBytes": 54,
+        "StreamViewType": "NEW_AND_OLD_IMAGES"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-east-1:123456789012:table/Example-Table/stream/2016-12-01T00:00:00.000"
+    },
+    {
+      "eventID": "f07f8ca4b0b26cb9c4e5e77e42f274ee",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-east-1",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1480642020,
+        "Keys": {
+          "val": {
+            "S": "data"
+          },
+          "key": {
+            "S": "binary"
+          }
+        },
+        "NewImage": {
+          "val": {
+            "S": "data"
+          },
+          "asdf1": {
+            "B": "AAEqQQ=="
+          },
+          "b2": {
+            "B": "test"
+          },
+          "asdf2": {
+            "BS": [
+              "AAEqQQ==",
+              "QSoBAA==",
+              "AAEqQQ=="
+            ]
+          },
+          "key": {
+            "S": "binary"
+          },
+          "Binary": {
+            "B": "AAEqQQ=="
+          },
+          "Boolean": {
+            "BOOL": true
+          },
+          "BinarySet": {
+            "BS": [
+              "AAEqQQ==",
+              "AAEqQQ=="
+            ]
+          },
+          "List": {
+            "L": [
+              {
+                "S": "Cookies"
+              },
+              {
+                "S": "Coffee"
+              },
+              {
+                "N": "3.14159"
+              }
+            ]
+          },
+          "Map": {
+            "M": {
+              "Name": {
+                "S": "Joe"
+              },
+              "Age": {
+                "N": "35"
+              }
+            }
+          },
+          "FloatNumber": {
+            "N": "123.45"
+          },
+          "IntegerNumber": {
+            "N": "123"
+          },
+          "NumberSet": {
+            "NS": [
+              "1234",
+              "567.8"
+            ]
+          },
+          "Null": {
+            "NULL": true
+          },
+          "String": {
+            "S": "Hello"
+          },
+          "StringSet": {
+            "SS": [
+              "Giraffe",
+              "Zebra"
+            ]
+          },
+          "EmptyStringSet": {
+            "SS": []
+          }
+        },
+        "SequenceNumber": "1405400000000002063282832",
+        "SizeBytes": 54,
+        "StreamViewType": "NEW_AND_OLD_IMAGES"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-east-1:123456789012:table/Example-Table/stream/2016-12-01T00:00:00.000"
+    }
+  ]
+}
