@@ -45,7 +45,7 @@ def get_arns(event):
     if deliveryStreamArn:
         return [deliveryStreamArn]
 
-    # Cloudwatch logs, Kinesis firehose, API Gateway
+    # Cloudwatch logs, API Gateway
     return []
 
 
