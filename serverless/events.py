@@ -1554,7 +1554,6 @@ API_GATEWAY_CUSTOM_AUTHORIZER_REQUEST = {
     "methodArn": "arn:aws:execute-api:us-west-2:123456789012:ymy8tbxw7b/*/GET/"
 }
 
-
 DYNAMODB_EVENT = {
   "Records": [
     {
