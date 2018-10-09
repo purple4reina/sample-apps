@@ -40,6 +40,11 @@ def get_arns(event):
     if method_arn:
         return [method_arn]
 
+    # Kinesis Firehose
+    deliveryStreamArn = event.get('deliveryStreamArn')
+    if deliveryStreamArn:
+        return [deliveryStreamArn]
+
     # Cloudwatch logs, Kinesis firehose, API Gateway
     return []
 
