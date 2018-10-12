@@ -1,23 +1,45 @@
-from gevent import monkey; monkey.patch_all(thread=False, socket=False,
-        subprocess=False)  # change this to True to produce the "problem"
-import multiprocessing as mp
+import newrelic.agent
+newrelic.agent.initialize('newrelic.ini')
+
+import functools
+import multiprocessing
 
 
-def doit():
-    import newrelic.agent
+def subprocessed_background_task(*bt_args, **bt_kwargs):
+    def _register_wrapper(func):
+        @functools.wraps(func)
+        def _wrap_func(*args, **kwargs):
+            newrelic.agent.register_application(timeout=10.0)
+            try:
+                return newrelic.agent.background_task(*bt_args,
+                        **bt_kwargs)(func)(*args, **kwargs)
+            finally:
+                newrelic.agent.shutdown_agent()
+        return _wrap_func
+    return _register_wrapper
 
-    newrelic.agent.initialize('newrelic.ini')
-    app = newrelic.agent.register_application(timeout=10.0)
 
-    @newrelic.agent.background_task()
-    def good():
-        print('----GOOD----')
+@subprocessed_background_task()
+def say_hello(name):
+    print('Hello %s!' % name)
 
-    good()
+
+class NRProcess(multiprocessing.Process):
+
+    def __init__(self, name, *args, **kwargs):
+        self.hello_name = name
+        super(NRProcess, self).__init__(*args, **kwargs)
+
+    def run(self):
+        app = newrelic.agent.register_application(timeout=10.0)
+
+        with newrelic.agent.BackgroundTask(application=app, name='say_hello'):
+            print('Hello %s!' % self.hello_name)
+
+        newrelic.agent.shutdown_agent()
 
 
 if __name__ == '__main__':
-    mp.set_start_method('spawn')
-    p = mp.Process(target=doit)
+    p = NRProcess('New Relic')
     p.start()
     p.join()
