@@ -1,9 +1,12 @@
 import newrelic.agent
 newrelic.agent.initialize('newrelic.ini')
+newrelic.agent.register_application(timeout=10.0)
 
 import functools
 import multiprocessing
 
+
+# EXAMPLE ONE
 
 def subprocessed_background_task(*bt_args, **bt_kwargs):
     def _register_wrapper(func):
@@ -23,6 +26,14 @@ def subprocessed_background_task(*bt_args, **bt_kwargs):
 def say_hello(name):
     print('Hello %s!' % name)
 
+
+if __name__ == '__main__':
+    p = multiprocessing.Process(target=say_hello, args=('New Relic',))
+    p.start()
+    p.join()
+
+
+# EXAMPLE TWO
 
 class NRProcess(multiprocessing.Process):
 
