@@ -1,6 +1,5 @@
 import newrelic.agent
 newrelic.agent.initialize('newrelic.ini')
-newrelic.agent.register_application(timeout=10.0)
 
 import functools
 import multiprocessing
