@@ -16,8 +16,8 @@ def add_request_id_to_aws_response(wrapped, instance, args, kwargs):
     response = wrapped(*args, **kwargs)
     if response is None:
         return response
-
-    response.headers['x-amz-request-id'] = REQUEST_ID
+    if 'x-amz-request-id' not in response.headers:
+        response.headers['x-amz-request-id'] = REQUEST_ID
     return response
 
 
