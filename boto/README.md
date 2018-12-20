@@ -1,6 +1,6 @@
 # Boto
 
-This is a repository for apps that use `botocore` and other amazon like things.
+This is a directory for apps that use `botocore` and other amazon like things.
 
 ## S3
 
