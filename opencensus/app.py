@@ -13,6 +13,8 @@ tracer = Tracer(
         sampler=always_on.AlwaysOnSampler(),
 )
 
-with tracer.span(name="main") as span:
-    with tracer.span(name="main") as span:
-       time.sleep(0.5)
+with tracer.span(name='main') as span:
+    tracer.add_attribute_to_current_span('mykey', 'myvalue-parent')
+    with tracer.span(name='child') as span:
+        tracer.add_attribute_to_current_span('mykey', 'myvalue-child')
+        time.sleep(0.5)
