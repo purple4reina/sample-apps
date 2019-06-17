@@ -16,10 +16,10 @@ def send():
     feature = stub.GetFeature(route_guide_pb2.Point(
             latitude=random.randint(-100, 100),
             longitude=random.randint(-100, 100)))
-    print 'feature.name: ', feature.name
+    print('feature.name: ', feature.name)
 
 
 if __name__ == '__main__':
-    print '----------------------------------------'
+    print('----------------------------------------')
     send()
-    print '----------------------------------------'
+    print('----------------------------------------')

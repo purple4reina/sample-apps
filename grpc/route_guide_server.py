@@ -16,8 +16,8 @@ import route_guide_pb2_grpc
 class RouteGuideServicer(route_guide_pb2_grpc.RouteGuideServicer):
 
     def GetFeature(self, request, context):
-        print 'Got feature request: longitude=%s, latitude=%s' % (
-                request.longitude, request.latitude)
+        print('Got feature request: longitude=%s, latitude=%s' % (
+                request.longitude, request.latitude))
         return route_guide_pb2.Feature(name='hello world')
 
 
