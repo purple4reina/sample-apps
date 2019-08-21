@@ -1,6 +1,6 @@
 appdirs==1.4.3
-newrelic==2.86.1.66
+newrelic==5.0.2.126
 packaging==16.8
-pika==0.10.0
+pika==1.1.0
 pyparsing==2.2.0
 six==1.10.0

@@ -5,7 +5,7 @@ app = newrelic.agent.register_application(timeout=10.0)
 import sys
 sys.path.append('..')
 
-from utils.decorators import print_nice_transaction_trace, print_metrics
+from utils.decorators import print_metrics
 
 import time
 import pika

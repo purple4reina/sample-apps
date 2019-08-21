@@ -2,19 +2,14 @@ import newrelic.agent
 newrelic.agent.initialize('newrelic.ini')
 app = newrelic.agent.register_application(timeout=10.0)
 
-import sys
-sys.path.append('..')
-
-from utils.decorators import print_nice_transaction_trace, print_metrics
-
 import pika
 
 
 def main():
 
     def callback(ch, method, properties, body):
-        print 'received: ', body
-        print 'headers: ', properties.headers
+        print('received: ', body)
+        print('headers: ', properties.headers)
 
     with pika.BlockingConnection(
             pika.ConnectionParameters('localhost')) as connection:
@@ -25,6 +20,6 @@ def main():
 
 
 if __name__ == '__main__':
-    print '===================================='
+    print('====================================')
     main()
-    print '===================================='
+    print('====================================')
