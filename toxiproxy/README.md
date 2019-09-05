@@ -28,7 +28,7 @@ You will now be able to connect to the proxy from your localhost. You'll now be
 able to test the proxy to `example.com` with
 
 ```
-curl http://example.com --proxy 192.168.99.100:22222
+curl http://example.com --proxy localhost:22222
 ```
 
 ### Adding Toxics
