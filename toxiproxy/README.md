@@ -24,14 +24,8 @@ Then start the proxy with
 docker run -it -p 8474:8474 -p 22220-22222:22220-22222 --network=bridge toxiproxy
 ```
 
-You will now be able to connect to the proxy from your localhost to your docker
-host. Determine the IP of your docker host with
-
-```
-echo $DOCKER_HOST
-```
-
-You'll now be able to test the proxy to `example.com` with
+You will now be able to connect to the proxy from your localhost. You'll now be
+able to test the proxy to `example.com` with
 
 ```
 curl http://example.com --proxy 192.168.99.100:22222
