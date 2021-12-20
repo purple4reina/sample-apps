@@ -7,6 +7,7 @@ end
 Sidekiq.configure_server do |config|
   Sidekiq::Status.configure_server_middleware config, expiration: 300
   Sidekiq::Status.configure_client_middleware config, expiration: 300
+  config.options[:timeout] = 0.01
 end
 
 class ExampleJob
