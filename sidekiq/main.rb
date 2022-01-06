@@ -20,16 +20,15 @@ class ExampleJob
     puts "--------------------WORKER STARTING---------------------"
     sleep howlong
     store(slept: howlong)
-    asf
     puts "--------------------WORKER DONE---------------------"
   end
 end
 
 if __FILE__ == $0
-  job_id = ExampleJob.perform_async(3)
+  job_id = ExampleJob.perform_async(10)
 
-  30.times do
-    status = Sidekiq::Status::get_all(job_id)
+  15.times do
+    status = Sidekiq::Status::status(job_id)
     puts "job_id: #{job_id}, status: #{status.inspect}"
     sleep 1
   end
