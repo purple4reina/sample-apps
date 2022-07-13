@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/bin/bash -e
 zip -r dd-trace-poc dd-trace-poc/
