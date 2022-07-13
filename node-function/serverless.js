@@ -1,0 +1,1 @@
+dd-trace-poc/nodejs/node_modules/dd-trace/packages/dd-trace/src/serverless.js
