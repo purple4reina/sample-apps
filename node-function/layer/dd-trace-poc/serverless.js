@@ -1,12 +1,11 @@
 // very simple node nodule to allow monkey pathing, could be inlined here
 var shimmer = require('shimmer');
-//const tracer = require("dd-trace");
+const tracer = require("dd-trace");
 const axios = require('axios');
 
-//tracer.init({
-//  env: "maxday-poc",
-//  service: "maxday-poc-cf",
-//});
+tracer.init({
+  type: "dog",
+});
 
 let handler;
 let handlerFunction;
