@@ -1,7 +1,7 @@
 // very simple node nodule to allow monkey pathing, could be inlined here
-var shimmer = require('shimmer');
+var shimmer = require("shimmer");
 const tracer = require("dd-trace");
-const axios = require('axios');
+const axios = require("axios");
 
 tracer.init({
   type: "dog",
@@ -47,7 +47,7 @@ shimmer.wrap(handler, handlerFunction, function (original) {
 function invokeStart(payload) {
   console.log("[UNIVERSAL INSTRUMENTATION DEMO] - invokeStart with payload: ", payload);
   axios
-    .post('http://localhost:8124/lambda/start-invocation', payload)
+    .post("http://localhost:8124/lambda/start-invocation", payload)
     .then(res => {
       console.log(`[UNIVERSAL INSTRUMENTATION DEMO] - invokeStart statusCode: ${res.status}`);
       console.log("[UNIVERSAL INSTRUMENTATION DEMO] - invokeStart response: ", res);
@@ -59,7 +59,7 @@ function invokeStart(payload) {
 
 function invokeEnd(handlerRes) {
   axios
-    .post('http://localhost:8124/lambda/end-invocation', handlerRes)
+    .post("http://localhost:8124/lambda/end-invocation", handlerRes)
     .then(res => {
       console.log(`[UNIVERSAL INSTRUMENTATION DEMO] - invokeEnd statusCode: ${res.status}`);
       console.log("[UNIVERSAL INSTRUMENTATION DEMO] - invokeEnd response: ", res);

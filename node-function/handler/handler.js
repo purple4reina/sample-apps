@@ -13,5 +13,7 @@ exports.hello = function(event, context) {
   console.log('hello world!');
   statsDClient.distribution('serverless.node.custom_metric', getRandomInt(100),
     undefined, tags);
-  return {'hello': 'world'}
+  return {
+    hello: 'world',
+  }
 }

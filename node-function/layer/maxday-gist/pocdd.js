@@ -1,5 +1,5 @@
 // very simple node nodule to allow monkey pathing, could be inlined here
-var shimmer = require('shimmer');
+var shimmer = require("shimmer");
 const tracer = require("dd-trace");
 
 tracer.init({
@@ -20,7 +20,7 @@ shimmer.wrap(handler, handlerFunction, function (original) {
       console.log("[poc maxday] - Starting");
       // we can start the top root span (or notify the extension to do so)
       const childOf = tracer.scope().active();
-      const span = tracer.startSpan('poc-maxday-span', { childOf });
+      const span = tracer.startSpan("poc-maxday-span", { childOf });
       // save the original result
       let res = original.apply(this, arguments);
       try {
@@ -30,7 +30,7 @@ shimmer.wrap(handler, handlerFunction, function (original) {
             span.finish();
         })
         .catch(_ => {
-            console.log('[poc maxday] - Ending Async Error');
+            console.log("[poc maxday] - Ending Async Error");
             span.finish();
         });
       } catch(e) {
