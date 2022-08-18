@@ -1,0 +1,15 @@
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/bin/Debug/net6.0/dotnet-hello-world
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/bin/Debug/net6.0/dotnet-hello-world.deps.json
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/bin/Debug/net6.0/dotnet-hello-world.runtimeconfig.json
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/bin/Debug/net6.0/dotnet-hello-world.dll
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/bin/Debug/net6.0/dotnet-hello-world.pdb
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/obj/Debug/net6.0/dotnet-hello-world.csproj.AssemblyReference.cache
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/obj/Debug/net6.0/dotnet-hello-world.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/obj/Debug/net6.0/dotnet-hello-world.AssemblyInfoInputs.cache
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/obj/Debug/net6.0/dotnet-hello-world.AssemblyInfo.cs
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/obj/Debug/net6.0/dotnet-hello-world.csproj.CoreCompileInputs.cache
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/obj/Debug/net6.0/dotnet-hello-world.dll
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/obj/Debug/net6.0/refint/dotnet-hello-world.dll
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/obj/Debug/net6.0/dotnet-hello-world.pdb
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/obj/Debug/net6.0/dotnet-hello-world.genruntimeconfig.cache
+/Users/rey.abolofia/go/src/github.com/DataDog/sample-apps/dotnet-hello-world/obj/Debug/net6.0/ref/dotnet-hello-world.dll
