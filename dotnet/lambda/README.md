@@ -29,3 +29,9 @@
     ```bash
     $ aws-vault exec sandbox-account-admin -- sls deploy
     ```
+
+5. Or build and deploy in one step
+
+    ```bash
+    $ ./build_deploy.sh
+    ```
