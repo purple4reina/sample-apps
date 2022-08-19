@@ -1,0 +1,38 @@
+service: dotnet-function-rey
+
+provider:
+  name: aws
+  region: sa-east-1
+  tracing:
+    lambda: true
+    apiGateway: true
+  environment:
+    CORECLR_ENABLE_PROFILING: 1
+    CORECLR_PROFILER: "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}"
+    CORECLR_PROFILER_PATH: "/opt/datadog/Datadog.Trace.ClrProfiler.Native.so"
+    DD_API_KEY: ${env:DD_API_KEY}
+    DD_DOTNET_TRACER_HOME: "/opt/datadog"
+    DD_LOGS_ENABLED: true
+    DD_LOG_LEVEL: DEBUG
+    DD_SERVERLESS_LOGS_ENABLED: true
+    DD_SERVICE: dotnet-function-rey
+    DD_TRACE_DEBUG: true
+    DD_TRACE_ENABLED: true
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  dotnet:
+    runtime: dotnet6
+    handler: ReyFunction::ReyFunction.Function::Handler
+    package:
+      individually: true
+      artifact: handler.zip
+    events:
+      - schedule:
+          rate: rate(1 minute)

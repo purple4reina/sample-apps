@@ -23,3 +23,9 @@
     ```bash
     $ dotnet lambda package --configuration Release --output-package ./handler.zip
     ```
+
+4. Deploy to Lambda
+
+    ```bash
+    $ aws-vault exec sandbox-account-admin -- sls deploy
+    ```
