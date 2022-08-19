@@ -21,5 +21,5 @@
 3. Build the zip
 
     ```bash
-    $ dotnet lambda package --configuration Release --framework netcoreapp3.1 --output-package ./handler.zip
+    $ dotnet lambda package --configuration Release --output-package ./handler.zip
     ```
