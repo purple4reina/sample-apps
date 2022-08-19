@@ -29,10 +29,13 @@ custom:
 functions:
   dotnet:
     runtime: dotnet6
-    handler: ReyFunction::ReyFunction.Function::Handler
+    handler: ReyFunction::ReyFunction.Function::FunctionHandler
     package:
       individually: true
       artifact: handler.zip
     events:
       - schedule:
           rate: rate(1 minute)
+          input:
+            key1: value1
+            key2: value2

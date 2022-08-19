@@ -7,16 +7,9 @@ namespace ReyFunction;
 
 public class Function
 {
-
-    /// <summary>
-    /// A simple function that takes a string and does a ToUpper
-    /// </summary>
-    /// <param name="input"></param>
-    /// <param name="context"></param>
-    /// <returns></returns>
-    public string FunctionHandler(string input, ILambdaContext context)
+    public string FunctionHandler(Dictionary < string, string > input, ILambdaContext context)
     {
         LambdaLogger.Log("Hello World!");
-        return input.ToUpper();
+        return "Hello World!";
     }
 }
