@@ -1,4 +1,5 @@
 using Amazon.Lambda.Core;
+using Datadog.Trace;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -9,7 +10,11 @@ public class Function
 {
     public string FunctionHandler(Dictionary < string, string > input, ILambdaContext context)
     {
-        LambdaLogger.Log("Hello World!");
+        LambdaLogger.Log("[Debug] FunctionHandler executing");
+        using (var scope = Tracer.Instance.StartActive("my-span"))
+        {
+            scope.Span.SetTag("context", "purple");
+        }
         return "Hello World!";
     }
 }
