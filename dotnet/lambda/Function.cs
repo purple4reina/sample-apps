@@ -1,3 +1,4 @@
+using System.Net;
 using Amazon.Lambda.Core;
 using Datadog.Trace;
 
@@ -8,12 +9,17 @@ namespace MyFunction;
 
 public class Function
 {
-    public string FunctionHandler(Dictionary < string, string > input, ILambdaContext context)
+    static readonly HttpClient client = new HttpClient();
+
+    public async Task<string> FunctionHandler(Dictionary < string, string > input, ILambdaContext context)
     {
         LambdaLogger.Log("[Debug] FunctionHandler executing");
         using (var scope = Tracer.Instance.StartActive("my-span"))
         {
             scope.Span.SetTag("context", "purple");
+
+            string responseBody = await client.GetStringAsync("https://example.com");
+            LambdaLogger.Log(responseBody);
         }
         return "Hello World!";
     }
