@@ -29,7 +29,7 @@ custom:
 functions:
   dotnet:
     runtime: dotnet6
-    handler: ReyFunction::ReyFunction.Function::FunctionHandler
+    handler: MyFunction::MyFunction.Function::FunctionHandler
     package:
       individually: true
       artifact: handler.zip
