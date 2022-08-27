@@ -1,0 +1,28 @@
+service: hello-extension-REY-1
+
+provider:
+  name: aws
+  tracing:
+    lambda: false
+    apiGateway: false
+  memorySize: 256
+  region: sa-east-1
+  timeout: 900
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  node:
+    runtime: nodejs16.x
+    handler: handler.hello
+    events:
+      - http:
+          path: hello-nodejs-12-x
+          method: get
+    environment:
+      NODE_OPTIONS: '--require /opt/dd-trace-poc/nodejs/node_modules/dd-trace/packages/dd-trace/src/serverless.js'

@@ -1,0 +1,43 @@
+// very simple node nodule to allow monkey pathing, could be inlined here
+var shimmer = require("shimmer");
+const tracer = require("dd-trace");
+
+tracer.init({
+  env: "maxday-poc",
+  service: "maxday-poc-cf",
+});
+
+// let inspect the given handler and require the correct file
+tokens = process.env._HANDLER.split(".");
+var handlerFile = tokens[0];
+// the function name is after the dot
+var handlerFunction = tokens[1];
+
+const handler = require(`${process.env.LAMBDA_TASK_ROOT}/${handlerFile}`);
+
+shimmer.wrap(handler, handlerFunction, function (original) {
+    return function () {
+      console.log("[poc maxday] - Starting");
+      // we can start the top root span (or notify the extension to do so)
+      const childOf = tracer.scope().active();
+      const span = tracer.startSpan("poc-maxday-span", { childOf });
+      // save the original result
+      let res = original.apply(this, arguments);
+      try {
+        res.then(_ => {
+            console.log("[poc maxday] - Ending Async Success");
+            // finish the span (or notify the extension to do so)
+            span.finish();
+        })
+        .catch(_ => {
+            console.log("[poc maxday] - Ending Async Error");
+            span.finish();
+        });
+      } catch(e) {
+        console.log("[poc maxday] - Ending");
+        span.finish();
+      } finally {
+        return res
+      }
+    }
+});

@@ -1,0 +1,27 @@
+service: python-function-REY
+
+provider:
+  name: aws
+  tracing:
+    lambda: false
+    apiGateway: false
+  memorySize: 256
+  region: us-east-1
+  timeout: 900
+  environment:
+    DD_API_KEY: ${env:DD_STAGING_API_KEY}
+    DD_LOG_LEVEL: DEBUG
+    DD_SITE: ${env:DD_STAGING_SITE}
+    DD_TRACE_DEBUG: true
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_STAGING_API_KEY}
+
+functions:
+  python:
+    runtime: python3.9
+    handler: handler.handler
