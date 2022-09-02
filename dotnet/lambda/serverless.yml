@@ -1,41 +1,47 @@
 service: dotnet-function-rey
 
+frameworkVersion: ^3.21.0
+
 provider:
   name: aws
   region: sa-east-1
   tracing:
-    lambda: true
-    apiGateway: true
+    lambda: false
   environment:
-    CORECLR_ENABLE_PROFILING: 1
-    CORECLR_PROFILER: "{846F5F1C-F9AE-4B07-969E-05C26BC060D8}"
-    CORECLR_PROFILER_PATH: "/opt/datadog/Datadog.Trace.ClrProfiler.Native.so"
+    AWS_LAMBDA_EXEC_WRAPPER: /opt/datadog_wrapper
     DD_API_KEY: ${env:DD_API_KEY}
-    DD_DOTNET_TRACER_HOME: "/opt/datadog"
+    DD_CAPTURE_LAMBDA_PAYLOAD: true
+    DD_DOTNET_TRACER_HOME: /opt/datadog
+    DD_INTEGRATIONS: /opt/datadog/integrations.json
     DD_LOGS_ENABLED: true
+    DD_LOGS_INJECTION: true
     DD_LOG_LEVEL: DEBUG
+    DD_MERGE_XRAY_TRACES: false
     DD_SERVERLESS_LOGS_ENABLED: true
     DD_SERVICE: dotnet-function-rey
+    DD_SITE: datadoghq.com
+    DD_TAGS: ${file(./dynamic_tags.js):datetime}
     DD_TRACE_DEBUG: true
     DD_TRACE_ENABLED: true
+    DD_TRACE_MANAGED_SERVICES: true
+  layers:
+    - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:14
+    #- arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-dotnet:5
+    - arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:3
 
-plugins:
-  - serverless-plugin-datadog
-
-custom:
-  datadog:
-    apiKey: ${env:DD_API_KEY}
+package:
+  artifact: handler.zip
 
 functions:
-  dotnet:
-    runtime: dotnet6
-    handler: MyFunction::MyFunction.Function::FunctionHandler
-    package:
-      individually: true
-      artifact: handler.zip
-    events:
-      - schedule:
-          rate: rate(1 minute)
-          input:
-            key1: value1
-            key2: value2
+  dict-param:
+    handler: MyFunction::MyFunction.Function::HandlerDictParam
+  string-param:
+    handler: MyFunction::MyFunction.Function::HandlerStringParam
+  dict-param-wrapped:
+    handler: MyFunction::MyFunction.Function::HandlerDictParamWrapped
+  apigateway-param:
+    handler: MyFunction::MyFunction.Function::HandlerAPIGatewayParam
+  no-param:
+    handler: MyFunction::MyFunction.Function::HandlerNoParam
+  custom-struct-param:
+    handler: MyFunction::MyFunction.Function::HandlerCustomStructParam
