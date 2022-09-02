@@ -66,10 +66,5 @@ public class Function
     { return await this.handle("HandlerCustomStructParam"); }
 
     // TODO: Also test other return types
-
-    public static async Task Main(string[] args)
-    {
-        MyInputType input = new MyInputType("key1", "key2", "key3");
-        await new Function().HandlerCustomStructParam(input, null);
-    }
+    // TODO: Also test non-async handlers
 }
