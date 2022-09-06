@@ -25,9 +25,8 @@ provider:
     DD_TRACE_ENABLED: true
     DD_TRACE_MANAGED_SERVICES: true
   layers:
-    - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:14
-    #- arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-dotnet:5
-    - arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:3
+    - arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-dotnet:5
+    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:28
 
 package:
   artifact: handler.zip
