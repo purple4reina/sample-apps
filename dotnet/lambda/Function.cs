@@ -12,39 +12,6 @@ public class Function
 {
     static readonly HttpClient client = new HttpClient();
 
-    private async Task<string> handle(string functionName)
-    {
-        LambdaLogger.Log($"Debug 🌈 {functionName} executing");
-        using (var scope = Tracer.Instance.StartActive("my-span"))
-        {
-            scope.Span.SetTag("context", functionName);
-
-            string responseBody = await client.GetStringAsync("https://example.com");
-        }
-        return "Hello World!";
-    }
-
-    // incorrect parenting
-    public async Task<string> HandlerDictParam(Dictionary < string, string > input, ILambdaContext context)
-    { return await this.handle("HandlerDictParam"); }
-
-    // correct parenting
-    public async Task<string> HandlerStringParam(string input, ILambdaContext context)
-    { return await this.handle("HandlerStringParam"); }
-
-    // fails
-    [LambdaSerializer(typeof(Dictionary < string, string >))]
-    public async Task<string> HandlerDictParamWrapped1(Dictionary < string, string > input, ILambdaContext context)
-    { return await this.handle("HandlerDictParamWrapped1"); }
-
-    // correct parenting
-    public async Task<string> HandlerAPIGatewayParam(APIGatewayProxyRequest request, ILambdaContext context)
-    { return await this.handle("HandlerAPIGatewayParam"); }
-
-    // correct parenting
-    public async Task<string> HandlerNoParam()
-    { return await this.handle("HandlerNoParam"); }
-
     public struct MyInputType
     {
         public MyInputType(string key1, string key2, string key3)
@@ -61,15 +28,51 @@ public class Function
         public override string ToString() => $"({Key1}, {Key2}, {Key3})";
     }
 
-    // incorrect parenting
-    public async Task<string> HandlerCustomStructParam(MyInputType input, ILambdaContext context)
-    { return await this.handle("HandlerCustomStructParam"); }
-
-    // TODO: Also test other return types
-
-    public static async Task Main(string[] args)
+    private string handle(string functionName)
     {
-        MyInputType input = new MyInputType("key1", "key2", "key3");
-        await new Function().HandlerCustomStructParam(input, null);
+        LambdaLogger.Log($"Debug 🌈 {functionName} executing");
+        using (var scope = Tracer.Instance.StartActive($"my-span-{functionName}"))
+        {
+            scope.Span.SetTag("context", functionName);
+
+            var task = Task.Run(() => client.GetStringAsync("https://example.com"));
+            task.Wait();
+            var responseBody = task.Result;
+        }
+        return "Hello World!";
     }
+
+    // ASYNC HANDLERS
+
+    public async Task<string> HandlerDictParam(Dictionary < string, string > input, ILambdaContext context)
+    { return this.handle("HandlerDictParam"); }
+
+    public async Task<string> HandlerStringParam(string input, ILambdaContext context)
+    { return this.handle("HandlerStringParam"); }
+
+    public async Task<string> HandlerAPIGatewayParam(APIGatewayProxyRequest request, ILambdaContext context)
+    { return this.handle("HandlerAPIGatewayParam"); }
+
+    public async Task<string> HandlerNoParam()
+    { return this.handle("HandlerNoParam"); }
+
+    public async Task<string> HandlerCustomStructParam(MyInputType input, ILambdaContext context)
+    { return this.handle("HandlerCustomStructParam"); }
+
+    // NON-ASYNC HANDLERS
+
+    public string HandlerDictParamSync(Dictionary < string, string > input, ILambdaContext context)
+    { return this.handle("HandlerDictParamSync"); }
+
+    public string HandlerStringParamSync(string input, ILambdaContext context)
+    { return this.handle("HandlerStringParamSync"); }
+
+    public string HandlerAPIGatewayParamSync(APIGatewayProxyRequest request, ILambdaContext context)
+    { return this.handle("HandlerAPIGatewayParamSync"); }
+
+    public string HandlerNoParamSync()
+    { return this.handle("HandlerNoParamSync"); }
+
+    public string HandlerCustomStructParamSync(MyInputType input, ILambdaContext context)
+    { return this.handle("HandlerCustomStructParamSync"); }
 }

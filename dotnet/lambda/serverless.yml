@@ -5,6 +5,7 @@ frameworkVersion: ^3.21.0
 provider:
   name: aws
   region: sa-east-1
+  runtime: dotnet6
   tracing:
     lambda: false
   environment:
@@ -32,15 +33,26 @@ package:
   artifact: handler.zip
 
 functions:
+  # async handlers
   dict-param:
     handler: MyFunction::MyFunction.Function::HandlerDictParam
   string-param:
     handler: MyFunction::MyFunction.Function::HandlerStringParam
-  dict-param-wrapped:
-    handler: MyFunction::MyFunction.Function::HandlerDictParamWrapped
   apigateway-param:
     handler: MyFunction::MyFunction.Function::HandlerAPIGatewayParam
   no-param:
     handler: MyFunction::MyFunction.Function::HandlerNoParam
   custom-struct-param:
     handler: MyFunction::MyFunction.Function::HandlerCustomStructParam
+
+  # non-async handlers
+  dict-param-sync:
+    handler: MyFunction::MyFunction.Function::HandlerDictParamSync
+  string-param-sync:
+    handler: MyFunction::MyFunction.Function::HandlerStringParamSync
+  apigateway-param-sync:
+    handler: MyFunction::MyFunction.Function::HandlerAPIGatewayParamSync
+  no-param-sync:
+    handler: MyFunction::MyFunction.Function::HandlerNoParamSync
+  custom-struct-param-sync:
+    handler: MyFunction::MyFunction.Function::HandlerCustomStructParamSync
