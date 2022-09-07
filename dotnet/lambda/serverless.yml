@@ -21,7 +21,6 @@ provider:
     DD_SERVERLESS_LOGS_ENABLED: true
     DD_SERVICE: dotnet-function-rey
     DD_SITE: datadoghq.com
-    DD_TAGS: ${file(./dynamic_tags.js):datetime}
     DD_TRACE_DEBUG: true
     DD_TRACE_ENABLED: true
     DD_TRACE_MANAGED_SERVICES: true
