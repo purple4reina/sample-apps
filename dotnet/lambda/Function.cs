@@ -42,7 +42,7 @@ public class Function
         return "Hello World!";
     }
 
-    // ASYNC HANDLERS
+    // ASYNC HANDLERS, RETURN STRING
 
     public async Task<string> HandlerDictParam(Dictionary < string, string > input, ILambdaContext context)
     { return this.handle("HandlerDictParam"); }
@@ -59,7 +59,24 @@ public class Function
     public async Task<string> HandlerCustomStructParam(MyInputType input, ILambdaContext context)
     { return this.handle("HandlerCustomStructParam"); }
 
-    // NON-ASYNC HANDLERS
+    // ASYNC HANDLERS, RETURN VOID
+
+    public async Task HandlerDictParamVoid(Dictionary < string, string > input, ILambdaContext context)
+    { this.handle("HandlerDictParamVoid"); }
+
+    public async Task HandlerStringParamVoid(string input, ILambdaContext context)
+    { this.handle("HandlerStringParamVoid"); }
+
+    public async Task HandlerAPIGatewayParamVoid(APIGatewayProxyRequest request, ILambdaContext context)
+    { this.handle("HandlerAPIGatewayParamVoid"); }
+
+    public async Task HandlerNoParamVoid()
+    { this.handle("HandlerNoParamVoid"); }
+
+    public async Task HandlerCustomStructParamVoid(MyInputType input, ILambdaContext context)
+    { this.handle("HandlerCustomStructParamVoid"); }
+
+    // NON-ASYNC HANDLERS, RETURN STRING
 
     public string HandlerDictParamSync(Dictionary < string, string > input, ILambdaContext context)
     { return this.handle("HandlerDictParamSync"); }
@@ -75,4 +92,21 @@ public class Function
 
     public string HandlerCustomStructParamSync(MyInputType input, ILambdaContext context)
     { return this.handle("HandlerCustomStructParamSync"); }
+
+    // NON-ASYNC HANDLERS, RETURN VOID
+
+    public void HandlerDictParamSyncVoid(Dictionary < string, string > input, ILambdaContext context)
+    { this.handle("HandlerDictParamSyncVoid"); }
+
+    public void HandlerStringParamSyncVoid(string input, ILambdaContext context)
+    { this.handle("HandlerStringParamSyncVoid"); }
+
+    public void HandlerAPIGatewayParamSyncVoid(APIGatewayProxyRequest request, ILambdaContext context)
+    { this.handle("HandlerAPIGatewayParamSyncVoid"); }
+
+    public void HandlerNoParamSyncVoid()
+    { this.handle("HandlerNoParamSyncVoid"); }
+
+    public void HandlerCustomStructParamSyncVoid(MyInputType input, ILambdaContext context)
+    { this.handle("HandlerCustomStructParamSyncVoid"); }
 }

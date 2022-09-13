@@ -16,7 +16,7 @@ provider:
     DD_INTEGRATIONS: /opt/datadog/integrations.json
     DD_LOGS_ENABLED: true
     DD_LOGS_INJECTION: true
-    DD_LOG_LEVEL: DEBUG
+    DD_LOG_LEVEL: debug
     DD_MERGE_XRAY_TRACES: false
     DD_SERVERLESS_LOGS_ENABLED: true
     DD_SERVICE: dotnet-function-rey
@@ -25,14 +25,36 @@ provider:
     DD_TRACE_ENABLED: true
     DD_TRACE_MANAGED_SERVICES: true
   layers:
-    - arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-dotnet:5
-    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:28
+    # public version
+    #- arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-dotnet:5
+
+    # hard codes signature arg names
+    #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:11
+
+    # even more debug logging with rainbows
+    - arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:12
+
+    # public version
+    #- arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:28
+
+    # debug logging and catting tracer debug files
+    #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:14
+
+    # the above but doesn't set any envvars in the wrapper script for dotnet
+    # (other than debug logging)
+    #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:15
+
+    # adds the env vars back, but uses /var/task instead of /opt for everything
+    #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:16
+
+    # logging trace payloads and catting tracer debug files
+    - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:19
 
 package:
   artifact: handler.zip
 
 functions:
-  # async handlers
+  # async handlers, return string
   dict-param:
     handler: MyFunction::MyFunction.Function::HandlerDictParam
   string-param:
@@ -43,8 +65,10 @@ functions:
     handler: MyFunction::MyFunction.Function::HandlerNoParam
   custom-struct-param:
     handler: MyFunction::MyFunction.Function::HandlerCustomStructParam
+    environment:
+      REY_PARAM_TYPE: MyInputType
 
-  # non-async handlers
+  # non-async handlers, return string
   dict-param-sync:
     handler: MyFunction::MyFunction.Function::HandlerDictParamSync
   string-param-sync:
@@ -55,3 +79,33 @@ functions:
     handler: MyFunction::MyFunction.Function::HandlerNoParamSync
   custom-struct-param-sync:
     handler: MyFunction::MyFunction.Function::HandlerCustomStructParamSync
+    environment:
+      REY_PARAM_TYPE: MyInputType
+
+  # async handlers, return void
+  dict-param-void:
+    handler: MyFunction::MyFunction.Function::HandlerDictParamVoid
+  string-param-void:
+    handler: MyFunction::MyFunction.Function::HandlerStringParamVoid
+  apigateway-param-void:
+    handler: MyFunction::MyFunction.Function::HandlerAPIGatewayParamVoid
+  no-param-void:
+    handler: MyFunction::MyFunction.Function::HandlerNoParamVoid
+  custom-struct-param-void:
+    handler: MyFunction::MyFunction.Function::HandlerCustomStructParamVoid
+    environment:
+      REY_PARAM_TYPE: MyInputType
+
+  # non-async handlers, return void
+  dict-param-sync-void:
+    handler: MyFunction::MyFunction.Function::HandlerDictParamSyncVoid
+  string-param-sync-void:
+    handler: MyFunction::MyFunction.Function::HandlerStringParamSyncVoid
+  apigateway-param-sync-void:
+    handler: MyFunction::MyFunction.Function::HandlerAPIGatewayParamSyncVoid
+  no-param-sync-void:
+    handler: MyFunction::MyFunction.Function::HandlerNoParamSyncVoid
+  custom-struct-param-sync-void:
+    handler: MyFunction::MyFunction.Function::HandlerCustomStructParamSyncVoid
+    environment:
+      REY_PARAM_TYPE: MyInputType
