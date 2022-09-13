@@ -21,9 +21,9 @@ public class Function
             Key3 = key3;
         }
 
-        public string Key1 { get; }
-        public string Key2 { get; }
-        public string Key3 { get; }
+        public string Key1 { get; set; }
+        public string Key2 { get; set; }
+        public string Key3 { get; set; }
 
         public override string ToString() => $"({Key1}, {Key2}, {Key3})";
     }
