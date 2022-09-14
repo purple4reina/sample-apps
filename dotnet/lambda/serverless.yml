@@ -51,7 +51,7 @@ provider:
     - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:19
 
 package:
-  artifact: handler.zip
+  artifact: .package/handler.zip
 
 functions:
   # async handlers, return string
