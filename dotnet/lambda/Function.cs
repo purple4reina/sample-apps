@@ -33,8 +33,10 @@ public class Function
         LambdaLogger.Log($"Debug 🌈 {functionName} executing");
         using (var scope = Tracer.Instance.StartActive($"my-span-{functionName}"))
         {
-            scope.Span.SetTag("context", functionName);
-
+            // TODO: change this to something more "common", have separate
+            // methods for sync/async
+            // TODO: try using something non-task based and see if that fixes
+            // things
             var task = Task.Run(() => client.GetStringAsync("https://example.com"));
             task.Wait();
             var responseBody = task.Result;

@@ -25,6 +25,8 @@ provider:
     DD_TRACE_ENABLED: true
     DD_TRACE_MANAGED_SERVICES: true
   layers:
+    ##### TRACER LAYERS #####
+
     # public version
     #- arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-dotnet:5
 
@@ -32,7 +34,15 @@ provider:
     #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:11
 
     # even more debug logging with rainbows
-    - arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:12
+    #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:12
+
+    # built from tracer v2.14.0 pulled from github
+    #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:13
+
+    # built from tracer v2.14.0 pulled from github, plus manual arg override
+    - arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:14
+
+    ##### EXTENSION LAYERS #####
 
     # public version
     #- arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:28
