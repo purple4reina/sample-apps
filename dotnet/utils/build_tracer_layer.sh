@@ -17,7 +17,10 @@ DOTNET_TRACER_DIR=$HOME/dd/dd-trace-dotnet
     DOCKER_DEFAULT_PLATFORM=linux/amd64 ./build_in_docker.sh BuildTracerHome
 
     cd $CURRENT_DIR
-    rm -rf datadog dotnet-tracer.zip
+    rm -rf datadog dotnet-tracer-*.zip
     cp -r $DOTNET_TRACER_DIR/shared/bin/monitoring-home $CURRENT_DIR/datadog
-    zip -r dotnet-tracer.zip datadog
+
+    sha=$(git rev-parse HEAD)
+    datetime=$(date '+%Y%m%d%H%M')
+    zip -r dotnet-tracer-${datetime}-${sha:0:7}.zip datadog
 )
