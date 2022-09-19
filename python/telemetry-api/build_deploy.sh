@@ -1,20 +1,30 @@
 #!/bin/bash
 
-PACKDIR=.package
+PACKAGE_DIR=.package
+SCRIPT_DIR=$(pwd)
 
 echo "📦 packaging release"
 echo
 
-mkdir -p $PACKDIR/extensions
-mkdir -p $PACKDIR/python_example_telemetry_api_extension
+rm -rf $PACKAGE_DIR
+mkdir -p $PACKAGE_DIR/extensions
+mkdir -p $PACKAGE_DIR/python_example_telemetry_api_extension
 
-chmod 755 extension/extension.py
-pip3 install -r requirements.txt -t $PACKDIR/python_example_telemetry_api_extension/
-chmod 755 extension/python_example_telemetry_api_extension
+cp -r extensions/python_example_telemetry_api_extension $PACKAGE_DIR/extensions
+cp -r extensions/*.py $PACKAGE_DIR/python_example_telemetry_api_extension
 
-cp extension/python_example_telemetry_api_extension $PACKDIR/extensions
-cp extension/*.py $PACKDIR/python_example_telemetry_api_extension
-zip -r $PACKDIR/extension.zip $PACKDIR/extensions $PACKDIR/python_example_telemetry_api_extension
+pip3 install \
+    -r requirements.txt \
+    -t $PACKAGE_DIR/python_example_telemetry_api_extension/
+
+cd $PACKAGE_DIR
+
+chmod 755 python_example_telemetry_api_extension/extension.py
+chmod 755 extensions/python_example_telemetry_api_extension
+
+zip -r extension.zip extensions python_example_telemetry_api_extension
+
+cd $SCRIPT_DIR
 
 echo
 echo "🚀 deploying package"
