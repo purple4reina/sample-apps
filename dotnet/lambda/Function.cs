@@ -8,7 +8,7 @@ using System.Net;
 
 namespace MyFunction;
 
-public class Function
+public class Function : BaseLambdaHandler
 {
     static readonly HttpClient client = new HttpClient();
 
@@ -111,4 +111,9 @@ public class Function
 
     public void HandlerCustomStructParamSyncVoid(MyInputType input, ILambdaContext context)
     { this.handle("HandlerCustomStructParamSyncVoid"); }
+
+    // INHERITED HANDLERS
+
+    public new async Task<APIGatewayHttpApiV2ProxyResponse> InheritedHandlerInChildClass(APIGatewayHttpApiV2ProxyRequest input, ILambdaContext context)
+    { return await base.InheritedHandlerInChildClass(input, context); }
 }

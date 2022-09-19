@@ -119,3 +119,9 @@ functions:
     handler: MyFunction::MyFunction.Function::HandlerCustomStructParamSyncVoid
     environment:
       REY_PARAM_TYPE: MyInputType
+
+  # inherited handlers
+  inherited-in-child-class:
+    handler: MyFunction::MyFunction.Function::InheritedHandlerInChildClass
+  inherited-not-in-child-class:
+    handler: MyFunction::MyFunction.Function::InheritedHandlerNotInChildClass
