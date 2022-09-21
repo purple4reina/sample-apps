@@ -5,7 +5,6 @@ provider:
   region: sa-east-1
   runtime: python3.9
   environment:
-    DD_LOG_LEVEL: DEBUG
     DD_TRACE_DEBUG: true
   layers:
     - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:20
@@ -16,6 +15,7 @@ plugins:
 custom:
   datadog:
     apiKey: ${env:DD_API_KEY}
+    logLevel: DEBUG
 
 functions:
   simple:
