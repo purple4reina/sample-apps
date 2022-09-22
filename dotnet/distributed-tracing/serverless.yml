@@ -1,0 +1,34 @@
+service: dotnet-distributed-tracing-rey
+
+frameworkVersion: ^3.21.0
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: dotnet6
+  tracing:
+    lambda: false
+    apiGateway: false
+  environment:
+    REY_FUNCTION_URL_BASE: { "Fn::Join" : ["", [" https://", { "Ref" : "ApiGatewayRestApi" }, ".execute-api.${aws:region}.amazonaws.com/${sls:stage}" ] ] }
+
+package:
+  artifact: .package/handler.zip
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+    logLevel: DEBUG
+
+functions:
+  function-1:
+    handler: Function::Function.Function::HandlerFunction1
+    events:
+      - http: GET /function-1
+  function-2:
+    handler: Function::Function.Function::HandlerFunction2
+    events:
+      - http: GET /function-2
