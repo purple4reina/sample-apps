@@ -40,12 +40,15 @@ provider:
     #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:13
 
     # built from tracer v2.14.0 pulled from github, plus manual arg override
-    - arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:14
+    #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:14
+
+    # build of https://github.com/DataDog/dd-trace-dotnet/pull/3275
+    - arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:17
 
     ##### EXTENSION LAYERS #####
 
     # public version
-    #- arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:28
+    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:29
 
     # debug logging and catting tracer debug files
     #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:14
@@ -58,7 +61,7 @@ provider:
     #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:16
 
     # logging trace payloads and catting tracer debug files
-    - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:19
+    #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:19
 
 package:
   artifact: .package/handler.zip
