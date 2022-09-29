@@ -1,19 +1,29 @@
-service: python-telemetry-api-rey
-
-frameworkVersion: ^3.21.0
+service: python-telemetry-rey
 
 provider:
   name: aws
-  runtime: python3.9
   region: sa-east-1
+  runtime: python3.9
+  tracing:
+    lambda: true
+    apiGateway: true
+  environment:
+    # Use this to switch between logs/telemetry apis when using REY ext 34
+    REY_USE_TELEMETRY_API: true
   layers:
-    - !Ref ExtensionreyLambdaLayer
+    # prints payloads for all but "extension" type events
+    - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:34
 
-layers:
-  extensionrey:
-    package:
-      artifact: .package/extension.zip
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+    logLevel: DEBUG
 
 functions:
-  simple-handler:
-    handler: handler.handler.handler
+  simple:
+    handler: handler.handler
+    events:
+      - http: GET /simple
