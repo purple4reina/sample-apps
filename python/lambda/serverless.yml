@@ -25,4 +25,4 @@ functions:
   simple:
     handler: handler.handler
     events:
-      - http: GET /execute-simple
+      - http: GET /simple
