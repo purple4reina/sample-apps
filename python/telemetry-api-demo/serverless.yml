@@ -1,0 +1,19 @@
+service: python-telemetry-api-rey
+
+frameworkVersion: ^3.21.0
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: sa-east-1
+  layers:
+    - !Ref ExtensionreyLambdaLayer
+
+layers:
+  extensionrey:
+    package:
+      artifact: .package/extension.zip
+
+functions:
+  simple-handler:
+    handler: handler.handler.handler
