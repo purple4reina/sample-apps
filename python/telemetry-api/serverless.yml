@@ -12,6 +12,7 @@ provider:
     REY_USE_TELEMETRY_API: true
   layers:
     # prints payloads for all but "extension" type events
+    # must manually remove one of the extensions before running
     - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:34
 
 plugins:
@@ -25,5 +26,15 @@ custom:
 functions:
   simple:
     handler: handler.handler
-    events:
-      - http: GET /simple
+  long-init:
+    handler: handler.handler
+    environment:
+      REY_INIT_SLEEP_TIME: 5.0
+  fail-init:
+    handler: handler.handler
+    environment:
+      REY_INIT_FAIL: true
+  timeout-init:
+    handler: handler.handler
+    environment:
+      REY_INIT_SLEEP_TIME: 1000000.0

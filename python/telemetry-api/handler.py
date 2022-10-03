@@ -1,4 +1,19 @@
+import time
+start = time.time()
+
 import functools
+import os
+
+sleep_time = float(os.environ.get('REY_INIT_SLEEP_TIME', 0))
+print(f'sleeping for {sleep_time} seconds')
+time.sleep(sleep_time)
+
+should_fail = os.environ.get('REY_INIT_FAIL', 'False').lower() in ('true', '1')
+print(f'init will fail: {should_fail}')
+assert not should_fail, 'oops, init failed'
+
+end = time.time()
+print(f'init code block took {end-start} sec to run')
 
 def log_request_response(fn):
     @functools.wraps(fn)
