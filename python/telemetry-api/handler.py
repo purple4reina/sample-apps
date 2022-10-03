@@ -1,19 +1,42 @@
 import time
 start = time.time()
 
-import functools
-import os
+try:
+    import functools
+    import os
 
-sleep_time = float(os.environ.get('REY_INIT_SLEEP_TIME', 0))
-print(f'sleeping for {sleep_time} seconds')
-time.sleep(sleep_time)
+    env_sleep = os.environ.get('REY_INIT_SLEEP_TIME', 0)
+    env_fail_first = os.environ.get('REY_INIT_FAIL_FIRST_TIME') == 'true'
+    env_fail_second = os.environ.get('REY_INIT_FAIL_SECOND_TIME') == 'true'
 
-should_fail = os.environ.get('REY_INIT_FAIL', 'False').lower() in ('true', '1')
-print(f'init will fail: {should_fail}')
-assert not should_fail, 'oops, init failed'
+    print('found environment:\n'
+          f'REY_INIT_SLEEP_TIME={env_sleep}\n'
+          f'REY_INIT_FAIL_FIRST_TIME={env_fail_first}\n'
+          f'REY_INIT_FAIL_SECOND_TIME={env_fail_second}')
 
-end = time.time()
-print(f'init code block took {end-start} sec to run')
+    print(f'sleeping for {env_sleep} seconds')
+    time.sleep(env_sleep)
+
+    init_count_file = '/tmp/init-count'
+    init_count = 1
+    if os.path.exists(init_count_file):
+        with open(init_count_file) as f:
+            init_count = int(f.read() or 0) + 1
+    with open(init_count_file, 'w') as f:
+        f.write(str(init_count))
+
+    print(f'first init will fail: {env_fail_first}\n'
+          f'second init will fail: {env_fail_second}\n'
+          f'this is init number {init_count}')
+
+    if init_count == 1:
+        assert not env_fail_first, 'oops, first init failed'
+    elif init_count == 2:
+        assert not env_fail_second, 'oops, second init failed'
+
+finally:
+    end = time.time()
+    print(f'init code block took {end-start} sec to run')
 
 def log_request_response(fn):
     @functools.wraps(fn)

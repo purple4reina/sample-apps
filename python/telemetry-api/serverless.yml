@@ -26,15 +26,33 @@ custom:
 functions:
   simple:
     handler: handler.handler
+    events:
+      - http: GET /simple
   long-init:
     handler: handler.handler
     environment:
       REY_INIT_SLEEP_TIME: 5.0
-  fail-init:
-    handler: handler.handler
-    environment:
-      REY_INIT_FAIL: true
+    events:
+      - http: GET /long-init
   timeout-init:
     handler: handler.handler
     environment:
       REY_INIT_SLEEP_TIME: 1000000.0
+    events:
+      - http: GET /timeout-init
+  fail-first:
+    handler: handler.handler
+    environment:
+      REY_INIT_SLEEP_TIME: 1.0
+      REY_INIT_FAIL_FIRST_TIME: true
+      REY_INIT_FAIL_SECOND_TIME: false
+    events:
+      - http: GET /fail-first
+  fail-both:
+    handler: handler.handler
+    environment:
+      REY_INIT_SLEEP_TIME: 1.0
+      REY_INIT_FAIL_FIRST_TIME: true
+      REY_INIT_FAIL_SECOND_TIME: true
+    events:
+      - http: GET /fail-both
