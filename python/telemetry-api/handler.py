@@ -5,17 +5,19 @@ try:
     import functools
     import os
 
-    env_sleep = os.environ.get('REY_INIT_SLEEP_TIME', 0)
+    env_init_sleep = int(os.environ.get('REY_INIT_SLEEP_TIME', 0))
+    env_func_sleep = int(os.environ.get('REY_FUNCTION_SLEEP_TIME', 0))
     env_fail_first = os.environ.get('REY_INIT_FAIL_FIRST_TIME') == 'true'
     env_fail_second = os.environ.get('REY_INIT_FAIL_SECOND_TIME') == 'true'
 
     print('found environment:\n'
-          f'REY_INIT_SLEEP_TIME={env_sleep}\n'
+          f'REY_INIT_SLEEP_TIME={env_init_sleep}\n'
           f'REY_INIT_FAIL_FIRST_TIME={env_fail_first}\n'
-          f'REY_INIT_FAIL_SECOND_TIME={env_fail_second}')
+          f'REY_INIT_FAIL_SECOND_TIME={env_fail_second}\n'
+          f'REY_FUNCTION_SLEEP_TIME={env_func_sleep}')
 
-    print(f'sleeping for {env_sleep} seconds')
-    time.sleep(env_sleep)
+    print(f'sleeping for {env_init_sleep} seconds')
+    time.sleep(env_init_sleep)
 
     init_count_file = '/tmp/init-count'
     init_count = 1
@@ -53,6 +55,9 @@ def log_request_response(fn):
 
 @log_request_response
 def handler(event, context):
+    print(f'handler executing, sleeping for {env_func_sleep} seconds')
+    time.sleep(env_func_sleep)
+    print('done sleeping')
     return {
             'statusCode': 200,
             'body': '{"Hello": "World"}',
