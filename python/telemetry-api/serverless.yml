@@ -4,6 +4,7 @@ provider:
   name: aws
   region: sa-east-1
   runtime: python3.9
+  timeout: 20  # default is 6
   tracing:
     lambda: true
     apiGateway: true
@@ -44,7 +45,7 @@ functions:
   fail-first:
     handler: handler.handler
     environment:
-      REY_INIT_SLEEP_TIME: 1.0
+      REY_INIT_SLEEP_TIME: 2.0
       REY_INIT_FAIL_FIRST_TIME: true
       REY_INIT_FAIL_SECOND_TIME: false
     events:
@@ -57,3 +58,4 @@ functions:
       REY_INIT_FAIL_SECOND_TIME: true
     events:
       - http: GET /fail-both
+  # TODO: OOM
