@@ -5,6 +5,10 @@ provider:
   region: sa-east-1
   runtime: python3.9
 
+package:
+  patterns:
+    - '*.py'
+
 plugins:
   - serverless-plugin-datadog
 
