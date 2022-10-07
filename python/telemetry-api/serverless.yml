@@ -13,9 +13,12 @@ provider:
     REY_USE_TELEMETRY_API: true
     REY_FUNCTION_SLEEP_TIME: 3.0
   layers:
-    # prints payloads for all but "extension" type events
     # must manually remove one of the extensions before running
-    - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:34
+    - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:46
+
+package:
+  include:
+    - handler.py
 
 plugins:
   - serverless-plugin-datadog
@@ -42,14 +45,14 @@ functions:
       REY_INIT_SLEEP_TIME: 1000000.0
     events:
       - http: GET /timeout-init
-  fail-first:
+  fail-once:
     handler: handler.handler
     environment:
       REY_INIT_SLEEP_TIME: 2.0
       REY_INIT_FAIL_FIRST_TIME: true
       REY_INIT_FAIL_SECOND_TIME: false
     events:
-      - http: GET /fail-first
+      - http: GET /fail-once
   fail-both:
     handler: handler.handler
     environment:
