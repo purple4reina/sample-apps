@@ -3,14 +3,18 @@ module github.com/DataDog/sample-apps/go/lambda
 go 1.18
 
 require (
+	github.com/DataDog/datadog-lambda-go v1.7.0
+	github.com/aws/aws-lambda-go v1.29.0
+)
+
+require (
 	github.com/DataDog/datadog-agent/pkg/obfuscate v0.35.0 // indirect
+	github.com/DataDog/datadog-agent/pkg/remoteconfig/state v0.40.0-rc.2.0.20220929172920-a43645df5cf2 // indirect
 	github.com/DataDog/datadog-go v4.8.3+incompatible // indirect
 	github.com/DataDog/datadog-go/v5 v5.1.0 // indirect
-	github.com/DataDog/datadog-lambda-go v1.7.0 // indirect
 	github.com/DataDog/sketches-go v1.4.1 // indirect
 	github.com/Microsoft/go-winio v0.5.2 // indirect
 	github.com/andybalholm/brotli v1.0.4 // indirect
-	github.com/aws/aws-lambda-go v1.29.0 // indirect
 	github.com/aws/aws-sdk-go v1.43.37 // indirect
 	github.com/aws/aws-xray-sdk-go v1.6.0 // indirect
 	github.com/cenkalti/backoff v2.2.1+incompatible // indirect
@@ -24,7 +28,9 @@ require (
 	github.com/klauspost/compress v1.15.1 // indirect
 	github.com/philhofer/fwd v1.1.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/secure-systems-lab/go-securesystemslib v0.3.1 // indirect
 	github.com/sony/gobreaker v0.5.0 // indirect
+	github.com/theupdateframework/go-tuf v0.3.0 // indirect
 	github.com/tinylib/msgp v1.1.6 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.35.0 // indirect
@@ -38,3 +44,5 @@ require (
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/DataDog/dd-trace-go.v1 v1.41.0 // indirect
 )
+
+replace gopkg.in/DataDog/dd-trace-go.v1 => /Users/rey.abolofia/go/src/github.com/DataDog/dd-trace-go

@@ -26,6 +26,7 @@ func logInputOutput(handler handlerFunc) handlerFunc {
 }
 
 func myHandler(ctx context.Context, event interface{}) (string, error) {
-	fmt.Println("🎨🎨🎨🎨🎨 Hello World! 🎨🎨🎨🎨🎨")
-	return "Hello World!", nil
+	out := "🎨🎨🎨🎨🎨 Hello World! 🎨🎨🎨🎨🎨"
+	fmt.Println(out)
+	return out, nil
 }
