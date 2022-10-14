@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "serverless-plugin-datadog": "^5.9.0"
+  }
+}

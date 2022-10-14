@@ -1,0 +1,30 @@
+service: rey-go-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: go1.x
+  environment:
+    DD_API_KEY: ${env:DD_API_KEY}
+  layers:
+    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:29
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    logLevel: DEBUG
+    addExtension: false
+
+package:
+ exclude:
+   - ./**
+ include:
+   - ./bin/**
+
+functions:
+  simple:
+    handler: bin/handler
+    events:
+      - http: GET /simple
