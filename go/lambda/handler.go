@@ -26,11 +26,15 @@ func logInputOutput(handler handlerFunc) handlerFunc {
 	}
 }
 
-func myHandler(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	out := "🎨🎨🎨🎨🎨 Hello World! 🎨🎨🎨🎨🎨"
-	fmt.Println(out)
-	return events.APIGatewayProxyResponse{
-		Body:       out,
+var (
+	body = "🎨🎨🎨🎨🎨 Hello World! 🎨🎨🎨🎨🎨"
+	resp = events.APIGatewayProxyResponse{
+		Body:       body,
 		StatusCode: 200,
-	}, nil
+	}
+)
+
+func myHandler(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	fmt.Println(body)
+	return resp, nil
 }
