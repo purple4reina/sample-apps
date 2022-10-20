@@ -1,4 +1,4 @@
-service: dotnet-function-rey
+service: rey-dotnet-lambda
 
 frameworkVersion: ^3.21.0
 
@@ -28,40 +28,18 @@ provider:
     ##### TRACER LAYERS #####
 
     # public version
-    #- arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-dotnet:5
-
-    # hard codes signature arg names
-    #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:11
-
-    # even more debug logging with rainbows
-    #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:12
-
-    # built from tracer v2.14.0 pulled from github
-    #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:13
-
-    # built from tracer v2.14.0 pulled from github, plus manual arg override
-    #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:14
+    - arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-dotnet:6
 
     # build of https://github.com/DataDog/dd-trace-dotnet/pull/3275
-    - arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:17
+    #- arn:aws:lambda:sa-east-1:601427279990:layer:dotnet-tracer-rey:18
 
     ##### EXTENSION LAYERS #####
 
     # public version
-    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:29
+    #- arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:29
 
-    # debug logging and catting tracer debug files
-    #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:14
-
-    # the above but doesn't set any envvars in the wrapper script for dotnet
-    # (other than debug logging)
-    #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:15
-
-    # adds the env vars back, but uses /var/task instead of /opt for everything
-    #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:16
-
-    # logging trace payloads and catting tracer debug files
-    #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:19
+    # logs when StartInvocation route is hit
+    - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:57
 
 package:
   artifact: .package/handler.zip
