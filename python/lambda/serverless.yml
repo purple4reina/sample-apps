@@ -12,7 +12,8 @@ provider:
 
 package:
   patterns:
-    - '*.py'
+    - '!**'
+    - 'handler.py'
 
 plugins:
   - serverless-plugin-datadog
