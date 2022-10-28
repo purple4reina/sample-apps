@@ -1,8 +1,10 @@
 import functools
+import time
 
 def log_request_response(fn):
     @functools.wraps(fn)
     def log(event, context):
+        start = time.time()
         print(f'executing lambda handler {fn.__name__} with event {event} and context {context}')
         try:
             ret = fn(event, context)
@@ -11,6 +13,9 @@ def log_request_response(fn):
         except Exception as e:
             print(f'handler raised exception: [{e.__class__.__name__}] {e}')
             raise
+        finally:
+            end = time.time()
+            print(f'total time: {end-start}')
     return log
 
 @log_request_response

@@ -1,4 +1,4 @@
-service: python-function-rey
+service: rey-python-lambda
 
 provider:
   name: aws
