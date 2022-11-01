@@ -1,0 +1,28 @@
+service: rey-python-cold-starter
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+  stackTags:
+    DD_PRESERVE_STACK: true
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - 'lambda:*'
+          Resource: '*'
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+
+functions:
+  fn:
+    handler: handler.handler
+    events:
+      - schedule: rate(5 minutes)
+    environment:
+      REY_COLD_START_FNS: arn:aws:lambda:sa-east-1:601427279990:function:rey-python-lambda-dev-simple
