@@ -3,7 +3,7 @@ import datetime
 import json
 import os
 
-coldstart_fns = os.environ.get('REY_COLD_START_FNS').split(',')
+coldstart_fns = os.environ.get('REY_COLD_START_FNS', '').split(',')
 
 client = boto3.client('lambda')
 
