@@ -6,6 +6,7 @@ provider:
   runtime: go1.x
   environment:
     DD_API_KEY: ${env:DD_API_KEY}
+    DD_RUNTIME_METRICS_ENABLED: true
   layers:
     #- arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:29
     - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:62
@@ -19,10 +20,9 @@ custom:
     addExtension: false
 
 package:
- exclude:
-   - ./**
- include:
-   - ./bin/**
+  patterns:
+    - '!**'
+    - './bin/**'
 
 functions:
   simple:
