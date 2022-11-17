@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# curl -L https://gist.github.com/jcstorms1/4856d7be2ae390aa923275c3806be130/raw/c49b7e2dd48d497cb4925e745efd0ca1ab8cc102/datadog-agent -o datadog-agent
+
 if [[ -n $WITHOUT_WRAPPER ]]
 then
     echo 🚫 starting without wrapper
