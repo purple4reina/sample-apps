@@ -1,7 +1,19 @@
+#!/usr/bin/env python
+
 # This script is run on cron once per day
 #
 # If there is a weather advisory for the given US state, then post the advisory
 # in slack and send an email to the administrators.
+
+#######################
+# 1. INITIALIZE AGENT #
+#######################
+
+import ddtrace
+ddtrace.patch_all()
+
+import datadog_agent
+datadog_agent.init()
 
 import requests
 import emails
@@ -11,6 +23,11 @@ STATE = 'OR'
 ADMIN_EMAILS = 'rey.abolofia@datadoghq.com'
 SLACK_CHANNEL = '#weather-advisories'
 
+######################
+# 2. WRAP ENTRYPOINT #
+######################
+
+@datadog_agent.wrap
 def main(event):
     state = 'OR'
     advisories = get_weather_advisories()
