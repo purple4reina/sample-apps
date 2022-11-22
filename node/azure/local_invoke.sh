@@ -32,5 +32,3 @@ else
             -p 3000:3000 \
         node bash datadog_wrapper
 fi
-
-
