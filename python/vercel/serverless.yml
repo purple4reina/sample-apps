@@ -1,0 +1,21 @@
+service: rey-python-vercel
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+  environment:
+    DD_API_KEY: 'NOT_IMPORTANT'
+  layers:
+    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+    - 'trace.json'
+
+functions:
+  simple:
+    handler: handler.handler
+    url: true
