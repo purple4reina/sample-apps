@@ -1,9 +1,10 @@
+import json
 import urllib.request
 
 url = 'http://127.0.0.1:4318/v1/traces'
 with open('trace.json') as f:
-    data = f.read()
-trace_json = data.encode()
+    data = json.load(f)
+trace_json = json.dumps(data).encode()
 
 def handler(event={}, context={}):
     api_key = event.get('rawPath').strip('/')
@@ -19,7 +20,7 @@ def handler(event={}, context={}):
         with urllib.request.urlopen(req) as f:
             return {
                     'statusCode': f.status,
-                    'body': f.read().decode(),
+                    'body': f.read().decode() or 'ok',
             }
 
     except Exception as e:
@@ -31,5 +32,7 @@ def handler(event={}, context={}):
         }
 
 if __name__ == '__main__':
+    import os
     url = 'http://example.com'
-    print(handler())
+    event = {'rawPath': os.environ.get('DD_API_KEY')}
+    print(handler(event))
