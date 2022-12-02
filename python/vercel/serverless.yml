@@ -5,10 +5,7 @@ provider:
   region: sa-east-1
   runtime: python3.9
   environment:
-    DD_API_KEY: 'NOT_IMPORTANT'
-  layers:
-    - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:72
-      #- arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
+    DD_LOG_LEVEL: trace
 
 package:
   patterns:
@@ -17,6 +14,34 @@ package:
     - 'trace.json'
 
 functions:
-  simple:
+  with-orig-extension:
     handler: handler.handler
     url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
+  with-new-extension:
+    handler: handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:85
+  with-two-extensions:
+    handler: handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:85
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
+  with-two-exentions-manual-instrumentation:
+    handler: handler.handler
+    url: true
+    environment:
+      REY_MANUALLY_INSTRUMENT: true
+    layers:
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:85
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
+  with-two-exentions-and-layer:
+    handler: handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:85
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:64

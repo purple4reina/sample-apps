@@ -11,7 +11,7 @@
           }
         ]
       },
-      "instrumentationLibrarySpans": [
+      "scopeSpans": [
         {
           "instrumentationLibrary": {
             "name": "manual-test"
