@@ -11,37 +11,39 @@ package:
   patterns:
     - '!**'
     - 'handler.py'
-    - 'trace.json'
 
 functions:
-  with-orig-extension:
-    handler: handler.handler
-    url: true
-    layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
   with-new-extension:
     handler: handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:85
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
   with-two-extensions:
     handler: handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:85
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
-  with-two-exentions-manual-instrumentation:
+  with-two-exentions-instrumented:
+    handler: datadog_lambda.handler.handler
+    url: true
+    environment:
+      DD_API_KEY: ${env:DD_API_KEY}
+      DD_SITE: ${env:DD_SITE}
+      DD_SERVICE: otel-forwarder
+    layers:
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:64
+  with-two-exentions-manual:
     handler: handler.handler
     url: true
     environment:
+      DD_API_KEY: ${env:DD_API_KEY}
+      DD_SITE: ${env:DD_SITE}
+      DD_SERVICE: otel-forwarder
       REY_MANUALLY_INSTRUMENT: true
     layers:
-      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:85
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
-  with-two-exentions-and-layer:
-    handler: handler.handler
-    url: true
-    layers:
-      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:85
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:64
