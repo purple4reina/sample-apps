@@ -24,7 +24,7 @@ def handler(event={}, context={}):
     span['traceId'] = trace_id
     span['spanId'] = span_id
 
-    trace_json = json.dumps(trace, indent=2)
+    trace_json = json.dumps(trace)
     print(f'posting request body:\n{trace_json}')
     req = urllib.request.Request(
             url,
