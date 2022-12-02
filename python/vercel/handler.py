@@ -10,17 +10,10 @@ import secrets
 import urllib.request
 
 url = 'http://127.0.0.1:4318/v1/traces'
-
-_words = {}
-def randomized_word(api_key):
-    if api_key not in _words:
-        with open('/usr/share/dict/words') as f:
-            ws = f.read().split('\n')
-        _words[api_key] = random.choice(ws)
-    return _words[api_key]
+service = os.environ.get('REY_SERVICE', 'unknown')
 
 def trace_dict(api_key):
-    name = randomized_word(api_key)
+    suffix = '-' + service + '-' + api_key
     return {
         "resourceSpans": [
             {
@@ -29,7 +22,7 @@ def trace_dict(api_key):
                         {
                             "key": "service.name",
                             "value": {
-                                "stringValue": "service-" + name
+                                "stringValue": "service" + suffix
                             }
                         }
                     ]
@@ -43,18 +36,22 @@ def trace_dict(api_key):
                             {
                                 "traceId": secrets.token_hex(16),
                                 "spanId": secrets.token_hex(8),
-                                "name": "span-" + name,
+                                "name": "span" + suffix,
                                 "kind": 2,
                                 "droppedAttributesCount": 0,
                                 "events": [],
                                 "attributes": [
                                     {
                                         "key": "attr1",
-                                        "string_value": "attr1-" + name,
+                                        "value": {
+                                            "stringValue": "attr1" + suffix
+                                        }
                                     },
                                     {
                                         "key": "attr2",
-                                        "string_value": "attr2-" + name,
+                                        "value": {
+                                            "stringValue": "attr2" + suffix
+                                        }
                                     }
                                 ],
                                 "droppedEventsCount": 0,

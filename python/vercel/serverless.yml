@@ -16,11 +16,15 @@ functions:
   with-new-extension:
     handler: handler.handler
     url: true
+    environment:
+      REY_SERVICE: with-new-extension
     layers:
       - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
   with-two-extensions:
     handler: handler.handler
     url: true
+    environment:
+      REY_SERVICE: with-two-exentions
     layers:
       - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
@@ -31,6 +35,7 @@ functions:
       DD_API_KEY: ${env:DD_API_KEY}
       DD_SITE: ${env:DD_SITE}
       DD_SERVICE: otel-forwarder
+      REY_SERVICE: with-two-exentions-instrumented
     layers:
       - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
@@ -43,6 +48,7 @@ functions:
       DD_SITE: ${env:DD_SITE}
       DD_SERVICE: otel-forwarder
       REY_MANUALLY_INSTRUMENT: true
+      REY_SERVICE: with-two-extensions-manual
     layers:
       - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
