@@ -5,7 +5,7 @@ provider:
   region: sa-east-1
   runtime: python3.9
   environment:
-    DD_LOG_LEVEL: trace
+    DD_LOG_LEVEL: debug
 
 package:
   patterns:
@@ -19,14 +19,14 @@ functions:
     environment:
       REY_SERVICE: with-new-extension
     layers:
-      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:100
   with-two-extensions:
     handler: handler.handler
     url: true
     environment:
       REY_SERVICE: with-two-exentions
     layers:
-      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:100
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
   with-two-exentions-instrumented:
     handler: datadog_lambda.handler.handler
@@ -37,7 +37,7 @@ functions:
       DD_SERVICE: otel-forwarder
       REY_SERVICE: with-two-exentions-instrumented
     layers:
-      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:100
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:64
   with-two-exentions-manual:
@@ -50,6 +50,6 @@ functions:
       REY_MANUALLY_INSTRUMENT: true
       REY_SERVICE: with-two-extensions-manual
     layers:
-      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:89
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:100
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:64

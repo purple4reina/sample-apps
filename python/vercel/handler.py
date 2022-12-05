@@ -72,7 +72,7 @@ def handler(event={}, context={}):
           f'and site "{site}"')
 
     trace_json = json.dumps(trace_dict(api_key))
-    print(f'posting request body:\n{trace_json}')
+    print(f'handler posting request body:\n{trace_json}')
     req = urllib.request.Request(
             url,
             method='POST',
