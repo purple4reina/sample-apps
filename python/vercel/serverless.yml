@@ -50,6 +50,6 @@ functions:
       REY_MANUALLY_INSTRUMENT: true
       REY_SERVICE: with-two-extensions-manual
     layers:
-      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:100
+      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:101
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:64
