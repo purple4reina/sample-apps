@@ -67,7 +67,11 @@ def trace_dict(api_key):
     }
 
 def handler(event={}, context={}):
-    api_key, site = event.get('rawPath').strip('/').split('/')
+    try:
+        api_key, site = event.get('rawPath').strip('/').split('/')
+    except:
+        api_key = os.environ.get('DD_API_KEY')
+        site = 'datadoghq.com'
     print(f'handler submitting trace to "{url}" with api key "{api_key}" '
           f'and site "{site}"')
 
@@ -96,7 +100,7 @@ def handler(event={}, context={}):
                 'statusCode': 500,
                 'errorType': e.__class__.__name__,
                 'errorMessage': str(e),
-                'body': str(e),
+                'body': 'handler request received error: ' + str(e),
         }
 
 if __name__ == '__main__':
