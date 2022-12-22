@@ -1,4 +1,4 @@
-service: rey-dotnet-lambda
+service: rey-dotnet-parenting-bug
 
 frameworkVersion: ^3.21.0
 
