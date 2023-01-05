@@ -49,3 +49,5 @@ require (
 )
 
 replace gopkg.in/DataDog/dd-trace-go.v1 => /Users/rey.abolofia/go/src/github.com/DataDog/dd-trace-go
+
+replace github.com/DataDog/datadog-lambda-go => /Users/rey.abolofia/go/src/github.com/DataDog/datadog-lambda-go
