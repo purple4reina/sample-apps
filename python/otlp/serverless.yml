@@ -1,0 +1,27 @@
+service: rey-python-otlp
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+  environment:
+    DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
+    OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4318
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+
+plugins:
+  - serverless-plugin-datadog
+  - serverless-python-requirements
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  code:
+    handler: handler.handler
+    url: true
