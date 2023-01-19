@@ -1,3 +1,5 @@
+import time
+
 from opentelemetry import trace
 from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
@@ -16,8 +18,13 @@ trace.set_tracer_provider(provider)
 
 tracer = trace.get_tracer(__name__)
 
+@tracer.start_as_current_span('function')
+def function():
+    time.sleep(5)
+
 @tracer.start_as_current_span('handler')
 def handler(event=None, context=None):
+    function()
     return {
             'statusCode': 200,
             'body': '{"Hello": "World"}',
