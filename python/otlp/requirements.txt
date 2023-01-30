@@ -3,7 +3,7 @@ certifi==2022.12.7
 charset-normalizer==3.0.1
 Deprecated==1.2.13
 googleapis-common-protos==1.58.0
-grpcio @ file:///Users/rey.abolofia/Downloads/grpcio-1.51.1-cp39-cp39-macosx_11_0_arm64.whl
+grpcio==1.51.1
 idna==3.4
 opentelemetry-api==1.15.0
 opentelemetry-exporter-otlp==1.15.0
