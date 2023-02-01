@@ -1,11 +1,12 @@
 #!/bin/bash
 
 keys="
-    $DD_PERSONAL_API_KEY
-    $DD_PERSONAL_TWO_API_KEY
+    $DD_API_KEY
 "
+#    $DD_PERSONAL_API_KEY
+#    $DD_PERSONAL_TWO_API_KEY
 urls="
-    https://ata73hbeyem5iun3bbjsdg364m0dshkp.lambda-url.sa-east-1.on.aws
+    https://tscy34wbp5glferdhr2mbie3ai0olzha.lambda-url.sa-east-1.on.aws
 "
 #    https://uh6ghrre7kdrctvbbz75eb24nm0ppbzf.lambda-url.sa-east-1.on.aws
 #    https://vkf7w2xarfu56yf5rcthdauzt40acobw.lambda-url.sa-east-1.on.aws
@@ -25,5 +26,6 @@ do
         done
     done
 
-    sleep 0.1
+    #sleep 0.1
+    sleep 1
 done

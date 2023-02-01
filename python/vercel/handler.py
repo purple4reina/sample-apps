@@ -1,70 +1,42 @@
-import os
-
-if os.environ.get('REY_MANUALLY_INSTRUMENT') == 'true':
-    import ddtrace
-    ddtrace.patch_all()
-
 import json
+import os
 import random
 import secrets
+import time
 import urllib.request
 
 url = 'http://127.0.0.1:4318/v1/traces'
-service = os.environ.get('REY_SERVICE', 'unknown')
 
-def trace_dict(api_key):
-    suffix = '-' + service + '-' + api_key
-    return {
-        "resourceSpans": [
-            {
-                "resource": {
-                    "attributes": [
-                        {
-                            "key": "service.name",
-                            "value": {
-                                "stringValue": "service" + suffix
-                            }
-                        }
-                    ]
-                },
-                "scopeSpans": [
-                    {
-                        "instrumentationLibrary": {
-                            "name": "manual-test"
-                        },
-                        "spans": [
-                            {
-                                "traceId": secrets.token_hex(16),
-                                "spanId": secrets.token_hex(8),
-                                "name": "span" + suffix,
-                                "kind": 2,
-                                "droppedAttributesCount": 0,
-                                "events": [],
-                                "attributes": [
-                                    {
-                                        "key": "attr1",
-                                        "value": {
-                                            "stringValue": "attr1" + suffix
-                                        }
-                                    },
-                                    {
-                                        "key": "attr2",
-                                        "value": {
-                                            "stringValue": "attr2" + suffix
-                                        }
-                                    }
-                                ],
-                                "droppedEventsCount": 0,
-                                "status": {
-                                    "code": 1
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
+def trace_dict():
+    with open('trace.json') as f:
+        trace = json.load(f)
+
+    trace_id = secrets.token_hex(16)
+    span_id_translator = {}
+    time_now = time.time() * 10**9
+    time_ref = int(trace['resourceSpans'][0]['scopeSpans'][0]['spans'][0]['startTimeUnixNano'])
+    time_delta = time_now - time_ref
+
+    for resource_span in trace['resourceSpans']:
+        for scope_span in resource_span['scopeSpans']:
+            for span in scope_span['spans']:
+                old_span_id = span['spanId']
+                span_id_translator[old_span_id] = secrets.token_hex(8)
+
+    for resource_span in trace['resourceSpans']:
+        for scope_span in resource_span['scopeSpans']:
+            for span in scope_span['spans']:
+                span['traceId'] = trace_id
+                span['spanId'] = span_id_translator[span['spanId']]
+                parent_id = span.get('parentSpanId')
+                if parent_id:
+                    span['parentSpanId'] = span_id_translator[span['parentSpanId']]
+                start = int(span['startTimeUnixNano']) + time_delta
+                span['startTimeUnixNano'] = f'{start:.0f}'
+                end = int(span['endTimeUnixNano']) + time_delta
+                span['endTimeUnixNano'] = f'{end:.0f}'
+
+    return trace
 
 def handler(event={}, context={}):
     try:
@@ -75,7 +47,7 @@ def handler(event={}, context={}):
     print(f'handler submitting trace to "{url}" with api key "{api_key}" '
           f'and site "{site}"')
 
-    trace_json = json.dumps(trace_dict(api_key))
+    trace_json = json.dumps(trace_dict())
     print(f'handler posting request body:\n{trace_json}')
     req = urllib.request.Request(
             url,

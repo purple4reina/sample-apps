@@ -1,0 +1,860 @@
+{
+    "resourceSpans": [
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "e5e951bcee1be525",
+                            "parentSpanId": "6e39d1cdc228d372",
+                            "name": "BaseServer.renderToResponseWithComponents",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557682576600",
+                            "endTimeUnixNano": "1675291557687692500",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "6e39d1cdc228d372",
+                            "parentSpanId": "9db52eb3154b28ba",
+                            "name": "BaseServer.renderToResponse",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557681062000",
+                            "endTimeUnixNano": "1675291557687963400",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "9421d93f9d990bcf",
+                            "parentSpanId": "e5e951bcee1be525",
+                            "name": "NextNodeServer.renderHTML",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557682694000",
+                            "endTimeUnixNano": "1675291557687409000",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "a28904b4996e5be8",
+                            "parentSpanId": "3754eb36cfcb0a75",
+                            "name": "LoadComponents.loadComponents",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557682014000",
+                            "endTimeUnixNano": "1675291557682184400",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "3754eb36cfcb0a75",
+                            "parentSpanId": "6e39d1cdc228d372",
+                            "name": "NextNodeServer.findPageComponents",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557681982700",
+                            "endTimeUnixNano": "1675291557682403000",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "5aac62f287d13e34",
+                            "parentSpanId": "e4f67d69c7492ee6",
+                            "name": "NextNodeServer.compression",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557679251500",
+                            "endTimeUnixNano": "1675291557679280400",
+                            "status": {
+                                "code": 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "89cc57001a66e61c",
+                            "parentSpanId": "9db52eb3154b28ba",
+                            "name": "NextNodeServer.sendRenderResult",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557688171300",
+                            "endTimeUnixNano": "1675291557690241800",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "9db52eb3154b28ba",
+                            "parentSpanId": "11a9c4e2d585e973",
+                            "name": "BaseServer.pipe",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557681017300",
+                            "endTimeUnixNano": "1675291557690387200",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "11a9c4e2d585e973",
+                            "parentSpanId": "1d191f807d816bce",
+                            "name": "BaseServer.render",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557680978200",
+                            "endTimeUnixNano": "1675291557690490000",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "1d191f807d816bce",
+                            "parentSpanId": "e4f67d69c7492ee6",
+                            "name": "NextNodeServer.render",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557680941300",
+                            "endTimeUnixNano": "1675291557690594000",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "e4f67d69c7492ee6",
+                            "parentSpanId": "00e241c750d4e598",
+                            "name": "BaseServer.run",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557679210000",
+                            "endTimeUnixNano": "1675291557690689300",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "db925266a5816d1e",
+                            "parentSpanId": "",
+                            "name": "NextServer.getRequestHandler",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557678528300",
+                            "endTimeUnixNano": "1675291557691670300",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "00e241c750d4e598",
+                            "parentSpanId": "7f6c63f29c368ee9",
+                            "name": "BaseServer.handleRequest",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557678749200",
+                            "endTimeUnixNano": "1675291557690768100",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "rey-node-next"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "nodejs"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.6.0"
+                        }
+                    },
+                    {
+                        "key": "service.namespace",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {}
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {}
+                    }
+                ]
+            },
+            "scopeSpans": [
+                {
+                    "scope": {
+                        "name": "rey-node-next"
+                    },
+                    "spans": [
+                        {
+                            "traceId": "d2868b61718ae60d11c5d16597b9f9ef",
+                            "spanId": "7f6c63f29c368ee9",
+                            "parentSpanId": "db925266a5816d1e",
+                            "name": "NextServer.getServerRequestHandler",
+                            "kind": 1,
+                            "startTimeUnixNano": "1675291557678676700",
+                            "endTimeUnixNano": "1675291557690848000",
+                            "status": {}
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

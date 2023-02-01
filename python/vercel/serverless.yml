@@ -6,29 +6,17 @@ provider:
   runtime: python3.9
   environment:
     DD_LOG_LEVEL: debug
+  stackTags:
+    DD_PRESERVE_STACK: true
 
 package:
   patterns:
     - '!**'
     - 'handler.py'
+    - 'trace.json'
 
 functions:
-#  with-new-extension:
-#    handler: handler.handler
-#    url: true
-#    environment:
-#      REY_SERVICE: with-new-extension
-#    layers:
-#      - arn:aws:lambda:ap-south-1:425362996713:layer:Datadog-Extension-OTEL:3
-#  with-two-extensions:
-#    handler: handler.handler
-#    url: true
-#    environment:
-#      REY_SERVICE: with-two-exentions
-#    layers:
-#      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:100
-#      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
-  with-two-exentions-instrumented:
+  otel-forwarder:
     handler: datadog_lambda.handler.handler
     url: true
     environment:
@@ -36,21 +24,9 @@ functions:
       DD_LAMBDA_HANDLER: handler.handler
       DD_SERVICE: otel-forwarder
       DD_SITE: ${env:DD_SITE}
-      REY_SERVICE: with-two-exentions-instrumented
     layers:
-      - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-OTEL:31
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:64
-#  with-two-exentions-manual:
-#    handler: handler.handler
-#    url: true
-#    environment:
-#      DD_API_KEY: ${env:DD_API_KEY}
-#      DD_SITE: ${env:DD_SITE}
-#      DD_SERVICE: otel-forwarder
-#      REY_MANUALLY_INSTRUMENT: true
-#      REY_SERVICE: with-two-extensions-manual
-#    layers:
-#      - arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:101
-#      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
-#      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:64
+      - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:18
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:36
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:66
+    events:
+      - schedule: rate(1 minute)
