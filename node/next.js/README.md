@@ -51,3 +51,14 @@ $ npm install path/to/next/tgz/file
 ```
 
 Run the server with `npm run dev`.
+
+## Grabbing raw trace
+
+1. Create a dummy json file with `touch export.json`
+2. Start otel collector with `docker run -v
+   $(pwd)/config.yaml:/etc/otelcol/config.yaml -v
+   $(pwd)/export.json:/tmp/export.json -p 4318:4318
+   otel/opentelemetry-collector:0.70.0`
+3. Start node server with `npm run dev`
+4. Send traffic to website with `curl http://localhost:3000`
+5. Trace should now be exported to the file `export.json`
