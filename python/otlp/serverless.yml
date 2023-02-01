@@ -9,6 +9,10 @@ provider:
   environment:
     DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_GRPC_ENDPOINT: localhost:4317
     OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4317
+    DD_API_KEY: ${env:DD_API_KEY}
+    DD_LOG_LEVEL: DEBUG
+    DD_TRACE_ENABLED: true
+    DD_SERVERLESS_LOGS_ENABLED: true
 
 package:
   patterns:
@@ -16,14 +20,9 @@ package:
     - 'handler.py'
 
 plugins:
-  - serverless-plugin-datadog
   - serverless-python-requirements
 
 custom:
-  datadog:
-    apiKey: ${env:DD_API_KEY}
-    logLevel: DEBUG
-    addExtension: false
   pythonRequirements:
     dockerizePip: true
     dockerRunCmdExtraArgs: ['--platform', 'linux/amd64']
