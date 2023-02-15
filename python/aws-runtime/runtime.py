@@ -17,14 +17,19 @@ def register_telemetry():
 
 @app.route('/2020-01-01/extension/event/next', methods=['GET'])
 def next():
-    time.sleep(1)
+    #return {
+    #        'eventType': 'INVOKE',
+    #        'deadlineMs': 10000,
+    #        'invokedFunctionArn': 'arn:aws:lambda:sa-east-1:601427279990:function:rey-python-lambda-dev-simple',
+    #        #'shutdownReason': ,
+    #        'requestId': uuid.uuid4(),
+    #}
     return {
-            'eventType': 'INVOKE',
-            'deadlineMs': 10000,
-            'invokedFunctionArn': 'arn:aws:lambda:sa-east-1:601427279990:function:rey-python-lambda-dev-simple',
-            #'shutdownReason': ,
-            'requestId': uuid.uuid4(),
+            'eventType': 'SHUTDOWN',
+            'shutdownReason': 'no reason whatsoever',
+            'deadlineMs': 1000,
     }
+
 
 @app.route('/lambda/logs', methods=['GET'])
 def lambda_logs():
