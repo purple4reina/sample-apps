@@ -1,12 +1,13 @@
 from ddtrace import patch
+patch(fastapi=True)
+
 from fastapi import FastAPI
 from mangum import Mangum
 
-patch(fastapi=True)
 app = FastAPI()
 
 @app.get("/")
 async def root():
-  return {"message": "Hello World"}
+    return {"message": "Hello World"}
 
 handler = Mangum(app)
