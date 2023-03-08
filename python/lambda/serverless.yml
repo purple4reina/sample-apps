@@ -7,8 +7,7 @@ provider:
   environment:
     DD_API_KEY: ${env:DD_API_KEY}
   layers:
-    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:35
-      #- arn:aws:lambda:sa-east-1:601427279990:layer:Datadog-Extension-REY:69
+    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:36
 
 package:
   patterns:
