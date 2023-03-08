@@ -1,0 +1,27 @@
+service: rey-node-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs18.x
+  layers:
+    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:36
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.js'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    logLevel: DEBUG
+    apiKey: ${env:DD_API_KEY}
+    addExtension: false
+
+functions:
+  simple:
+    handler: handler.handler
+    url: true

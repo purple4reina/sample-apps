@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "hot-shots": "^9.1.0",
-    "serverless-plugin-datadog": "^5.3.0"
-  }
-}
