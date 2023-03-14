@@ -1,0 +1,20 @@
+service: rey-java-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: java11
+  environment:
+    DD_API_KEY: ${env:DD_API_KEY}
+    DD_LOG_LEVEL: debug
+
+package:
+  artifact: build/libs/hello-dev-all.jar
+
+plugins:
+  - serverless-plugin-datadog
+
+functions:
+  simple:
+    handler: com.serverless.Handler
+    url: true
