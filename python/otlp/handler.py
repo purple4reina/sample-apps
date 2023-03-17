@@ -25,7 +25,6 @@ trace.set_tracer_provider(provider)
 tracer = trace.get_tracer(__name__)
 
 # initialize metrics
-
 reader = PeriodicExportingMetricReader(OTLPMetricExporter(endpoint=endpoint+'/v1/metrics'))
 provider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(provider)
