@@ -18,13 +18,11 @@ do
     do
         "$SCRIPT_DIR/update-memory.sh" "$f" &
     done
-    wait
-
-    sleep 1
 
     for u in $URLS
     do
         curl "$u" &
     done
+
     wait
 done

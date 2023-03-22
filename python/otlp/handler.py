@@ -1,3 +1,4 @@
+import json
 import time
 
 from opentelemetry import trace, metrics
@@ -33,6 +34,8 @@ meter = metrics.get_meter(__name__)
 kitten_counter = meter.create_counter(
         name='kittens', unit='kittens', description='number of kittens found')
 
+COLD_START = [True]
+
 @tracer.start_as_current_span('function')
 def function():
     kitten_counter.add(1, dict(name='pamina'))
@@ -40,11 +43,16 @@ def function():
 
 @tracer.start_as_current_span('handler')
 def handler(event=None, context=None):
-    function()
-    return {
-            'statusCode': 200,
-            'body': '{"Hello": "World"}',
-    }
+    try:
+        function()
+        return {
+                'statusCode': 200,
+                'body': json.dumps({
+                    'cold_start': COLD_START[0],
+                }),
+        }
+    finally:
+        COLD_START[0] = False
 
 if __name__ == '__main__':
     handler()
