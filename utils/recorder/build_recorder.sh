@@ -1,4 +1,8 @@
-#!/bin/bash
+#!/bin/bash -e
+
+if [[ -z $ARCHITECTURE ]]; then
+    ARCHITECTURE=amd64
+fi
 
 echo "Building recorder extension"
 cd recorder-extension
