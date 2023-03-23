@@ -14,6 +14,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -40,7 +41,7 @@ func main() {
 
 	err := extensionClient.Register(ctx, extensionName)
 	if err != nil {
-		panic(err)
+		log.Fatalln("RECORDER error registering extension: ", err)
 	}
 
 	// port 8080 is used by the Lambda Invoke API
@@ -58,10 +59,11 @@ func processEvents(ctx context.Context) {
 		default:
 			res, err := extensionClient.NextEvent(ctx)
 			if err != nil {
-				return
+				log.Fatalln("RECORDER error getting next event: ", err)
 			}
 			if res.EventType == Shutdown {
 				time.Sleep(1900 * time.Millisecond)
+				log.Println("RECORDER got shutdown event")
 				return
 			}
 		}
@@ -183,19 +185,19 @@ func handleFunc(path string, unmarshal func(body []byte) (interface{}, error)) {
 	http.HandleFunc(path, func(w http.ResponseWriter, r *http.Request) {
 		body, err := io.ReadAll(r.Body)
 		if err != nil {
-			fmt.Printf("RECORDER error: %#v\n", err)
+			log.Printf("RECORDER error: %#v\n", err)
 		}
 		jsonBody, err := unmarshal(body)
 		if err != nil {
-			fmt.Printf("RECORDER error: %#v\n", err)
+			log.Printf("RECORDER error: %#v\n", err)
 			return
 		}
 		jsonPayload, err := json.Marshal(jsonBody)
 		if err != nil {
-			fmt.Printf("RECORDER error: %#v\n", err)
+			log.Printf("RECORDER error: %#v\n", err)
 			return
 		}
-		fmt.Printf("RECORDER %#v: %#v\n", path, string(jsonPayload))
+		log.Printf("RECORDER %#v: %#v\n", path, string(jsonPayload))
 	})
 }
 

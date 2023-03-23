@@ -10,6 +10,10 @@ Add this to your `serverless.yml`:
 provider:
   layers:
     - { Ref: RecorderExtensionLambdaLayer }
+  environment:
+    DD_DD_URL: http://127.0.0.1:3333
+    DD_LOGS_CONFIG_LOGS_DD_URL: 127.0.0.1:3333
+    DD_APM_DD_URL: http://127.0.0.1:3333
 
 layers:
   recorderExtension:
