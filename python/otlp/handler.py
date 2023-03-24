@@ -1,4 +1,5 @@
 import json
+import os
 import time
 
 from opentelemetry import trace, metrics
@@ -13,7 +14,7 @@ from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExp
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 
 resource = Resource(attributes={
-    SERVICE_NAME: 'rey-python-otlp',
+    SERVICE_NAME: os.environ.get('DD_SERVICE', 'rey-python-otlp'),
 })
 endpoint = 'http://localhost:4317'
 
@@ -34,11 +35,12 @@ meter = metrics.get_meter(__name__)
 kitten_counter = meter.create_counter(
         name='kittens', unit='kittens', description='number of kittens found')
 
-COLD_START = [True]
+class cold: start = True
 
 @tracer.start_as_current_span('function')
 def function():
     kitten_counter.add(1, dict(name='pamina'))
+    kitten_counter.add(1, dict(name='kiki'))
     time.sleep(1)
 
 @tracer.start_as_current_span('handler')
@@ -48,11 +50,11 @@ def handler(event=None, context=None):
         return {
                 'statusCode': 200,
                 'body': json.dumps({
-                    'cold_start': COLD_START[0],
+                    'cold_start': cold.start,
                 }),
         }
     finally:
-        COLD_START[0] = False
+        cold.start = False
 
 if __name__ == '__main__':
-    handler()
+    print(handler())
