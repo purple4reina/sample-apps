@@ -7,8 +7,10 @@ import (
 	"log"
 	"net"
 	"net/http"
-	"net/http/httputil"
 	"os"
+	"time"
+
+	"github.com/elazarl/goproxy"
 )
 
 const (
@@ -35,12 +37,11 @@ func (r roundTripper) RoundTrip(req *http.Request) (*http.Response, error) {
 	return r(req)
 }
 
-func newProxy() *httputil.ReverseProxy {
-	return &httputil.ReverseProxy{
-		Director: func(req *http.Request) {
-			fmt.Printf("[PROXY] director request: %#v\n", req)
-		},
-		Transport: roundTripper(func(req *http.Request) (*http.Response, error) {
+func newProxy() http.Handler {
+	proxy := goproxy.NewProxyHttpServer()
+	proxy.Verbose = true
+	proxy.OnRequest().DoFunc(
+		func(req *http.Request, ctx *goproxy.ProxyCtx) (*http.Request, *http.Response) {
 			if req.Body != nil {
 				if body, err := ioutil.ReadAll(req.Body); err == nil {
 					log.Printf("[PROXY] path: %s, method: %s, body: %s\n",
@@ -53,9 +54,9 @@ func newProxy() *httputil.ReverseProxy {
 			} else {
 				log.Printf("[PROXY] received request without a body\n")
 			}
-			return http.DefaultTransport.RoundTrip(req)
-		}),
-	}
+			return req, nil
+		})
+	return proxy
 }
 
 func registerExtension() {
@@ -82,6 +83,7 @@ func registerExtension() {
 			log.Printf("[PROXY] error doing next request: %s\n", err)
 		}
 		resp.Body.Close()
+		time.Sleep(100 * time.Millisecond)
 	}
 }
 

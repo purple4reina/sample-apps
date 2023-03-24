@@ -3,6 +3,9 @@
 A proxy layer that prints all data payloads sent to the backend before
 rerouting them.
 
+NOTE: for some reason this proxy is not actually echoing the request bodies,
+though it does seem to be working otherwise!
+
 ## Usage
 
 Add this to your `serverless.yml`:
