@@ -10,13 +10,13 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 
 # change this from grpc to http for http transports
-from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
-from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from opentelemetry.exporter.otlp.proto.http.metric_exporter import OTLPMetricExporter
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 
 resource = Resource(attributes={
     SERVICE_NAME: os.environ.get('DD_SERVICE', 'rey-python-otlp'),
 })
-endpoint = 'http://localhost:4317'
+endpoint = 'http://localhost:4318'
 
 # initialize tracer
 provider = TracerProvider(resource=resource)

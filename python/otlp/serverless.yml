@@ -7,8 +7,8 @@ provider:
   layers:
     - arn:aws:lambda:us-east-1:425362996713:layer:Datadog-Extension:57
   environment:
-    DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_GRPC_ENDPOINT: localhost:4317
-    OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4317
+    DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_GRPC_ENDPOINT: localhost:4318
+    OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4318
     DD_API_KEY: ${env:DD_API_KEY}
     DD_LOG_LEVEL: DEBUG
     DD_TRACE_ENABLED: true
