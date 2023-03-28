@@ -16,7 +16,9 @@ from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExport
 resource = Resource(attributes={
     SERVICE_NAME: os.environ.get('DD_SERVICE', 'rey-python-otlp'),
 })
-endpoint = 'http://localhost:4318'
+host_port = os.environ.get(
+        'DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT', 'localhost:4318')
+endpoint = f'http://{host_port}'
 
 # initialize tracer
 provider = TracerProvider(resource=resource)
