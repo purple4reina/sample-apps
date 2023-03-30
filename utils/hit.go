@@ -1,9 +1,11 @@
+// simple script to hammer at a url, using a semafor to manage resources
 package main
 
 import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -21,18 +23,19 @@ func main() {
 	}
 }
 
-var client = func() *http.Client {
-	c := http.DefaultClient
-	c.Transport = &http.Transport{
-		MaxIdleConnsPerHost: capacity,
-	}
-	return c
-}()
+var (
+	url = os.Getenv("URL")
 
-const (
-	capacity = 24
-	url      = "https://6oism8kqc7.execute-api.sa-east-1.amazonaws.com/dev/simple"
+	client = func() *http.Client {
+		c := http.DefaultClient
+		c.Transport = &http.Transport{
+			MaxIdleConnsPerHost: capacity,
+		}
+		return c
+	}()
 )
+
+const capacity = 24
 
 func do() {
 	resp, err := client.Get(url)
