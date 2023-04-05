@@ -25,5 +25,4 @@ custom:
 functions:
   simple:
     handler: handler.handler
-    events:
-      - schedule: rate(1 minute)
+    url: true
