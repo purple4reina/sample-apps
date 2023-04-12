@@ -3,6 +3,7 @@ service: rey-python-otlp
 provider:
   name: aws
   runtime: python3.9
+  region: sa-east-1
   layers:
     - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:41
   environment:
