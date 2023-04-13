@@ -58,5 +58,10 @@ def handler(event=None, context=None):
     finally:
         cold.start = False
 
+# add lambda instrumentation
+# done last bc wraps handler func
+from opentelemetry.instrumentation.aws_lambda import AwsLambdaInstrumentor
+AwsLambdaInstrumentor().instrument()
+
 if __name__ == '__main__':
     print(handler())

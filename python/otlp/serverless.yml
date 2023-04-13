@@ -5,7 +5,7 @@ provider:
   runtime: python3.9
   region: sa-east-1
   layers:
-    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:41
+    - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:58
   environment:
     DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
     OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4318
