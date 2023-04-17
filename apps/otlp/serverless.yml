@@ -1,0 +1,49 @@
+service: rey-app-otlp
+
+plugins:
+  - serverless-python-requirements
+
+provider:
+  name: aws
+  region: sa-east-1
+  environment:
+    DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
+    DD_API_KEY: ${env:DD_API_KEY}
+    DD_LOG_LEVEL: DEBUG
+    DD_TRACE_ENABLED: true
+    DD_SERVERLESS_LOGS_ENABLED: true
+
+custom:
+  ddLayer: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:58
+  pythonRequirements:
+    dockerRunCmdExtraArgs: ['--platform', 'linux/amd64']
+    dockerizePip: true
+    fileName: python/requirements.txt
+    layer:
+      compatibleRuntimes:
+        - python3.9
+
+functions:
+
+  node:
+    handler: handler.handler
+    runtime: nodejs18.x
+    url: true
+    environment:
+      NODE_OPTIONS: --require instrument
+    layers:
+      - ${self:custom.ddLayer}
+    package:
+      artifact: .artifacts/node.zip
+      individually: true
+
+  python:
+    handler: handler.handler
+    runtime: python3.9
+    url: true
+    layers:
+      - ${self:custom.ddLayer}
+      - { Ref: PythonRequirementsLambdaLayer }
+    package:
+      artifact: .artifacts/python.zip
+      individually: true
