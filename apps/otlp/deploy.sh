@@ -8,7 +8,7 @@ mkdir -p "$ARTIFACTS_DIR"
 # node
 cd "$ROOT_DIR/node"
 npm install
-zip -r "$ARTIFACTS_DIR/node.zip" handler.js instrument.js node_modules
+zip -qr "$ARTIFACTS_DIR/node.zip" handler.js instrument.js node_modules
 cd "$ROOT_DIR"
 
 # python
