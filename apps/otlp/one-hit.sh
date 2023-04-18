@@ -1,5 +1,6 @@
 #!/bin/bash
 
-curl https://bdzybj7bzi267jquuwowhwnmz40sjlso.lambda-url.sa-east-1.on.aws &
-curl https://ljk45sun6cfkxlvfpk5o7cwqsq0koafn.lambda-url.sa-east-1.on.aws &
+curl https://47pirf47ylb3bktfclg57se2je0dqqla.lambda-url.sa-east-1.on.aws & # golang
+curl https://gzktqvilomtfgpjz2oak6ydm4m0glsfl.lambda-url.sa-east-1.on.aws & # node
+curl https://2bf4qzzld3ufnvsjvzb3wc46ya0ivryj.lambda-url.sa-east-1.on.aws & # python
 wait ; echo

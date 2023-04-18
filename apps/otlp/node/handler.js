@@ -17,6 +17,7 @@ exports.handler = async function (event) {
       statusCode: 200,
       body: JSON.stringify({
         "cold_start": coldStart,
+        "runtime": "node",
       }),
     };
   } finally {

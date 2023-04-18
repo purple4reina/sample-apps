@@ -53,6 +53,7 @@ def handler(event=None, context=None):
                 'statusCode': 200,
                 'body': json.dumps({
                     'cold_start': cold.start,
+                    'runtime': 'python',
                 }),
         }
     finally:
