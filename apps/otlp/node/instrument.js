@@ -1,9 +1,10 @@
+const { AwsInstrumentation } = require('@opentelemetry/instrumentation-aws-sdk');
+const { AwsLambdaInstrumentation } = require('@opentelemetry/instrumentation-aws-lambda');
 const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
 const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
 const { Resource } = require('@opentelemetry/resources');
 const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
 const { SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-base');
-const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
 const { registerInstrumentations } = require('@opentelemetry/instrumentation');
 
 const serviceName = process.env.DD_SERVICE || 'rey-app-otlp-dev-node';
@@ -30,11 +31,11 @@ provider.register();
 
 registerInstrumentations({
   instrumentations: [
-    getNodeAutoInstrumentations({
-      '@opentelemetry/instrumentation-aws-lambda': {
-        disableAwsContextPropagation: true,
-      },
+    new AwsInstrumentation({
+      suppressInternalInstrumentation: true,
+    }),
+    new AwsLambdaInstrumentation({
+      disableAwsContextPropagation: true,
     }),
   ],
 });
-
