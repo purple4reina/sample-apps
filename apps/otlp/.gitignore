@@ -1,1 +1,20 @@
 .artifacts
+
+# java
+*.class
+.gradle
+/build/
+/bin/
+/.settings/
+.project
+.classpath
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Serverless directories
+.serverless
+
+!java/gradle/wrapper/gradle-wrapper.jar

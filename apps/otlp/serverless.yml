@@ -35,6 +35,14 @@ functions:
       artifact: .artifacts/golang.zip
       individually: true
 
+  java:
+    handler: com.serverless.Handler
+    runtime: java8
+    url: true
+    package:
+      artifact: .artifacts/java.jar
+      individually: true
+
   node:
     handler: handler.handler
     runtime: nodejs18.x

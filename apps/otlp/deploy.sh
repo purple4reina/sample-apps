@@ -9,6 +9,14 @@ mkdir -p "$ARTIFACTS_DIR"
 GOARCH=amd64 GOOS=linux go build -o "$ARTIFACTS_DIR/handler" golang/handler.go
 zip -j "$ARTIFACTS_DIR/golang.zip" "$ARTIFACTS_DIR/handler"
 
+# java
+cd "$ROOT_DIR/java"
+./gradlew clean build
+filename=rey-app-otlp-dev-java-dev-all.jar
+cp "build/libs/$filename" "$ARTIFACTS_DIR/java.jar"
+rm -rf build
+cd "$ROOT_DIR"
+
 # node
 cd "$ROOT_DIR/node"
 npm install
