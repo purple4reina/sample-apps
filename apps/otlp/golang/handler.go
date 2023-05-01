@@ -25,10 +25,10 @@ var (
 func HandleRequest(ctx context.Context, request interface{}) (string, error) {
 	defer func() { resp = `{"cold_start":false,"runtime":"golang"}` }()
 
-	ctx, span := tracer.Start(ctx, "handler")
-	defer span.End()
-	ctx, span = tracer.Start(ctx, "function")
-	defer span.End()
+	ctx, handlerSpan := tracer.Start(ctx, "handler")
+	defer handlerSpan.End()
+	ctx, functionSpan := tracer.Start(ctx, "function")
+	defer functionSpan.End()
 
 	time.Sleep(time.Second)
 
