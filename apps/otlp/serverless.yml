@@ -7,16 +7,16 @@ provider:
   name: aws
   region: sa-east-1
   environment:
-    DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
     DD_API_KEY: ${env:DD_API_KEY}
     DD_LOG_LEVEL: DEBUG
-    DD_TRACE_ENABLED: true
+    DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
     DD_SERVERLESS_LOGS_ENABLED: true
+    DD_TRACE_ENABLED: true
   layers:
     - ${self:custom.ddLayer}
 
 custom:
-  ddLayer: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:60
+  ddLayer: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:71
   pythonRequirements:
     dockerRunCmdExtraArgs: ['--platform', 'linux/amd64']
     dockerizePip: true
@@ -34,6 +34,8 @@ functions:
     package:
       artifact: .artifacts/golang.zip
       individually: true
+    environment:
+      DD_SERVICE: rey-app-otlp-dev-golang
 
   java:
     handler: com.serverless.Handler
@@ -42,6 +44,8 @@ functions:
     package:
       artifact: .artifacts/java.jar
       individually: true
+    environment:
+      DD_SERVICE: rey-app-otlp-dev-java
 
   node:
     handler: handler.handler
@@ -52,6 +56,8 @@ functions:
     package:
       artifact: .artifacts/node.zip
       individually: true
+    environment:
+      DD_SERVICE: rey-app-otlp-dev-node
 
   python:
     handler: handler.handler
@@ -63,3 +69,5 @@ functions:
     package:
       artifact: .artifacts/python.zip
       individually: true
+    environment:
+      DD_SERVICE: rey-app-otlp-dev-python
