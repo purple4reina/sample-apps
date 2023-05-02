@@ -51,13 +51,12 @@ functions:
     handler: handler.handler
     runtime: nodejs18.x
     url: true
-    environment:
-      NODE_OPTIONS: --require instrument
     package:
       artifact: .artifacts/node.zip
       individually: true
     environment:
       DD_SERVICE: rey-app-otlp-dev-node
+      NODE_OPTIONS: --require instrument
 
   python:
     handler: handler.handler
