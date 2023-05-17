@@ -1,7 +1,7 @@
 #!/bin/bash
 
-curl https://47pirf47ylb3bktfclg57se2je0dqqla.lambda-url.sa-east-1.on.aws & # golang
-curl https://xh5yrc654vjsswh7ctj26aujwm0cqyib.lambda-url.sa-east-1.on.aws & # java
-curl https://gzktqvilomtfgpjz2oak6ydm4m0glsfl.lambda-url.sa-east-1.on.aws & # node
-curl https://2bf4qzzld3ufnvsjvzb3wc46ya0ivryj.lambda-url.sa-east-1.on.aws & # python
+curl https://6phy3nfh2cotpin3mrlnke5pj40xerdo.lambda-url.sa-east-1.on.aws & # golang
+curl https://6wihadmde7gtw75f2ma2fz2cyu0izjgp.lambda-url.sa-east-1.on.aws & # java
+curl https://jv7orak6kr7cdrb7jedwedz7240rylcf.lambda-url.sa-east-1.on.aws & # node
+curl https://alxr7cqpbc5es3gumio7hph2sy0uqkxh.lambda-url.sa-east-1.on.aws & # python
 wait ; echo

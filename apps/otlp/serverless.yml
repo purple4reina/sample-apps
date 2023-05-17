@@ -8,6 +8,7 @@ provider:
   region: sa-east-1
   environment:
     DD_API_KEY: ${env:DD_API_KEY}
+    DD_SITE: ${env:DD_SITE}
     DD_LOG_LEVEL: DEBUG
     DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
     DD_SERVERLESS_LOGS_ENABLED: true
@@ -16,7 +17,7 @@ provider:
     - ${self:custom.ddLayer}
 
 custom:
-  ddLayer: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:71
+  ddLayer: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:77
   pythonRequirements:
     dockerRunCmdExtraArgs: ['--platform', 'linux/amd64']
     dockerizePip: true
@@ -36,16 +37,6 @@ functions:
       individually: true
     environment:
       DD_SERVICE: rey-app-otlp-dev-golang
-
-  java:
-    handler: com.serverless.Handler
-    runtime: java8
-    url: true
-    package:
-      artifact: .artifacts/java.jar
-      individually: true
-    environment:
-      DD_SERVICE: rey-app-otlp-dev-java
 
   node:
     handler: handler.handler
