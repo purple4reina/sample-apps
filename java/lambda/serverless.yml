@@ -6,15 +6,16 @@ provider:
   runtime: java11
   environment:
     DD_API_KEY: ${env:DD_API_KEY}
-    DD_LOG_LEVEL: debug
 
 package:
-  artifact: build/libs/hello-dev-all.jar
+  artifact: build/distributions/lambda.zip
 
 plugins:
   - serverless-plugin-datadog
 
 functions:
   simple:
-    handler: com.serverless.Handler
+    handler: example.Handler
     url: true
+    environment:
+      DD_LOG_LEVEL: debug

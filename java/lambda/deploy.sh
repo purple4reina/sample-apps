@@ -1,4 +1,4 @@
 #!/bin/bash -e
 
-./gradlew clean build
+gradle build
 aws-vault exec serverless-sandbox-account-admin -- serverless deploy
