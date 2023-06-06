@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "serverless-plugin-datadog": "^5.20.0"
+  },
+  "dependencies": {
+    "datadog-lambda-js": "^7.91.0",
+    "dd-trace": "^3.15.0"
+  }
+}
