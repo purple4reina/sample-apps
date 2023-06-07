@@ -5,11 +5,6 @@ provider:
   region: sa-east-1
   runtime: nodejs18.x
 
-package:
-  patterns:
-    - '!**'
-    - 'handler.js'
-
 plugins:
   - serverless-plugin-datadog
 

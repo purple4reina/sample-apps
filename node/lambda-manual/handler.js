@@ -1,5 +1,3 @@
-const datadog = require('datadog-lambda-js');
-
 var coldStart = true;
 
 exports.handler = async function(event, context) {
@@ -11,5 +9,6 @@ exports.handler = async function(event, context) {
 }
 
 if (process.env._HANDLER) {
+  const datadog = require('datadog-lambda-js');
   exports.handler = datadog.datadog(exports.handler);
 }
