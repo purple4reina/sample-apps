@@ -1,0 +1,37 @@
+service: rey-python-otlp-auto
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: sa-east-1
+  layers:
+    #- arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:73
+    - arn:aws:lambda:sa-east-1:184161586896:layer:opentelemetry-python-0_1_0:1
+  environment:
+    OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4318
+    OTEL_SERVICE_NAME: rey-python-otlp-auto
+    OTEL_TRACES_EXPORTER: console,otlp
+    OTEL_METRICS_EXPORTER: console,otlp
+
+    AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-instrument
+
+    DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    addLayers: false
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  code:
+    # XXX: The plugin sets the handler to datadog_lambda.handler.handler
+    handler: handler.handler
+    url: true
