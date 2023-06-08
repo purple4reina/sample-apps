@@ -5,13 +5,12 @@ provider:
   runtime: python3.9
   region: sa-east-1
   layers:
-    #- arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:73
     - arn:aws:lambda:sa-east-1:184161586896:layer:opentelemetry-python-0_1_0:1
   environment:
     OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4318
     OTEL_SERVICE_NAME: rey-python-otlp-auto
-    OTEL_TRACES_EXPORTER: console,otlp
-    OTEL_METRICS_EXPORTER: console,otlp
+    OTEL_TRACES_EXPORTER: otlp
+    OTEL_METRICS_EXPORTER: otlp
 
     AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-instrument
 
