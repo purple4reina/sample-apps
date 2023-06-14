@@ -5,10 +5,10 @@ provider:
   region: sa-east-1
   runtime: nodejs18.x
   layers:
-    - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:58
+    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:43
     - arn:aws:lambda:sa-east-1:184161586896:layer:opentelemetry-nodejs-0_1_0:1
   environment:
-    AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-instrument
+    AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-handler
 
     OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4318
     OTEL_TRACES_EXPORTER: otlp
