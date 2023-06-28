@@ -1,0 +1,21 @@
+service: rey-python-awslambdaric
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+  architecture: arm64
+  environment:
+    DD_LOG_LEVEL: debug
+    DD_API_KEY: ${env:DD_API_KEY}
+    DD_LAMBDA_HANDLER: handler.handler
+  ecr:
+    images:
+      appimage:
+        path: ./
+
+functions:
+  func:
+    url: true
+    image:
+      name: appimage
