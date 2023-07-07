@@ -1,0 +1,33 @@
+service: rey-java-sqs
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: java11
+  architecture: arm64
+  environment:
+    QUEUE_URL: ${construct:rey-sqs.queueUrl}
+
+package:
+  artifact: build/distributions/sqs.zip
+
+plugins:
+  - serverless-plugin-datadog
+  - serverless-lift
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+    logLevel: debug
+
+constructs:
+  rey-sqs:
+    type: queue
+    worker:
+      handler: example.Consumer
+      name: ${self:service}-${sls:stage}-consumer
+
+functions:
+  producer:
+    handler: example.Producer
+    url: true

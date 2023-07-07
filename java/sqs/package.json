@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "serverless-lift": "^1.27.0",
+    "serverless-plugin-datadog": "^5.36.0"
+  }
+}
