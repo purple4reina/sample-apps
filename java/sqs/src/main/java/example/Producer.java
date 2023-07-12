@@ -4,12 +4,11 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
-
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
+import com.amazonaws.services.sqs.model.MessageAttributeValue;
 import com.amazonaws.services.sqs.model.SendMessageRequest;
 
-// Handler value: example.Handler
 public class Producer implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse>{
 
   final AmazonSQS sqs = AmazonSQSClientBuilder.defaultClient();
@@ -18,10 +17,13 @@ public class Producer implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewa
   @Override
   public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent event, Context context)
   {
-
+    MessageAttributeValue attr = new MessageAttributeValue()
+      .withStringValue("hello world")
+      .withDataType("String");
     SendMessageRequest request = new SendMessageRequest()
       .withQueueUrl(queueUrl)
-      .withMessageBody("hello world");
+      .withMessageBody("hello world")
+      .addMessageAttributesEntry("rey", attr);
     sqs.sendMessage(request);
 
     APIGatewayV2HTTPResponse response = new APIGatewayV2HTTPResponse();

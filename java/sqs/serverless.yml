@@ -18,7 +18,6 @@ plugins:
 custom:
   datadog:
     apiKey: ${env:DD_API_KEY}
-    logLevel: debug
 
 constructs:
   rey-sqs:
