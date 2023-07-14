@@ -5,7 +5,7 @@ provider:
   region: sa-east-1
   architecture: arm64
   environment:
-    PYTHON_SQS_QUEUE_URL: ${construct:python-sqs.queueUrl}
+    SQS_QUEUE_URLS: !Join [ ",", "${self:custom.queueUrls}"]
 
 plugins:
   - serverless-plugin-datadog
@@ -14,6 +14,8 @@ plugins:
 custom:
   datadog:
     apiKey: ${env:DD_API_KEY}
+  queueUrls:
+    - ${construct:python-sqs.queueUrl}
 
 constructs:
   python-sqs:
@@ -21,10 +23,10 @@ constructs:
     worker:
       handler: python/handlers.consumer
       runtime: python3.9
-      name: ${self:service}-${sls:stage}-consumer
+      name: ${self:service}-${sls:stage}-python-consumer
 
 functions:
-  producer:
+  python-producer:
     handler: python/handlers.producer
     runtime: python3.9
     url: true

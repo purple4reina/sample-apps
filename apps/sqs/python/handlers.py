@@ -6,18 +6,18 @@ from datadog_lambda.metric import lambda_metric
 from ddtrace import tracer
 
 client = boto3.client('sqs')
-queue_url = os.environ['PYTHON_SQS_QUEUE_URL']
+queue_urls = os.environ['SQS_QUEUE_URLS'].split(',')
 runtime = os.environ['AWS_EXECUTION_ENV']
 
 def producer(event, context):
-    trace_id = _current_trace_id()
     msg = json.dumps({
             'runtime': runtime,
-            'trace_id': trace_id,
+            'trace_id': _current_trace_id(),
     })
-    print(f'sending sqs message {msg}')
-    client.send_message(QueueUrl=queue_url, MessageBody=msg)
-    return {'statusCOde': 200, 'body': 'ok'}
+    for url in queue_urls:
+        print(f'sending sqs message {msg} to {url}')
+        client.send_message(QueueUrl=url, MessageBody=msg)
+    return {'statusCode': 200, 'body': 'ok'}
 
 def consumer(event, context):
     trace_id = _current_trace_id()
