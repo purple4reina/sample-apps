@@ -1,0 +1,30 @@
+service: sqs-trace-propagation
+
+provider:
+  name: aws
+  region: sa-east-1
+  architecture: arm64
+  environment:
+    PYTHON_SQS_QUEUE_URL: ${construct:python-sqs.queueUrl}
+
+plugins:
+  - serverless-plugin-datadog
+  - serverless-lift
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+constructs:
+  python-sqs:
+    type: queue
+    worker:
+      handler: python/handlers.consumer
+      runtime: python3.9
+      name: ${self:service}-${sls:stage}-consumer
+
+functions:
+  producer:
+    handler: python/handlers.producer
+    runtime: python3.9
+    url: true
