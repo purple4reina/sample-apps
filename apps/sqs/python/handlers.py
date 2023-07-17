@@ -7,7 +7,7 @@ from ddtrace import tracer
 
 client = boto3.client('sqs')
 queue_urls = os.environ['SQS_QUEUE_URLS'].split(',')
-runtime = os.environ['AWS_EXECUTION_ENV']
+runtime = os.environ['AWS_EXECUTION_ENV'].replace('AWS_Lambda_', '')
 
 def producer(event, context):
     msg = json.dumps({
@@ -25,7 +25,7 @@ def consumer(event, context):
         payload = json.loads(record['body'])
         print(f'received sqs message {payload}')
         lambda_metric('trace_context.propagated.sqs', 1, tags=[
-                f'consumer_rumtime:{runtime}',
+                f'consumer_runtime:{runtime}',
                 f'producer_runtime:{payload["runtime"]}',
                 f'success:{trace_id == payload["trace_id"]}',
                 f'transport:sqs',
@@ -35,4 +35,4 @@ def _current_trace_id():
     ctx = tracer.current_trace_context()
     assert ctx, 'no trace context found!'
     print(f'found trace context {ctx}')
-    return ctx.trace_id
+    return str(ctx.trace_id)

@@ -16,6 +16,7 @@ custom:
     apiKey: ${env:DD_API_KEY}
   queueUrls:
     - ${construct:python-sqs.queueUrl}
+    - ${construct:java-sqs.queueUrl}
 
 constructs:
   python-sqs:
@@ -24,9 +25,23 @@ constructs:
       handler: python/handlers.consumer
       runtime: python3.9
       name: ${self:service}-${sls:stage}-python-consumer
+  java-sqs:
+    type: queue
+    worker:
+      handler: example.Consumer
+      runtime: java11
+      name: ${self:service}-${sls:stage}-java-consumer
+      package:
+        artifact: java/build/distributions/java.zip
 
 functions:
   python-producer:
     handler: python/handlers.producer
     runtime: python3.9
     url: true
+  java-producer:
+    handler: example.Producer
+    runtime: java11
+    url: true
+    package:
+      artifact: java/build/distributions/java.zip
