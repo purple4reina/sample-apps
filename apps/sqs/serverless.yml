@@ -4,6 +4,7 @@ provider:
   name: aws
   region: sa-east-1
   architecture: arm64
+  timeout: 90
   environment:
     SQS_QUEUE_URLS: !Join [",", "${self:custom.queueUrls}"]
 
@@ -17,6 +18,9 @@ custom:
   queueUrls:
     - ${construct:python-sqs.queueUrl}
     - ${construct:java-sqs.queueUrl}
+  producerUrls:
+    - !GetAtt PythonDashproducerLambdaFunctionUrl.FunctionUrl
+    - !GetAtt JavaDashproducerLambdaFunctionUrl.FunctionUrl
 
 constructs:
   python-sqs:
@@ -45,3 +49,9 @@ functions:
     url: true
     package:
       artifact: java/build/distributions/java.zip
+  orchestrator:
+    handler: orchestrator/handlers.orchestrate
+    runtime: python3.9
+    url: true
+    environment:
+      PRODUCER_URLS: !Join [",", "${self:custom.producerUrls}"]
