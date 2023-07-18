@@ -25,8 +25,8 @@ public class Consumer implements RequestHandler<SQSEvent, Void>{
       JSONObject parsed = new JSONObject(payload);
       statsd.recordDistributionValue("trace_context.propagated.sqs", 1, new String[]{
         "consumer_runtime:" + runtime,
-        "producer_runtime:" + parsed.getString("runtime"),
-        traceId == parsed.getString("trace_id") ? "success:true" : "success:false",
+        "producer_runtime:" + parsed.optString("runtime"),
+        parsed.optString("trace_id").equals(traceId) ? "success:true" : "success:false",
         "transport:sqs",
       });
     }
