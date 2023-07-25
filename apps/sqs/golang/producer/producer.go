@@ -14,11 +14,13 @@ import (
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/sqs"
 	"github.com/aws/aws-sdk-go/aws"
+	awstrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/aws/aws-sdk-go-v2/aws"
 )
 
 var (
 	client = func() *sqs.Client {
 		cfg, _ := config.LoadDefaultConfig(context.Background())
+		awstrace.AppendMiddleware(&cfg)
 		return sqs.NewFromConfig(cfg)
 	}()
 

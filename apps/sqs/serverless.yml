@@ -48,6 +48,8 @@ constructs:
   #    handler: golang/bin/consumer
   #    runtime: go1.x
   #    name: ${self:service}-${sls:stage}-go-consumer
+  #    environment:
+  #      DD_UNIVERSAL_INSTRUMENTATION: true
 
 functions:
   python-producer:
@@ -66,6 +68,8 @@ functions:
     # TODO: x86_64 for all handlers
     architecture: x86_64
     url: true
+    environment:
+      DD_UNIVERSAL_INSTRUMENTATION: true
     layers:
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:45
   orchestrator:
