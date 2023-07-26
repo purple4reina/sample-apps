@@ -25,6 +25,7 @@ custom:
     - !GetAtt PythonDashproducerLambdaFunctionUrl.FunctionUrl
     - !GetAtt JavaDashproducerLambdaFunctionUrl.FunctionUrl
     - !GetAtt GoDashproducerLambdaFunctionUrl.FunctionUrl
+    - !GetAtt NodeDashproducerLambdaFunctionUrl.FunctionUrl
 
 constructs:
   python-sqs:
@@ -67,6 +68,10 @@ functions:
     url: true
     environment:
       DD_UNIVERSAL_INSTRUMENTATION: true
+  node-producer:
+    handler: node/handlers.producer
+    runtime: nodejs18.x
+    url: true
   orchestrator:
     handler: orchestrator/handlers.orchestrate
     runtime: python3.9

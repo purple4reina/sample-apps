@@ -26,8 +26,8 @@ def consumer(event, context):
         print(f'received sqs message {payload}')
         lambda_metric('trace_context.propagated.sqs', 1, tags=[
                 f'consumer_runtime:{runtime}',
-                f'producer_runtime:{payload["runtime"]}',
-                f'success:{trace_id == payload["trace_id"]}',
+                f'producer_runtime:{payload.get("runtime")}',
+                f'success:{trace_id == payload.get("trace_id")}',
                 f'transport:sqs',
         ])
 
