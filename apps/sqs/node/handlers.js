@@ -1,8 +1,8 @@
 const tracer = require('dd-trace').init();
-
 const { SQSClient, SendMessageCommand } = require("@aws-sdk/client-sqs");
-const client = new SQSClient();
+const { sendDistributionMetric } = require('datadog-lambda-js');
 
+const client = new SQSClient();
 const queueUrls = process.env.SQS_QUEUE_URLS.split(',');
 const runtime = process.env.AWS_EXECUTION_ENV.replace('AWS_Lambda_', '');
 
@@ -18,6 +18,23 @@ exports.producer = async function(event, context) {
       QueueUrl: url,
     }));
   }
+  return {'statusCode': 200, 'body': 'ok'};
+}
+
+exports.consumer = async function(event, context) {
+  const traceId = currentTraceId();
+  event.Records.forEach(record => {
+    const { body } = record;
+    console.log(`received sqs message ${body}`);
+    payload = JSON.parse(body);
+    sendDistributionMetric(
+      'trace_context.propagated.sqs', 1,
+      `consumer_runtime:${runtime}`,
+      `producer_runtime:${payload.runtime}`,
+      traceId == payload.trace_id ? 'success:true' : 'success:false',
+      'transport:sqs',
+    );
+  });
   return {'statusCode': 200, 'body': 'ok'};
 }
 

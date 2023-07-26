@@ -21,6 +21,7 @@ custom:
     - ${construct:python-sqs.queueUrl}
     - ${construct:java-sqs.queueUrl}
     - ${construct:go-sqs.queueUrl}
+    - ${construct:node-sqs.queueUrl}
   producerUrls:
     - !GetAtt PythonDashproducerLambdaFunctionUrl.FunctionUrl
     - !GetAtt JavaDashproducerLambdaFunctionUrl.FunctionUrl
@@ -50,6 +51,12 @@ constructs:
       name: ${self:service}-${sls:stage}-go-consumer
       environment:
         DD_UNIVERSAL_INSTRUMENTATION: true
+  node-sqs:
+    type: queue
+    worker:
+      handler: node/handlers.consumer
+      runtime: nodejs18.x
+      name: ${self:service}-${sls:stage}-node-consumer
 
 functions:
   python-producer:

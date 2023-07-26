@@ -18,8 +18,7 @@ func consumer(ctx context.Context, event events.SQSEvent) (string, error) {
 		fmt.Printf("received sqs message %s", record.Body)
 		json.Unmarshal([]byte(record.Body), &msg)
 		ddlambda.Metric(
-			"trace_context.propagated.sqs",
-			1,
+			"trace_context.propagated.sqs", 1,
 			fmt.Sprintf("consumer_runtime:%s", internal.Runtime),
 			fmt.Sprintf("producer_runtime:%s", msg.Runtime),
 			fmt.Sprintf("success:%t", traceID == msg.TraceID),
