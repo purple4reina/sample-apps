@@ -12,6 +12,11 @@ import (
 
 var Runtime = strings.ReplaceAll(os.Getenv("AWS_EXECUTION_ENV"), "AWS_Lambda_", "")
 
+type Message struct {
+	Runtime string `json:"runtime"`
+	TraceID string `json:"trace_id"`
+}
+
 func TraceID(ctx context.Context) string {
 	span, _ := tracer.SpanFromContext(ctx)
 	spanCtx := span.Context()

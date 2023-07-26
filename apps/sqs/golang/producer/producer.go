@@ -27,13 +27,8 @@ var (
 	queueUrls = strings.Split(os.Getenv("SQS_QUEUE_URLS"), ",")
 )
 
-type message struct {
-	Runtime string `json:"runtime"`
-	TraceID string `json:"trace_id"`
-}
-
 func producer(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	msg, _ := json.Marshal(message{
+	msg, _ := json.Marshal(internal.Message{
 		Runtime: internal.Runtime,
 		TraceID: internal.TraceID(ctx),
 	})

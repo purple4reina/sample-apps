@@ -4,7 +4,7 @@ provider:
   name: aws
   region: sa-east-1
   architecture: arm64
-  timeout: 90
+  timeout: 30
   environment:
     SQS_QUEUE_URLS: !Join [",", "${self:custom.queueUrls}"]
   layers:
@@ -21,7 +21,7 @@ custom:
   queueUrls:
     - ${construct:python-sqs.queueUrl}
     - ${construct:java-sqs.queueUrl}
-    #- ${construct:go-sqs.queueUrl}
+    - ${construct:go-sqs.queueUrl}
   producerUrls:
     - !GetAtt PythonDashproducerLambdaFunctionUrl.FunctionUrl
     - !GetAtt JavaDashproducerLambdaFunctionUrl.FunctionUrl
@@ -42,14 +42,15 @@ constructs:
       name: ${self:service}-${sls:stage}-java-consumer
       package:
         artifact: java/build/distributions/java.zip
-  #go-sqs:
-  #  type: queue
-  #  worker:
-  #    handler: golang/bin/consumer
-  #    runtime: go1.x
-  #    name: ${self:service}-${sls:stage}-go-consumer
-  #    environment:
-  #      DD_UNIVERSAL_INSTRUMENTATION: true
+  go-sqs:
+    type: queue
+    worker:
+      handler: golang/bin/consumer
+      runtime: go1.x
+      name: ${self:service}-${sls:stage}-go-consumer
+      architecture: x86_64
+      environment:
+        DD_UNIVERSAL_INSTRUMENTATION: true
 
 functions:
   python-producer:
@@ -70,8 +71,6 @@ functions:
     url: true
     environment:
       DD_UNIVERSAL_INSTRUMENTATION: true
-    layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:45
   orchestrator:
     handler: orchestrator/handlers.orchestrate
     runtime: python3.9

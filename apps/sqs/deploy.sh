@@ -13,7 +13,7 @@ cd "$ROOT_DIR"/golang
 rm -rf bin
 mkdir -p bin
 env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin producer/producer.go
-#env GOARCH=arm64 GOOS=linux go build -ldflags="-s -w" -o bin consumer/consumer.go
+env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin consumer/consumer.go
 cd "$ROOT_DIR"
 
 aws-vault exec serverless-sandbox-account-admin -- serverless deploy
