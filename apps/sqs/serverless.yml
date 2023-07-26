@@ -3,12 +3,11 @@ service: sqs-trace-propagation
 provider:
   name: aws
   region: sa-east-1
-  architecture: arm64
   timeout: 30
   environment:
     SQS_QUEUE_URLS: !Join [",", "${self:custom.queueUrls}"]
   layers:
-    - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-ARM-REY:2
+    - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:81
 
 plugins:
   - serverless-plugin-datadog
@@ -48,7 +47,6 @@ constructs:
       handler: golang/bin/consumer
       runtime: go1.x
       name: ${self:service}-${sls:stage}-go-consumer
-      architecture: x86_64
       environment:
         DD_UNIVERSAL_INSTRUMENTATION: true
 
@@ -66,8 +64,6 @@ functions:
   go-producer:
     handler: golang/bin/producer
     runtime: go1.x
-    # TODO: x86_64 for all handlers
-    architecture: x86_64
     url: true
     environment:
       DD_UNIVERSAL_INSTRUMENTATION: true
