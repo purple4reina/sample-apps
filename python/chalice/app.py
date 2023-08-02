@@ -11,3 +11,7 @@ def index():
 @app.schedule('rate(1 minute)')
 def run_cron(event):
     return {'hello': 'schedule'}
+
+@app.lambda_function()
+def function(params, context):
+    return {'hello': 'function'}
