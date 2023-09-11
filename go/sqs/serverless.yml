@@ -1,0 +1,38 @@
+service: rey-go-sqs
+
+provider:
+  name: aws
+  region: sa-east-1
+  timeout: 30
+  environment:
+    DD_SERVICE: ${self:service}
+    DD_UNIVERSAL_INSTRUMENTATION: true
+    SQS_QUEUE_URL: ${construct:go-sqs.queueUrl}
+
+plugins:
+  - serverless-plugin-datadog
+  - serverless-lift
+
+package:
+  patterns:
+    - '!**'
+    - 'bin/**'
+    - 'handlers.py'
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+constructs:
+  go-sqs:
+    type: queue
+    worker:
+      handler: bin/consumer
+      runtime: go1.x
+      name: ${self:service}-${sls:stage}-go-consumer
+
+functions:
+  python-producer:
+    handler: handlers.producer
+    runtime: python3.9
+    url: true
