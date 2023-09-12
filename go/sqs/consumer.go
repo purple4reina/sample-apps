@@ -12,7 +12,7 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
-func consumer(ctx context.Context, event events.SQSEvent) (string, error) {
+func consumer(ctx context.Context, event events.SQSEvent) (events.SQSEventResponse, error) {
 	traceID := internal.TraceID(ctx)
 	parent, _ := tracer.SpanFromContext(ctx)
 	for _, record := range event.Records {
@@ -31,7 +31,7 @@ func consumer(ctx context.Context, event events.SQSEvent) (string, error) {
 		}
 		span.Finish()
 	}
-	return "ok", nil
+	return events.SQSEventResponse{}, nil
 }
 
 func main() {
