@@ -6,8 +6,6 @@ provider:
   timeout: 30
   environment:
     SQS_QUEUE_URLS: !Join [",", "${self:custom.queueUrls}"]
-  layers:
-    - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:81
 
 plugins:
   - serverless-plugin-datadog
@@ -16,7 +14,6 @@ plugins:
 custom:
   datadog:
     apiKey: ${env:DD_API_KEY}
-    addExtension: false
   queueUrls:
     - ${construct:python-sqs.queueUrl}
     - ${construct:java-sqs.queueUrl}
