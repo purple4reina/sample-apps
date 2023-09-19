@@ -17,5 +17,3 @@ functions:
   simple:
     handler: example.Handler
     url: true
-    environment:
-      DD_LOG_LEVEL: debug
