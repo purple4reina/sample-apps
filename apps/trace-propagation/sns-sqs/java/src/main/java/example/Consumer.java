@@ -3,6 +3,7 @@ package example;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.SQSEvent;
+import com.amazonaws.services.lambda.runtime.events.SQSBatchResponse;
 import com.timgroup.statsd.NonBlockingStatsDClientBuilder;
 import com.timgroup.statsd.StatsDClient;
 import org.json.JSONObject;
@@ -10,12 +11,12 @@ import org.json.JSONObject;
 import static example.Context.currentTraceId;
 import static example.Context.runtime;
 
-public class Consumer implements RequestHandler<SQSEvent, Void>{
+public class Consumer implements RequestHandler<SQSEvent, SQSBatchResponse>{
 
   private static final StatsDClient statsd = new NonBlockingStatsDClientBuilder().hostname("localhost").build();
 
   @Override
-  public Void handleRequest(SQSEvent event, Context context)
+  public SQSBatchResponse handleRequest(SQSEvent event, Context context)
   {
     String traceId = currentTraceId();
     for (SQSEvent.SQSMessage message : event.getRecords()) {
@@ -30,6 +31,6 @@ public class Consumer implements RequestHandler<SQSEvent, Void>{
         "transport:sns-sqs",
       });
     }
-    return null;
+    return new SQSBatchResponse();
   }
 }
