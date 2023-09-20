@@ -1,0 +1,64 @@
+service: sns-sqs-trace-propagation
+
+provider:
+  name: aws
+  region: sa-east-1
+  timeout: 30
+  environment:
+    SNS_TOPIC_ARNS: !Ref pythonSns
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - "sns:*"
+      Resource:
+        - !Ref pythonSns
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+resources:
+  Resources:
+    pythonSqs:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: pythonSqs
+    pythonSns:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: pythonSns
+        Subscription:
+          - Protocol: sqs
+            Endpoint: !GetAtt pythonSqs.Arn
+    pythonPolicy:
+      Type: AWS::SQS::QueuePolicy
+      Properties:
+        Queues:
+          - Ref: pythonSqs
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Sid: "Allow SNS publish to SQS"
+              Effect: Allow
+              Principal:
+                Service: "sns.amazonaws.com"
+              Resource: !GetAtt pythonSqs.Arn
+              Action: SQS:SendMessage
+              Condition:
+                ArnEquals:
+                  aws:SourceArn: !Ref pythonSns
+
+functions:
+  python-producer:
+    handler: python/handlers.producer
+    runtime: python3.9
+    url: true
+  python-consumer:
+    handler: python/handlers.consumer
+    runtime: python3.9
+    events:
+      - sqs:
+          arn: !GetAtt pythonSqs.Arn
