@@ -5,13 +5,14 @@ provider:
   region: sa-east-1
   timeout: 30
   environment:
-    SNS_TOPIC_ARNS: !Ref pythonSns
+    SNS_TOPIC_ARNS: !Join [",", "${self:custom.topicArns}"]
   iamRoleStatements:
     - Effect: Allow
       Action:
         - "sns:*"
       Resource:
         - !Ref pythonSns
+        - !Ref javaSns
 
 plugins:
   - serverless-plugin-datadog
@@ -19,9 +20,16 @@ plugins:
 custom:
   datadog:
     apiKey: ${env:DD_API_KEY}
+  topicArns:
+    - !Ref pythonSns
+    - !Ref javaSns
+  producerUrls:
+    - !GetAtt PythonDashproducerLambdaFunctionUrl.FunctionUrl
+    - !GetAtt JavaDashproducerLambdaFunctionUrl.FunctionUrl
 
 resources:
   Resources:
+    # python
     pythonSqs:
       Type: AWS::SQS::Queue
       Properties:
@@ -50,8 +58,46 @@ resources:
               Condition:
                 ArnEquals:
                   aws:SourceArn: !Ref pythonSns
+    # java
+    javaSqs:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: javaSqs
+    javaSns:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: javaSns
+        Subscription:
+          - Protocol: sqs
+            Endpoint: !GetAtt javaSqs.Arn
+    javaPolicy:
+      Type: AWS::SQS::QueuePolicy
+      Properties:
+        Queues:
+          - Ref: javaSqs
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Sid: "Allow SNS publish to SQS"
+              Effect: Allow
+              Principal:
+                Service: "sns.amazonaws.com"
+              Resource: !GetAtt javaSqs.Arn
+              Action: SQS:SendMessage
+              Condition:
+                ArnEquals:
+                  aws:SourceArn: !Ref javaSns
 
 functions:
+  # orchestrator
+  orchestrator:
+    handler: orchestrator/handlers.orchestrate
+    runtime: python3.9
+    url: true
+    environment:
+      PRODUCER_URLS: !Join [",", "${self:custom.producerUrls}"]
+
+  # python
   python-producer:
     handler: python/handlers.producer
     runtime: python3.9
@@ -62,3 +108,19 @@ functions:
     events:
       - sqs:
           arn: !GetAtt pythonSqs.Arn
+
+  # java
+  java-producer:
+    handler: example.Producer
+    runtime: java11
+    url: true
+    package:
+      artifact: java/build/distributions/java.zip
+  java-consumer:
+    handler: example.Consumer
+    runtime: java11
+    package:
+      artifact: java/build/distributions/java.zip
+    events:
+      - sqs:
+          arn: !GetAtt javaSqs.Arn
