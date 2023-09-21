@@ -17,7 +17,6 @@ plugins:
 
 custom:
   datadog:
-    logLevel: DEBUG
     addExtension: false
     apiKey: ${env:DD_API_KEY}
 
