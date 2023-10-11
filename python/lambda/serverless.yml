@@ -4,8 +4,6 @@ provider:
   name: aws
   region: sa-east-1
   runtime: python3.9
-  layers:
-    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:44
 
 package:
   patterns:
@@ -17,7 +15,6 @@ plugins:
 
 custom:
   datadog:
-    addExtension: false
     apiKey: ${env:DD_API_KEY}
 
 functions:
