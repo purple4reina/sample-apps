@@ -61,14 +61,14 @@ functions:
 
   go-client:
     handler: golang/bin/client
-    runtime: provided.al2
+    runtime: go1.x
     url: true
     environment:
       DD_UNIVERSAL_INSTRUMENTATION: true
       SERVER_URLS: !Join [",", "${self:custom.serverUrls}"]
   go-server:
     handler: golang/bin/server
-    runtime: provided.al2
+    runtime: go1.x
     url: true
     environment:
       DD_UNIVERSAL_INSTRUMENTATION: true

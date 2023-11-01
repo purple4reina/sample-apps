@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 
@@ -14,12 +15,14 @@ import (
 func server(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	traceID := internal.TraceID(ctx)
 	var msg internal.Message
-	fmt.Printf("received http data %s", event.Body)
-	json.Unmarshal([]byte(event.Body), &msg)
+	fmt.Printf("received http event body %s", event.Body)
+	data, _ := base64.StdEncoding.DecodeString(event.Body)
+	fmt.Printf("received http data %s", string(data))
+	json.Unmarshal(data, &msg)
 	ddlambda.Metric(
 		"trace_context.propagated.http", 1,
-		fmt.Sprintf("client_runtime:%s", internal.Runtime),
-		fmt.Sprintf("server_runtime:%s", msg.Runtime),
+		fmt.Sprintf("client_runtime:%s", msg.Runtime),
+		fmt.Sprintf("server_runtime:%s", internal.Runtime),
 		fmt.Sprintf("success:%t", traceID == msg.TraceID),
 		"transport:http",
 	)
