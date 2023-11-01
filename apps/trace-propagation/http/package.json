@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "serverless-lift": "^1.27.0",
+    "serverless-plugin-datadog": "^5.37.0",
+    "serverless-python-requirements": "^6.0.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1423.0"
+  }
+}

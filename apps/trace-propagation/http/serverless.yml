@@ -1,0 +1,92 @@
+service: http-trace-propagation
+
+provider:
+  name: aws
+  region: sa-east-1
+  timeout: 30
+  layers:
+    - !Ref PythonRequirementsLambdaLayer
+
+plugins:
+  - serverless-plugin-datadog
+
+layers:
+  pythonRequirements:
+    package:
+      artifact: env/python/requirements-layer.zip
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+  clientUrls:
+    - !GetAtt PythonDashclientLambdaFunctionUrl.FunctionUrl
+    - !GetAtt JavaDashclientLambdaFunctionUrl.FunctionUrl
+    - !GetAtt GoDashclientLambdaFunctionUrl.FunctionUrl
+    - !GetAtt NodeDashclientLambdaFunctionUrl.FunctionUrl
+  serverUrls:
+    - !GetAtt PythonDashserverLambdaFunctionUrl.FunctionUrl
+    - !GetAtt JavaDashserverLambdaFunctionUrl.FunctionUrl
+    - !GetAtt GoDashserverLambdaFunctionUrl.FunctionUrl
+    - !GetAtt NodeDashserverLambdaFunctionUrl.FunctionUrl
+
+functions:
+  python-client:
+    handler: python/handlers.client
+    runtime: python3.9
+    url: true
+    environment:
+      SERVER_URLS: !Join [",", "${self:custom.serverUrls}"]
+      DD_CAPTURE_LAMBDA_PAYLOAD: true
+  python-server:
+    handler: python/handlers.server
+    runtime: python3.9
+    url: true
+    environment:
+      DD_CAPTURE_LAMBDA_PAYLOAD: true
+
+  java-client:
+    handler: example.Client
+    runtime: java11
+    url: true
+    package:
+      artifact: java/build/distributions/java.zip
+    environment:
+      SERVER_URLS: !Join [",", "${self:custom.serverUrls}"]
+  java-server:
+    handler: example.Server
+    runtime: java11
+    url: true
+    package:
+      artifact: java/build/distributions/java.zip
+
+  go-client:
+    handler: golang/bin/client
+    runtime: provided.al2
+    url: true
+    environment:
+      DD_UNIVERSAL_INSTRUMENTATION: true
+      SERVER_URLS: !Join [",", "${self:custom.serverUrls}"]
+  go-server:
+    handler: golang/bin/server
+    runtime: provided.al2
+    url: true
+    environment:
+      DD_UNIVERSAL_INSTRUMENTATION: true
+
+  node-client:
+    handler: node/handlers.client
+    runtime: nodejs18.x
+    url: true
+    environment:
+      SERVER_URLS: !Join [",", "${self:custom.serverUrls}"]
+  node-server:
+    handler: node/handlers.server
+    runtime: nodejs18.x
+    url: true
+
+  orchestrator:
+    handler: orchestrator/handlers.orchestrate
+    runtime: python3.9
+    url: true
+    environment:
+      CLIENT_URLS: !Join [",", "${self:custom.clientUrls}"]
