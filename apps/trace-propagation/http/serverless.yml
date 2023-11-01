@@ -4,7 +4,7 @@ provider:
   name: aws
   region: sa-east-1
   timeout: 30
-  layers:
+  layers:  # TODO: use only for python, breaks if used with Go
     - !Ref PythonRequirementsLambdaLayer
 
 plugins:
