@@ -5,15 +5,21 @@ provider:
   region: sa-east-1
   timeout: 30
   environment:
+    DD_API_KEY: ${env:DD_API_KEY}
+    DD_CAPTURE_LAMBDA_PAYLOAD: true
+    DD_COLD_START_TRACE: false
+    DD_ENV: dev
+    DD_LOG_LEVEL: debug
+    DD_SERVICE: sqs-trace-propagation
+    DD_SITE: datadoghq.com
+    DD_TRACE_ENABLED: true
+    DD_TRACE_PROPAGATION_STYLE: tracecontext
     SQS_QUEUE_URLS: !Join [",", "${self:custom.queueUrls}"]
 
 plugins:
-  - serverless-plugin-datadog
   - serverless-lift
 
 custom:
-  datadog:
-    apiKey: ${env:DD_API_KEY}
   queueUrls:
     - ${construct:python-sqs.queueUrl}
     - ${construct:java-sqs.queueUrl}
@@ -24,14 +30,24 @@ custom:
     - !GetAtt JavaDashproducerLambdaFunctionUrl.FunctionUrl
     - !GetAtt GoDashproducerLambdaFunctionUrl.FunctionUrl
     - !GetAtt NodeDashproducerLambdaFunctionUrl.FunctionUrl
+  layers:
+    extension: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:97
+    node: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Node18-x:21
+    python: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:81
+    java: arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-java:11
 
 constructs:
   python-sqs:
     type: queue
     worker:
-      handler: python/handlers.consumer
+      handler: datadog_lambda.handler.handler
       runtime: python3.9
       name: ${self:service}-${sls:stage}-python-consumer
+      layers:
+        - ${self:custom.layers.extension}
+        - ${self:custom.layers.python}
+      environment:
+        DD_LAMBDA_HANDLER: python/handlers.consumer
   java-sqs:
     type: queue
     worker:
@@ -40,6 +56,11 @@ constructs:
       name: ${self:service}-${sls:stage}-java-consumer
       package:
         artifact: java/build/distributions/java.zip
+      layers:
+        - ${self:custom.layers.extension}
+        - ${self:custom.layers.java}
+      environment:
+        AWS_LAMBDA_EXEC_WRAPPER: /opt/datadog_wrapper
   go-sqs:
     type: queue
     worker:
@@ -48,37 +69,65 @@ constructs:
       name: ${self:service}-${sls:stage}-go-consumer
       environment:
         DD_UNIVERSAL_INSTRUMENTATION: true
+      layers:
+        - ${self:custom.layers.extension}
   node-sqs:
     type: queue
     worker:
-      handler: node/handlers.consumer
+      handler: /opt/nodejs/node_modules/datadog-lambda-js/handler.handler
       runtime: nodejs18.x
       name: ${self:service}-${sls:stage}-node-consumer
+      layers:
+        - ${self:custom.layers.extension}
+        - ${self:custom.layers.node}
+      environment:
+        DD_LAMBDA_HANDLER: node/handlers.consumer
 
 functions:
   python-producer:
-    handler: python/handlers.producer
+    handler: datadog_lambda.handler.handler
     runtime: python3.9
     url: true
+    layers:
+      - ${self:custom.layers.extension}
+      - ${self:custom.layers.python}
+    environment:
+      DD_LAMBDA_HANDLER: python/handlers.producer
   java-producer:
     handler: example.Producer
     runtime: java11
     url: true
     package:
       artifact: java/build/distributions/java.zip
+    layers:
+      - ${self:custom.layers.extension}
+      - ${self:custom.layers.java}
+    environment:
+      AWS_LAMBDA_EXEC_WRAPPER: /opt/datadog_wrapper
   go-producer:
     handler: golang/bin/producer
     runtime: go1.x
     url: true
     environment:
       DD_UNIVERSAL_INSTRUMENTATION: true
+    layers:
+      - ${self:custom.layers.extension}
   node-producer:
-    handler: node/handlers.producer
+    handler: /opt/nodejs/node_modules/datadog-lambda-js/handler.handler
     runtime: nodejs18.x
     url: true
+    layers:
+      - ${self:custom.layers.extension}
+      - ${self:custom.layers.node}
+    environment:
+      DD_LAMBDA_HANDLER: node/handlers.producer
   orchestrator:
-    handler: orchestrator/handlers.orchestrate
+    handler: datadog_lambda.handler.handler
     runtime: python3.9
     url: true
     environment:
       PRODUCER_URLS: !Join [",", "${self:custom.producerUrls}"]
+      DD_LAMBDA_HANDLER: orchestrator/handlers.orchestrate
+    layers:
+      - ${self:custom.layers.extension}
+      - ${self:custom.layers.python}
