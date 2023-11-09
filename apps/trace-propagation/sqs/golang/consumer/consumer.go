@@ -11,7 +11,7 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
-func consumer(ctx context.Context, event events.SQSEvent) (string, error) {
+func consumer(ctx context.Context, event events.SQSEvent) (events.SQSEventResponse, error) {
 	traceID := internal.TraceID(ctx)
 	for _, record := range event.Records {
 		var msg internal.Message
@@ -25,7 +25,7 @@ func consumer(ctx context.Context, event events.SQSEvent) (string, error) {
 			"transport:sqs",
 		)
 	}
-	return "ok", nil
+	return events.SQSEventResponse{}, nil
 }
 
 func main() {
