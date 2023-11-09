@@ -5,6 +5,15 @@ provider:
   region: sa-east-1
   timeout: 30
   environment:
+    DD_API_KEY: ${env:DD_API_KEY}
+    DD_CAPTURE_LAMBDA_PAYLOAD: true
+    DD_COLD_START_TRACE: false
+    DD_ENV: dev
+    DD_LOG_LEVEL: debug
+    DD_SERVICE: sns-sqs-trace-propagation
+    DD_SITE: datadoghq.com
+    DD_TRACE_ENABLED: true
+    DD_TRACE_PROPAGATION_STYLE: tracecontext
     SNS_TOPIC_ARNS: !Join [",", "${self:custom.topicArns}"]
   iamRoleStatements:
     - Effect: Allow
@@ -14,18 +23,18 @@ provider:
         - !Ref pythonSns
         - !Ref javaSns
 
-plugins:
-  - serverless-plugin-datadog
-
 custom:
-  datadog:
-    apiKey: ${env:DD_API_KEY}
   topicArns:
     - !Ref pythonSns
     - !Ref javaSns
   producerUrls:
     - !GetAtt PythonDashproducerLambdaFunctionUrl.FunctionUrl
     - !GetAtt JavaDashproducerLambdaFunctionUrl.FunctionUrl
+  layers:
+    extension: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:97
+    python: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:81
+    java: arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-java:11
+    node: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Node18-x:21
 
 resources:
   Resources:
@@ -96,15 +105,28 @@ functions:
     url: true
     environment:
       PRODUCER_URLS: !Join [",", "${self:custom.producerUrls}"]
+    layers:
+      - ${self:custom.layers.extension}
+      - ${self:custom.layers.python}
 
   # python
   python-producer:
-    handler: python/handlers.producer
+    handler: datadog_lambda.handler.handler
     runtime: python3.9
     url: true
+    layers:
+      - ${self:custom.layers.extension}
+      - ${self:custom.layers.python}
+    environment:
+      DD_LAMBDA_HANDLER: python/handlers.producer
   python-consumer:
-    handler: python/handlers.consumer
+    handler: datadog_lambda.handler.handler
     runtime: python3.9
+    layers:
+      - ${self:custom.layers.extension}
+      - ${self:custom.layers.python}
+    environment:
+      DD_LAMBDA_HANDLER: python/handlers.consumer
     events:
       - sqs:
           arn: !GetAtt pythonSqs.Arn
@@ -116,11 +138,21 @@ functions:
     url: true
     package:
       artifact: java/build/distributions/java.zip
+    environment:
+      AWS_LAMBDA_EXEC_WRAPPER: /opt/datadog_wrapper
+    layers:
+      - ${self:custom.layers.extension}
+      - ${self:custom.layers.java}
   java-consumer:
     handler: example.Consumer
     runtime: java11
     package:
       artifact: java/build/distributions/java.zip
+    layers:
+      - ${self:custom.layers.extension}
+      - ${self:custom.layers.java}
+    environment:
+      AWS_LAMBDA_EXEC_WRAPPER: /opt/datadog_wrapper
     events:
       - sqs:
           arn: !GetAtt javaSqs.Arn
