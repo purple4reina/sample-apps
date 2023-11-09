@@ -21,5 +21,3 @@ env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin producer/producer.g
 env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin consumer/consumer.go
 cd "$ROOT_DIR"
 echo
-
-aws-vault exec serverless-sandbox-account-admin -- serverless deploy
