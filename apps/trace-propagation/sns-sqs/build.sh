@@ -12,5 +12,3 @@ docker run -it --rm \
         amd64/gradle gradle build
 cd "$ROOT_DIR"
 echo
-
-aws-vault exec serverless-sandbox-account-admin -- serverless deploy
