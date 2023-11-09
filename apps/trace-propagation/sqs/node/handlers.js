@@ -40,6 +40,6 @@ exports.consumer = async function(event, context) {
 
 function currentTraceId() {
   const ctx = tracer.scope().active()?.context();
-  console.log(`found trace context: traceId=${ctx.toTraceId()} spanId=${ctx.toSpanId()}`);
-  return ctx.toTraceId();
+  console.log(`found trace context: traceId=${ctx?.toTraceId()} spanId=${ctx?.toSpanId()}`);
+  return ctx?.toTraceId();
 }
