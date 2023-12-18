@@ -1,16 +1,16 @@
 [submodule "c-ext/system-error-ticket"]
-    path = python/newrelic/c-ext/system-error-ticket
+	path = python/old/newrelic/c-ext/system-error-ticket
     url = git@source.datanerd.us:toffermann/system-error-ticket.git
 [submodule "c-ext/NewRelic"]
-    path = python/newrelic/c-ext/NewRelic
+	path = python/old/newrelic/c-ext/NewRelic
     url = git@github.com:Mobeye/NewRelic.git
 [submodule "django-piston/customer-repo"]
-    path = python/newrelic/django-piston/customer-repo
+	path = python/old/newrelic/django-piston/customer-repo
     url = git@github.com:ssatturi/newrelic-django-piston.git
 [submodule "django-shorturls"]
-    path = python/newrelic/django-shorturls
+	path = python/old/newrelic/django-shorturls
     url = git@source.datanerd.us:afeldman/django-shorturls.git
 [submodule "grpc/grpc"]
-    path = python/newrelic/grpc/grpc
+	path = python/old/newrelic/grpc/grpc
     url = https://github.com/grpc/grpc
     branch = v1.4.x
