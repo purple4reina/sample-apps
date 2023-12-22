@@ -1,0 +1,143 @@
+service: rey-perf
+
+provider:
+  name: aws
+  region: sa-east-1
+  timeout: 30
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+    addLayers: false
+    addExtension: false
+  functionUrls:
+    - !GetAtt GoDashnewLambdaFunctionUrl.FunctionUrl
+    - !GetAtt GoDasholdLambdaFunctionUrl.FunctionUrl
+    - !GetAtt JavaDashnewLambdaFunctionUrl.FunctionUrl
+    - !GetAtt JavaDasholdLambdaFunctionUrl.FunctionUrl
+    - !GetAtt NodeDashnewLambdaFunctionUrl.FunctionUrl
+    - !GetAtt NodeDasholdLambdaFunctionUrl.FunctionUrl
+    - !GetAtt PythonDashnewLambdaFunctionUrl.FunctionUrl
+    - !GetAtt PythonDasholdLambdaFunctionUrl.FunctionUrl
+  layers:
+    old:
+      extension: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:51
+      java: arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-java:12
+      node: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Node18-x:102
+      python: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:86
+    new:
+      extension: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:52
+      java: arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-java:12
+      node: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Node18-x:104
+      python: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:87
+
+package:
+  individually: true
+  patterns:
+    - '!**'
+
+functions:
+
+  go-old:
+    handler: golang/bin/old
+    runtime: go1.x
+    url: true
+    package:
+      patterns:
+        - golang/bin/old
+    environment:
+      DD_UNIVERSAL_INSTRUMENTATION: true
+    layers:
+      - ${self:custom.layers.old.extension}
+  go-new:
+    handler: golang/bin/new
+    runtime: go1.x
+    url: true
+    package:
+      patterns:
+        - golang/bin/new
+    environment:
+      DD_UNIVERSAL_INSTRUMENTATION: true
+    layers:
+      - ${self:custom.layers.new.extension}
+
+  java-old:
+    handler: example.Handler
+    runtime: java11
+    url: true
+    package:
+      artifact: java/build/distributions/java.zip
+    layers:
+      - ${self:custom.layers.old.extension}
+      - ${self:custom.layers.old.java}
+    environment:
+      AWS_LAMBDA_EXEC_WRAPPER: /opt/datadog_wrapper
+  java-new:
+    handler: example.Handler
+    runtime: java11
+    url: true
+    package:
+      artifact: java/build/distributions/java.zip
+    layers:
+      - ${self:custom.layers.new.extension}
+      - ${self:custom.layers.new.java}
+    environment:
+      AWS_LAMBDA_EXEC_WRAPPER: /opt/datadog_wrapper
+
+  node-old:
+    handler: node/handler.handler
+    runtime: nodejs18.x
+    url: true
+    package:
+      patterns:
+        - node/handler.js
+    layers:
+      - ${self:custom.layers.old.extension}
+      - ${self:custom.layers.old.node}
+  node-new:
+    handler: node/handler.handler
+    runtime: nodejs18.x
+    url: true
+    package:
+      patterns:
+        - node/handler.js
+    layers:
+      - ${self:custom.layers.new.extension}
+      - ${self:custom.layers.new.node}
+
+  python-old:
+    handler: python/handler.handler
+    runtime: python3.9
+    url: true
+    package:
+      patterns:
+        - python/handler.py
+    layers:
+      - ${self:custom.layers.old.extension}
+      - ${self:custom.layers.old.python}
+  python-new:
+    handler: python/handler.handler
+    runtime: python3.9
+    url: true
+    package:
+      patterns:
+        - python/handler.py
+    layers:
+      - ${self:custom.layers.new.extension}
+      - ${self:custom.layers.new.python}
+
+  orchestrator:
+    handler: orchestrator/handler.handler
+    runtime: python3.9
+    url: true
+    package:
+      patterns:
+        - orchestrator/handler.py
+    environment:
+      FUNCTION_URLS: !Join [",", "${self:custom.functionUrls}"]
+    layers:
+      - ${self:custom.layers.new.extension}
+      - ${self:custom.layers.new.python}
