@@ -1,9 +1,8 @@
 var express = require("express");
-
 const app = express();
 
 app.use('/', (req, res) => {
-  res.status(200).send('Hello World!');
+  res.status(200).send('ok');
 })
 
 const PORT = process.env.PORT || 3000
