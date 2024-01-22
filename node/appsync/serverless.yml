@@ -1,13 +1,11 @@
-service: appsync-crud-api
-frameworkVersion: '2'
+service: rey-node-appsync
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs18.x
   lambdaHashingVersion: 20201221
-  region: ${env:REGION, 'ap-south-1'}
+  region: sa-east-1
   stage: ${opt:stage, 'dev'}
-  timeout: 30
 
   # Environment variables
   environment:
@@ -30,6 +28,7 @@ plugins:
   - serverless-plugin-split-stacks
   - serverless-appsync-plugin
   - serverless-dotenv-plugin
+  - serverless-plugin-datadog
 
 functions:
   createBlog:
@@ -37,25 +36,25 @@ functions:
     name: createBlog-${self:provider.stage}
     package:
       individually: true
-      artifact: "./dist/createBlog.zip"
+      artifact: "./dist/blog.zip"
   getBlog:
     handler: getBlog/index.handler
     name: getBlog-${self:provider.stage}
     package:
       individually: true
-      artifact: "./dist/getBlog.zip"
+      artifact: "./dist/blog.zip"
   updateBlog:
     handler: updateBlog/index.handler
     name: updateBlog-${self:provider.stage}
     package:
       individually: true
-      artifact: "./dist/updateBlog.zip"
+      artifact: "./dist/blog.zip"
   deleteBlog:
     handler: deleteBlog/index.handler
     name: deleteBlog-${self:provider.stage}
     package:
       individually: true
-      artifact: "./dist/deleteBlog.zip"
+      artifact: "./dist/blog.zip"
 
 custom:
   splitStacks:
@@ -64,6 +63,9 @@ custom:
     perType: true
     perGroupFunction: false
   appSync: ${file(serverless-appsync-api.yml)}
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+    captureLambdaPayload: true
 
 resources:
   Resources:

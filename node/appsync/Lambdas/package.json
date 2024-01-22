@@ -1,0 +1,25 @@
+{
+  "name": "appsync-crud-api",
+  "version": "1.0.0",
+  "description": "AWS AppSync API to perform CRUD operations",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "./node_modules/.bin/webpack",
+    "formatCheck": "prettier --check --ignore-path .gitignore \"./**/*.{js,json}\"",
+    "format": "prettier --write --ignore-path .gitignore \"./**/*.{js,json}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iabhishek07/appsync-crud-api.git"
+  },
+  "author": "Abhishek Wagh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iabhishek07/appsync-crud-api/issues"
+  },
+  "homepage": "https://github.com/iabhishek07/appsync-crud-api#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1053.0",
+    "ulid": "^2.3.0"
+  }
+}
