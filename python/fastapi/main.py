@@ -10,4 +10,8 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
+@app.get("/error")
+async def error():
+    return {"message": 1 / 0}
+
 handler = Mangum(app)

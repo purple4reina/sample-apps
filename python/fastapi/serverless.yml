@@ -1,0 +1,27 @@
+service: rey-python-fastapi
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+
+package:
+  patterns:
+    - '!**'
+    - 'main.py'
+
+plugins:
+  - serverless-plugin-datadog
+  - serverless-python-requirements
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+  pythonRequirements:
+    dockerizePip: true
+    dockerRunCmdExtraArgs: ['--platform', 'linux/amd64']
+
+functions:
+  simple:
+    handler: main.handler
+    url: true
