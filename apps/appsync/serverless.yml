@@ -1,0 +1,41 @@
+service: rey-python-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  environment:
+    DD_MERGE_XRAY_TRACES: true
+  tracing:
+    lambda: true
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "xray:PutTraceSegments"
+        - "xray:PutTelemetryRecords"
+      Resource:
+        - "*"
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+    - 'bin/handler'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+    captureLambdaPayload: true
+
+functions:
+  appsync:
+    handler: handler.handler
+    runtime: python3.9
+    url: true
+
+  client:
+    handler: bin/handler
+    runtime: go1.x
+    url: true
