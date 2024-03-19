@@ -3,23 +3,19 @@ service: rey-go-lambda
 provider:
   name: aws
   region: sa-east-1
-  runtime: go1.x
+  runtime: provided.al2
   environment:
     DD_API_KEY: ${env:DD_API_KEY}
 
 plugins:
   - serverless-plugin-datadog
 
-custom:
-  datadog:
-    logLevel: DEBUG
-
 package:
   patterns:
     - '!**'
-    - './bin/**'
+    - './bootstrap'
 
 functions:
-  simple:
-    handler: bin/handler
+  me:
+    handler: bootstrap
     url: true
