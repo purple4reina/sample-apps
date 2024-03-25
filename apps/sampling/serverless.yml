@@ -1,0 +1,36 @@
+service: rey-app-sampling
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  root1:
+    handler: handler.root1
+    url: true
+    environment:
+      CHILD_URL: !GetAtt ChildLambdaFunctionUrl.FunctionUrl
+  root2:
+    handler: handler.root2
+    url: true
+    environment:
+      CHILD_URL: !GetAtt ChildLambdaFunctionUrl.FunctionUrl
+  child:
+    handler: handler.child
+    url: true
+
+# TODO: root1 has really high throughput, root2 does not. Do we see child trace
+# in all root2 traces?
