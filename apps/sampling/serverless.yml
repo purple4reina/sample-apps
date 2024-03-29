@@ -31,6 +31,3 @@ functions:
   child:
     handler: handler.child
     url: true
-
-# TODO: root1 has really high throughput, root2 does not. Do we see child trace
-# in all root2 traces?
