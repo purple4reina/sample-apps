@@ -31,10 +31,10 @@ custom:
     - !GetAtt GoDashproducerLambdaFunctionUrl.FunctionUrl
     - !GetAtt NodeDashproducerLambdaFunctionUrl.FunctionUrl
   layers:
-    extension: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:97
-    node: arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Node18-x:21
-    python: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:81
-    java: arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-java:11
+    extension: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:56
+    node: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Node18-x:108
+    python: arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:92
+    java: arn:aws:lambda:sa-east-1:464622532012:layer:dd-trace-java:14
 
 constructs:
   python-sqs:
