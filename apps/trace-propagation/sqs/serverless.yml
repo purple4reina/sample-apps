@@ -65,7 +65,7 @@ constructs:
     type: queue
     worker:
       handler: golang/bin/consumer
-      runtime: go1.x
+      runtime: provided.al2
       name: ${self:service}-${sls:stage}-go-consumer
       environment:
         DD_UNIVERSAL_INSTRUMENTATION: true
@@ -106,7 +106,7 @@ functions:
       AWS_LAMBDA_EXEC_WRAPPER: /opt/datadog_wrapper
   go-producer:
     handler: golang/bin/producer
-    runtime: go1.x
+    runtime: provided.al2
     url: true
     environment:
       DD_UNIVERSAL_INSTRUMENTATION: true
