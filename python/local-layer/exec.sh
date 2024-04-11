@@ -2,27 +2,30 @@
 
 set -e
 
-rm -rf .layer
-rsync -ax \
-    --exclude .git \
-    --exclude env \
-    --exclude tests \
-    --exclude __pycache__ \
-    --exclude .github \
-    --exclude .layers \
-    --exclude scripts \
-    --exclude .DS_Store \
-    --exclude .gitignore \
-    --exclude .pytest_cache \
-    --exclude dist \
-    --exclude .vscode \
-        ../../../datadog-lambda-python .layer
+DEPS_DIR=vendor
 
-docker build -t localtest .
-docker_id=$(docker run -d -p 9000:8080 localtest)
+rm -rf $DEPS_DIR
+mkdir -p $DEPS_DIR
+
+pip3.9 install \
+    -r requirements.txt \
+    -t $DEPS_DIR \
+    --platform=manylinux2014_x86_64 --only-binary=:all: \
+    --no-cache-dir
+
+docker build -t localtest --platform=linux/amd64 .
+
+docker_id=$(
+    docker run -d \
+        --platform=linux/amd64 \
+        -p 9000:8080 \
+        -e DD_API_KEY="$DD_API_KEY" \
+            localtest
+)
 trap 'docker stop $docker_id ; docker logs $docker_id' EXIT
 
 sleep 0.5
+date
 curl http://localhost:9000/2015-03-31/functions/function/invocations -d '{}'
 
-rm -rf .layer .tracer
+echo ; echo

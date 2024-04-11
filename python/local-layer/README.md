@@ -21,3 +21,5 @@ Demonstrates the ability to run container images locally for testing.
   ```
 
   Optionally replace the `'{}'` with an event payload, like `'{"hello":"world"}'`
+
+4. View traces in UI using: `@functionname:test_function` or `service:rey-lambda-local`
