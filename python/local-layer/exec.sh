@@ -20,7 +20,7 @@ rsync -ax \
 
 docker build -t localtest .
 docker_id=$(docker run -d -p 9000:8080 localtest)
-trap "docker stop $docker_id ; docker logs $docker_id" EXIT
+trap 'docker stop $docker_id ; docker logs $docker_id' EXIT
 
 sleep 0.5
 curl http://localhost:9000/2015-03-31/functions/function/invocations -d '{}'
