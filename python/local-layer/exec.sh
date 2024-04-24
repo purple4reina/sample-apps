@@ -3,21 +3,24 @@
 set -e
 
 DEPS_DIR=vendor
+TRACER_DIR=.tracer
 
-rm -rf $DEPS_DIR
+rm -rf $DEPS_DIR $TRACER_DIR
 mkdir -p $DEPS_DIR
 
 pip3.9 install \
     -r requirements.txt \
     -t $DEPS_DIR \
-    --platform=manylinux2014_x86_64 --only-binary=:all: \
+    --platform=manylinux2014_aarch64 --only-binary=:all: \
+    --no-deps \
     --no-cache-dir
 
-docker build -t localtest --platform=linux/amd64 .
+cp -r "$DD_DIR"/dd-trace-py/ $TRACER_DIR
+
+docker build -t localtest .
 
 docker_id=$(
     docker run -d \
-        --platform=linux/amd64 \
         -p 9000:8080 \
         -e DD_API_KEY="$DD_API_KEY" \
             localtest

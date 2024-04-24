@@ -6,7 +6,7 @@ charset-normalizer==3.3.2
 datadog==0.49.1
 datadog_lambda @ file:///Users/rey.abolofia/go/src/github.com/DataDog/datadog-lambda-python
 ddsketch==3.0.1
-ddtrace==2.8.0
+#ddtrace==2.8.0
 Deprecated==1.2.14
 envier==0.5.1
 exceptiongroup==1.2.0
