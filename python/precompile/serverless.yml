@@ -1,0 +1,34 @@
+service: rey-python-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.12
+
+package:
+  individually: true
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  py:
+    handler: handler.handler
+    url: true
+    package:
+      patterns:
+        - '!node_modules'
+        - '!**/*.pyc'
+        - 'handler.py'
+  pyc:
+    handler: handler.handler
+    url: true
+    package:
+      patterns:
+        - '!node_modules'
+        - '!**/*.py'
+        - 'handler.py'
