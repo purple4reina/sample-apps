@@ -1,0 +1,24 @@
+service: rey-python-otlp
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: sa-east-1
+  layers:
+    - arn:aws:lambda:sa-east-1:184161586896:layer:opentelemetry-python-0_1_0:1
+  environment:
+    OTEL_EXPORTER_OTLP_TRACES_PROTOCOL: "http/protobuf"
+    OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: "https://trace.agent.datadoghq.com/api/v0.2/traces"
+    OTEL_EXPORTER_OTLP_TRACES_HEADERS: "dd-protocol=otlp,dd-api-key=${env:DD_API_KEY},dd-otlp-source=lambda"
+
+    AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-instrument
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+
+functions:
+  vercel-endpoint:
+    handler: handler.handler
+    url: true
