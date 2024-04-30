@@ -7,12 +7,15 @@ provider:
   layers:
     - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:56
   environment:
-    DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
     OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4318
+
+    DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
     DD_API_KEY: ${env:DD_API_KEY}
     DD_LOG_LEVEL: DEBUG
     DD_TRACE_ENABLED: true
     DD_SERVERLESS_LOGS_ENABLED: true
+    DD_SERVICE: rey-python-otlp
+    DD_ENV: dev
 
 package:
   patterns:
