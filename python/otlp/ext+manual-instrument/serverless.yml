@@ -11,11 +11,11 @@ provider:
 
     DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
     DD_API_KEY: ${env:DD_API_KEY}
+    DD_ENV: dev
     DD_LOG_LEVEL: DEBUG
-    DD_TRACE_ENABLED: true
     DD_SERVERLESS_LOGS_ENABLED: true
     DD_SERVICE: rey-python-otlp
-    DD_ENV: dev
+    DD_TRACE_ENABLED: true
 
 package:
   patterns:
