@@ -11,7 +11,6 @@ provider:
     AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-instrument
 
     OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4318
-    OTEL_TRACES_EXPORTER: otlp
 
     DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4318
     DD_API_KEY: ${env:DD_API_KEY}
