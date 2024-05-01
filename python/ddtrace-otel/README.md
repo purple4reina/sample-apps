@@ -1,5 +1,6 @@
 # ddtrace + opentelemetry
-_Running locally_
+
+## Running locally
 
 1. Add env vars
   ```
@@ -42,3 +43,5 @@ _Running locally_
     ```bash
     $ ./run.sh
     ```
+
+## Running in Lambda
