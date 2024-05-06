@@ -5,8 +5,9 @@ provider:
   runtime: python3.9
   region: sa-east-1
   layers:
-    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:94
+    - arn:aws:lambda:sa-east-1:184161586896:layer:opentelemetry-python-0_1_0:1
     - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:56
+    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python39:94
   environment:
     DD_API_KEY: ${env:DD_API_KEY}
     DD_ENV: dev
@@ -14,22 +15,12 @@ provider:
     DD_SERVICE: rey-python-otlp
     DD_TRACE_ENABLED: true
 
-    DD_TRACE_OTEL_ENABLED: true
-
 package:
   patterns:
     - '!**'
     - 'handler.py'
 
-plugins:
-  - serverless-python-requirements
-
-custom:
-  pythonRequirements:
-    dockerizePip: true
-    dockerRunCmdExtraArgs: ['--platform', 'linux/amd64']
-
 functions:
-  code:
+  simple:
     handler: handler.handler
     url: true

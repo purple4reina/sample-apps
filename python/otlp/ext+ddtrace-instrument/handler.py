@@ -1,12 +1,14 @@
 import time
 
-from ddtrace.opentelemetry import TracerProvider
 from opentelemetry import trace
+from ddtrace.opentelemetry import TracerProvider
 
-trace.set_tracer_provider(TracerProvider())
+provider = TracerProvider()
+trace.set_tracer_provider(provider)
+
 tracer = trace.get_tracer(__name__)
 
-def handler(event, context):
+def handler(event=None, context=None):
     with tracer.start_as_current_span('my-function'):
         time.sleep(0.1)
         return 'ok'
