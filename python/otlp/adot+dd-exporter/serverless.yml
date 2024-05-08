@@ -1,0 +1,39 @@
+service: rey-python-otlp
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: sa-east-1
+  layers:
+    #- arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
+    - arn:aws:lambda:sa-east-1:184161586896:layer:opentelemetry-python-0_1_0:1
+    - !Ref OtelcolLambdaLayer
+    #- arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:56
+  environment:
+    AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-instrument
+    OPENTELEMETRY_COLLECTOR_CONFIG_FILE: /var/task/config.yml
+    DD_API_KEY: ${env:DD_API_KEY}
+
+layers:
+  otelcol:
+    package:
+      artifact: .layers/otelcol-extension.zip
+
+#plugins:
+#  - serverless-python-requirements
+#
+#custom:
+#  pythonRequirements:
+#    dockerizePip: true
+#    dockerRunCmdExtraArgs: ['--platform', 'linux/amd64']
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+    - 'config.yml'
+
+functions:
+  code:
+    handler: handler.handler
+    url: true

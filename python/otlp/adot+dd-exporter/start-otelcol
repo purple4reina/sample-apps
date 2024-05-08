@@ -1,0 +1,9 @@
+#!/bin/bash
+
+/opt/extensions/bin/otelcol-custom --config=/var/task/config.yml &
+
+yum install -y curl
+
+id=$(curl -XPOST http://${AWS_LAMBDA_RUNTIME_API}/2020-01-01/extension/register \
+  -I -H 'Lambda-Extension-Name: otelcol-extension')
+echo $id
