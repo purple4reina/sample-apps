@@ -20,3 +20,7 @@
     ```bash
     $ aweserv cargo lambda deploy --region sa-east-1
     ```
+    or
+    ```bash
+    $ aweserv sls deploy
+    ```
