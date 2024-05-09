@@ -6,7 +6,8 @@ provider:
   region: sa-east-1
   layers:
     #- arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
-    - arn:aws:lambda:sa-east-1:184161586896:layer:opentelemetry-python-0_1_0:1
+    - arn:aws:lambda:sa-east-1:184161586896:layer:opentelemetry-collector-amd64-0_6_0:1
+    - arn:aws:lambda:sa-east-1:184161586896:layer:opentelemetry-python-0_6_0:1
     - !Ref OtelcolLambdaLayer
     #- arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:56
   environment:
