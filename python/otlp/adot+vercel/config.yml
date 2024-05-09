@@ -1,6 +1,3 @@
-#collector.yaml in the root directory
-#Set an environment variable 'OPENTELEMETRY_COLLECTOR_CONFIG_FILE' to '/var/task/collector.yaml'
-
 receivers:
   otlp:
     protocols:
