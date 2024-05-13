@@ -1,0 +1,14 @@
+service: rey-rust-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: provided.al2023
+
+package:
+  artifact: target/lambda/rey-rust-lambda/bootstrap.zip
+
+functions:
+  simple:
+    handler: bootstrap
+    url: true
