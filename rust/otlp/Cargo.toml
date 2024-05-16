@@ -1,21 +1,23 @@
 [package]
-name = "rey-rust-lambda"
+name = "missing-span-sample"
 version = "0.1.0"
 edition = "2021"
 
-# Starting in Rust 1.62 you can use `cargo add` to add dependencies 
-# to your project.
-#
-# If you're using an older Rust version,
-# download cargo-edit(https://github.com/killercup/cargo-edit#installation) 
-# to install the `add` subcommand.
-#
-# Running `cargo add DEPENDENCY_NAME` will
-# add the latest version of a dependency to the list,
-# and it will keep the alphabetic ordering for you.
+[[bin]]
+name = "missing-span-sample"
+path = "src/main.rs"
 
 [dependencies]
-lambda_http = "0.11.1"
-
-tokio = { version = "1", features = ["macros"] }
-
+anyhow = "1.0.81"
+envy = "0.4.2"
+lambda_http = "0.10.0"
+opentelemetry = "0.22.0"
+opentelemetry-otlp = "0.15.0"
+opentelemetry_sdk = { version = "0.22.1", features = ["rt-tokio"] }
+opentelemetry-semantic-conventions = "0.14.0"
+serde = "1.0.197"
+serde_json = "1.0.115"
+tokio = { version = "1.36.0", features = ["full"] }
+tracing = "0.1.40"
+tracing-opentelemetry = "0.23.0"
+url = "2.5.0"
