@@ -5,26 +5,12 @@ provider:
   region: sa-east-1
   runtime: provided.al2023
   layers:
-    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:55
+    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:57
   environment:
     DD_API_KEY: ${env:DD_API_KEY}
-    DD_APM_MAX_CPU_PERCENT: 0
-    DD_APM_MAX_MEMORY: 0
-    DD_APM_MAX_TPS: 10000000
-    DD_ENV: rey
-    DD_LOGS_CONFIG_PROCESSING_RULES: '[{"type":"include_at_match","name":"application_log_filter","pattern":"WARN|ERROR"}]'
-    DD_LOGS_ENABLED: false
-    DD_LOG_LEVEL: debug
+    DD_ENV: dev
     DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_GRPC_ENDPOINT: localhost:4317
-    DD_SERVERLESS_FLUSH_STRATEGY: end
     DD_SERVICE: rey-rust-lambda
-    DD_TRACE_DEBUG: "true"
-    DD_TRACE_OTEL_ENABLED: true
-    DD_TRACE_STARTUP_LOGS: "true"
-
-    OTEL_BSP_MAX_CONCURRENT_EXPORTS: 10
-    OTEL_BSP_MAX_EXPORT_BATCH_SIZE: 1000
-    OTEL_BSP_MAX_QUEUE_SIZE: 20000
 
     SAMPLING_RATIO: 1.0
     SERVICE_NAME: rey-rust-lambda
