@@ -1,0 +1,27 @@
+service: rey-go-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: provided.al2
+  layers:
+    - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:132
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+    captureLambdaPayload: true
+    addExtension: false
+
+package:
+  patterns:
+    - '!**'
+    - './bootstrap'
+
+functions:
+  me:
+    handler: bootstrap
+    url: true
