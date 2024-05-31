@@ -1,4 +1,4 @@
-service: rey-go-lambda
+service: rey-app-pgo
 
 provider:
   name: aws
@@ -6,6 +6,9 @@ provider:
   runtime: provided.al2
   layers:
     - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:132
+  environment:
+    DD_SERVICE: rey-app-pgo
+    DD_ENV: dev
 
 plugins:
   - serverless-plugin-datadog
