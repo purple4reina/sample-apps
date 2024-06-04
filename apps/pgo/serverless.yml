@@ -4,8 +4,6 @@ provider:
   name: aws
   region: sa-east-1
   runtime: provided.al2
-  layers:
-    - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:132
   environment:
     DD_SERVICE: rey-app-pgo
     DD_ENV: dev
@@ -25,6 +23,13 @@ package:
     - './bootstrap'
 
 functions:
-  me:
+  optimized:
     handler: bootstrap
     url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:133
+  normal:
+    handler: bootstrap
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-REY:134
