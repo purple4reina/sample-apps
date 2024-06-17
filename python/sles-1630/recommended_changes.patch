@@ -1,0 +1,14 @@
+diff --git a/python/sles-1630/v0.15.26/seal_logging/logging.py b/python/sles-1630/v0.15.26/seal_logging/logging.py
+index 473eae8..cf742ac 100644
+--- a/python/sles-1630/v0.15.26/seal_logging/logging.py
++++ b/python/sles-1630/v0.15.26/seal_logging/logging.py
+@@ -94,6 +94,9 @@ def copy_config_to_registered_logger(
+     exclude: typing.Optional[typing.Set[str]] = None,
+     include: typing.Optional[typing.Set[str]] = None,
+ ) -> None:
++    exclude = exclude or set()
++    exclude.add('ddtrace')
++    exclude.add('datadog_lambda')
+     utils.copy_config_to_registered_loggers(
+         source_logger=logger,
+         log_level=log_level,
