@@ -1,0 +1,27 @@
+service: rey-python-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+  environment:
+    DD_TRACE_DEBUG: true
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+    - 'my_logging.py'
+    - 'aws_lambda_powertools/**'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  simple:
+    handler: handler.handler
+    url: true

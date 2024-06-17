@@ -1,0 +1,3 @@
+aws_lambda_powertools
+v0.15.26/*
+!v0.15.26/seal_*
