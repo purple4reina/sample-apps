@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 echo "Building the docker image 🧱"
-docker build -t localtest .
+docker build -t localtest . 2>&1
 
 echo
 echo "Running the docker container 🏃"
@@ -11,13 +11,13 @@ docker_id=$(
         -e DD_API_KEY="$DD_API_KEY" \
             localtest
 )
-trap 'docker stop $docker_id ; docker logs $docker_id' EXIT
+trap 'docker stop $docker_id ; docker logs $docker_id 2>&1' EXIT
 
 sleep 1
 echo
 echo "Executing function locally 🚀"
 date
-curl http://localhost:9000/2015-03-31/functions/function/invocations -d '{}' &
+curl http://localhost:9000/2015-03-31/functions/function/invocations -d '{}' 2>&1 &
 sleep 1
 
 echo
