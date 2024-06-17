@@ -10,7 +10,7 @@ from aws_lambda_powertools.logging import utils
 from aws_lambda_powertools.logging.formatters.datadog import DatadogLogFormatter
 from aws_lambda_powertools.shared.types import AnyCallableT
 
-logger = Logger()
+logger = Logger(logger_formatter=DatadogLogFormatter())
 try:
     import boto3
 

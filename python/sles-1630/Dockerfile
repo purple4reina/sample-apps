@@ -11,5 +11,6 @@ ENV DD_SERVICE=rey-sles-1630
 ENV DD_VERSION=1
 ENV DD_TRACE_DEBUG=true
 ENV DD_TRACE_ENABLED=true
+ENV DD_LOG_LEVEL=debug
 
 COPY handler.py my_logging.py .
