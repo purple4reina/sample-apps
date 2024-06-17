@@ -1,4 +1,4 @@
-service: rey-python-lambda
+service: rey-sles-1630
 
 provider:
   name: aws
