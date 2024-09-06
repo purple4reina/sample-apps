@@ -1,0 +1,34 @@
+service: rey-node-sns
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs18.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - SNS:Publish
+      Resource:
+        - arn:aws:sns:sa-east-1:425362996713:dispatch
+
+package:
+  patterns:
+    - 'handler.js'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  producer:
+    handler: handler.producer
+    environment:
+      TOPIC_ARN: arn:aws:sns:sa-east-1:425362996713:dispatch
+    url: true
+  consumer:
+    handler: handler.consumer
+    events:
+      - sns: dispatch
