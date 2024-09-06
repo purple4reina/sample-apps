@@ -21,8 +21,8 @@ echo "building golang binary"
 cd "$ROOT_DIR"/golang
 rm -rf bin
 mkdir -p bin
-env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin client/client.go
-env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin server/server.go
+env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o client/bootstrap client/client.go
+env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o server/bootstrap server/server.go
 cd "$ROOT_DIR"
 echo
 

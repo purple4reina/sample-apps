@@ -60,15 +60,15 @@ functions:
       artifact: java/build/distributions/java.zip
 
   go-client:
-    handler: golang/bin/client
-    runtime: go1.x
+    handler: golang/client/bootstrap
+    runtime: provided.al2
     url: true
     environment:
       DD_UNIVERSAL_INSTRUMENTATION: true
       SERVER_URLS: !Join [",", "${self:custom.serverUrls}"]
   go-server:
-    handler: golang/bin/server
-    runtime: go1.x
+    handler: golang/server/bootstrap
+    runtime: provided.al2
     url: true
     environment:
       DD_UNIVERSAL_INSTRUMENTATION: true
