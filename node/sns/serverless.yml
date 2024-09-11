@@ -9,11 +9,7 @@ provider:
       Action:
         - SNS:Publish
       Resource:
-        - arn:aws:sns:sa-east-1:425362996713:dispatch
-
-package:
-  patterns:
-    - 'handler.js'
+        - arn:aws:sns:sa-east-1:425362996713:rey-sns
 
 plugins:
   - serverless-plugin-datadog
@@ -21,14 +17,17 @@ plugins:
 custom:
   datadog:
     apiKey: ${env:DD_API_KEY}
+    captureLambdaPayload: true
+    coldStartTracingEnabled: false
 
 functions:
   producer:
     handler: handler.producer
     environment:
-      TOPIC_ARN: arn:aws:sns:sa-east-1:425362996713:dispatch
+      TOPIC_ARN: arn:aws:sns:sa-east-1:425362996713:rey-sns
     url: true
   consumer:
     handler: handler.consumer
     events:
-      - sns: arn:aws:sns:sa-east-1:425362996713:dispatch
+      #- sns: arn:aws:sns:sa-east-1:425362996713:rey-sns
+      - sns: rey-sns

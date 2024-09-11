@@ -1,7 +1,11 @@
-const datadog = require('dd-trace').init({});
+const tracer = require('dd-trace');
 
 const AWS = require('aws-sdk');
 const sns = new AWS.SNS();
+
+const sleep = tracer.wrap('sleep', (ms) => {
+  return new Promise(r => setTimeout(r, ms));
+});
 
 exports.producer = async function(event, context) {
   const params = {
@@ -14,9 +18,7 @@ exports.producer = async function(event, context) {
 }
 
 exports.consumer = async function(event, context) {
-  console.log('Event:', event);
-  const span = datadog.tracer.startSpan('consumer');
-  await new Promise(resolve => setTimeout(resolve, 100));
-  span.finish();
+  console.log(JSON.stringify(event));
+  await sleep(1000);
   return event;
 }
