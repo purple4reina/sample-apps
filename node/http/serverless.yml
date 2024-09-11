@@ -1,0 +1,36 @@
+service: rey-node-http
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs18.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - SNS:Publish
+      Resource:
+        - arn:aws:sns:sa-east-1:425362996713:rey-sns
+
+plugins:
+  - serverless-plugin-datadog
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.js'
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+    captureLambdaPayload: true
+    coldStartTracingEnabled: false
+
+functions:
+  client:
+    handler: handler.client
+    environment:
+      SERVER_URL: !GetAtt ServerLambdaFunctionUrl.FunctionUrl
+    url: true
+  server:
+    handler: handler.server
+    url: true
