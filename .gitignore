@@ -340,3 +340,5 @@ gradle-app.setting
 .classpath
 
 ##### END GRADLE IGNORES #####
+
+.aws-sam/
