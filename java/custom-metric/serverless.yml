@@ -4,6 +4,7 @@ provider:
   name: aws
   region: sa-east-1
   runtime: java11
+  memorySize: 1024
   environment:
     DD_API_KEY: ${env:DD_API_KEY}
 
