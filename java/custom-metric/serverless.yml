@@ -8,11 +8,6 @@ provider:
   environment:
     DD_API_KEY: ${env:DD_API_KEY}
 
-layers:
-  tracer:
-    package:
-      artifact: tracer.zip
-
 package:
   artifact: build/distributions/custom-metric.zip
 
@@ -23,5 +18,3 @@ functions:
   simple:
     handler: example.Handler
     url: true
-    layers:
-      - !Ref TracerLambdaLayer
