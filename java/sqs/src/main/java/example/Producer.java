@@ -4,27 +4,21 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
-import com.amazonaws.services.sqs.AmazonSQS;
-import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
-import com.amazonaws.services.sqs.model.MessageAttributeValue;
-import com.amazonaws.services.sqs.model.SendMessageRequest;
+import software.amazon.awssdk.services.sqs.SqsClient;
+import software.amazon.awssdk.services.sqs.model.SendMessageRequest;
 
 public class Producer implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse>{
 
-  final AmazonSQS sqs = AmazonSQSClientBuilder.defaultClient();
+  final SqsClient sqsClient = SqsClient.create();
   final String queueUrl = System.getenv("QUEUE_URL");
 
   @Override
   public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent event, Context context)
   {
-    MessageAttributeValue attr = new MessageAttributeValue()
-      .withStringValue("hello world")
-      .withDataType("String");
-    SendMessageRequest request = new SendMessageRequest()
-      .withQueueUrl(queueUrl)
-      .withMessageBody("hello world")
-      .addMessageAttributesEntry("rey", attr);
-    sqs.sendMessage(request);
+    sqsClient.sendMessage(SendMessageRequest.builder()
+      .queueUrl(queueUrl)
+      .messageBody("hello")
+      .build());
 
     APIGatewayV2HTTPResponse response = new APIGatewayV2HTTPResponse();
     response.setStatusCode(200);
