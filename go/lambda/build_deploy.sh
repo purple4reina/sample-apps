@@ -2,7 +2,7 @@
 
 echo "📦 packaging release"
 rm -rf bin
-env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bootstrap handler.go
+CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -o bootstrap handler.go
 echo
 echo "🚀 deploying package"
 aws-vault exec sso-serverless-sandbox-account-admin -- sls deploy
