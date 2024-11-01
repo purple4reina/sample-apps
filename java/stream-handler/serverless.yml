@@ -7,7 +7,7 @@ provider:
   architecture: arm64
 
 package:
-  artifact: build/distributions/lambda.zip
+  artifact: build/distributions/stream-handler.zip
 
 plugins:
   - serverless-plugin-datadog
@@ -20,5 +20,5 @@ custom:
 
 functions:
   stream:
-    handler: example.Handler
+    handler: example.StreamHandler
     url: true
