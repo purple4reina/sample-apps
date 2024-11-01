@@ -1,4 +1,4 @@
-service: rey-java-lambda
+service: rey-java-stream-handler
 
 provider:
   name: aws
@@ -19,6 +19,6 @@ custom:
     logLevel: debug
 
 functions:
-  simple:
+  stream:
     handler: example.Handler
     url: true

@@ -13,7 +13,7 @@ public class Handler implements RequestHandler<APIGatewayV2HTTPEvent, APIGateway
   {
     APIGatewayV2HTTPResponse response = new APIGatewayV2HTTPResponse();
     response.setStatusCode(200);
-    response.setBody("ok");
+    response.setBody("{\"hello\":\"world\"}");
     return response;
   }
 }
