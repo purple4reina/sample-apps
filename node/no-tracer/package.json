@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "datadog-lambda-js": "^9.0.0"
+  }
+}

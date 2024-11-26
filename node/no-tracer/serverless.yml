@@ -1,0 +1,17 @@
+service: rey-node-no-tracer
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs20.x
+  layers:
+    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:66
+  environment:
+    DD_API_KEY: ${env:DD_API_KEY}
+    DD_SERVICE: ${self:service}
+    DD_ENV: ${sls:stage}
+
+functions:
+  fn:
+    handler: handler.handler
+    url: true
