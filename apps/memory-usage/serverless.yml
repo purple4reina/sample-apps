@@ -1,0 +1,19 @@
+service: rey-memory-usage
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.12
+  memory: 2048
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  fn:
+    handler: handler.handler
+    url: true
