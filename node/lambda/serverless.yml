@@ -4,8 +4,6 @@ provider:
   name: aws
   region: sa-east-1
   runtime: nodejs18.x
-  layers:
-    - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:36
 
 package:
   patterns:
@@ -17,9 +15,7 @@ plugins:
 
 custom:
   datadog:
-    logLevel: DEBUG
     apiKey: ${env:DD_API_KEY}
-    addExtension: false
 
 functions:
   simple:
