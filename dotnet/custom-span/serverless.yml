@@ -1,0 +1,21 @@
+service: rey-dotnet-custom-span
+
+plugins:
+  - serverless-plugin-datadog
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: dotnet6
+
+package:
+  artifact: .package/handler.zip
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  simple:
+    handler: MyFunction::MyFunction.Function::Handler
+    url: true
