@@ -1,0 +1,23 @@
+service: rey-typescript
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs20.x
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.js'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  simple:
+    handler: handler.handler
+    url: true

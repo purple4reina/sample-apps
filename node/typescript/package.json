@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.147"
+  },
+  "devDependencies": {
+    "esbuild": "0.24.2",
+    "serverless-plugin-datadog": "^5.75.0",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.7.2"
+  }
+}
