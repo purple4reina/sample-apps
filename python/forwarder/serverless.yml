@@ -1,0 +1,23 @@
+service: rey-python-forwarder
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    forwarderArn: arn:aws:lambda:sa-east-1:425362996713:function:rey-datadog-forwarder
+
+functions:
+  fwd:
+    handler: handler.handler
+    url: true
