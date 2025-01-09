@@ -18,6 +18,6 @@ custom:
     apiKey: ${env:DD_API_KEY}
 
 functions:
-  simple:
+  fn:
     handler: handler.handler
     url: true
