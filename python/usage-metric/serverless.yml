@@ -30,3 +30,5 @@ functions:
   fn:
     handler: handler.handler
     url: true
+    events:
+      - schedule: rate(5 minutes)
