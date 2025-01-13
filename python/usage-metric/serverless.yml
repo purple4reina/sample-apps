@@ -1,0 +1,32 @@
+service: rey-usage-metric
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+  architecture: arm64
+  layers:
+    - arn:aws:lambda:sa-east-1:425362996713:layer:Datadog-Extension-ARM-REY:34
+  tags:
+    DD_PRESERVE_STACK: true
+  environment:
+    DD_EXTENSION_VERSION: compatibility
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+    addExtension: false
+    tags: 'rey.color:purple'
+
+functions:
+  fn:
+    handler: handler.handler
+    url: true
