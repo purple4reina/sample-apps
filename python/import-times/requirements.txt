@@ -1,19 +1,20 @@
 bytecode==0.16.0
 certifi==2024.12.14
 charset-normalizer==3.4.1
--e git+ssh://git@github.com/DataDog/datadogpy.git@782f1a28e4eb909883e65c7ea8b498f30d600ac3#egg=datadog
--e git+https://github.com/DataDog/datadog-lambda-python@7132262cdb7db0cda2a18e89a6e9e30d0f021914#egg=datadog_lambda
-ddtrace==2.18.1
+-e git+ssh://git@github.com/DataDog/datadogpy.git@a7a7594db16e27a0df4985955e3db0a20c505443#egg=datadog
+-e git+https://github.com/DataDog/datadog-lambda-python@e40f4a8120dc2d0089a3e8ec1d8c7ca9e88f5ddb#egg=datadog_lambda
+-e git+ssh://git@github.com/DataDog/dd-trace-py.git@13b1457af7b43b6a926da6f165f095f0d43448f7#egg=ddtrace
 Deprecated==1.2.15
 envier==0.6.1
 idna==3.10
 importlib_metadata==8.5.0
+legacy-cgi==2.6.2
 opentelemetry-api==1.29.0
-protobuf==5.29.2
+protobuf==5.29.3
 requests==2.32.3
 typing_extensions==4.12.2
 ujson==5.10.0
 urllib3==2.3.0
-wrapt==1.17.0
+wrapt==1.17.2
 xmltodict==0.14.2
 zipp==3.21.0
