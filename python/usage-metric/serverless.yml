@@ -11,6 +11,7 @@ provider:
     DD_PRESERVE_STACK: true
   environment:
     DD_EXTENSION_VERSION: compatibility
+    DD_SITE: ${env:DD_STAGING_SITE}
 
 package:
   patterns:
@@ -22,8 +23,8 @@ plugins:
 
 custom:
   datadog:
-    apiKey: ${env:DD_API_KEY}
     addExtension: false
+    apiKey: ${env:DD_STAGING_API_KEY}
     tags: 'rey.color:purple'
 
 functions:
