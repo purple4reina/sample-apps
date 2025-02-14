@@ -1,0 +1,28 @@
+service: rey-python-container
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.12
+  architecture: arm64
+  environment:
+    DD_API_KEY: ${env:DD_API_KEY}
+  ecr:
+    images:
+      before:
+        path: ./
+        file: Dockerfile.before
+      after:
+        path: ./
+        file: Dockerfile.after
+
+functions:
+  before:
+    url: true
+    image:
+      name: before
+
+  after:
+    url: true
+    image:
+      name: after

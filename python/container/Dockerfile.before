@@ -1,0 +1,22 @@
+FROM public.ecr.aws/lambda/python:3.12
+
+# build dependencies for ddtrace
+RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+RUN dnf install -y gcc gcc-c++ make git
+
+# extension
+COPY --from=datadog/lambda-extension:69 /opt /opt
+
+# install ddtrace
+ENV SETUPTOOLS_SCM_PRETEND_VERSION=0.0.0
+ENV GIT_SHA=0c7fc1bb94a7c97683a0bbd653c275aa8dfe02f5
+RUN pip install https://github.com/DataDog/dd-trace-py/archive/${GIT_SHA}.zip
+
+# environment variables
+ENV DD_INSTRUMENTATION_TELEMETRY_ENABLED=false
+ENV DD_API_SECURITY_ENABLED=false
+
+# add handler code
+COPY handler.py metric.py $LAMBDA_TASK_ROOT
+CMD [ "handler.handler" ]
