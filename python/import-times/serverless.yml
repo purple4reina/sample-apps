@@ -1,4 +1,4 @@
-service: rey-python-container
+service: rey-python-import-times
 
 provider:
   name: aws
