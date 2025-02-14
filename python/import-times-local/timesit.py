@@ -1,3 +1,4 @@
+import argparse
 import os
 import subprocess
 import sys
@@ -8,15 +9,15 @@ def stmt():
     import ddtrace
     print(time.time() - start)
 
-def run():
+def run(importtime=False, number=1000):
     dirname = os.path.dirname(__file__)
     args = [f'{dirname}/env/bin/python', __file__]
-    if os.environ.get('PYTHONIMPORTTIME'):
+    if importtime:
         args.insert(1, '-X')
         args.insert(2, 'importtime')
 
-    total, runs = 0, 1000
-    for _ in range(runs):
+    total = 0
+    for _ in range(number):
         cmd = subprocess.Popen(args, env={
             'TEST_TEST': '1',
             'PYTHONPATH': dirname,
@@ -27,10 +28,14 @@ def run():
         cmd.wait()
         total += float(cmd.stdout.read().decode())
         print(cmd.stderr.read().decode(), end='')
-    print(f'average of {runs} runs:', total / runs)
+    print(f'average of {number} runs:', total / number)
 
 if __name__ == '__main__':
     if os.environ.get('TEST_TEST'):
         stmt()
     else:
-        run()
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--importtime', action='store_true')
+        parser.add_argument('--number', '-n', type=int, default=1000)
+        args = parser.parse_args()
+        run(args.importtime, args.number)
