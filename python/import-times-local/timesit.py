@@ -27,7 +27,7 @@ def run(importtime=False, number=1000):
         }, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         cmd.wait()
         total += float(cmd.stdout.read().decode())
-        print(cmd.stderr.read().decode(), end='')
+        print(cmd.stderr.read().decode() or '.', end='', flush=True)
     print(f'average of {number} runs:', total / number)
 
 if __name__ == '__main__':
