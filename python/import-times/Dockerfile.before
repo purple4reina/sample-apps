@@ -10,7 +10,7 @@ COPY --from=datadog/lambda-extension:69 /opt /opt
 
 # install ddtrace
 ENV SETUPTOOLS_SCM_PRETEND_VERSION=0.0.0
-ENV GIT_SHA=0c7fc1bb94a7c97683a0bbd653c275aa8dfe02f5
+ENV GIT_SHA=dc1e2cdf20965c6e997faefc47177a49e352e506
 RUN pip install https://github.com/DataDog/dd-trace-py/archive/${GIT_SHA}.zip
 
 # environment variables
@@ -18,5 +18,5 @@ ENV DD_INSTRUMENTATION_TELEMETRY_ENABLED=false
 ENV DD_API_SECURITY_ENABLED=false
 
 # add handler code
-COPY handler.py metric.py $LAMBDA_TASK_ROOT
+COPY handler.py metric.py timeit.py $LAMBDA_TASK_ROOT
 CMD [ "handler.handler" ]

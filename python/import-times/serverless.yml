@@ -5,6 +5,7 @@ provider:
   region: sa-east-1
   runtime: python3.12
   architecture: arm64
+  timeout: 45
   environment:
     DD_API_KEY: ${env:DD_API_KEY}
   ecr:
