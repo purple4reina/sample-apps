@@ -9,4 +9,5 @@ print(diff)
 from metric import statsd
 statsd.distribution('rey.ddtrace.import', diff, tags=[
     f'git_sha:{os.environ.get("GIT_SHA")}',
+    f'importtime:{os.environ.get("PYTHONPROFILEIMPORTTIME","false")}',
 ])

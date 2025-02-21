@@ -6,6 +6,7 @@ import time
 
 args = [sys.executable, os.path.join(os.path.dirname(__file__), 'timeit.py')]
 git_sha = os.environ.get('GIT_SHA')
+importtime = os.environ.get('PYTHONPROFILEIMPORTTIME', 'false').lower() == 'true'
 
 def handler(event, context):
     total = count = 0
@@ -22,6 +23,9 @@ def handler(event, context):
 
         count += 1
         total += float(stdout)
+
+        if importtime:
+            break
 
     ave_time = total / count
     print(f'average of {count} runs:', ave_time)
