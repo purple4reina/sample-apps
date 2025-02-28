@@ -28,6 +28,8 @@ def run(importtime=False, number=1000):
         cmd.wait()
         total += float(cmd.stdout.read().decode())
         print(cmd.stderr.read().decode() or '.', end='', flush=True)
+        if importtime:
+            break
     print(f'average of {number} runs:', total / number)
 
 if __name__ == '__main__':
