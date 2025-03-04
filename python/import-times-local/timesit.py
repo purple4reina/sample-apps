@@ -15,7 +15,7 @@ def _patch_extension():
         return orig_exists(file, *args, **kwargs)
     os.path.exists = exists
 
-def run(importtime=False, number=1000):
+def run(importtime=False, number=100):
     import subprocess
 
     dirname = os.path.dirname(__file__)
