@@ -3,6 +3,7 @@ import os
 def stmt():
     import time
     start = time.time()
+    # when using the layer, this is the entrypoint to all instrumentation
     import datadog_lambda.handler
     print(time.time() - start)
 
