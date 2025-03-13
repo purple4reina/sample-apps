@@ -3,11 +3,10 @@ service: rey-python-mem-usage
 provider:
   name: aws
   region: sa-east-1
-  runtime: python3.12
   architecture: arm64
-  layers:
-    - arn:aws:lambda:sa-east-1:425362996713:layer:Python312-REY:15
-    - !Ref NumpyLambdaLayer
+  environment:
+    DD_LOG_LEVEL: debug
+    DD_TRACE_DEBUG: true
 
 layers:
   numpy:
@@ -18,8 +17,8 @@ layers:
 package:
   patterns:
     - '!**'
-    - 'handler.py'
-    - 'bigimport.py'
+    - 'handler.*'
+    - 'bigimport.*'
 
 plugins:
   - serverless-plugin-datadog
@@ -30,6 +29,17 @@ custom:
     addLayers: false
 
 functions:
-  fn:
+  python:
+    runtime: python3.12
     handler: handler.handler
     url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:425362996713:layer:Python312-REY:16
+      - !Ref NumpyLambdaLayer
+
+  node:
+    runtime: nodejs18.x
+    handler: handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:425362996713:layer:datadog-lambda-js-REY:3
