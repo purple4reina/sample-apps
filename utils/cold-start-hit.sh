@@ -8,8 +8,18 @@ if [[ -z $FUNCS ]]; then
 fi
 
 if [[ -z $URLS ]]; then
-    echo List of URLS required!
-    exit 1
+    echo Gathering URLs using aws cli
+    for f in $FUNCS
+    do
+        URLS="$URLS $(
+            aws-vault exec sso-serverless-sandbox-account-admin -- \
+                aws lambda get-function-url-config \
+                    --function-name $f \
+                    --region sa-east-1 \
+                    --output json | jq -r '.FunctionUrl'
+        )"
+    done
+    echo Found URLs: $URLS
 fi
 
 while true
