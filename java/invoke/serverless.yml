@@ -1,0 +1,36 @@
+service: rey-java-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: java11
+  architecture: arm64
+  timeout: 900
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - "lambda:InvokeFunction"
+      Resource:
+        - "*"
+
+package:
+  artifact: build/distributions/lambda.zip
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+    captureLambdaPayload: true
+
+functions:
+  client:
+    handler: example.Handler
+    url: true
+    environment:
+      IS_CLIENT: true
+      DOWNSTREAM_FUNCTION_NAME: rey-java-lambda-dev-server
+
+  server:
+    handler: example.Handler
