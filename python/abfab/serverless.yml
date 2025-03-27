@@ -8,6 +8,7 @@ provider:
   environment:
     DD_COLD_START_TRACE_SKIP_LIB: none
     DD_MIN_COLD_START_DURATION: 0
+    REY_INIT_API: false
 
 package:
   patterns:
