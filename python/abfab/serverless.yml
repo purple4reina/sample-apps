@@ -28,10 +28,10 @@ functions:
     handler: handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:425362996713:layer:Python312-REY:10
+      - arn:aws:lambda:sa-east-1:425362996713:layer:Python312-REY:46
 
   after:
     handler: handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:425362996713:layer:Python312-REY:11
+      - arn:aws:lambda:sa-east-1:425362996713:layer:Python312-REY:47
