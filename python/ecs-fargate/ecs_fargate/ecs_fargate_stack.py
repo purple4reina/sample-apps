@@ -12,7 +12,7 @@ class EcsFargateStack(Stack):
 
         vpc = ec2.Vpc(self, "ReyVpc", max_azs=3)     # default is all AZs in region
         cluster = ecs.Cluster(self, "ReyCluster", vpc=vpc)
-        image = ecs.ContainerImage.from_registry("amazon/amazon-ecs-sample")
+        image = ecs.ContainerImage.from_asset(".")
 
         alb = ecs_patterns.ApplicationLoadBalancedFargateService(
                 self, "ReyFargateService",
