@@ -4,7 +4,8 @@ from aws_cdk import (
         Stack,
         aws_ec2 as ec2,
         aws_ecs as ecs,
-        aws_ecs_patterns as ecs_patterns,
+        aws_apigatewayv2 as apigwv2,
+        aws_apigatewayv2_integrations as apigwv2_integrations,
 )
 
 class EcsFargateStack(Stack):
@@ -18,22 +19,15 @@ class EcsFargateStack(Stack):
         vpc = ec2.Vpc(self, "ReyVpc", max_azs=3)     # default is all AZs in region
         cluster = ecs.Cluster(self, "ReyCluster", vpc=vpc)
 
-        # app container
-        alb = ecs_patterns.ApplicationLoadBalancedFargateService(
-                self, "ReyFargateService",
-                cluster=cluster,
-                task_image_options=ecs_patterns.ApplicationLoadBalancedTaskImageOptions(
-                    image=ecs.ContainerImage.from_asset("."),
-                    environment={
-                        "DD_API_KEY": self.dd_api_key,
-                        "DD_APM_ENABLED": "true",
-                        "DD_SERVICE": "rey-ecs-fargate",
-                    },
-                ),
+        # Fargate service
+        fargate = ecs.FargateService(
+            self, "ReyFargateService",
+            cluster=cluster,
+            task_definition=ecs.FargateTaskDefinition(self, "ReyTaskDef"),
         )
 
         # datadog agent container
-        datadog_agent_container = alb.task_definition.add_container(
+        datadog_agent_container = fargate.task_definition.add_container(
             "datadog-agent",
             image=ecs.ContainerImage.from_registry("public.ecr.aws/datadog/agent:latest"),
             environment={
@@ -45,4 +39,36 @@ class EcsFargateStack(Stack):
                 "containerPort": 8126,
                 "protocol": ecs.Protocol.TCP,
             }],
+        )
+
+        # webapp container
+        webapp = fargate.task_definition.add_container(
+            "ReyWebApp",
+            image=ecs.ContainerImage.from_asset("."),
+            environment={
+                "DD_API_KEY": self.dd_api_key,
+                "DD_APM_ENABLED": "true",
+                "DD_SERVICE": "rey-ecs-fargate",
+            },
+            port_mappings=[{
+                "containerPort": 80,
+                "protocol": ecs.Protocol.TCP,
+            }],
+        )
+
+        # api gateway
+        api = apigwv2.HttpApi(self, "ReyHttpApi")
+        api.add_routes(
+            path="/{proxy+}",
+            methods=[apigwv2.HttpMethod.ANY],
+            integration=apigwv2_integrations.HttpAlbIntegration(
+                "ReyIntegration",
+                listener=apigwv2_integrations.HttpAlbListener(
+                    listener=apigwv2_integrations.HttpAlbListener.from_application_listener(
+                        fargate.load_balancer.add_listener("ReyListener", port=80)
+                    )
+                ),
+                method=apigwv2.HttpMethod.ANY,
+                vpc_link=apigwv2.VpcLink(self, "ReyVpcLink", vpc=vpc),
+            ),
         )
