@@ -1,9 +1,9 @@
 FROM --platform=linux/amd64 python:3.12
 
-RUN pip install flask uwsgi
+RUN pip install flask uwsgi ddtrace
 
 EXPOSE 80
 
 COPY webapp.py .
 
-CMD ["uwsgi", "--http", ":80", "--wsgi-file", "webapp.py", "--callable", "app"]
+CMD ["ddtrace-run", "uwsgi", "--http", ":80", "--wsgi-file", "webapp.py", "--callable", "app"]
