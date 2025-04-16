@@ -6,6 +6,7 @@ from aws_cdk import (
         aws_ecs as ecs,
         aws_apigatewayv2 as apigwv2,
         aws_apigatewayv2_integrations as apigwv2_integrations,
+        aws_ecs_patterns as ecs_patterns,
 )
 
 class EcsFargateStack(Stack):
@@ -15,11 +16,9 @@ class EcsFargateStack(Stack):
     def __init__(self, scope, construct_id, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
 
-        # cluster
+        # fargate
         vpc = ec2.Vpc(self, "ReyVpc", max_azs=3)     # default is all AZs in region
         cluster = ecs.Cluster(self, "ReyCluster", vpc=vpc)
-
-        # Fargate service
         fargate = ecs.FargateService(
             self, "ReyFargateService",
             cluster=cluster,
@@ -58,16 +57,18 @@ class EcsFargateStack(Stack):
 
         # api gateway
         api = apigwv2.HttpApi(self, "ReyHttpApi")
+        alb = ecs_patterns.ApplicationLoadBalancedFargateService(
+            self, "ReyAlbFargateService",
+            cluster=cluster,
+            task_definition=fargate.task_definition,
+            public_load_balancer=True,
+        )
         api.add_routes(
             path="/{proxy+}",
             methods=[apigwv2.HttpMethod.ANY],
             integration=apigwv2_integrations.HttpAlbIntegration(
                 "ReyIntegration",
-                listener=apigwv2_integrations.HttpAlbListener(
-                    listener=apigwv2_integrations.HttpAlbListener.from_application_listener(
-                        fargate.load_balancer.add_listener("ReyListener", port=80)
-                    )
-                ),
+                listener=alb.listener,
                 method=apigwv2.HttpMethod.ANY,
                 vpc_link=apigwv2.VpcLink(self, "ReyVpcLink", vpc=vpc),
             ),
