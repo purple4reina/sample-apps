@@ -6,4 +6,4 @@ EXPOSE 80
 
 COPY webapp.py .
 
-CMD ["ddtrace-run", "gunicorn", "-b", "127.0.0.1:80", "webapp:app"]
+CMD ["ddtrace-run", "gunicorn", "-b", "127.0.0.1:80", "--log-level", "debug", "webapp:app"]
