@@ -7,6 +7,7 @@ from aws_cdk import (
         aws_apigatewayv2 as apigwv2,
         aws_apigatewayv2_integrations as apigwv2_integrations,
         aws_ecs_patterns as ecs_patterns,
+        aws_logs as logs,
 )
 
 class EcsFargateStack(Stack):
@@ -53,6 +54,14 @@ class EcsFargateStack(Stack):
                 "containerPort": 80,
                 "protocol": ecs.Protocol.TCP,
             }],
+            logging=ecs.LogDrivers.aws_logs(
+                stream_prefix="rey-webapp",
+                log_group=logs.LogGroup(
+                    self, "ReyWebAppLogGroup",
+                    retention=logs.RetentionDays.ONE_DAY,
+                    log_group_name="/rey-webapp"
+                ),
+            ),
         )
 
         # api gateway
