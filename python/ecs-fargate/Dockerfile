@@ -1,9 +1,9 @@
 FROM --platform=linux/amd64 python:3.12
 
-RUN pip install flask uwsgi ddtrace
+RUN pip install flask gunicorn ddtrace
 
 EXPOSE 80
 
 COPY webapp.py .
 
-CMD ["ddtrace-run", "uwsgi", "--http", ":80", "--wsgi-file", "webapp.py", "--callable", "app"]
+CMD ["ddtrace-run", "gunicorn", "-b", "127.0.0.1:80", "webapp:app"]
