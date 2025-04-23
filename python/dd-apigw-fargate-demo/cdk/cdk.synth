@@ -1,0 +1,485 @@
+Resources:
+  ApigwFargateDemoAppClusterDAC28A21:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: apigw-fargate-demo-app-cluster
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-AppCluster/Resource
+  ApigwFargateDemojsAppTaskTaskRoleA6FF6890:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+        Version: "2012-10-17"
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-js-AppTask/TaskRole/Resource
+  ApigwFargateDemojsAppTaskE8746E8C:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      ContainerDefinitions:
+        - Environment:
+            - Name: NODE_ENV
+              Value: production
+            - Name: DD_ENV
+              Value: rey
+            - Name: DD_LOGS_INJECTION
+              Value: "true"
+            - Name: DD_REMOTE_CONFIGURATION_ENABLED
+              Value: "false"
+            - Name: DD_TRACE_INFERRED_PROXY_SERVICES_ENABLED
+              Value: "true"
+          Essential: true
+          Image:
+            Fn::Sub: 425362996713.dkr.ecr.us-west-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-425362996713-us-west-2:1e2057fafedab2253d5a81e94e18e68bb683e3b55b346891f9c356f984fa562e
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group:
+                Ref: ApigwFargateDemojsAppTaskApigwFargateDemojsAppContainerLogGroupDD0F115B
+              awslogs-stream-prefix: ApigwFargateDemo-js-App
+              awslogs-region: us-west-2
+          Name: ApigwFargateDemo-js-AppContainer
+          PortMappings:
+            - ContainerPort: 3000
+              HostPort: 3000
+              Protocol: tcp
+        - Cpu: 256
+          Environment:
+            - Name: DD_API_KEY
+              Value: "INSERT DD_API_KEY HERE"
+            - Name: DD_APM_ENABLED
+              Value: "true"
+            - Name: ECS_FARGATE
+              Value: "true"
+          Essential: true
+          Image: public.ecr.aws/datadog/agent:latest
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group:
+                Ref: ApigwFargateDemojsAppTaskdatadogagentLogGroup1318B7C7
+              awslogs-stream-prefix: DatadogAgentContainer
+              awslogs-region: us-west-2
+          Memory: 512
+          Name: datadog-agent
+          PortMappings:
+            - ContainerPort: 8126
+              HostPort: 8126
+              Protocol: tcp
+      Cpu: "256"
+      ExecutionRoleArn:
+        Fn::GetAtt:
+          - ApigwFargateDemojsAppTaskExecutionRole642D9FEB
+          - Arn
+      Family: ApigwFargateDemoAppStackApigwFargateDemojsAppTaskB02937D1
+      Memory: "512"
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      TaskRoleArn:
+        Fn::GetAtt:
+          - ApigwFargateDemojsAppTaskTaskRoleA6FF6890
+          - Arn
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-js-AppTask/Resource
+  ApigwFargateDemojsAppTaskApigwFargateDemojsAppContainerLogGroupDD0F115B:
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-js-AppTask/ApigwFargateDemo-js-AppContainer/LogGroup/Resource
+  ApigwFargateDemojsAppTaskExecutionRole642D9FEB:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+        Version: "2012-10-17"
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-js-AppTask/ExecutionRole/Resource
+  ApigwFargateDemojsAppTaskExecutionRoleDefaultPolicy5C3E2387:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyDocument:
+        Statement:
+          - Action:
+              - ecr:BatchCheckLayerAvailability
+              - ecr:BatchGetImage
+              - ecr:GetDownloadUrlForLayer
+            Effect: Allow
+            Resource: arn:aws:ecr:us-west-2:425362996713:repository/cdk-hnb659fds-container-assets-425362996713-us-west-2
+          - Action: ecr:GetAuthorizationToken
+            Effect: Allow
+            Resource: "*"
+          - Action:
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+            Effect: Allow
+            Resource:
+              - Fn::GetAtt:
+                  - ApigwFargateDemojsAppTaskApigwFargateDemojsAppContainerLogGroupDD0F115B
+                  - Arn
+              - Fn::GetAtt:
+                  - ApigwFargateDemojsAppTaskdatadogagentLogGroup1318B7C7
+                  - Arn
+        Version: "2012-10-17"
+      PolicyName: ApigwFargateDemojsAppTaskExecutionRoleDefaultPolicy5C3E2387
+      Roles:
+        - Ref: ApigwFargateDemojsAppTaskExecutionRole642D9FEB
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-js-AppTask/ExecutionRole/DefaultPolicy/Resource
+  ApigwFargateDemojsAppTaskdatadogagentLogGroup1318B7C7:
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-js-AppTask/datadog-agent/LogGroup/Resource
+  ALBSecurityGroup29A3BDEF:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for ALB
+      SecurityGroupEgress:
+        - CidrIp: 0.0.0.0/0
+          Description: Allow all outbound traffic by default
+          IpProtocol: "-1"
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          Description: Allow from anyone on port 80
+          FromPort: 80
+          IpProtocol: tcp
+          ToPort: 80
+      VpcId: vpc-075bdf28f7c0d6551
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ALBSecurityGroup/Resource
+  ApigwFargateDemoAppALB21621745:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      LoadBalancerAttributes:
+        - Key: deletion_protection.enabled
+          Value: "false"
+      Scheme: internet-facing
+      SecurityGroups:
+        - Fn::GetAtt:
+            - ALBSecurityGroup29A3BDEF
+            - GroupId
+      Subnets:
+        - subnet-03cd13e181e65fcce
+        - subnet-0f4e8e3729dcc69d9
+        - subnet-02e6657b678877d89
+        - subnet-0a9c92352b426a67a
+      Type: application
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-AppALB/Resource
+  ApigwFargateDemoAppALBApigwFargateDemoAlbListener33899340:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      DefaultActions:
+        - TargetGroupArn:
+            Ref: ApigwFargateDemoAppALBApigwFargateDemoAlbListenerFargateTargetGroupGroup2E940A3D
+          Type: forward
+      LoadBalancerArn:
+        Ref: ApigwFargateDemoAppALB21621745
+      Port: 80
+      Protocol: HTTP
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-AppALB/ApigwFargateDemo-AlbListener/Resource
+  ApigwFargateDemoAppALBApigwFargateDemoAlbListenerFargateTargetGroupGroup2E940A3D:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      HealthCheckIntervalSeconds: 30
+      HealthCheckPath: /health
+      Port: 3000
+      Protocol: HTTP
+      TargetGroupAttributes:
+        - Key: stickiness.enabled
+          Value: "false"
+      TargetType: ip
+      VpcId: vpc-075bdf28f7c0d6551
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-AppALB/ApigwFargateDemo-AlbListener/FargateTargetGroupGroup/Resource
+  ApigwFargateDemoAppSecurityGroup9710C35D:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: ApigwFargateDemo App Security Group
+      SecurityGroupEgress:
+        - CidrIp: 0.0.0.0/0
+          Description: Allow all outbound traffic by default
+          IpProtocol: "-1"
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          Description: Allow App traffic
+          FromPort: 3000
+          IpProtocol: tcp
+          ToPort: 3000
+      VpcId: vpc-075bdf28f7c0d6551
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-AppSecurityGroup/Resource
+  ApigwFargateDemoAppSecurityGroupfromApigwFargateDemoAppStackALBSecurityGroupBC0B5779300041613972:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      Description: Load balancer to target
+      FromPort: 3000
+      GroupId:
+        Fn::GetAtt:
+          - ApigwFargateDemoAppSecurityGroup9710C35D
+          - GroupId
+      IpProtocol: tcp
+      SourceSecurityGroupId:
+        Fn::GetAtt:
+          - ALBSecurityGroup29A3BDEF
+          - GroupId
+      ToPort: 3000
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-AppSecurityGroup/from ApigwFargateDemoAppStackALBSecurityGroupBC0B5779:3000
+  ApigwFargateDemoAppService519F8B0C:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster:
+        Ref: ApigwFargateDemoAppClusterDAC28A21
+      DeploymentConfiguration:
+        MaximumPercent: 200
+        MinimumHealthyPercent: 50
+      DesiredCount: 2
+      EnableECSManagedTags: false
+      HealthCheckGracePeriodSeconds: 60
+      LaunchType: FARGATE
+      LoadBalancers:
+        - ContainerName: ApigwFargateDemo-js-AppContainer
+          ContainerPort: 3000
+          TargetGroupArn:
+            Ref: ApigwFargateDemoAppALBApigwFargateDemoAlbListenerFargateTargetGroupGroup2E940A3D
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          SecurityGroups:
+            - Fn::GetAtt:
+                - ApigwFargateDemoAppSecurityGroup9710C35D
+                - GroupId
+          Subnets:
+            - subnet-03cd13e181e65fcce
+            - subnet-0f4e8e3729dcc69d9
+            - subnet-02e6657b678877d89
+            - subnet-0a9c92352b426a67a
+      TaskDefinition:
+        Ref: ApigwFargateDemojsAppTaskE8746E8C
+    DependsOn:
+      - ApigwFargateDemoAppALBApigwFargateDemoAlbListenerFargateTargetGroupGroup2E940A3D
+      - ApigwFargateDemoAppALBApigwFargateDemoAlbListener33899340
+      - ApigwFargateDemojsAppTaskTaskRoleA6FF6890
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-AppService/Service
+  ApigwFargateDemoAPIGatewayD54C833A:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Description: API Gateway for forwarding requests to ALB
+      Name: apigw-fargate-demo-api-gateway
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-APIGateway/Resource
+  ApigwFargateDemoAPIGatewayDeploymentAF2A73C1c8fe0755a60174222182b0eeb6ca904b:
+    Type: AWS::ApiGateway::Deployment
+    Properties:
+      Description: API Gateway for forwarding requests to ALB
+      RestApiId:
+        Ref: ApigwFargateDemoAPIGatewayD54C833A
+    DependsOn:
+      - ApigwFargateDemoAPIGatewayANY72D96BE5
+      - ApigwFargateDemoAPIGatewaybooksidANYA4C1DAFD
+      - ApigwFargateDemoAPIGatewaybooksidC8FBCF33
+      - ApigwFargateDemoAPIGatewaybooksANY4D626D37
+      - ApigwFargateDemoAPIGatewaybooks5DCA0982
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-APIGateway/Deployment/Resource
+  ApigwFargateDemoAPIGatewayDeploymentStageprodB505DF67:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      DeploymentId:
+        Ref: ApigwFargateDemoAPIGatewayDeploymentAF2A73C1c8fe0755a60174222182b0eeb6ca904b
+      RestApiId:
+        Ref: ApigwFargateDemoAPIGatewayD54C833A
+      StageName: prod
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-APIGateway/DeploymentStage.prod/Resource
+  ApigwFargateDemoAPIGatewayANY72D96BE5:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: ANY
+      Integration:
+        ConnectionType: INTERNET
+        IntegrationHttpMethod: ANY
+        RequestParameters:
+          integration.request.header.x-dd-proxy: "'aws-apigateway'"
+          integration.request.header.x-dd-proxy-request-time-ms: context.requestTimeEpoch
+          integration.request.header.x-dd-proxy-domain-name: context.domainName
+          integration.request.header.x-dd-apigw-domain-prefix: context.domainPrefix
+          integration.request.header.x-dd-apigw-error-message: context.error.message
+          integration.request.header.x-dd-proxy-httpmethod: context.httpMethod
+          integration.request.header.x-dd-apigw-identity-useragent: context.identity.userAgent
+          integration.request.header.x-dd-proxy-path: context.path
+          integration.request.header.x-dd-apigw-protocol: context.protocol
+          integration.request.header.x-dd-proxy-stage: context.stage
+        Type: HTTP_PROXY
+        Uri:
+          Fn::Join:
+            - ""
+            - - http://
+              - Fn::GetAtt:
+                  - ApigwFargateDemoAppALB21621745
+                  - DNSName
+      ResourceId:
+        Fn::GetAtt:
+          - ApigwFargateDemoAPIGatewayD54C833A
+          - RootResourceId
+      RestApiId:
+        Ref: ApigwFargateDemoAPIGatewayD54C833A
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-APIGateway/Default/ANY/Resource
+  ApigwFargateDemoAPIGatewaybooks5DCA0982:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId:
+        Fn::GetAtt:
+          - ApigwFargateDemoAPIGatewayD54C833A
+          - RootResourceId
+      PathPart: books
+      RestApiId:
+        Ref: ApigwFargateDemoAPIGatewayD54C833A
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-APIGateway/Default/books/Resource
+  ApigwFargateDemoAPIGatewaybooksANY4D626D37:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: ANY
+      Integration:
+        ConnectionType: INTERNET
+        IntegrationHttpMethod: ANY
+        RequestParameters:
+          integration.request.header.x-dd-proxy: "'aws-apigateway'"
+          integration.request.header.x-dd-proxy-request-time-ms: context.requestTimeEpoch
+          integration.request.header.x-dd-proxy-domain-name: context.domainName
+          integration.request.header.x-dd-apigw-domain-prefix: context.domainPrefix
+          integration.request.header.x-dd-apigw-error-message: context.error.message
+          integration.request.header.x-dd-proxy-httpmethod: context.httpMethod
+          integration.request.header.x-dd-apigw-identity-useragent: context.identity.userAgent
+          integration.request.header.x-dd-proxy-path: context.path
+          integration.request.header.x-dd-apigw-protocol: context.protocol
+          integration.request.header.x-dd-proxy-stage: context.stage
+        Type: HTTP_PROXY
+        Uri:
+          Fn::Join:
+            - ""
+            - - http://
+              - Fn::GetAtt:
+                  - ApigwFargateDemoAppALB21621745
+                  - DNSName
+      ResourceId:
+        Ref: ApigwFargateDemoAPIGatewaybooks5DCA0982
+      RestApiId:
+        Ref: ApigwFargateDemoAPIGatewayD54C833A
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-APIGateway/Default/books/ANY/Resource
+  ApigwFargateDemoAPIGatewaybooksidC8FBCF33:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId:
+        Ref: ApigwFargateDemoAPIGatewaybooks5DCA0982
+      PathPart: "{id}"
+      RestApiId:
+        Ref: ApigwFargateDemoAPIGatewayD54C833A
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-APIGateway/Default/books/{id}/Resource
+  ApigwFargateDemoAPIGatewaybooksidANYA4C1DAFD:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      AuthorizationType: NONE
+      HttpMethod: ANY
+      Integration:
+        ConnectionType: INTERNET
+        IntegrationHttpMethod: ANY
+        RequestParameters:
+          integration.request.header.x-dd-proxy: "'aws-apigateway'"
+          integration.request.header.x-dd-proxy-request-time-ms: context.requestTimeEpoch
+          integration.request.header.x-dd-proxy-domain-name: context.domainName
+          integration.request.header.x-dd-apigw-domain-prefix: context.domainPrefix
+          integration.request.header.x-dd-apigw-error-message: context.error.message
+          integration.request.header.x-dd-proxy-httpmethod: context.httpMethod
+          integration.request.header.x-dd-apigw-identity-useragent: context.identity.userAgent
+          integration.request.header.x-dd-proxy-path: context.path
+          integration.request.header.x-dd-apigw-protocol: context.protocol
+          integration.request.header.x-dd-proxy-stage: context.stage
+        Type: HTTP_PROXY
+        Uri:
+          Fn::Join:
+            - ""
+            - - http://
+              - Fn::GetAtt:
+                  - ApigwFargateDemoAppALB21621745
+                  - DNSName
+      ResourceId:
+        Ref: ApigwFargateDemoAPIGatewaybooksidC8FBCF33
+      RestApiId:
+        Ref: ApigwFargateDemoAPIGatewayD54C833A
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-APIGateway/Default/books/{id}/ANY/Resource
+  CDKMetadata:
+    Type: AWS::CDK::Metadata
+    Properties:
+      Analytics: v2:deflate64:H4sIAAAAAAAA/81Wy24TMRT9FmaJ3KEtC0R3SQsoUqFVml0UVa7nZuLGsY0fqaLR/DvXj8lMGigSFYJF1eQ+zn0f57w8+/CxPH1Dn+wJq9Yngj+UzZ2jbE2mYJU3DObF24L84m9B0PG+AWbL5lJ468DMm2KrWXERLViSfaMbiJJ2QS6XMluSz9TU1MGM2vUVLLnkjiv5UrgUEhEOXcilko5yCWYgy+B3YLY8FRE98/eWcLopm6kSgAlTa/0GqvGuuGgKbbhkXFMxYkx56XIpySY4jFgIkOppyWu8SWFQ0ncngFXVTN12ILdKcIa486ZdRK3D0awmUmCxe10o7ffKl3H/VBt7GsoiSRyn16UyU0FzlOGxuKpw5RxsQDp7EPaV4phdSqwlwMw9jgGcLa8UW4OZbGgNoyAJunIKWlnulNmNqYX5gghV41pfq/qLUV7jmhhwCN5P70gS43UOIeI5HhMwb7jbdSD9cVAh1NNIiBvvHnBVquLCGQ+kqMAyw/VBIKxuImsD1k597F1TMCrTrJMk+TIlJcQNszmKl/y7h0nVQbXxkJZUWOj69mkIHAeYjAJktPkvcl78FHOQbq4pn/mg60eCDIETEtQ6zoSi1QMVFBdc1lsc2khrXBoacrpG3TjqkNuGHDRUkKEDR3KTvfEBcXXKocMMmQrcPtPB15ZQzQOLPdEdkhVYN9I8LmL8tCeO4/4HiRZqd6NzX5vCOlz3AdegxZJ64SbSQW3osy3OwchVhAlHhXGPo2B++ROeAlJwb24PKQ2vAssVYaYHtPK35LGIPhtyF6qPJXSinPeztqTtCbL9AxjpIA7wK7iVqtIAoipjrJzTSZcF/FlPSaF0v+CJOf4xQiw0OfRPPb5f1PS90dStbqlx+5gvaLutiUD4LkZiDY3EkwoqZAztXUukqqB8tO+25+/Ls1P86fFoOT8x+FTyDZTT9P8Hh/MddJcIAAA=
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/CDKMetadata/Default
+Outputs:
+  ApigwFargateDemoAPIGatewayEndpoint8C8A7C3E:
+    Value:
+      Fn::Join:
+        - ""
+        - - https://
+          - Ref: ApigwFargateDemoAPIGatewayD54C833A
+          - .execute-api.us-west-2.
+          - Ref: AWS::URLSuffix
+          - /
+          - Ref: ApigwFargateDemoAPIGatewayDeploymentStageprodB505DF67
+          - /
+  ApigwFargateDemoFargateService:
+    Description: Name of the Fargate service
+    Value:
+      Fn::GetAtt:
+        - ApigwFargateDemoAppService519F8B0C
+        - Name
+  LoadBalancerDNS:
+    Description: Application Load Balancer DNS Name
+    Value:
+      Fn::GetAtt:
+        - ApigwFargateDemoAppALB21621745
+        - DNSName
+  AlbSecurityGroupId:
+    Description: Application Load Balancer DNS Name
+    Value:
+      Fn::GetAtt:
+        - ALBSecurityGroup29A3BDEF
+        - GroupId
+  ApiGatewayURL:
+    Description: API Gateway URL
+    Value:
+      Fn::Join:
+        - ""
+        - - https://
+          - Ref: ApigwFargateDemoAPIGatewayD54C833A
+          - .execute-api.us-west-2.
+          - Ref: AWS::URLSuffix
+          - /
+          - Ref: ApigwFargateDemoAPIGatewayDeploymentStageprodB505DF67
+          - /
+Parameters:
+  BootstrapVersion:
+    Type: AWS::SSM::Parameter::Value<String>
+    Default: /cdk-bootstrap/hnb659fds/version
+    Description: Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]
+
