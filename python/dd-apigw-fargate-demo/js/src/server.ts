@@ -23,9 +23,16 @@ app.get('/', (req: Request, res: Response) => {
   console.log('Handling request to /');
   console.log('x-dd-apigw-request-time is', util.inspect(req.headers['x-dd-apigw-request-time']))
   res.status(200).json({
-    message: 'Welcome to the Express.js API',
-    version: '1.0.0',
-    endpoints: app._router.stack,
+    message: 'Hello World!',
+    query: req.query,
+    path: req.path,
+    endpoints: app._router.stack.map((r: any) => {
+      return {
+        name: r.name,
+        path: r.route ? r.route.path : null,
+        method: r.route ? Object.keys(r.route.methods).join(', ') : null,
+      }
+    }),
   });
 });
 
