@@ -174,7 +174,7 @@ export class EcsFargateStack extends cdk.Stack {
       integrationHttpMethod: 'ANY',
       options: {
         connectionType: apigateway.ConnectionType.INTERNET,
-        requestParameters: ddParams,
+        //requestParameters: ddParams,
       },
       uri: `http://${loadBalancer.loadBalancerDnsName}`,
     });
@@ -184,6 +184,7 @@ export class EcsFargateStack extends cdk.Stack {
       description: 'API Gateway for forwarding requests to ALB',
       deployOptions: { stageName: 'prod' },
       defaultIntegration: ddIntegration,
+      parameters: ddParams,
     });
 
     api.root.addMethod('ANY');
