@@ -149,6 +149,19 @@ export class EcsFargateStack extends cdk.Stack {
     });
 
     // Create API Gateway
+    const ddParams = {
+      "integration.request.header.x-dd-proxy": "'aws-apigateway'",
+      "integration.request.header.x-dd-proxy-request-time-ms": "context.requestTimeEpoch",
+      "integration.request.header.x-dd-proxy-domain-name": "context.domainName",
+      "integration.request.header.x-dd-apigw-domain-prefix": "context.domainPrefix",
+      "integration.request.header.x-dd-apigw-error-message": "context.error.message",
+      "integration.request.header.x-dd-proxy-httpmethod": "context.httpMethod",
+      "integration.request.header.x-dd-apigw-identity-useragent": "context.identity.userAgent",
+      "integration.request.header.x-dd-proxy-path": "context.path",
+      "integration.request.header.x-dd-apigw-protocol": "context.protocol",
+      "integration.request.header.x-dd-proxy-stage": "context.stage",
+    };
+
     const emptyIntegration = new apigateway.Integration({
       type: apigateway.IntegrationType.HTTP_PROXY,
       integrationHttpMethod: 'ANY',
@@ -161,18 +174,7 @@ export class EcsFargateStack extends cdk.Stack {
       integrationHttpMethod: 'ANY',
       options: {
         connectionType: apigateway.ConnectionType.INTERNET,
-        requestParameters: {
-          "integration.request.header.x-dd-proxy": "'aws-apigateway'",
-          "integration.request.header.x-dd-proxy-request-time-ms": "context.requestTimeEpoch",
-          "integration.request.header.x-dd-proxy-domain-name": "context.domainName",
-          "integration.request.header.x-dd-apigw-domain-prefix": "context.domainPrefix",
-          "integration.request.header.x-dd-apigw-error-message": "context.error.message",
-          "integration.request.header.x-dd-proxy-httpmethod": "context.httpMethod",
-          "integration.request.header.x-dd-apigw-identity-useragent": "context.identity.userAgent",
-          "integration.request.header.x-dd-proxy-path": "context.path",
-          "integration.request.header.x-dd-apigw-protocol": "context.protocol",
-          "integration.request.header.x-dd-proxy-stage": "context.stage",
-        }
+        requestParameters: ddParams,
       },
       uri: `http://${loadBalancer.loadBalancerDnsName}`,
     });
