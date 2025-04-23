@@ -25,11 +25,25 @@ app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
     message: 'Welcome to the Express.js API',
     version: '1.0.0',
-    endpoints: {
-      '/': 'This documentation',
-      '/health': 'Health check endpoint'
-    }
+    endpoints: app._router.stack,
   });
+});
+
+app.get('/books', (req: Request, res: Response) => {
+  console.log('Handling request to /books');
+  console.log('x-dd-apigw-request-time is', util.inspect(req.headers['x-dd-apigw-request-time']))
+  res.status(200).json([
+    { id: 1, title: '1984', author: 'George Orwell' },
+    { id: 2, title: 'Brave New World', author: 'Aldous Huxley' },
+    { id: 3, title: 'Fahrenheit 451', author: 'Ray Bradbury' }
+  ]);
+});
+
+app.get('/books/:id', (req: Request, res: Response) => {
+  console.log('Handling request to /books/:id');
+  console.log('x-dd-apigw-request-time is', util.inspect(req.headers['x-dd-apigw-request-time']))
+  const bookId = req.params.id;
+  res.status(200).json({ id: bookId, title: 'Sample Book', author: 'Sample Author' });
 });
 
 // Error handling middleware
