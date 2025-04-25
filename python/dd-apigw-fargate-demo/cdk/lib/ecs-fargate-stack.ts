@@ -52,11 +52,7 @@ export class EcsFargateStack extends cdk.Stack {
         platform: cdk.aws_ecr_assets.Platform.LINUX_AMD64,
       }),
       environment: {
-        // Set environment variables on service.
         NODE_ENV: 'production',
-        //DD_TRACE_DEBUG: 'true',
-        // DD_SERVICE: 'fastapi-app',
-        // DD_AGENT_HOST: 'datadog-agent',
         DD_ENV: 'rey',
         DD_LOGS_INJECTION: 'true',
         DD_REMOTE_CONFIGURATION_ENABLED: 'false',
@@ -79,7 +75,6 @@ export class EcsFargateStack extends cdk.Stack {
         DD_API_KEY: DD_API_KEY,
         DD_APM_ENABLED: 'true',
         ECS_FARGATE: 'true',
-        //DD_LOG_LEVEL: 'TRACE'
       },
       logging: new ecs.AwsLogDriver({
         streamPrefix: 'DatadogAgentContainer',
