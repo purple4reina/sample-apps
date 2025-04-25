@@ -1,10 +1,4 @@
 Resources:
-  ApigwFargateDemoAppClusterDAC28A21:
-    Type: AWS::ECS::Cluster
-    Properties:
-      ClusterName: apigw-fargate-demo-app-cluster
-    Metadata:
-      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-AppCluster/Resource
   ApigwFargateDemojsAppTaskTaskRoleA6FF6890:
     Type: AWS::IAM::Role
     Properties:
@@ -238,6 +232,12 @@ Resources:
       ToPort: 3000
     Metadata:
       aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-AppSecurityGroup/from ApigwFargateDemoAppStackALBSecurityGroupBC0B5779:3000
+  ApigwFargateDemoAppClusterDAC28A21:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: apigw-fargate-demo-app-cluster
+    Metadata:
+      aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-AppCluster/Resource
   ApigwFargateDemoAppService519F8B0C:
     Type: AWS::ECS::Service
     Properties:

@@ -12,7 +12,7 @@ import { Construct } from 'constructs';
 /*
 Best option is to find the albSecurityGroup in AWS Console
 (securityGroupId outputted in this script) and manually add a
-security rule to open up this ALB to traffic from any IPv4. 
+security rule to open up this ALB to traffic from any IPv4.
 
 Alternatively, grab API Gateway IPs for your region from:
 https://ip-ranges.amazonaws.com/ip-ranges.json
@@ -20,7 +20,7 @@ Cmd + F for your region and copy-paste all API Gateway IPs.
 */
 
 const DD_API_KEY = process.env.DD_API_KEY || '';
-const APP_LANGUAGE = 'js'; // Must match the directory that contains the Dockerfile. 
+const APP_LANGUAGE = 'js'; // Must match the directory that contains the Dockerfile.
 const RESOURCE_ID_PREFIX_CAMEL_CASE = 'ApigwFargateDemo';
 const RESOURCE_ID_PREFIX_DASH = 'apigw-fargate-demo';
 
@@ -30,12 +30,6 @@ export class EcsFargateStack extends cdk.Stack {
 
     // Get default VPC
     const vpc = ec2.Vpc.fromLookup(this, 'ImportVPC',{isDefault: true});
-
-    // Create ECS Cluster
-    const cluster = new ecs.Cluster(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-AppCluster`, {
-      vpc,
-      clusterName: `${RESOURCE_ID_PREFIX_DASH}-app-cluster`,
-    });
 
     // Create Task Definition
     const taskDefinition = new ecs.FargateTaskDefinition(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-${APP_LANGUAGE}-AppTask`, {
@@ -119,11 +113,15 @@ export class EcsFargateStack extends cdk.Stack {
         vpc,
         allowAllOutbound: true,
         description: `${RESOURCE_ID_PREFIX_CAMEL_CASE} App Security Group`,
-    }); 
-    
+    });
+
     serviceSecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(3000), 'Allow App traffic');
 
     // Create Fargate Service
+    const cluster = new ecs.Cluster(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-AppCluster`, {
+      vpc,
+      clusterName: `${RESOURCE_ID_PREFIX_DASH}-app-cluster`,
+    });
     const service = new ecs.FargateService(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-AppService`, {
       cluster,
       taskDefinition,
@@ -212,5 +210,5 @@ export class EcsFargateStack extends cdk.Stack {
       description: 'API Gateway URL',
     });
   }
-} 
+}
 
