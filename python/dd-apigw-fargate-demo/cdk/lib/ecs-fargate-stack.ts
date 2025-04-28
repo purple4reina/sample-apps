@@ -5,8 +5,6 @@ import * as ecs from 'aws-cdk-lib/aws-ecs';
 import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { Construct } from 'constructs';
 
-import { DatadogECSFargate } from "datadog-cdk-constructs-v2";
-
 // TODO: Change this to your IP address but leave `/32` at the end
 // Find your IP at https://checkip.amazonaws.com)
 // const MY_IP_ADDRESS = '0.0.0.0/32';
@@ -33,18 +31,8 @@ export class EcsFargateStack extends cdk.Stack {
     // Get default VPC
     const vpc = ec2.Vpc.fromLookup(this, 'ImportVPC',{isDefault: true});
 
-    // Create Datadog ECS Fargate Construct
-    const ecsDatadog = new DatadogECSFargate({
-      apiKey: DD_API_KEY,
-      env: 'rey',
-      apm: {
-        isEnabled: true,
-        traceInferredProxyServices: true,
-      },
-    });
-
     // Create Task Definition
-    const taskDefinition = ecsDatadog.fargateTaskDefinition(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-${APP_LANGUAGE}-AppTask`, {
+    const taskDefinition = new ecs.FargateTaskDefinition(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-${APP_LANGUAGE}-AppTask`, {
       memoryLimitMiB: 512,
       cpu: 256,
     });
@@ -57,6 +45,13 @@ export class EcsFargateStack extends cdk.Stack {
         },
         platform: cdk.aws_ecr_assets.Platform.LINUX_AMD64,
       }),
+      environment: {
+        NODE_ENV: 'production',
+        DD_ENV: 'rey',
+        DD_LOGS_INJECTION: 'true',
+        DD_REMOTE_CONFIGURATION_ENABLED: 'false',
+        DD_TRACE_INFERRED_PROXY_SERVICES_ENABLED: 'true'
+      },
       logging: ecs.LogDrivers.awsLogs({ streamPrefix: `${RESOURCE_ID_PREFIX_CAMEL_CASE}-${APP_LANGUAGE}-App` }),
       portMappings: [
         {
@@ -65,6 +60,28 @@ export class EcsFargateStack extends cdk.Stack {
           protocol: ecs.Protocol.TCP
         }
       ]
+    });
+
+    // Add Datadog agent container to task definition.
+    const datadogAgentContainer = taskDefinition.addContainer('datadog-agent', {
+      image: ecs.ContainerImage.fromRegistry('public.ecr.aws/datadog/agent:latest'),
+      environment: {
+        DD_API_KEY: DD_API_KEY,
+        DD_APM_ENABLED: 'true',
+        ECS_FARGATE: 'true',
+      },
+      logging: new ecs.AwsLogDriver({
+        streamPrefix: 'DatadogAgentContainer',
+      }),
+      memoryLimitMiB: 512,
+      cpu: 256,
+      portMappings: [
+        {
+            containerPort: 8126,
+            hostPort: 8126,
+            protocol: ecs.Protocol.TCP
+        }
+    ]
     });
 
     // Create Security Group for ALB
@@ -117,10 +134,7 @@ export class EcsFargateStack extends cdk.Stack {
     listener.addTargets('FargateTargetGroup', {
       port: 3000, // Forward requests to container
       protocol: elbv2.ApplicationProtocol.HTTP,
-      targets: [service.loadBalancerTarget({
-        containerName: serviceContainer.containerName,
-        containerPort: 3000,
-      })],
+      targets: [service],
       healthCheck: {
         path: '/health', // Change this if your health check route is different
         interval: cdk.Duration.seconds(30),
