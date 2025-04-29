@@ -44,7 +44,7 @@ Resources:
         - Cpu: 256
           Environment:
             - Name: DD_API_KEY
-              Value: "INSERT DD_API_KEY HERE"
+              Value: ""
             - Name: DD_APM_ENABLED
               Value: "true"
             - Name: ECS_FARGATE
@@ -280,20 +280,9 @@ Resources:
     Properties:
       Description: API Gateway for forwarding requests to ALB
       Name: apigw-fargate-demo-api-gateway
-      Parameters:
-        integration.request.header.x-dd-proxy: "'aws-apigateway'"
-        integration.request.header.x-dd-proxy-request-time-ms: context.requestTimeEpoch
-        integration.request.header.x-dd-proxy-domain-name: context.domainName
-        integration.request.header.x-dd-apigw-domain-prefix: context.domainPrefix
-        integration.request.header.x-dd-apigw-error-message: context.error.message
-        integration.request.header.x-dd-proxy-httpmethod: context.httpMethod
-        integration.request.header.x-dd-apigw-identity-useragent: context.identity.userAgent
-        integration.request.header.x-dd-proxy-path: context.path
-        integration.request.header.x-dd-apigw-protocol: context.protocol
-        integration.request.header.x-dd-proxy-stage: context.stage
     Metadata:
       aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-APIGateway/Resource
-  ApigwFargateDemoAPIGatewayDeploymentAF2A73C1c8fe0755a60174222182b0eeb6ca904b:
+  ApigwFargateDemoAPIGatewayDeploymentAF2A73C196b10be6fb974265967a1a0ddf922ca4:
     Type: AWS::ApiGateway::Deployment
     Properties:
       Description: API Gateway for forwarding requests to ALB
@@ -311,7 +300,7 @@ Resources:
     Type: AWS::ApiGateway::Stage
     Properties:
       DeploymentId:
-        Ref: ApigwFargateDemoAPIGatewayDeploymentAF2A73C1c8fe0755a60174222182b0eeb6ca904b
+        Ref: ApigwFargateDemoAPIGatewayDeploymentAF2A73C196b10be6fb974265967a1a0ddf922ca4
       RestApiId:
         Ref: ApigwFargateDemoAPIGatewayD54C833A
       StageName: prod
@@ -325,6 +314,13 @@ Resources:
       Integration:
         ConnectionType: INTERNET
         IntegrationHttpMethod: ANY
+        RequestParameters:
+          integration.request.header.x-dd-proxy: "'aws-apigateway'"
+          integration.request.header.x-dd-proxy-request-time-ms: context.requestTimeEpoch
+          integration.request.header.x-dd-proxy-domain-name: context.domainName
+          integration.request.header.x-dd-proxy-httpmethod: context.httpMethod
+          integration.request.header.x-dd-proxy-path: context.path
+          integration.request.header.x-dd-proxy-stage: context.stage
         Type: HTTP_PROXY
         Uri:
           Fn::Join:
@@ -361,6 +357,13 @@ Resources:
       Integration:
         ConnectionType: INTERNET
         IntegrationHttpMethod: ANY
+        RequestParameters:
+          integration.request.header.x-dd-proxy: "'aws-apigateway'"
+          integration.request.header.x-dd-proxy-request-time-ms: context.requestTimeEpoch
+          integration.request.header.x-dd-proxy-domain-name: context.domainName
+          integration.request.header.x-dd-proxy-httpmethod: context.httpMethod
+          integration.request.header.x-dd-proxy-path: context.path
+          integration.request.header.x-dd-proxy-stage: context.stage
         Type: HTTP_PROXY
         Uri:
           Fn::Join:
@@ -393,6 +396,13 @@ Resources:
       Integration:
         ConnectionType: INTERNET
         IntegrationHttpMethod: ANY
+        RequestParameters:
+          integration.request.header.x-dd-proxy: "'aws-apigateway'"
+          integration.request.header.x-dd-proxy-request-time-ms: context.requestTimeEpoch
+          integration.request.header.x-dd-proxy-domain-name: context.domainName
+          integration.request.header.x-dd-proxy-httpmethod: context.httpMethod
+          integration.request.header.x-dd-proxy-path: context.path
+          integration.request.header.x-dd-proxy-stage: context.stage
         Type: HTTP_PROXY
         Uri:
           Fn::Join:
@@ -410,7 +420,7 @@ Resources:
   CDKMetadata:
     Type: AWS::CDK::Metadata
     Properties:
-      Analytics: v2:deflate64:H4sIAAAAAAAA/81Wy24TMRT9FmaJ3KEtC0R3SQsoUqFVml0UVa7nZuLGsY0fqaLR/DvXj8lMGigSFYJF1eQ+zn0f57w8+/CxPH1Dn+wJq9Yngj+UzZ2jbE2mYJU3DObF24L84m9B0PG+AWbL5lJ468DMm2KrWXERLViSfaMbiJJ2QS6XMluSz9TU1MGM2vUVLLnkjiv5UrgUEhEOXcilko5yCWYgy+B3YLY8FRE98/eWcLopm6kSgAlTa/0GqvGuuGgKbbhkXFMxYkx56XIpySY4jFgIkOppyWu8SWFQ0ncngFXVTN12ILdKcIa486ZdRK3D0awmUmCxe10o7ffKl3H/VBt7GsoiSRyn16UyU0FzlOGxuKpw5RxsQDp7EPaV4phdSqwlwMw9jgGcLa8UW4OZbGgNoyAJunIKWlnulNmNqYX5gghV41pfq/qLUV7jmhhwCN5P70gS43UOIeI5HhMwb7jbdSD9cVAh1NNIiBvvHnBVquLCGQ+kqMAyw/VBIKxuImsD1k597F1TMCrTrJMk+TIlJcQNszmKl/y7h0nVQbXxkJZUWOj69mkIHAeYjAJktPkvcl78FHOQbq4pn/mg60eCDIETEtQ6zoSi1QMVFBdc1lsc2khrXBoacrpG3TjqkNuGHDRUkKEDR3KTvfEBcXXKocMMmQrcPtPB15ZQzQOLPdEdkhVYN9I8LmL8tCeO4/4HiRZqd6NzX5vCOlz3AdegxZJ64SbSQW3osy3OwchVhAlHhXGPo2B++ROeAlJwb24PKQ2vAssVYaYHtPK35LGIPhtyF6qPJXSinPeztqTtCbL9AxjpIA7wK7iVqtIAoipjrJzTSZcF/FlPSaF0v+CJOf4xQiw0OfRPPb5f1PS90dStbqlx+5gvaLutiUD4LkZiDY3EkwoqZAztXUukqqB8tO+25+/Ls1P86fFoOT8x+FTyDZTT9P8Hh/MddJcIAAA=
+      Analytics: v2:deflate64:H4sIAAAAAAAA/81Wy24TMRT9FmaJ3KEtC0R3SQsoUqFVml0UVa7nZuLGsY0fqaLR/DvXj8lMGigSFYJF1eRc33OfPs55efbhY3n6hj7ZE1atTwR/KJs7R9maTMEqbxjMi7cF+cXfgqDjfQPMls1namrqYEbt+gqWXHLHlXzJORFcLuWhC7lU0lEuwQwx4a0DM2+KrWbFRfRmCftGNxCRNpLlkySncwdmy1MR0Zy/t4TTTdlMlQDkpNb6DVTjXXHRFNpwybimYsSY8tLlaOlMcBixkFIK2ZLXeJPCINIXEMiqaqZuO5JbJThD3nnTLqLV4WhWEymwPXtbKO33xpd5/9QaexrKIgmO8+5SmalgOcrwGK4qXDkHG5DOHoR9JRyzS4m1BJi5xzGAs+WVYmswkw2tYRSQYCunoJXlTpndmFqYL4hQNa71taq/GOU1rokBh+T99I6QGK9zCBHP8TIB84a7XUfS7y8VQj2NhLjx7gFXpSounPFAigosM1wfBMLqJrI2YO3Ux941BaMyzTohyZcpKSFumM1RvOTfPUyqjqqNV29JhYWub5+GxHGA6VCgjGf+i5wXP+UcpJtrytd80PUjIFPghAS1jjOhaPVABcUFl/UWhzbSGpeGhpyu0TaONpSfoWoNDWTowFF/ZH/4QOo649BhhkoFbp/p4GtLqOZBxZ7oDsUKrBtpHhcxftoLx3H/A6KF2t3o3NemsA7XfaA1eGJJvXAT6aA29NkW52DkKtKES4Vxj6NgfvkTXgUU7f64PZQ0vBVYrggzPZCVv4XHIvpsyF2oPpbQQTnvZ21J2xOw/QMY5SAO8Cu4larSAKIpc6yc08mWAf6sp6RQul/wpBz/mCEWmhz6px7fL2r63mjqVrfUuH3MF6zd1kQifBejsIZG4pUKJlQM7V1LpKqgfLTvtufvy7NT/OnxaDk/MfhU8g2U0/T/BzHzVWGXCAAA
     Metadata:
       aws:cdk:path: ApigwFargateDemoAppStack/CDKMetadata/Default
 Outputs:

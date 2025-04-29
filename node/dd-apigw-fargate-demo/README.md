@@ -8,9 +8,16 @@ To install testing version of datadog-cdk-constructs from local changes:
 1. from datadog-cdk-constructs repo
 
   ```bash
+  $ npm install aws-cdk-lib
   $ npx projen compile
   $ rm -rf node_modules
   $ npm pack
+  ```
+
+  Or as single line
+
+  ```bash
+  $ npm install aws-cdk-lib && npx projen compile && rm -rf node_modules && npm pack
   ```
 
 2. from cdk directory here
