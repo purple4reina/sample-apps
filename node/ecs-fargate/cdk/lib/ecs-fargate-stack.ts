@@ -30,9 +30,6 @@ export class EcsFargateStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // Get default VPC
-    const vpc = ec2.Vpc.fromLookup(this, 'ImportVPC',{isDefault: true});
-
     // Create Datadog ECS Fargate
     const ecsDatadog = new DatadogECSFargate({
       apiKey: DD_API_KEY,
@@ -64,6 +61,9 @@ export class EcsFargateStack extends cdk.Stack {
         protocol: ecs.Protocol.TCP
       }],
     });
+
+    // Get default VPC
+    const vpc = ec2.Vpc.fromLookup(this, 'ImportVPC',{isDefault: true});
 
     // Create Security Group for ALB
     const albSecurityGroup = new ec2.SecurityGroup(this, 'ALBSecurityGroup', {
