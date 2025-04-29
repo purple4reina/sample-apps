@@ -63,7 +63,7 @@ export class EcsFargateStack extends cdk.Stack {
     });
 
     // Get default VPC
-    const vpc = ec2.Vpc.fromLookup(this, 'ImportVPC',{isDefault: true});
+    const vpc = ec2.Vpc.fromLookup(this, 'ImportVPC', { isDefault: true });
 
     // Create Security Group for ALB
     const albSecurityGroup = new ec2.SecurityGroup(this, 'ALBSecurityGroup', {
@@ -76,14 +76,14 @@ export class EcsFargateStack extends cdk.Stack {
     const loadBalancer = new elbv2.ApplicationLoadBalancer(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-AppALB`, {
       vpc,
       internetFacing: true,
-      securityGroup: albSecurityGroup, // Attach the ALB security group
+      securityGroup: albSecurityGroup,
     });
 
     // Create Security Group for Fargate Service
     const serviceSecurityGroup = new ec2.SecurityGroup(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-AppSecurityGroup`, {
-        vpc,
-        allowAllOutbound: true,
-        description: `${RESOURCE_ID_PREFIX_CAMEL_CASE} App Security Group`,
+      vpc,
+      allowAllOutbound: true,
+      description: `${RESOURCE_ID_PREFIX_CAMEL_CASE} App Security Group`,
     });
 
     serviceSecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(3000), 'Allow App traffic');
@@ -103,20 +103,20 @@ export class EcsFargateStack extends cdk.Stack {
 
     // Create a Listener on the ALB
     const listener = loadBalancer.addListener(`${RESOURCE_ID_PREFIX_CAMEL_CASE}-AlbListener`, {
-      port: 80, // HTTP Listener
+      port: 80,
       open: true,
     });
 
     // Attach Fargate Service to the ALB Target Group
     listener.addTargets('FargateTargetGroup', {
-      port: 3000, // Forward requests to container
+      port: 3000,
       protocol: elbv2.ApplicationProtocol.HTTP,
       targets: [service.loadBalancerTarget({
         containerName: serviceContainer.containerName,
         containerPort: 3000,
       })],
       healthCheck: {
-        path: '/health', // Change this if your health check route is different
+        path: '/health',
         interval: cdk.Duration.seconds(30),
       },
     });
