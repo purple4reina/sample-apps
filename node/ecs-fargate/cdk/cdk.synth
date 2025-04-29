@@ -456,18 +456,6 @@ Outputs:
           - /
           - Ref: ApigwFargateDemoAPIGatewayDeploymentStageprodB505DF67
           - /
-  ApiGatewayURL:
-    Description: API Gateway URL
-    Value:
-      Fn::Join:
-        - ""
-        - - https://
-          - Ref: ApigwFargateDemoAPIGatewayD54C833A
-          - .execute-api.us-west-2.
-          - Ref: AWS::URLSuffix
-          - /
-          - Ref: ApigwFargateDemoAPIGatewayDeploymentStageprodB505DF67
-          - /
 Parameters:
   BootstrapVersion:
     Type: AWS::SSM::Parameter::Value<String>

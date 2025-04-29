@@ -152,12 +152,6 @@ export class EcsFargateStack extends cdk.Stack {
     books.addMethod('ANY');
     const book = books.addResource('{id}');
     book.addMethod('ANY');
-
-    // Output API Gateway URL
-    new cdk.CfnOutput(this, 'ApiGatewayURL', {
-      value: api.url,
-      description: 'API Gateway URL',
-    });
   }
 }
 
