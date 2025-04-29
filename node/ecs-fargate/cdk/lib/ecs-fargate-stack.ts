@@ -79,12 +79,6 @@ export class EcsFargateStack extends cdk.Stack {
       securityGroup: albSecurityGroup, // Attach the ALB security group
     });
 
-    // Create a Listener on the ALB
-    const listener = loadBalancer.addListener(`${RESOURCE_ID_PREFIX_CAMEL_CASE}-AlbListener`, {
-      port: 80, // HTTP Listener
-      open: true,
-    });
-
     // Create Security Group for Fargate Service
     const serviceSecurityGroup = new ec2.SecurityGroup(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-AppSecurityGroup`, {
         vpc,
@@ -105,6 +99,12 @@ export class EcsFargateStack extends cdk.Stack {
       desiredCount: 2,
       assignPublicIp: true,
       securityGroups: [serviceSecurityGroup],
+    });
+
+    // Create a Listener on the ALB
+    const listener = loadBalancer.addListener(`${RESOURCE_ID_PREFIX_CAMEL_CASE}-AlbListener`, {
+      port: 80, // HTTP Listener
+      open: true,
     });
 
     // Attach Fargate Service to the ALB Target Group
