@@ -16,6 +16,10 @@ export class EcsFargateStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    /**********************************
+     * Create Fargate task definition *
+     **********************************/
+
     // Create Datadog ECS Fargate
     const ecsDatadog = new DatadogECSFargate({
       apiKey: DD_API_KEY,
@@ -48,22 +52,12 @@ export class EcsFargateStack extends cdk.Stack {
       }],
     });
 
+    /**************************
+     * Create Fargate service *
+     **************************/
+
     // Get default VPC
     const vpc = ec2.Vpc.fromLookup(this, 'ImportVPC', { isDefault: true });
-
-    // Create Security Group for ALB
-    const albSecurityGroup = new ec2.SecurityGroup(this, 'ALBSecurityGroup', {
-      vpc,
-      allowAllOutbound: true,
-      description: 'Security group for ALB',
-    });
-
-    // Create Application Load Balancer (ALB)
-    const loadBalancer = new elbv2.ApplicationLoadBalancer(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-AppALB`, {
-      vpc,
-      internetFacing: true,
-      securityGroup: albSecurityGroup,
-    });
 
     // Create Security Group for Fargate Service
     const serviceSecurityGroup = new ec2.SecurityGroup(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-AppSecurityGroup`, {
@@ -71,7 +65,6 @@ export class EcsFargateStack extends cdk.Stack {
       allowAllOutbound: true,
       description: `${RESOURCE_ID_PREFIX_CAMEL_CASE} App Security Group`,
     });
-
     serviceSecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(3000), 'Allow App traffic');
 
     // Create Fargate Service
@@ -87,10 +80,21 @@ export class EcsFargateStack extends cdk.Stack {
       securityGroups: [serviceSecurityGroup],
     });
 
+    /************************
+     * Create Load Balancer *
+     ************************/
+
+    // Create Application Load Balancer (ALB)
+    const loadBalancer = new elbv2.ApplicationLoadBalancer(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-AppALB`, {
+      vpc,
+      internetFacing: true,
+    });
+
     // Create a Listener on the ALB
     const listener = loadBalancer.addListener(`${RESOURCE_ID_PREFIX_CAMEL_CASE}-AlbListener`, {
       port: 80,
       open: true,
+      protocol: elbv2.ApplicationProtocol.HTTP,
     });
 
     // Attach Fargate Service to the ALB Target Group
@@ -107,15 +111,11 @@ export class EcsFargateStack extends cdk.Stack {
       },
     });
 
-    // Create API Gateway
-    const emptyIntegration = new apigateway.Integration({
-      type: apigateway.IntegrationType.HTTP_PROXY,
-      integrationHttpMethod: 'ANY',
-      options: { connectionType: apigateway.ConnectionType.INTERNET },
-      uri: `http://${loadBalancer.loadBalancerDnsName}/`,
-    });
+    /*************************
+     * Create API Gateway v1 *
+     *************************/
 
-    const ddIntegration = new apigateway.Integration({
+    const integrationV1 = new apigateway.Integration({
       type: apigateway.IntegrationType.HTTP_PROXY,
       integrationHttpMethod: 'ANY',
       options: {
@@ -125,19 +125,18 @@ export class EcsFargateStack extends cdk.Stack {
       uri: `http://${loadBalancer.loadBalancerDnsName}`,
     });
 
-    const api = new apigateway.RestApi(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-APIGateway`, {
-      restApiName: `${RESOURCE_ID_PREFIX_DASH}-api-gateway`,
+    const restApi = new apigateway.RestApi(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-APIGateway`, {
+      restApiName: `${RESOURCE_ID_PREFIX_DASH}-api-gateway-v1`,
       description: 'API Gateway for forwarding requests to ALB',
       deployOptions: { stageName: 'prod' },
-      defaultIntegration: emptyIntegration,
+      defaultIntegration: integrationV1,
       parameters: DatadogAPIGatewayRequestParameters,
     });
 
-    api.root.addMethod('ANY');
-    const books = api.root.addResource('books');
-    books.addMethod('ANY');
-    const book = books.addResource('{id}');
-    book.addMethod('ANY');
+    restApi.root.addMethod('ANY');
+    const magazines = restApi.root.addResource('magazines');
+    magazines.addMethod('ANY');
+    const magazine = magazines.addResource('{id}');
+    magazine.addMethod('ANY');
   }
 }
-
