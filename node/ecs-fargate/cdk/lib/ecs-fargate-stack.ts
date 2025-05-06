@@ -1,4 +1,5 @@
-import * as apigateway from 'aws-cdk-lib/aws-apigateway';
+import * as apigatewayv2 from 'aws-cdk-lib/aws-apigatewayv2';
+import * as apigatewayv2_integrations from 'aws-cdk-lib/aws-apigatewayv2-integrations';
 import * as cdk from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as ecs from 'aws-cdk-lib/aws-ecs';
@@ -138,5 +139,61 @@ export class EcsFargateStack extends cdk.Stack {
     magazines.addMethod('ANY');
     const magazine = magazines.addResource('{id}');
     magazine.addMethod('ANY');
+
+    /*************************
+     * Create API Gateway v2 *
+     *************************/
+
+    const httpApi = new apigatewayv2.HttpApi(this, `${RESOURCE_ID_PREFIX_CAMEL_CASE}-APIGatewayV2`, {
+      apiName: `${RESOURCE_ID_PREFIX_DASH}-api-gateway-v2`,
+    });
+
+    // Create HTTP integration with ALB
+    const albIntegration = new apigatewayv2_integrations.HttpUrlIntegration(
+      'HttpUrlIntegration',
+      // XXX: I don't understand why this doesn't work
+      //`http://${loadBalancer.loadBalancerDnsName}`,
+      'http://apigwF-Apigw-McMoYJW8TrKG-306448024.us-west-2.elb.amazonaws.com',
+      {
+        parameterMapping: new apigatewayv2.ParameterMapping()
+          .appendHeader('x-dd-proxy', apigatewayv2.MappingValue.custom('aws-apigateway'))
+          .appendHeader('x-dd-proxy-request-time-ms', apigatewayv2.MappingValue.custom('${context.requestTimeEpoch}000'))
+          .appendHeader('x-dd-proxy-domain-name', apigatewayv2.MappingValue.custom('$context.domainName'))
+          .appendHeader('x-dd-proxy-httpmethod', apigatewayv2.MappingValue.custom('$context.httpMethod'))
+          .appendHeader('x-dd-proxy-path', apigatewayv2.MappingValue.custom('$context.path'))
+          .appendHeader('x-dd-proxy-stage', apigatewayv2.MappingValue.custom('$context.stage')),
+      },
+    );
+
+    // Add routes with the integration
+    httpApi.addRoutes({
+      path: '/{proxy+}',
+      methods: [apigatewayv2.HttpMethod.ANY],
+      integration: albIntegration,
+    });
+    httpApi.addRoutes({
+      path: '/books',
+      methods: [apigatewayv2.HttpMethod.ANY],
+      integration: albIntegration,
+    });
+    httpApi.addRoutes({
+      path: '/books/{id}',
+      methods: [apigatewayv2.HttpMethod.ANY],
+      integration: albIntegration,
+    });
+
+    /*****************
+     * Final Outputs *
+     *****************/
+
+    // Output the API Gateway URL and ALB DNS for testing
+    new cdk.CfnOutput(this, 'ApiGatewayV2Url', {
+      value: httpApi.url!,
+      description: 'API Gateway URL',
+    });
+    new cdk.CfnOutput(this, 'AlbDnsName', {
+      value: loadBalancer.loadBalancerDnsName,
+      description: 'ALB DNS Name',
+    });
   }
 }
