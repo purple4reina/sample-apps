@@ -7,20 +7,6 @@ import { Construct } from 'constructs';
 
 import { DatadogECSFargate, DatadogAPIGatewayRequestParameters } from "datadog-cdk-constructs-v2";
 
-// TODO: Change this to your IP address but leave `/32` at the end
-// Find your IP at https://checkip.amazonaws.com)
-// const MY_IP_ADDRESS = '0.0.0.0/32';
-
-/*
-Best option is to find the albSecurityGroup in AWS Console
-(securityGroupId outputted in this script) and manually add a
-security rule to open up this ALB to traffic from any IPv4.
-
-Alternatively, grab API Gateway IPs for your region from:
-https://ip-ranges.amazonaws.com/ip-ranges.json
-Cmd + F for your region and copy-paste all API Gateway IPs.
-*/
-
 const DD_API_KEY = process.env.DD_API_KEY || '';
 const APP_LANGUAGE = 'js'; // Must match the directory that contains the Dockerfile.
 const RESOURCE_ID_PREFIX_CAMEL_CASE = 'ApigwFargateDemo';
