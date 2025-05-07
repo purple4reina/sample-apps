@@ -7,7 +7,12 @@ import * as ecs from 'aws-cdk-lib/aws-ecs';
 import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import { Construct } from 'constructs';
 
-import { DatadogECSFargate, DatadogAPIGatewayRequestParameters } from "datadog-cdk-constructs-v2";
+import {
+  DatadogECSFargate,
+  DatadogAPIGatewayRequestParameters,
+  DatadogAPIGatewayV2ParameterMapping,
+  appendDatadogHeaders,
+} from "datadog-cdk-constructs-v2";
 
 const DD_API_KEY = process.env.DD_API_KEY || '';
 const APP_LANGUAGE = 'js'; // Must match the directory that contains the Dockerfile.
@@ -120,10 +125,7 @@ export class EcsFargateStack extends cdk.Stack {
     const integrationV1 = new apigateway.Integration({
       type: apigateway.IntegrationType.HTTP_PROXY,
       integrationHttpMethod: 'ANY',
-      options: {
-        connectionType: apigateway.ConnectionType.INTERNET,
-        requestParameters: DatadogAPIGatewayRequestParameters,
-      },
+      options: { connectionType: apigateway.ConnectionType.INTERNET },
       uri: `http://${loadBalancer.loadBalancerDnsName}`,
     });
 
@@ -155,15 +157,7 @@ export class EcsFargateStack extends cdk.Stack {
       // XXX: I don't understand why this doesn't work
       //`http://${loadBalancer.loadBalancerDnsName}`,
       'http://apigwF-Apigw-McMoYJW8TrKG-306448024.us-west-2.elb.amazonaws.com',
-      {
-        parameterMapping: new apigatewayv2.ParameterMapping()
-          .appendHeader('x-dd-proxy', apigatewayv2.MappingValue.custom('aws-apigateway'))
-          .appendHeader('x-dd-proxy-request-time-ms', apigatewayv2.MappingValue.custom('${context.requestTimeEpoch}000'))
-          .appendHeader('x-dd-proxy-domain-name', apigatewayv2.MappingValue.custom('$context.domainName'))
-          .appendHeader('x-dd-proxy-httpmethod', apigatewayv2.MappingValue.custom('$context.httpMethod'))
-          .appendHeader('x-dd-proxy-path', apigatewayv2.MappingValue.custom('$context.path'))
-          .appendHeader('x-dd-proxy-stage', apigatewayv2.MappingValue.custom('$context.stage')),
-      },
+      { parameterMapping: DatadogAPIGatewayV2ParameterMapping },
     );
 
     // Add routes with the integration

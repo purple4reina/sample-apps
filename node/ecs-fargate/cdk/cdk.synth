@@ -334,7 +334,7 @@ Resources:
         integration.request.header.x-dd-proxy-stage: context.stage
     Metadata:
       aws:cdk:path: ApigwFargateDemoAppStack/ApigwFargateDemo-APIGateway/Resource
-  ApigwFargateDemoAPIGatewayDeploymentAF2A73C1d651d6d1b25b8b1612c8f50deba4e3da:
+  ApigwFargateDemoAPIGatewayDeploymentAF2A73C1a894bafb777e240f9d4b9a25a9f39b88:
     Type: AWS::ApiGateway::Deployment
     Properties:
       Description: API Gateway for forwarding requests to ALB
@@ -352,7 +352,7 @@ Resources:
     Type: AWS::ApiGateway::Stage
     Properties:
       DeploymentId:
-        Ref: ApigwFargateDemoAPIGatewayDeploymentAF2A73C1d651d6d1b25b8b1612c8f50deba4e3da
+        Ref: ApigwFargateDemoAPIGatewayDeploymentAF2A73C1a894bafb777e240f9d4b9a25a9f39b88
       RestApiId:
         Ref: ApigwFargateDemoAPIGatewayD54C833A
       StageName: prod
@@ -366,13 +366,6 @@ Resources:
       Integration:
         ConnectionType: INTERNET
         IntegrationHttpMethod: ANY
-        RequestParameters:
-          integration.request.header.x-dd-proxy: "'aws-apigateway'"
-          integration.request.header.x-dd-proxy-request-time-ms: context.requestTimeEpoch
-          integration.request.header.x-dd-proxy-domain-name: context.domainName
-          integration.request.header.x-dd-proxy-httpmethod: context.httpMethod
-          integration.request.header.x-dd-proxy-path: context.path
-          integration.request.header.x-dd-proxy-stage: context.stage
         Type: HTTP_PROXY
         Uri:
           Fn::Join:
@@ -409,13 +402,6 @@ Resources:
       Integration:
         ConnectionType: INTERNET
         IntegrationHttpMethod: ANY
-        RequestParameters:
-          integration.request.header.x-dd-proxy: "'aws-apigateway'"
-          integration.request.header.x-dd-proxy-request-time-ms: context.requestTimeEpoch
-          integration.request.header.x-dd-proxy-domain-name: context.domainName
-          integration.request.header.x-dd-proxy-httpmethod: context.httpMethod
-          integration.request.header.x-dd-proxy-path: context.path
-          integration.request.header.x-dd-proxy-stage: context.stage
         Type: HTTP_PROXY
         Uri:
           Fn::Join:
@@ -448,13 +434,6 @@ Resources:
       Integration:
         ConnectionType: INTERNET
         IntegrationHttpMethod: ANY
-        RequestParameters:
-          integration.request.header.x-dd-proxy: "'aws-apigateway'"
-          integration.request.header.x-dd-proxy-request-time-ms: context.requestTimeEpoch
-          integration.request.header.x-dd-proxy-domain-name: context.domainName
-          integration.request.header.x-dd-proxy-httpmethod: context.httpMethod
-          integration.request.header.x-dd-proxy-path: context.path
-          integration.request.header.x-dd-proxy-stage: context.stage
         Type: HTTP_PROXY
         Uri:
           Fn::Join:
