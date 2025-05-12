@@ -342,3 +342,5 @@ gradle-app.setting
 ##### END GRADLE IGNORES #####
 
 .aws-sam/
+
+cdk.out/
