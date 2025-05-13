@@ -1,0 +1,29 @@
+service: rey-python-kafka
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.12
+  environment:
+    DD_DATA_STREAMS_ENABLED: true
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+
+plugins:
+  - serverless-plugin-datadog
+  - serverless-python-requirements
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+  pythonRequirements:
+    dockerizePip: true
+    dockerRunCmdExtraArgs: ['--platform', 'linux/amd64']
+
+functions:
+  fn:
+    handler: handler.handler
+    url: true
