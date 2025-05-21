@@ -13,14 +13,6 @@ export class CdkStack extends Stack {
       runtime: lambda.Runtime.NODEJS_20_X,
       handler: "handler.handler",
       code: lambda.Code.fromAsset("src"),
-      environment: {
-        "DD_ENV": "rey",
-        "DD_SERVICE": "rey-cdk-service",
-        //"DD_TRACE_INFERRED_PROXY_SERVICES_ENABLED": "true",
-        "DD_TRACE_OTEL_ENABLED": "false",
-        "DD_PROFILING_ENABLED": "false",
-        "DD_SERVERLESS_APPSEC_ENABLED": "false",
-      },
     });
 
     const api = new apigateway.LambdaRestApi(this, 'ReyEndpoint', {
@@ -29,9 +21,11 @@ export class CdkStack extends Stack {
     lambdaFunc.grantInvoke(new iam.ServicePrincipal('apigateway.amazonaws.com'));
 
     const datadog = new DatadogLambda(this, 'DatadogLambda', {
-      nodeLayerVersion: 125, // upgraded from 115 to 125
-      extensionLayerVersion: 78, // upgraded from 63 to 78
+      nodeLayerVersion: 125,
+      extensionLayerVersion: 78,
       apiKey: process.env.DD_API_KEY,
+      env: "rey",
+      service: "rey-cdk-service",
     });
     datadog.addLambdaFunctions([lambdaFunc]);
   }
