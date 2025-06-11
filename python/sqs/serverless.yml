@@ -1,0 +1,32 @@
+service: rey-python-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+  environment:
+    SQS_QUEUE_URL: ${construct:python-sqs.queueUrl}
+
+package:
+  patterns:
+    - '!**'
+    - 'handlers.py'
+
+plugins:
+  - serverless-lift
+  - serverless-plugin-datadog
+
+constructs:
+  python-sqs:
+    type: queue
+    worker:
+      handler: handlers.consumer
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  producer:
+    handler: handlers.producer
+    url: true
