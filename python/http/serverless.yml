@@ -1,0 +1,30 @@
+service: rey-python-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.9
+
+package:
+  patterns:
+    - '!**'
+    - 'handlers.py'
+
+plugins:
+  - serverless-plugin-datadog
+  - serverless-python-requirements
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  client:
+    handler: handlers.client
+    url: true
+    environment:
+      SERVER_URL: !GetAtt ServerLambdaFunctionUrl.FunctionUrl
+
+  server:
+    handler: handlers.server
+    url: true
