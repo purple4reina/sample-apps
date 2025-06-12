@@ -1,0 +1,33 @@
+service: rey-node-lambda
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs20.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+      Resource: "*"
+
+package:
+  patterns:
+    - '!**'
+    - 'handlers.js'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  client:
+    handler: handlers.client
+    url: true
+    environment:
+      LAMBDA_ARN: !Ref ServerLambdaFunction
+
+  server:
+    handler: handlers.server
