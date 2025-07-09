@@ -1,0 +1,19 @@
+service: rey-python-image
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: python3.12
+  architecture: arm64
+  environment:
+    DD_API_KEY: ${env:DD_API_KEY}
+  ecr:
+    images:
+      appimage:
+        path: ./
+
+functions:
+  func:
+    url: true
+    image:
+      name: appimage
