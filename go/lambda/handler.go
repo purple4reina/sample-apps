@@ -12,11 +12,6 @@ func main() {
 	lambda.Start(ddlambda.WrapFunction(myHandler, nil))
 }
 
-var resp = events.APIGatewayProxyResponse{
-	Body:       `{"hello":"world"}`,
-	StatusCode: 200,
-}
-
-func myHandler(ctx context.Context, event events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	return resp, nil
+func myHandler(ctx context.Context, event events.APIGatewayProxyRequest) (string, error) {
+	return "ok", nil
 }
