@@ -3,8 +3,7 @@
 echo "📦 packaging release"
 rm -rf bin
 CGO_ENABLED=0 GOARCH=amd64 GOOS=linux go build -o bootstrap handler.go
-echo
-echo "🚀 deploying package"
+echo -n "🚀 deploying package"
 aws-vault exec sso-serverless-sandbox-account-admin -- sls deploy
 echo
 echo "🎉 deploy complete at $(date)"
