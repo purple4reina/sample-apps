@@ -3,11 +3,12 @@ service: rey-go-sqs
 provider:
   name: aws
   region: sa-east-1
-  timeout: 30
+  runtime: provided.al2
   environment:
     DD_SERVICE: ${self:service}
     DD_UNIVERSAL_INSTRUMENTATION: true
-    SQS_QUEUE_URL: ${construct:go-sqs.queueUrl}
+    SQS_QUEUE_URL: ${construct:sqs.queueUrl}
+    DD_CAPTURE_LAMBDA_PAYLOAD: true
 
 plugins:
   - serverless-plugin-datadog
@@ -16,23 +17,21 @@ plugins:
 package:
   patterns:
     - '!**'
-    - 'bin/**'
-    - 'handlers.py'
+    - '**/bootstrap'
 
 custom:
   datadog:
     apiKey: ${env:DD_API_KEY}
 
 constructs:
-  go-sqs:
+  sqs:
     type: queue
     worker:
-      handler: bin/consumer
-      runtime: go1.x
-      name: ${self:service}-${sls:stage}-go-consumer
+      handler: bootstrap
+      runtime: provided.al2
+      name: ${self:service}-${sls:stage}-consumer
 
 functions:
-  python-producer:
-    handler: handlers.producer
-    runtime: python3.9
+  producer:
+    handler: bootstrap
     url: true
