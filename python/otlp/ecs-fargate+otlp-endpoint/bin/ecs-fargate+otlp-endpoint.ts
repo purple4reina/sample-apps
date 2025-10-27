@@ -4,5 +4,8 @@ import { ReyEcsFargateOtlpEndpointStack } from '../lib/ecs-fargate+otlp-endpoint
 
 const app = new cdk.App();
 new ReyEcsFargateOtlpEndpointStack(app, 'ReyEcsFargateOtlpEndpointStack', {
-  env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+  env: {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: "sa-east-1",
+  },
 });
