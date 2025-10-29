@@ -1,14 +1,9 @@
-# Welcome to your CDK TypeScript project
+# README
 
-This is a blank project for CDK development with TypeScript.
+## Sending data to staging
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
-
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+1. Trace endpoint: https://trace.agent.datad0g.com/api/v0.2/traces
+2. Set `dd-source` to `datadog`
+3. Find an api key from https://dd.datad0g.com/
+  - `OTLP_Trace_Endpoint_Serverless` is a good choice
+  - Change `DD_API_KEY` in `lib/ecs-fargate+otlp-endpoint-stack.ts` to the new value
