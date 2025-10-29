@@ -24,6 +24,7 @@ export class ReyEcsFargateOtlpEndpointStack extends cdk.Stack {
       vpcSubnets: { subnets: uniqueSubnets },
     });
 
+    const headers = `dd-api-key=${process.env.DD_API_KEY},dd-otlp-source=datadog,dd-protocol=otlp`
     const fargateService = new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'ReyFlaskService', {
       cluster,
       loadBalancer: alb,
@@ -32,6 +33,16 @@ export class ReyEcsFargateOtlpEndpointStack extends cdk.Stack {
           platform: aws_ecr_assets.Platform.LINUX_AMD64,
         }),
         containerPort: 8080,
+        environment: {
+          OTEL_ENVIRONMENT: 'prod',
+          OTEL_EXPORTER_OTLP_HEADERS: headers,
+          OTEL_EXPORTER_OTLP_PROTOCOL: 'http/protobuf',
+          OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: 'https://trace.agent.datadoghq.com/api/v0.2/traces',
+          OTEL_METRICS_EXPORTER: 'none',
+          OTEL_PYTHON_LOG_LEVEL: 'debug',
+          OTEL_SERVICE_NAME: 'rey-ecs-fargate',
+          OTEL_SERVICE_VERSION: '1.0.0',
+        },
       },
       desiredCount: 1,
       cpu: 256,
@@ -39,6 +50,7 @@ export class ReyEcsFargateOtlpEndpointStack extends cdk.Stack {
       assignPublicIp: true,
     });
 
+    new cdk.CfnOutput(this, 'Headers', { value: headers });
     new cdk.CfnOutput(this, 'URL', { value: `http://${fargateService.loadBalancer.loadBalancerDnsName}` });
   }
 }
