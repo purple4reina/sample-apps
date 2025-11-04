@@ -1,10 +1,8 @@
-import * as cdk from 'aws-cdk-lib';
-import { Construct } from 'constructs';
 import * as aws_ecr_assets from 'aws-cdk-lib/aws-ecr-assets';
+import * as cdk from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as ecs from 'aws-cdk-lib/aws-ecs';
-import * as ecs_patterns from 'aws-cdk-lib/aws-ecs-patterns';
-import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
+import { Construct } from 'constructs';
 
 export class ReyEcsFargateOtlpEndpointStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -13,44 +11,71 @@ export class ReyEcsFargateOtlpEndpointStack extends cdk.Stack {
     const vpc = ec2.Vpc.fromLookup(this, 'ReyDefaultVpc', { isDefault: true });
     const cluster = new ecs.Cluster(this, 'ReyAppCluster', { vpc });
 
-    const availabilityZones = Array.from(new Set(vpc.publicSubnets.map(s => s.availabilityZone)));
-    const uniqueSubnets = availabilityZones.map(az =>
-      vpc.publicSubnets.find(s => s.availabilityZone === az)!
-    );
-
-    const alb = new elbv2.ApplicationLoadBalancer(this, 'ReyALB', {
-      vpc,
-      internetFacing: true,
-      vpcSubnets: { subnets: uniqueSubnets },
+    // Create task definition
+    const taskDefinition = new ecs.FargateTaskDefinition(this, 'ReyTaskDef', {
+      cpu: 512,
+      memoryLimitMiB: 1024,
     });
 
-    const headers = `dd-api-key=${process.env.DD_API_KEY},dd-otlp-source=datadog,dd-protocol=otlp`
-    const fargateService = new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'ReyFlaskService', {
-      cluster,
-      loadBalancer: alb,
-      taskImageOptions: {
-        image: ecs.ContainerImage.fromAsset('./app', {
-          platform: aws_ecr_assets.Platform.LINUX_AMD64,
-        }),
-        containerPort: 8080,
-        environment: {
-          OTEL_ENVIRONMENT: 'prod',
-          OTEL_EXPORTER_OTLP_HEADERS: headers,
-          OTEL_EXPORTER_OTLP_PROTOCOL: 'http/protobuf',
-          OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: 'https://trace.agent.datadoghq.com/api/v0.2/traces',
-          OTEL_METRICS_EXPORTER: 'none',
-          OTEL_PYTHON_LOG_LEVEL: 'debug',
-          OTEL_SERVICE_NAME: 'rey-ecs-fargate',
-          OTEL_SERVICE_VERSION: '1.0.0',
-        },
+    // Add OpenTelemetry Collector container
+    const collectorContainer = taskDefinition.addContainer('ReyOtelCollector', {
+      image: ecs.ContainerImage.fromAsset('./collector', {
+        platform: aws_ecr_assets.Platform.LINUX_AMD64,
+      }),
+      essential: true,
+      environment: {
+        DD_API_KEY: process.env.DD_API_KEY || '',
       },
+      command: ['--config=config.yml'],
+      portMappings: [{ containerPort: 4318 }],
+      logging: new ecs.AwsLogDriver({ streamPrefix: 'rey-collector' }),
+    });
+
+    // Add application container
+    const appContainer = taskDefinition.addContainer('ReyFlaskApp', {
+      image: ecs.ContainerImage.fromAsset('./app', {
+        platform: aws_ecr_assets.Platform.LINUX_AMD64,
+      }),
+      environment: {
+        OTEL_ENVIRONMENT: 'prod',
+        OTEL_EXPORTER_OTLP_ENDPOINT: 'http://localhost:4318',
+        OTEL_EXPORTER_OTLP_PROTOCOL: 'http/protobuf',
+        OTEL_METRICS_EXPORTER: 'none',
+        OTEL_PYTHON_LOG_LEVEL: 'debug',
+        OTEL_SERVICE_NAME: 'rey-ecs-fargate',
+        OTEL_SERVICE_VERSION: '1.0.0',
+      },
+      portMappings: [{ containerPort: 8080 }],
+      logging: new ecs.AwsLogDriver({ streamPrefix: 'rey-app' }),
+    });
+
+    // App depends on collector being ready
+    appContainer.addContainerDependencies({
+      container: collectorContainer,
+      condition: ecs.ContainerDependencyCondition.START,
+    });
+
+    // Add traffic producing container
+    const trafficContainer = taskDefinition.addContainer('ReyTraffic', {
+      image: ecs.ContainerImage.fromAsset('./traffic', {
+        platform: aws_ecr_assets.Platform.LINUX_AMD64,
+      }),
+      command: ['./start.sh'],
+      logging: new ecs.AwsLogDriver({ streamPrefix: 'rey-traffic' }),
+    });
+
+    // Traffic depends on app being ready
+    trafficContainer.addContainerDependencies({
+      container: appContainer,
+      condition: ecs.ContainerDependencyCondition.START,
+    });
+
+    // Create the service without a load balancer
+    const fargateService = new ecs.FargateService(this, 'ReyFlaskService', {
+      cluster,
+      taskDefinition,
       desiredCount: 1,
-      cpu: 256,
-      memoryLimitMiB: 1024,
       assignPublicIp: true,
     });
-
-    new cdk.CfnOutput(this, 'Headers', { value: headers });
-    new cdk.CfnOutput(this, 'URL', { value: `http://${fargateService.loadBalancer.loadBalancerDnsName}` });
   }
 }

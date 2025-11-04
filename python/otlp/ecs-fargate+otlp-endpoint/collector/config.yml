@@ -1,0 +1,27 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  debug:
+  otlphttp:
+    traces_endpoint: https://trace.agent.datadoghq.com/api/v0.2/traces
+    headers:
+      dd-api-key: ${env:DD_API_KEY}
+      dd-otlp-source: datadog
+      dd-protocol: otlp
+
+processors:
+  resourcedetection/ecs:
+    detectors: [env, ecs]
+    timeout: 2s
+    override: false
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [resourcedetection/ecs]
+      exporters: [debug, otlphttp]
