@@ -1,0 +1,48 @@
+service: otlp-endpoint-billing
+
+provider:
+  name: aws
+  runtime: python3.12
+  region: sa-east-1
+  environment:
+    AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-instrument
+    DD_API_KEY: ${env:DD_API_KEY}
+    DD_SITE: datadoghq.com
+    OTEL_ENVIRONMENT: dev
+    OTEL_METRICS_EXPORTER: none
+    OTEL_PYTHON_LOG_LEVEL: debug
+    OTEL_SERVICE_NAME: otlp-endpoint-billing
+    OTEL_SERVICE_VERSION: 1.0.0
+    OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.py'
+    - 'endpoint-config.yml'
+
+functions:
+  endpoint:
+    handler: handler.handler
+    environment:
+      OPENTELEMETRY_COLLECTOR_CONFIG_FILE: /var/task/endpoint-config.yml
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4318
+    layers:
+      - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
+    events:
+      - schedule: rate(1 minute)
+
+  extension:
+    handler: handler.handler
+    environment:
+      DD_LOG_LEVEL: debug
+      DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4319
+      DD_SERVERLESS_LOGS_ENABLED: true
+      DD_SERVICE: otlp-endpoint-billing
+      DD_TRACE_ENABLED: true
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4319
+    layers:
+      - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:88
+    events:
+      - schedule: rate(1 minute)

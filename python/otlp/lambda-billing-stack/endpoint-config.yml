@@ -1,0 +1,19 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: "localhost:4318"
+
+exporters:
+  otlphttp:
+    traces_endpoint: https://trace.agent.datadoghq.com/api/v0.2/traces
+    headers:
+      dd-protocol: otlp
+      dd-api-key: ${env:DD_API_KEY}
+      dd-otlp-source: datadog
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [otlphttp]
