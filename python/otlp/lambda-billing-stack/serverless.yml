@@ -6,27 +6,27 @@ provider:
   region: sa-east-1
   environment:
     AWS_LAMBDA_EXEC_WRAPPER: /opt/otel-instrument
-    DD_API_KEY: ${env:DD_API_KEY}
-    DD_SITE: datadoghq.com
     OTEL_ENVIRONMENT: dev
+    OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
     OTEL_METRICS_EXPORTER: none
-    OTEL_PYTHON_LOG_LEVEL: debug
     OTEL_SERVICE_NAME: otlp-endpoint-billing
     OTEL_SERVICE_VERSION: 1.0.0
-    OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
 
 package:
   patterns:
     - '!**'
     - 'handler.py'
-    - 'endpoint-config.yml'
+
+custom:
+  ddApiKey: ${env:DD_API_KEY}
+  ddSite: datadoghq.com
 
 functions:
   endpoint:
     handler: handler.handler
     environment:
-      OPENTELEMETRY_COLLECTOR_CONFIG_FILE: /var/task/endpoint-config.yml
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4318
+      OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://trace.agent.${custom:ddSite}/api/v0.2/traces
+      OTEL_EXPORTER_OTLP_HEADERS: dd-api-key=${custom:ddApiKey},dd-otlp-source=datadog,dd-protocol=otlp
     layers:
       - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
     events:
@@ -35,12 +35,14 @@ functions:
   extension:
     handler: handler.handler
     environment:
+      DD_API_KEY: ${custom:ddApiKey}
+      DD_SITE: ${custom:ddSite}
       DD_LOG_LEVEL: debug
       DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4319
       DD_SERVERLESS_LOGS_ENABLED: true
       DD_SERVICE: otlp-endpoint-billing
       DD_TRACE_ENABLED: true
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://localhost:4319
+      OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://localhost:4319
     layers:
       - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:88
