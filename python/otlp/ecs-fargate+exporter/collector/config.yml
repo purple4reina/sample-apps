@@ -1,0 +1,25 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  debug:
+  datadog/exporter:
+    api:
+      key: ${env:DD_API_KEY}
+      site: ${env:DD_SITE}
+
+processors:
+  resourcedetection/ecs:
+    detectors: [env, ecs]
+    timeout: 2s
+    override: false
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [resourcedetection/ecs]
+      exporters: [debug, datadog/exporter]
