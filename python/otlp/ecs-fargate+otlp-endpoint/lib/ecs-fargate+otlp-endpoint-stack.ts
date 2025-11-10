@@ -25,6 +25,7 @@ export class ReyEcsFargateOtlpEndpointStack extends cdk.Stack {
       essential: true,
       environment: {
         DD_API_KEY: process.env.DD_API_KEY || '',
+        DD_SITE: process.env.DD_SITE || 'datadoghq.com',
       },
       command: ['--config=config.yml'],
       portMappings: [{ containerPort: 4318 }],
