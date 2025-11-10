@@ -7,7 +7,7 @@ receivers:
 exporters:
   debug:
   otlphttp:
-    traces_endpoint: https://trace.agent.datadoghq.com/api/v0.2/traces
+    traces_endpoint: https://trace.agent.${env:DD_SITE}/api/v0.2/traces
     headers:
       dd-api-key: ${env:DD_API_KEY}
       dd-otlp-source: datadog
