@@ -1,0 +1,26 @@
+service: rey-node-profiling
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs22.x
+  timeout: 90
+  environment:
+    DD_PROFILING_ENABLED: true
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.js'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  next:
+    handler: handler.handler
+    url: true
