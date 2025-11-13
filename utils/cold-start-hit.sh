@@ -7,43 +7,42 @@ if [[ -z $FUNCS ]]; then
     exit 1
 fi
 
-if [[ -z $URLS ]]; then
-    echo Gathering URLs using aws cli
-    for f in $FUNCS
-    do
-        URLS="$URLS $(
-            aws-vault exec sso-serverless-sandbox-account-admin -- \
-                aws lambda get-function-url-config \
-                    --function-name $f \
-                    --region sa-east-1 \
-                    --output json | jq -r '.FunctionUrl'
-        )"
-    done
-    echo Found URLs: $URLS
+if [[ -z $FORCE_COLD_START ]]; then
+    FORCE_COLD_START="true"
 fi
 
-while true
+for f in $FUNCS
 do
-    for f in $FUNCS
-    do
-        "$SCRIPT_DIR/update-memory.sh" "$f" &
-    done
-    wait
+    (
+        URL="$(
+        aws-vault exec sso-serverless-sandbox-account-admin -- \
+            aws lambda get-function-url-config \
+                --function-name "$f" \
+                --region sa-east-1 \
+                --output json | jq -r '.FunctionUrl'
+        )"
+        echo "Found URL: $URL"
 
-    sleep 2
-
-    for u in $URLS
-    do
-        for _ in {1..100}
+        while true
         do
-            (
-                for _ in {1..2}
-                do
-                    curl "$u"
-                    sleep 0.1
-                done
-            ) &
+            if [[ $FORCE_COLD_START = "true" ]]
+            then
+                "$SCRIPT_DIR/update-memory.sh" "$f" &
+                sleep 2
+            fi
+
+            for _ in {1..2}
+            do
+                (
+                    for _ in {1..200}
+                    do
+                        curl "$URL"
+                        sleep 0.1
+                    done
+                ) &
+            done
+            wait
         done
-    done
-    wait
+    ) &
 done
+wait
