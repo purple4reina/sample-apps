@@ -3,7 +3,7 @@ service: rey-node-lambda
 provider:
   name: aws
   region: sa-east-1
-  runtime: nodejs18.x
+  runtime: nodejs22.x
 
 package:
   patterns:
