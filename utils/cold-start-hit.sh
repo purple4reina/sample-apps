@@ -10,6 +10,9 @@ fi
 if [[ -z $FORCE_COLD_START ]]; then
     FORCE_COLD_START="true"
 fi
+echo "Forcing cold starts: $FORCE_COLD_START"
+
+trap 'kill -- -$$' EXIT
 
 for f in $FUNCS
 do
@@ -31,10 +34,10 @@ do
                 sleep 2
             fi
 
-            for _ in {1..2}
+            for _ in {1..10}
             do
                 (
-                    for _ in {1..200}
+                    for _ in {1..5}
                     do
                         curl "$URL"
                         sleep 0.1
