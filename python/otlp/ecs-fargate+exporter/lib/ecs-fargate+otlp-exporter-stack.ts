@@ -43,7 +43,7 @@ export class ReyEcsFargateOtlpExporterStack extends cdk.Stack {
         OTEL_EXPORTER_OTLP_PROTOCOL: 'http/protobuf',
         OTEL_METRICS_EXPORTER: 'none',
         OTEL_PYTHON_LOG_LEVEL: 'debug',
-        OTEL_SERVICE_NAME: 'rey-ecs-fargate',
+        OTEL_SERVICE_NAME: 'otlp-billing-fargate-exporter',
         OTEL_SERVICE_VERSION: '1.0.0',
       },
       portMappings: [{ containerPort: 8080 }],
