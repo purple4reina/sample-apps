@@ -8,7 +8,6 @@ provider:
     DD_API_KEY: ${env:DD_API_KEY}
     DD_CAPTURE_LAMBDA_PAYLOAD: false
     DD_ENV: dev
-    DD_EXTENSION_VERSION: next
     DD_LAMBDA_HANDLER: handler.handler
     DD_LOGS_INJECTION: false
     DD_MERGE_XRAY_TRACES: false
@@ -22,129 +21,499 @@ package:
     - 'handler.py'
 
 functions:
-  100:
+  60-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:100
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  101:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:60
+    environment:
+      DD_EXTENSION_VERSION: next
+  60-compatibility:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:101
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  102:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:60
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  61-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:102
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  103:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:61
+    environment:
+      DD_EXTENSION_VERSION: next
+  61-compatibility:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:103
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  104:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:61
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  62-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:104
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  105:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:62
+    environment:
+      DD_EXTENSION_VERSION: next
+  62-compatibility:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:105
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  106:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:62
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  63-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:106
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  107:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:63
+    environment:
+      DD_EXTENSION_VERSION: next
+  63-compatibility:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:107
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  108:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:63
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  64-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:108
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  109:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:64
+    environment:
+      DD_EXTENSION_VERSION: next
+  64-compatibility:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:109
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  110:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:64
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  65-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:110
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  111:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:65
+    environment:
+      DD_EXTENSION_VERSION: next
+  65-compatibility:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:111
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  112:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:65
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  66-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:112
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  113:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:66
+    environment:
+      DD_EXTENSION_VERSION: next
+  66-compatibility:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:113
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  114:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:66
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  67-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:114
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  115:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:67
+    environment:
+      DD_EXTENSION_VERSION: next
+  67-compatibility:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:115
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  116:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:67
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  68-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:116
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  117:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:68
+    environment:
+      DD_EXTENSION_VERSION: next
+  68-compatibility:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:117
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  118:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:68
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  69-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:118
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  119:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:69
+    environment:
+      DD_EXTENSION_VERSION: next
+  69-compatibility:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:119
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
-  120:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:69
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  70-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:70
+    environment:
+      DD_EXTENSION_VERSION: next
+  70-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:70
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  71-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:71
+    environment:
+      DD_EXTENSION_VERSION: next
+  71-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:71
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  72-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:72
+    environment:
+      DD_EXTENSION_VERSION: next
+  72-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:72
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  73-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:73
+    environment:
+      DD_EXTENSION_VERSION: next
+  73-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:73
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  74-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:74
+    environment:
+      DD_EXTENSION_VERSION: next
+  74-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:74
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  75-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:75
+    environment:
+      DD_EXTENSION_VERSION: next
+  75-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:75
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  76-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:76
+    environment:
+      DD_EXTENSION_VERSION: next
+  76-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:76
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  77-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:77
+    environment:
+      DD_EXTENSION_VERSION: next
+  77-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:77
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  78-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:78
+    environment:
+      DD_EXTENSION_VERSION: next
+  78-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:78
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  79-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:79
+    environment:
+      DD_EXTENSION_VERSION: next
+  79-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:79
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  80-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:80
+    environment:
+      DD_EXTENSION_VERSION: next
+  80-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:80
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  81-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:81
+    environment:
+      DD_EXTENSION_VERSION: next
+  81-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:81
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  82-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:82
+    environment:
+      DD_EXTENSION_VERSION: next
+  82-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:82
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  83-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:83
+    environment:
+      DD_EXTENSION_VERSION: next
+  83-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:83
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  84-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:84
+    environment:
+      DD_EXTENSION_VERSION: next
+  84-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:84
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  85-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:85
+    environment:
+      DD_EXTENSION_VERSION: next
+  85-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:85
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  86-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:86
+    environment:
+      DD_EXTENSION_VERSION: next
+  86-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:86
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  87-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:87
+    environment:
+      DD_EXTENSION_VERSION: next
+  87-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:87
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  88-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:88
+    environment:
+      DD_EXTENSION_VERSION: next
+  88-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:88
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  89-next:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:89
+    environment:
+      DD_EXTENSION_VERSION: next
+  89-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:89
+    environment:
+      DD_EXTENSION_VERSION: compatibility
+  90-next:
     handler: datadog_lambda.handler.handler
     url: true
     layers:
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
+    environment:
+      DD_EXTENSION_VERSION: next
+  90-compatibility:
+    handler: datadog_lambda.handler.handler
+    url: true
+    layers:
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Python312:120
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:90
+    environment:
+      DD_EXTENSION_VERSION: compatibility
