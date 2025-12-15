@@ -1,4 +1,4 @@
-service: rey-python-lambda
+service: rey-lambda-versions
 
 provider:
   name: aws
@@ -12,7 +12,7 @@ provider:
     DD_LOGS_INJECTION: false
     DD_MERGE_XRAY_TRACES: false
     DD_SERVERLESS_LOGS_ENABLED: true
-    DD_SERVICE: rey-python-lambda
+    DD_SERVICE: rey-lambda-versions
     DD_TRACE_ENABLED: true
 
 package:
