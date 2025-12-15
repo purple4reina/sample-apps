@@ -24,7 +24,7 @@ do
                 --region sa-east-1 \
                 --output json | jq -r '.FunctionUrl'
         )"
-        echo "Found URL: $URL"
+        echo "Found URL for function $f: $URL"
 
         while true
         do
