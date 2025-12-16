@@ -1,11 +1,18 @@
 #!/opt/homebrew/opt/node/bin/node
 import * as cdk from 'aws-cdk-lib';
-import { ReyEcsFargateOtlpExporterStack } from '../lib/ecs-fargate+otlp-exporter-stack';
+import { EcsFargateOtlpExporterStack } from '../lib/ecs-fargate+otlp-exporter-stack';
 
 const app = new cdk.App();
-new ReyEcsFargateOtlpExporterStack(app, 'ReyEcsFargateOtlpExporterStack', {
-  env: {
-    account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: "sa-east-1",
+new EcsFargateOtlpExporterStack(app, 'EcsFargateBillingWithExporter',
+  {
+    env: {
+      account: process.env.CDK_DEFAULT_ACCOUNT,
+      region: "sa-east-1",
+    },
   },
-});
+  {
+    prefix: 'otlp-billing-',
+    apiKey: process.env.DD_STAGING_OTLP_API_KEY || '',
+    site: process.env.DD_STAGING_OTLP_SITE || '',
+  },
+);
