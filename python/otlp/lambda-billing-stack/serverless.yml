@@ -18,15 +18,15 @@ package:
     - 'handler.py'
 
 custom:
-  ddApiKey: ${env:DD_API_KEY}
-  ddSite: datadoghq.com
+  apiKey: ${env:DD_API_KEY}
+  site: ${env:DD_SITE,"datadoghq.com"}
 
 functions:
   endpoint:
     handler: handler.handler
     environment:
-      OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://trace.agent.${custom:ddSite}/api/v0.2/traces
-      OTEL_EXPORTER_OTLP_HEADERS: dd-api-key=${custom:ddApiKey},dd-otlp-source=datadog,dd-protocol=otlp
+      OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://trace.agent.${self:custom.site}/api/v0.2/traces
+      OTEL_EXPORTER_OTLP_HEADERS: dd-api-key=${self:custom.apiKey},dd-otlp-source=datadog,dd-protocol=otlp
     layers:
       - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
     events:
@@ -35,8 +35,8 @@ functions:
   extension:
     handler: handler.handler
     environment:
-      DD_API_KEY: ${custom:ddApiKey}
-      DD_SITE: ${custom:ddSite}
+      DD_API_KEY: ${self:custom.apiKey}
+      DD_SITE: ${self:custom.site}
       DD_LOG_LEVEL: debug
       DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4319
       DD_SERVERLESS_LOGS_ENABLED: true
