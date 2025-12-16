@@ -3,7 +3,7 @@ import * as cdk from 'aws-cdk-lib';
 import { EcsFargateOtlpExporterStack } from '../lib/ecs-fargate+otlp-exporter-stack';
 
 const app = new cdk.App();
-new EcsFargateOtlpExporterStack(app, 'EcsFargateBillingWithExporter',
+new EcsFargateOtlpExporterStack(app, 'EcsFargateBillingWithExporterStack',
   {
     env: {
       account: process.env.CDK_DEFAULT_ACCOUNT,
