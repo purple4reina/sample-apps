@@ -42,7 +42,7 @@ functions:
       DD_SERVERLESS_LOGS_ENABLED: true
       DD_SERVICE: otlp-endpoint-billing
       DD_TRACE_ENABLED: true
-      OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://localhost:4319
+      OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://localhost:4319/v1/traces
     layers:
       - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:88
