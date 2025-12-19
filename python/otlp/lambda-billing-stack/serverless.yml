@@ -1,4 +1,4 @@
-service: otlp-endpoint-billing
+service: otlp-billing
 
 provider:
   name: aws
@@ -9,7 +9,6 @@ provider:
     OTEL_ENVIRONMENT: dev
     OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
     OTEL_METRICS_EXPORTER: none
-    OTEL_SERVICE_NAME: otlp-endpoint-billing
     OTEL_SERVICE_VERSION: 1.0.0
 
 package:
@@ -25,8 +24,9 @@ functions:
   endpoint:
     handler: handler.handler
     environment:
-      OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://trace.agent.${self:custom.site}/api/v0.2/traces
       OTEL_EXPORTER_OTLP_HEADERS: dd-api-key=${self:custom.apiKey},dd-otlp-source=datadog,dd-protocol=otlp
+      OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://trace.agent.${self:custom.site}/api/v0.2/traces
+      OTEL_SERVICE_NAME: otlp-endpoint-billing
     layers:
       - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
     events:
@@ -36,13 +36,14 @@ functions:
     handler: handler.handler
     environment:
       DD_API_KEY: ${self:custom.apiKey}
-      DD_SITE: ${self:custom.site}
       DD_LOG_LEVEL: debug
       DD_OTLP_CONFIG_RECEIVER_PROTOCOLS_HTTP_ENDPOINT: localhost:4319
       DD_SERVERLESS_LOGS_ENABLED: true
-      DD_SERVICE: otlp-endpoint-billing
+      DD_SERVICE: otlp-extension-billing
+      DD_SITE: ${self:custom.site}
       DD_TRACE_ENABLED: true
       OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://localhost:4319/v1/traces
+      OTEL_SERVICE_NAME: otlp-extension-billing
     layers:
       - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
       - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:88
