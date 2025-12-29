@@ -9,7 +9,7 @@ export class DurableFunctionStack extends cdk.Stack {
     super(scope, id, props);
 
     const durableFunction = new lambda.Function(this, 'ReyDurableFunction', {
-      runtime: lambda.Runtime.PYTHON_3_12,
+      runtime: lambda.Runtime.PYTHON_3_14,
       handler: 'handler.handler',
       code: lambda.Code.fromAsset('.', { exclude: ['**/!(handler.py)', '.*'] }),
       functionName: 'rey-durable-function',
@@ -18,20 +18,6 @@ export class DurableFunctionStack extends cdk.Stack {
         retentionPeriod: cdk.Duration.days(7),
       },
     });
-
-    const durableUrl = durableFunction.addFunctionUrl({
-      authType: lambda.FunctionUrlAuthType.NONE,
-    });
-
-    durableFunction.addToRolePolicy(new iam.PolicyStatement({
-      actions: [
-        'lambda:CheckpointDurableExecutions',
-        'lambda:GetDurableExecutionState',
-      ],
-      resources: [durableFunction.functionArn],
-    }));
-
-    new cdk.CfnOutput(this, 'FunctionAliasArn', { value: durableUrl.url });
   }
 }
 
