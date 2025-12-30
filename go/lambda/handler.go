@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 
-	ddlambda "github.com/DataDog/datadog-lambda-go"
+	ddlambda "github.com/DataDog/dd-trace-go/contrib/aws/datadog-lambda-go/v2"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 )
