@@ -29,35 +29,6 @@ export class ReyRumLambdaStack extends cdk.Stack {
       authType: cdk.aws_lambda.FunctionUrlAuthType.NONE,
     });
 
-    /************************
-     * Create Load Balancer *
-     ************************/
-
-    // Get default VPC
-    const vpc = ec2.Vpc.fromLookup(this, 'ImportVPC', { isDefault: true });
-
-    // Create Application Load Balancer (ALB)
-    const loadBalancer = new elbv2.ApplicationLoadBalancer(this, `Rey-AppALB`, {
-      vpc,
-      internetFacing: true,
-    });
-
-    // Create a Listener on the ALB
-    const listener = loadBalancer.addListener('Rey-AlbListener', {
-      port: 80,
-      open: true,
-      protocol: elbv2.ApplicationProtocol.HTTP,
-    });
-
-    // Attach Lambda Function to the ALB Target Group
-    listener.addTargets('ReyLambdaGroup', {
-      targets: [new elbv2_targets.LambdaTarget(appLambda)],
-      healthCheck: {
-        path: '/health',
-        interval: cdk.Duration.seconds(60),
-      },
-    });
-
     /****************************************
      * Lambda Authorizer For API Gateway v1 *
      * **************************************/
@@ -93,18 +64,10 @@ export class ReyRumLambdaStack extends cdk.Stack {
      * Create API Gateway v1 *
      *************************/
 
-    const integrationV1 = new apigw.Integration({
-      type: apigw.IntegrationType.HTTP_PROXY,
-      integrationHttpMethod: 'ANY',
-      options: { connectionType: apigw.ConnectionType.INTERNET },
-      uri: `http://${loadBalancer.loadBalancerDnsName}`,
-    });
-
     const restApi = new apigw.RestApi(this, `Rey-APIGateway`, {
       restApiName: `Rey-api-gateway-v1`,
       description: 'API Gateway for forwarding requests to ALB',
       deployOptions: { stageName: 'prod' },
-      defaultIntegration: integrationV1,
     });
 
     restApi.root.addMethod('ANY', new apigw.LambdaIntegration(appLambda), { authorizer });
@@ -117,7 +80,6 @@ export class ReyRumLambdaStack extends cdk.Stack {
     new cdk.CfnOutput(this, 'ApplicationLambdaName', { value: appLambda.functionName });
     new cdk.CfnOutput(this, 'AuthorizerLambdaName', { value: authLambda.functionName });
     new cdk.CfnOutput(this, 'FunctionUrl', { value: functionUrl.url });
-    new cdk.CfnOutput(this, 'AlbDnsName', { value: loadBalancer.loadBalancerDnsName });
   }
 }
 
