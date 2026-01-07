@@ -8,8 +8,12 @@ def handler(event, context):
 
 def authorizer(event, context):
     print(event)
-    token = (event.get('headers') or {}).get('Authorization', '')[7:]  # Skip 'Bearer '
-    method_arn = event.get('methodArn')
+    if event.get('type') == 'REQUEST':
+        token = (event.get('headers') or {}).get('Authorization', '')[7:]  # Skip 'Bearer '
+        method_arn = event.get('methodArn')
+    else:
+        token = event.get('authorizationToken', '')[7:]
+        method_arn = event.get('methodArn')
     return {
         'principalId': 'user',
         'policyDocument': {

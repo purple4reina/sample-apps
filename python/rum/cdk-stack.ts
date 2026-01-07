@@ -41,7 +41,14 @@ export class ReyAuthorizerLambdaStack extends cdk.Stack {
       }),
     });
 
-    const authorizer = new apigw.RequestAuthorizer(this, 'ReyRequestAuthorizer', {
+    // either TokenAuthorizer or RequestAuthorizer
+    // for payload differences, see:
+    // https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-lambda-authorizer-input.html
+    const tokenAuthorizer = new apigw.TokenAuthorizer(this, 'ReyTokenAuthorizer', {
+      handler: authLambda,
+      resultsCacheTtl: cdk.Duration.seconds(300),
+    });
+    const requestAuthorizer = new apigw.RequestAuthorizer(this, 'ReyRequestAuthorizer', {
       handler: authLambda,
       identitySources: [apigw.IdentitySource.header('Authorization')],
       resultsCacheTtl: cdk.Duration.seconds(300),
@@ -70,7 +77,11 @@ export class ReyAuthorizerLambdaStack extends cdk.Stack {
       deployOptions: { stageName: 'prod' },
     });
 
-    restApi.root.addMethod('ANY', new apigw.LambdaIntegration(appLambda), { authorizer });
+    const tokenResource = restApi.root.addResource('token');
+    tokenResource.addMethod('ANY', new apigw.LambdaIntegration(appLambda), { authorizer: tokenAuthorizer });
+
+    const requestResource = restApi.root.addResource('request');
+    requestResource.addMethod('ANY', new apigw.LambdaIntegration(appLambda), { authorizer: requestAuthorizer });
 
     /*****************
      * Final Outputs *
