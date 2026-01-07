@@ -8,7 +8,7 @@ import * as elbv2_targets from 'aws-cdk-lib/aws-elasticloadbalancingv2-targets';
 import { Construct } from 'constructs';
 import { DatadogLambda } from 'datadog-cdk-constructs-v2';
 
-export class ReyRumLambdaStack extends cdk.Stack {
+export class ReyAuthorizerLambdaStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -84,7 +84,7 @@ export class ReyRumLambdaStack extends cdk.Stack {
 }
 
 const app = new cdk.App();
-new ReyRumLambdaStack(app, 'ReyRumLambdaStack', {
+new ReyAuthorizerLambdaStack(app, 'ReyAuthorizerLambdaStack', {
   env: {
     account: '425362996713',
     region: 'sa-east-1',
