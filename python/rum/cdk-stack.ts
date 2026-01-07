@@ -8,7 +8,7 @@ import * as elbv2_targets from 'aws-cdk-lib/aws-elasticloadbalancingv2-targets';
 import { Construct } from 'constructs';
 import { DatadogLambda } from 'datadog-cdk-constructs-v2';
 
-export class ReyAuthorizerLambdaStack extends cdk.Stack {
+export class ReyPythonAuthorizerStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -63,6 +63,7 @@ export class ReyAuthorizerLambdaStack extends cdk.Stack {
       extensionLayerVersion: 90,
       apiKey: process.env.DD_API_KEY || '',
       captureLambdaPayload: true,
+      service: 'rey-python-authorizer',
       logLevel: 'debug',
     });
     datadogLambda.addLambdaFunctions([appLambda, authLambda]);
@@ -95,7 +96,7 @@ export class ReyAuthorizerLambdaStack extends cdk.Stack {
 }
 
 const app = new cdk.App();
-new ReyAuthorizerLambdaStack(app, 'ReyAuthorizerLambdaStack', {
+new ReyPythonAuthorizerStack(app, 'ReyPythonAuthorizerStack', {
   env: {
     account: '425362996713',
     region: 'sa-east-1',
