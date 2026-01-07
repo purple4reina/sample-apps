@@ -7,26 +7,19 @@ def handler(event, context):
     }
 
 def authorizer(event, context):
-    token = event['authorizationToken']
-    method_arn = event['methodArn']
-
-    if token == "allow":
-        effect = "Allow"
-    else:
-        effect = "Deny"
-
-    policy_document = {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Action": "execute-api:Invoke",
-                "Effect": effect,
-                "Resource": method_arn
-            }
-        ]
-    }
-
+    print(event)
+    token = (event.get('headers') or {}).get('Authorization', '')[7:]  # Skip 'Bearer '
+    method_arn = event.get('methodArn')
     return {
         'principalId': 'user',
-        'policyDocument': policy_document
+        'policyDocument': {
+            'Version': '2012-10-17',
+            'Statement': [
+                {
+                    'Action': 'execute-api:Invoke',
+                    'Effect': 'Allow' if token else 'Deny',
+                    'Resource': [method_arn or '*'],
+                }
+            ]
+        }
     }

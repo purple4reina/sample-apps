@@ -6,7 +6,7 @@ import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
 import * as elbv2_targets from 'aws-cdk-lib/aws-elasticloadbalancingv2-targets';
 import { Construct } from 'constructs';
-import { DatadogLambda } from "datadog-cdk-constructs-v2";
+import { DatadogLambda } from 'datadog-cdk-constructs-v2';
 
 export class ReyRumLambdaStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -16,7 +16,7 @@ export class ReyRumLambdaStack extends cdk.Stack {
      * Create Lambda Function *
      * ************************/
 
-    const appLambda = new cdk.aws_lambda.Function(this, `Rey-HeaderFunction`, {
+    const appLambda = new cdk.aws_lambda.Function(this, `Rey-ApplicationFunction`, {
       runtime: cdk.aws_lambda.Runtime.PYTHON_3_12,
       handler: 'handler.handler',
       code: cdk.aws_lambda.Code.fromAsset(__dirname, {
@@ -28,14 +28,6 @@ export class ReyRumLambdaStack extends cdk.Stack {
     const functionUrl = appLambda.addFunctionUrl({
       authType: cdk.aws_lambda.FunctionUrlAuthType.NONE,
     });
-    new cdk.CfnOutput(this, 'FunctionUrl', { value: functionUrl.url });
-
-    const datadogLambda = new DatadogLambda(this, "datadogLambda", {
-      pythonLayerVersion: 120,
-      extensionLayerVersion: 90,
-      apiKey: process.env.DD_API_KEY || '',
-    });
-    datadogLambda.addLambdaFunctions([appLambda]);
 
     /************************
      * Create Load Balancer *
@@ -77,13 +69,25 @@ export class ReyRumLambdaStack extends cdk.Stack {
         exclude: ['*.ts', '*.js', '*.json', 'cdk.out', 'node_modules', 'README.md'],
       }),
     });
-    datadogLambda.addLambdaFunctions([authLambda]);
 
     const authorizer = new apigw.RequestAuthorizer(this, 'ReyRequestAuthorizer', {
       handler: authLambda,
       identitySources: [apigw.IdentitySource.header('Authorization')],
       resultsCacheTtl: cdk.Duration.seconds(300),
     });
+
+    /***************************
+     * Datadog Instrumentation *
+     ***************************/
+
+    const datadogLambda = new DatadogLambda(this, 'datadogLambda', {
+      pythonLayerVersion: 120,
+      extensionLayerVersion: 90,
+      apiKey: process.env.DD_API_KEY || '',
+      captureLambdaPayload: true,
+      logLevel: 'debug',
+    });
+    datadogLambda.addLambdaFunctions([appLambda, authLambda]);
 
     /*************************
      * Create API Gateway v1 *
@@ -103,24 +107,17 @@ export class ReyRumLambdaStack extends cdk.Stack {
       defaultIntegration: integrationV1,
     });
 
-    restApi.root.addMethod('ANY', new apigw.LambdaIntegration(authLambda), {
-      authorizer,
-      authorizationType: apigw.AuthorizationType.CUSTOM, // Required for V1 custom authorizers
-    });
+    restApi.root.addMethod('ANY', new apigw.LambdaIntegration(appLambda), { authorizer });
 
     /*****************
      * Final Outputs *
      *****************/
 
     // Output the API Gateway URL and ALB DNS for testing
-    new cdk.CfnOutput(this, 'ApiGatewayUrl', {
-      value: restApi.url,
-      description: 'API Gateway URL',
-    });
-    new cdk.CfnOutput(this, 'AlbDnsName', {
-      value: loadBalancer.loadBalancerDnsName,
-      description: 'ALB DNS Name',
-    });
+    new cdk.CfnOutput(this, 'ApplicationLambdaName', { value: appLambda.functionName });
+    new cdk.CfnOutput(this, 'AuthorizerLambdaName', { value: authLambda.functionName });
+    new cdk.CfnOutput(this, 'FunctionUrl', { value: functionUrl.url });
+    new cdk.CfnOutput(this, 'AlbDnsName', { value: loadBalancer.loadBalancerDnsName });
   }
 }
 
