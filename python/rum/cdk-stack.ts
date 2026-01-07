@@ -72,17 +72,21 @@ export class ReyPythonAuthorizerStack extends cdk.Stack {
      * Create API Gateway v1 *
      *************************/
 
-    const restApi = new apigw.RestApi(this, `Rey-APIGateway`, {
-      restApiName: `Rey-api-gateway-v1`,
-      description: 'API Gateway for forwarding requests to ALB',
+    const tokenRestApi = new apigw.RestApi(this, `Rey-APIGateway-token`, {
+      restApiName: `Rey-api-gateway-v1-token`,
       deployOptions: { stageName: 'prod' },
     });
+    tokenRestApi.root.addMethod('ANY', new apigw.LambdaIntegration(appLambda), {
+      authorizer: tokenAuthorizer,
+    });
 
-    const tokenResource = restApi.root.addResource('token');
-    tokenResource.addMethod('ANY', new apigw.LambdaIntegration(appLambda), { authorizer: tokenAuthorizer });
-
-    const requestResource = restApi.root.addResource('request');
-    requestResource.addMethod('ANY', new apigw.LambdaIntegration(appLambda), { authorizer: requestAuthorizer });
+    const requestRestApi = new apigw.RestApi(this, `Rey-APIGateway-request`, {
+      restApiName: `Rey-api-gateway-v1-request`,
+      deployOptions: { stageName: 'prod' },
+    });
+    requestRestApi.root.addMethod('ANY', new apigw.LambdaIntegration(appLambda), {
+      authorizer: requestAuthorizer,
+    });
 
     /*****************
      * Final Outputs *
