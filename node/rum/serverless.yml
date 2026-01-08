@@ -1,0 +1,29 @@
+service: rey-node-rum
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs22.x
+
+package:
+  patterns:
+    - '!**'
+    - 'handler.js'
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  client:
+    handler: handler.client
+    url: true
+    environment:
+      SERVER_URL: !GetAtt ServerLambdaFunctionUrl.FunctionUrl
+
+  server:
+    handler: handler.server
+    url: true
