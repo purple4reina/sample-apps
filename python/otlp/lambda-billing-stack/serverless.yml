@@ -10,6 +10,7 @@ provider:
     OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
     OTEL_METRICS_EXPORTER: none
     OTEL_SERVICE_VERSION: 1.0.0
+    OTEL_TRACES_SAMPLER: always_on
 
 package:
   patterns:
@@ -28,7 +29,7 @@ functions:
       OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: https://trace.agent.${self:custom.site}/api/v0.2/traces
       OTEL_SERVICE_NAME: otlp-endpoint-billing
     layers:
-      - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
+      - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-32-0:2
     events:
       - schedule: rate(1 minute)
 
@@ -45,7 +46,7 @@ functions:
       OTEL_EXPORTER_OTLP_TRACES_ENDPOINT: http://localhost:4319/v1/traces
       OTEL_SERVICE_NAME: otlp-extension-billing
     layers:
-      - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-21-0:1
-      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:88
+      - arn:aws:lambda:sa-east-1:901920570463:layer:aws-otel-python-amd64-ver-1-32-0:2
+      - arn:aws:lambda:sa-east-1:464622532012:layer:Datadog-Extension:92
     events:
       - schedule: rate(1 minute)
