@@ -6,7 +6,7 @@ from aws_durable_execution_sdk_python import durable_execution, DurableContext
 from aws_durable_execution_sdk_python.__about__ import __version__
 from aws_durable_execution_sdk_python.config import CallbackConfig, WaitForCallbackConfig, Duration
 from aws_durable_execution_sdk_python.types import BatchResult
-from aws_durable_execution_sdk_python.waits import WaitForConditionConfig
+from aws_durable_execution_sdk_python.waits import WaitForConditionConfig, WaitForConditionDecision
 
 lambda_client = boto3.client('lambda')
 
@@ -81,15 +81,20 @@ def handler(event, context):
     context.logger.info(f'child context result: {result}')
     results.append({'name': 'child context', 'result': result})
 
-    ## conditional wait
-    #result = context.wait_for_condition(
-    #        lambda state, ctx: {'status': 'completed'},
-    #        config=WaitForConditionConfig(
-    #            initial_state={'status': 'pending'},
-    #            wait_strategy=lambda state, attempt: {'should_continue': state['status'] != 'completed'},
-    #        )
-    #)
-    #results.append(result)
+    # conditional wait
+    context.logger.info('conditional wait')
+    result = context.wait_for_condition(
+            lambda state, ctx: {'status': 'completed'},
+            config=WaitForConditionConfig(
+                initial_state={'status': 'pending'},
+                wait_strategy=lambda state, attempt: WaitForConditionDecision(
+                    should_continue=(state['status'] != 'completed'),
+                    delay=Duration.from_seconds(1),
+                ),
+            ),
+    )
+    context.logger.info(f'conditional wait result: {result}')
+    results.append({'name': 'conditional wait', 'result': result})
 
     # invoke
     context.logger.info('invoke')
