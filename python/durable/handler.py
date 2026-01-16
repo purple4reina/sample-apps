@@ -30,7 +30,7 @@ def handler(event, context):
     if callback_id is not None:
         lambda_client.send_durable_execution_callback_success(
                 CallbackId=callback_id,
-                Result='hello',
+                Result='cool-callback',
         )
         return {'handler': 'callback', 'result': 'done'}
 
@@ -117,17 +117,19 @@ def handler(event, context):
     #result = callback.result()
     #results.append(result)
 
-    ## wait for callback
-    #result = context.wait_for_callback(
-    #        lambda callback_id: context.invoke(
-    #            'arn:aws:lambda:us-east-1:425362996713:function:rey-durable-function',
-    #            {'callback_id': callback_id},
-    #            name='invoke-wait-callback',
-    #        ),
-    #        name='external-api',
-    #        config=WaitForCallbackConfig(timeout_seconds=10),
-    #)
-    #results.append(result)
+    # wait for callback
+    context.logger.info('wait_for_callback')
+    result = context.wait_for_callback(
+            lambda callback_id, ctx: context.invoke(
+                'arn:aws:lambda:us-east-1:425362996713:function:rey-durable-function:$LATEST',
+                {'callback_id': callback_id},
+                name='invoke-wait-callback',
+            ),
+            name='external-api',
+            #config=WaitForCallbackConfig(timeout=Duration.from_seconds(10)),
+    )
+    context.logger.info(f'wait_for_callback result: {result}')
+    results.append({'name': 'wait_for_callback', 'result': result})
 
     return {
             'event': event,

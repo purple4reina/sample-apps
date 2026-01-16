@@ -22,7 +22,10 @@ export class DurableFunctionStack extends cdk.Stack {
     });
 
     durableFunction.addToRolePolicy(new iam.PolicyStatement({
-      actions: ['lambda:InvokeFunction'],
+      actions: [
+        'lambda:InvokeFunction',
+        'lambda:SendDurableExecutionCallbackSuccess',
+      ],
       resources: ['*'],
     }));
 
