@@ -48,15 +48,15 @@ def handler(event, context):
     context.logger.info(f'wait results: {result}')
     results.append({'name': 'wait', 'result': result})
 
-    ## parallel
-    #context.logger.info('parallel')
-    #result = context.parallel(
-    #        lambda ctx: ctx.step(lambda _: True, name='rey-task1'),
-    #        lambda ctx: ctx.step(lambda _: True, name='rey-task2'),
-    #        lambda ctx: ctx.step(lambda _: True, name='rey-task3'),
-    #).get_results()
-    #context.logger.info(f'parallel result: {result}')
-    #results.append(result)
+    # parallel
+    context.logger.info('parallel')
+    result = context.parallel([
+            lambda ctx: ctx.step(lambda _: True, name='rey-task1'),
+            lambda ctx: ctx.step(lambda _: True, name='rey-task2'),
+            lambda ctx: ctx.step(lambda _: True, name='rey-task3'),
+    ]).get_results()
+    context.logger.info(f'parallel result: {result}')
+    results.append({'name': 'parallel', 'result': result})
 
     # map
     context.logger.info('map')

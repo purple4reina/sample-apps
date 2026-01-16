@@ -34,7 +34,6 @@ export class DurableFunctionStack extends cdk.Stack {
       extensionLayerVersion: 91,
       apiKey: process.env.DD_API_KEY,
       captureLambdaPayload: true,
-      logLevel: 'debug',
     });
     datadogLambda.addLambdaFunctions([durableFunction]);
 
