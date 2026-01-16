@@ -9,6 +9,7 @@ from aws_durable_execution_sdk_python.types import BatchResult
 from aws_durable_execution_sdk_python.waits import WaitForConditionConfig, WaitForConditionDecision
 
 lambda_client = boto3.client('lambda')
+lambda_function_arn = 'arn:aws:lambda:us-east-1:425362996713:function:rey-durable-function:$LATEST'
 
 class DurableEvent(dict):
     def get(self, key, default=None):
@@ -99,39 +100,40 @@ def handler(event, context):
     # invoke
     context.logger.info('invoke')
     result = context.invoke(
-            'arn:aws:lambda:us-east-1:425362996713:function:rey-durable-function:$LATEST',
+            lambda_function_arn,
             {'attempt': 2},
             name='invoke-processor'
     )
     context.logger.info(f'invoke result: {result}')
     results.append({'name': 'invoke', 'result': result})
 
-    ## callback
-    #callback = context.create_callback(
-    #        name='approval',
-    #        config=CallbackConfig(timeout_seconds=10),
-    #)
-    #context.step(
-    #        lambda _: context.invoke(
-    #            'arn:aws:lambda:us-east-1:425362996713:function:rey-durable-function',
-    #            {'callback_id': callback.callback_id},
-    #            name='invoke-callback'
-    #        ),
-    #        name='send_request'
-    #)
-    #result = callback.result()
-    #results.append(result)
+    # callback
+    context.logger.info('callback')
+    callback = context.create_callback(
+            name='callback',
+            config=CallbackConfig(timeout=Duration.from_seconds(5)),
+    )
+    context.step(
+            lambda _: context.invoke(
+                lambda_function_arn,
+                {'callback_id': callback.callback_id},
+                name='invoke-callback'
+            ),
+            name='callback-step'
+    )
+    result = callback.result()
+    context.logger.info(f'callback result: {result}')
+    results.append({'name': 'callback', 'result': result})
 
     # wait for callback
     context.logger.info('wait_for_callback')
     result = context.wait_for_callback(
             lambda callback_id, ctx: context.invoke(
-                'arn:aws:lambda:us-east-1:425362996713:function:rey-durable-function:$LATEST',
+                lambda_function_arn,
                 {'callback_id': callback_id},
                 name='invoke-wait-callback',
             ),
             name='external-api',
-            #config=WaitForCallbackConfig(timeout=Duration.from_seconds(10)),
     )
     context.logger.info(f'wait_for_callback result: {result}')
     results.append({'name': 'wait_for_callback', 'result': result})
