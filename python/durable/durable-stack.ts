@@ -14,11 +14,17 @@ export class DurableFunctionStack extends cdk.Stack {
       handler: 'handler.handler',
       code: lambda.Code.fromAsset('.', { exclude: ['**/!(handler.py)', '.*'] }),
       functionName: 'rey-durable-function',
+      timeout: cdk.Duration.seconds(120),
       durableConfig: {
         executionTimeout: cdk.Duration.seconds(120),
         retentionPeriod: cdk.Duration.days(3),
       },
     });
+
+    durableFunction.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['lambda:InvokeFunction'],
+      resources: ['*'],
+    }));
 
     const datadogLambda = new DatadogLambda(this, "datadogLambda", {
       pythonLayerVersion: 120,
