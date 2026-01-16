@@ -68,18 +68,18 @@ def handler(event, context):
     context.logger.info(f'map result: {result}')
     results.append({'name': 'map', 'result': result})
 
-    ## child context
-    #context.logger.info('child context')
-    #result = context.run_in_child_context(
-    #        lambda ctx: ctx.parallel(
-    #            lambda ctx: ctx.step(lambda _: True, name='rey-child1'),
-    #            lambda ctx: ctx.step(lambda _: True, name='rey-child2'),
-    #            lambda ctx: ctx.step(lambda _: True, name='rey-child3'),
-    #        ),
-    #        name='rey-child-context',
-    #)
-    #context.logger.info(f'child context result: {result.get_results()}')
-    #results.append(result.get_results())
+    # child context
+    context.logger.info('child context')
+    result = context.run_in_child_context(
+            lambda ctx: ctx.parallel([
+                lambda ctx: ctx.step(lambda _: True, name='rey-child1'),
+                lambda ctx: ctx.step(lambda _: True, name='rey-child2'),
+                lambda ctx: ctx.step(lambda _: True, name='rey-child3'),
+            ]),
+            name='rey-child-context',
+    ).get_results()
+    context.logger.info(f'child context result: {result}')
+    results.append({'name': 'child context', 'result': result})
 
     ## conditional wait
     #result = context.wait_for_condition(
