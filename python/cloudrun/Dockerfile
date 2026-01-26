@@ -13,4 +13,4 @@ ENV DD_REMOTE_CONFIGURATION_ENABLED=false
 COPY --from=datadog/serverless-init /datadog-init /app/datadog-init
 
 ENTRYPOINT ["/app/datadog-init"]
-CMD ddtrace-run gunicorn -w 4 app:app
+CMD ["ddtrace-run", "gunicorn", "-w", "4", "app:app"]
