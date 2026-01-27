@@ -14,6 +14,9 @@ Change region with
 $ gcloud config set run/region <REGION>
 ```
 
+Use project `datadog-serverless-gcp-dev` if you need to see logs.  They don't
+currently seem to be working for the `datadog-sandbox` project.
+
 ## Invoking
 
 Start the gcloud proxy: (https://docs.cloud.google.com/run/docs/authenticating/developers)
