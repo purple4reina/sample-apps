@@ -4,7 +4,7 @@ import (
 	"context"
 	"os"
 
-	ddlambda "github.com/DataDog/datadog-lambda-go"
+	ddlambda "github.com/DataDog/dd-trace-go/contrib/aws/datadog-lambda-go/v2"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go-v2/aws"
