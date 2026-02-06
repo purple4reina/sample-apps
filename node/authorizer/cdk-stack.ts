@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import 'source-map-support/register';
+
 import * as apigw from 'aws-cdk-lib/aws-apigateway';
 import * as cdk from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
@@ -19,7 +19,7 @@ export class ReyNodeAuthorizerStack extends cdk.Stack {
     const appLambda = new cdk.aws_lambda.Function(this, `Rey-ApplicationFunction`, {
       runtime: cdk.aws_lambda.Runtime.NODEJS_22_X,
       handler: 'handler.handler',
-      code: cdk.aws_lambda.Code.fromAsset(__dirname, {
+      code: cdk.aws_lambda.Code.fromAsset('.', {
         exclude: ['*.ts', '*.json', 'cdk.out', 'node_modules', 'README.md'],
       }),
     });
@@ -36,7 +36,7 @@ export class ReyNodeAuthorizerStack extends cdk.Stack {
     const authLambda = new cdk.aws_lambda.Function(this, `Rey-AuthorizerFunction`, {
       runtime: cdk.aws_lambda.Runtime.NODEJS_22_X,
       handler: 'handler.authorizer',
-      code: cdk.aws_lambda.Code.fromAsset(__dirname, {
+      code: cdk.aws_lambda.Code.fromAsset('.', {
         exclude: ['*.ts', '*.json', 'cdk.out', 'node_modules', 'README.md'],
       }),
     });
