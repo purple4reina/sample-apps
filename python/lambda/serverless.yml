@@ -3,7 +3,7 @@ service: rey-python-lambda
 provider:
   name: aws
   region: sa-east-1
-  runtime: python3.9
+  runtime: python3.12
 
 package:
   patterns:
