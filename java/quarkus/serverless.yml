@@ -1,0 +1,22 @@
+service: rey-java-quarkus
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: java21
+  architecture: arm64
+
+package:
+  artifact: target/function.zip
+
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+functions:
+  simple:
+    handler: io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest
+    url: true
