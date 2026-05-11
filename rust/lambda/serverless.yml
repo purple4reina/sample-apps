@@ -8,6 +8,13 @@ provider:
 package:
   artifact: target/lambda/rey-rust-lambda/bootstrap.zip
 
+plugins:
+  - serverless-plugin-datadog
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
 functions:
   simple:
     handler: bootstrap

@@ -1,4 +1,7 @@
-use lambda_http::{run, service_fn, tracing, Body, Error, Request, RequestExt, Response};
+use lambda_http::{
+    lambda_runtime, service_fn, tracing, Adapter, Body, Error, Request, RequestExt, Response,
+};
+use datadog_aws_lambda::TracedService;
 
 /// This is the main body for the function.
 /// Write your code inside it.
@@ -26,5 +29,5 @@ async fn function_handler(event: Request) -> Result<Response<Body>, Error> {
 async fn main() -> Result<(), Error> {
     tracing::init_default_subscriber();
 
-    run(service_fn(function_handler)).await
+    lambda_runtime::run(TracedService::new(Adapter::from(service_fn(function_handler)))).await
 }
