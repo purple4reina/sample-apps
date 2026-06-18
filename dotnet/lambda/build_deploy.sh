@@ -3,7 +3,7 @@
 echo "📦 packaging release"
 echo
 rm -rf .package
-dotnet lambda package --configuration Release --output-package .package/handler.zip
+dotnet lambda package --configuration Release --framework net10.0 --output-package .package/handler.zip
 echo
 echo "🚀 deploying package"
 sls deploy

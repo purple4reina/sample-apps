@@ -6,7 +6,7 @@ plugins:
 provider:
   name: aws
   region: sa-east-1
-  runtime: dotnet6
+  runtime: dotnet10
 
 package:
   artifact: .package/handler.zip
