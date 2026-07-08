@@ -4,16 +4,12 @@ import json
 
 from aws_durable_execution_sdk_python import durable_execution, DurableContext
 from aws_durable_execution_sdk_python.__about__ import __version__
-from aws_durable_execution_sdk_python.config import CallbackConfig, WaitForCallbackConfig, Duration
+from aws_durable_execution_sdk_python.config import CallbackConfig, Duration
 from aws_durable_execution_sdk_python.types import BatchResult
 from aws_durable_execution_sdk_python.waits import WaitForConditionConfig, WaitForConditionDecision
 
 lambda_client = boto3.client('lambda')
-lambda_function_arn = 'arn:aws:lambda:us-east-1:425362996713:function:rey-durable-function:$LATEST'
-
-class DurableEvent(dict):
-    def get(self, key, default=None):
-        return dict.get(self, 'v', {}).get(key, {}).get('v', default)
+lambda_function_arn = 'arn:aws:lambda:us-east-2:425362996713:function:rey-durable-function:$LATEST'
 
 @durable_execution
 def handler(event, context):
@@ -21,8 +17,6 @@ def handler(event, context):
     context.logger.info('starting')
     context.logger.info(f'aws_durable_execution_sdk_python version: {__version__}')
     context.logger.info(json.dumps(event))
-
-    event = DurableEvent(event)
 
     if event.get('attempt', 1) > 1:
         return {'handler': 'invoke', 'result': 'done'}
@@ -124,19 +118,6 @@ def handler(event, context):
     result = callback.result()
     context.logger.info(f'callback result: {result}')
     results.append({'name': 'callback', 'result': result})
-
-    # wait for callback
-    context.logger.info('wait_for_callback')
-    result = context.wait_for_callback(
-            lambda callback_id, ctx: context.invoke(
-                lambda_function_arn,
-                {'callback_id': callback_id},
-                name='invoke-wait-callback',
-            ),
-            name='external-api',
-    )
-    context.logger.info(f'wait_for_callback result: {result}')
-    results.append({'name': 'wait_for_callback', 'result': result})
 
     return {
             'event': event,

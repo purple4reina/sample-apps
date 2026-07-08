@@ -43,4 +43,8 @@ export class DurableFunctionStack extends cdk.Stack {
 }
 
 const app = new cdk.App();
-new DurableFunctionStack(app, 'ReyDurableFunctionStack', {});
+new DurableFunctionStack(app, 'ReyDurableFunctionStack', {
+  env: {
+    region: 'us-east-2',
+  },
+});
