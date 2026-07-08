@@ -33,6 +33,7 @@ export class DurableFunctionStack extends cdk.Stack {
       pythonLayerVersion: 120,
       extensionLayerVersion: 91,
       apiKey: process.env.DD_API_KEY,
+      site: process.env.DD_SITE || 'datadoghq.com',
       captureLambdaPayload: true,
     });
     datadogLambda.addLambdaFunctions([durableFunction]);
