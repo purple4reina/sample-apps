@@ -106,7 +106,7 @@ Decoding the **next** ref `US0004270004851337W` with the *old* layout:
 | region   | `[0:2)`  | `US`       | ✅ still correct                          |
 | ledgerId | `[2:8)`  | `000427`   | ✅ still correct                          |
 | sequence | `[8:16)` | `00048513` | ❌ wrong — grabbed 8 of the 10 digits (but still numeric, so **no error**) |
-| scheme   | `[16:1)` | `3`        | ❌ a **digit**, not `A/W/C/S`             |
+| scheme   | `[16:17)` | `3`       | ❌ a **digit**, not `A/W/C/S`            |
 
 The decoded `scheme` is now `"3"`. It isn't in the routing table, so:
 
@@ -144,7 +144,10 @@ surface dead-ends.** Walk the journey a real on-call would take:
 2. **Error Tracking** groups every failure into a *single* issue:
    `SettlementError: unroutable settlement instruction`. Error Tracking
    fingerprints on `service + error.type + error.message + top stack frame` only
-   — it never reads span tags or payloads. Every bad payload throws the same
+   — by default it never reads span tags or payloads. (The one escape hatch, a
+   custom `error.fingerprint` span tag, would only help if you *already* knew
+   which payload field distinguishes the failures — the very thing you lack
+   here.) Every bad payload throws the same
    error type, the same constant message, from the same line in `route()`, so
    they all collapse into one bucket. Opening it shows a stack that points at
    routing. Dead end — and a *misleading* one.
