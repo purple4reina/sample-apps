@@ -1,0 +1,11 @@
+# CDK / TypeScript build output
+node_modules
+cdk.out
+.cdk.staging
+*.d.ts
+bin/*.js
+lib/*.js
+
+# invoking
+outfile.json
+outfile.txt

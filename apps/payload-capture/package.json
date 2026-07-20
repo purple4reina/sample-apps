@@ -1,0 +1,30 @@
+{
+  "name": "payload-capture",
+  "version": "0.1.0",
+  "bin": {
+    "payload-capture": "bin/payload-capture.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "synth": "cdk synth",
+    "deploy": "cdk deploy",
+    "destroy": "cdk destroy",
+    "invoke": "bash scripts/invoke-producer.sh",
+    "drift": "bash scripts/set-generation.sh next",
+    "heal": "bash scripts/set-generation.sh stable",
+    "generation": "bash scripts/set-generation.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "aws-cdk": "^2.1100.3",
+    "datadog-cdk-constructs-v2": "^3.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.9.3"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.233.0",
+    "constructs": "^10.0.0"
+  }
+}
