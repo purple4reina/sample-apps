@@ -4,7 +4,9 @@
 # Usage (run under your AWS credentials, e.g. `aweserv npm run invoke`):
 #   scripts/invoke-producer.sh
 
-export AWS_REGION="${AWS_REGION:-sa-east-1}"
+# Must match the region in bin/payload-capture.ts. Set explicitly so an ambient
+# AWS_REGION (e.g. from aws-vault) can't send this to the wrong region.
+export AWS_REGION="sa-east-1"
 
 aws lambda invoke \
   --region "$AWS_REGION" \
