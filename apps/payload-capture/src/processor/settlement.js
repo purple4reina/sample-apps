@@ -19,8 +19,8 @@ class SettlementError extends Error {
 const REF_LAYOUT = [
   { name: 'region', start: 0, len: 2 },
   { name: 'ledgerId', start: 2, len: 6 },
-  { name: 'sequence', start: 8, len: 8 },
-  { name: 'scheme', start: 16, len: 1 },
+  { name: 'sequence', start: 8, len: 10 },
+  { name: 'scheme', start: 18, len: 1 },
 ];
 
 function decodeRef(ref) {
