@@ -12,6 +12,11 @@ if [[ -z $FORCE_COLD_START ]]; then
 fi
 echo "Forcing cold starts: $FORCE_COLD_START"
 
+if [[ -z $AWS_REGION ]]; then
+    AWS_REGION="sa-east-1"
+fi
+echo "Using AWS region: $AWS_REGION"
+
 trap 'kill -- -$$' EXIT
 
 for f in $FUNCS
@@ -21,7 +26,7 @@ do
         aws-vault exec sso-serverless-sandbox-account-admin -- \
             aws lambda get-function-url-config \
                 --function-name "$f" \
-                --region sa-east-1 \
+                --region "$AWS_REGION" \
                 --output json | jq -r '.FunctionUrl'
         )"
         echo "Found URL for function $f: $URL"
