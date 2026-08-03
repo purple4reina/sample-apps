@@ -7,10 +7,10 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "cdk": "cdk",
-    "synth": "cdk synth",
-    "deploy": "cdk deploy",
-    "destroy": "cdk destroy",
+    "cdk": "npx --no-install cdk",
+    "synth": "npx --no-install cdk synth",
+    "deploy": "bash scripts/deploy.sh",
+    "destroy": "npx --no-install cdk destroy",
     "invoke": "bash scripts/invoke-producer.sh",
     "on": "bash scripts/enable-traffic.sh",
     "off": "bash scripts/disable-traffic.sh"
