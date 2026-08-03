@@ -1,0 +1,17 @@
+# CDK / TypeScript build output
+node_modules
+cdk.out
+.cdk.staging
+*.d.ts
+
+# The repo's root .gitignore has an unanchored `[Bb]in/` rule (from a .NET/VS
+# template) that matches any directory named `bin` anywhere in the tree,
+# which would otherwise silently exclude bin/onboarding.ts (the CDK entry
+# point). Un-ignore the directory here, then re-ignore just its build output.
+!bin/
+bin/*.js
+lib/*.js
+
+# invoking
+outfile.json
+outfile.txt
