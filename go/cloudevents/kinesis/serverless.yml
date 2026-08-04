@@ -1,0 +1,45 @@
+service: rey-go-cloudevents-kinesis
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: provided.al2
+  environment:
+    DD_SERVICE: ${self:service}
+    DD_UNIVERSAL_INSTRUMENTATION: true
+    KINESIS_STREAM_NAME: ${self:service}-${sls:stage}
+    DD_CAPTURE_LAMBDA_PAYLOAD: true
+
+plugins:
+  - serverless-plugin-datadog
+
+package:
+  patterns:
+    - '!**'
+    - '**/bootstrap'
+
+custom:
+  datadog:
+    apiKey: ${env:DD_API_KEY}
+
+resources:
+  Resources:
+    CloudEventsStream:
+      Type: AWS::Kinesis::Stream
+      Properties:
+        Name: ${self:service}-${sls:stage}
+        ShardCount: 1
+
+functions:
+  producer:
+    handler: bootstrap
+    url: true
+  consumer:
+    handler: bootstrap
+    events:
+      - stream:
+          type: kinesis
+          arn:
+            Fn::GetAtt: [CloudEventsStream, Arn]
+          startingPosition: LATEST
+          batchSize: 1
