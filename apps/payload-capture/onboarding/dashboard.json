@@ -1,0 +1,597 @@
+{
+  "title": "rey-storefront order pipeline",
+  "description": "Service health, schema/attribute discovery, and raw payload inspection for the rey-storefront order pipeline. See onboarding/DASHBOARD.md for the build walkthrough and facet prerequisites.",
+  "layout_type": "ordered",
+  "reflow_type": "fixed",
+  "widgets": [
+    {
+      "layout": { "x": 0, "y": 0, "width": 12, "height": 5 },
+      "definition": {
+        "type": "group",
+        "layout_type": "ordered",
+        "title": "Service Health",
+        "show_title": true,
+        "widgets": [
+          {
+            "layout": { "x": 0, "y": 0, "width": 3, "height": 2 },
+            "definition": {
+              "type": "query_value",
+              "title": "Producer Invocations (1h)",
+              "time": { "type": "live", "value": 1, "unit": "hour" },
+              "autoscale": true,
+              "precision": 2,
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "sum",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-producer" },
+                      "compute": { "aggregation": "count" },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 3, "y": 0, "width": 3, "height": 2 },
+            "definition": {
+              "type": "query_value",
+              "title": "Processor Invocations (1h)",
+              "time": { "type": "live", "value": 1, "unit": "hour" },
+              "autoscale": true,
+              "precision": 2,
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "sum",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 6, "y": 0, "width": 3, "height": 2 },
+            "definition": {
+              "type": "query_value",
+              "title": "Processor Error Rate % (1h)",
+              "time": { "type": "live", "value": 1, "unit": "hour" },
+              "autoscale": true,
+              "precision": 2,
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "sum",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor status:error" },
+                      "compute": { "aggregation": "count" },
+                      "indexes": ["*"]
+                    },
+                    {
+                      "data_source": "spans",
+                      "name": "query2",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1 / query2 * 100" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 9, "y": 0, "width": 3, "height": 2 },
+            "definition": {
+              "type": "query_value",
+              "title": "DLQ Depth — rey-storefront-orders-dlq",
+              "autoscale": true,
+              "precision": 0,
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "avg",
+                  "queries": [
+                    {
+                      "data_source": "metrics",
+                      "name": "query1",
+                      "query": "avg:aws.sqs.approximate_number_of_messages_visible{queuename:rey-storefront-orders-dlq}"
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 0, "y": 2, "width": 6, "height": 3 },
+            "definition": {
+              "type": "timeseries",
+              "title": "Orders Processed per Minute",
+              "requests": [
+                {
+                  "response_format": "timeseries",
+                  "display_type": "bars",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count", "interval": 60000 },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 6, "y": 2, "width": 6, "height": 3 },
+            "definition": {
+              "type": "timeseries",
+              "title": "Processor Latency (p50, p95) @duration",
+              "requests": [
+                {
+                  "response_format": "timeseries",
+                  "display_type": "line",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "median", "metric": "@duration" },
+                      "indexes": ["*"]
+                    },
+                    {
+                      "data_source": "spans",
+                      "name": "query2",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "pc95", "metric": "@duration" },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [
+                    { "formula": "query1", "alias": "p50" },
+                    { "formula": "query2", "alias": "p95" }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "layout": { "x": 0, "y": 5, "width": 12, "height": 11 },
+      "definition": {
+        "type": "group",
+        "layout_type": "ordered",
+        "title": "Schema & Attribute Discovery",
+        "show_title": true,
+        "widgets": [
+          {
+            "layout": { "x": 0, "y": 0, "width": 2, "height": 3 },
+            "definition": {
+              "type": "toplist",
+              "title": "Orders by channel",
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "group_by": [
+                        {
+                          "facet": "@function.request.Records.0.body.channel",
+                          "limit": 10,
+                          "sort": { "aggregation": "count", "order": "desc" }
+                        }
+                      ],
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }],
+                  "sort": { "count": 10, "order_by": [{ "type": "formula", "index": 0, "order": "desc" }] }
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 2, "y": 0, "width": 2, "height": 3 },
+            "definition": {
+              "type": "toplist",
+              "title": "Orders by store",
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "group_by": [
+                        {
+                          "facet": "@function.request.Records.0.body.store",
+                          "limit": 10,
+                          "sort": { "aggregation": "count", "order": "desc" }
+                        }
+                      ],
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }],
+                  "sort": { "count": 10, "order_by": [{ "type": "formula", "index": 0, "order": "desc" }] }
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 4, "y": 0, "width": 2, "height": 3 },
+            "definition": {
+              "type": "toplist",
+              "title": "Orders by customer.loyaltyTier",
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "group_by": [
+                        {
+                          "facet": "@function.request.Records.0.body.customer.loyaltyTier",
+                          "limit": 10,
+                          "sort": { "aggregation": "count", "order": "desc" }
+                        }
+                      ],
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }],
+                  "sort": { "count": 10, "order_by": [{ "type": "formula", "index": 0, "order": "desc" }] }
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 6, "y": 0, "width": 3, "height": 3 },
+            "definition": {
+              "type": "toplist",
+              "title": "Orders by payment.method",
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "group_by": [
+                        {
+                          "facet": "@function.request.Records.0.body.payment.method",
+                          "limit": 10,
+                          "sort": { "aggregation": "count", "order": "desc" }
+                        }
+                      ],
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }],
+                  "sort": { "count": 10, "order_by": [{ "type": "formula", "index": 0, "order": "desc" }] }
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 9, "y": 0, "width": 3, "height": 3 },
+            "definition": {
+              "type": "toplist",
+              "title": "Orders by order.fulfillmentType",
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "group_by": [
+                        {
+                          "facet": "@function.request.Records.0.body.order.fulfillmentType",
+                          "limit": 10,
+                          "sort": { "aggregation": "count", "order": "desc" }
+                        }
+                      ],
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }],
+                  "sort": { "count": 10, "order_by": [{ "type": "formula", "index": 0, "order": "desc" }] }
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 0, "y": 3, "width": 4, "height": 2 },
+            "definition": {
+              "type": "query_value",
+              "title": "Distinct customer.id (1h)",
+              "time": { "type": "live", "value": 1, "unit": "hour" },
+              "autoscale": true,
+              "precision": 0,
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "last",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "cardinality", "metric": "@function.request.Records.0.body.customer.id" },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 4, "y": 3, "width": 4, "height": 2 },
+            "definition": {
+              "type": "query_value",
+              "title": "Distinct order.lineItems.0.sku (1h)",
+              "time": { "type": "live", "value": 1, "unit": "hour" },
+              "autoscale": true,
+              "precision": 0,
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "last",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "cardinality", "metric": "@function.request.Records.0.body.order.lineItems.0.sku" },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 8, "y": 3, "width": 4, "height": 2 },
+            "definition": {
+              "type": "query_value",
+              "title": "Distinct device.ip (1h)",
+              "time": { "type": "live", "value": 1, "unit": "hour" },
+              "autoscale": true,
+              "precision": 0,
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "last",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "cardinality", "metric": "@function.request.Records.0.body.device.ip" },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 0, "y": 5, "width": 4, "height": 2 },
+            "definition": {
+              "type": "query_value",
+              "title": "% Orders with shipping.method Present",
+              "autoscale": true,
+              "precision": 2,
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "sum",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor @function.request.Records.0.body.shipping.method:*" },
+                      "compute": { "aggregation": "count" },
+                      "indexes": ["*"]
+                    },
+                    {
+                      "data_source": "spans",
+                      "name": "query2",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1 / query2 * 100" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 4, "y": 5, "width": 4, "height": 2 },
+            "definition": {
+              "type": "query_value",
+              "title": "% Orders with a Promotion Present",
+              "autoscale": true,
+              "precision": 2,
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "sum",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor @function.request.Records.0.body.order.discountCents:>0" },
+                      "compute": { "aggregation": "count" },
+                      "indexes": ["*"]
+                    },
+                    {
+                      "data_source": "spans",
+                      "name": "query2",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1 / query2 * 100" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 8, "y": 5, "width": 4, "height": 2 },
+            "definition": {
+              "type": "query_value",
+              "title": "% Orders with experiments.0.name Present",
+              "autoscale": true,
+              "precision": 2,
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "sum",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor @function.request.Records.0.body.experiments.0.name:*" },
+                      "compute": { "aggregation": "count" },
+                      "indexes": ["*"]
+                    },
+                    {
+                      "data_source": "spans",
+                      "name": "query2",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1 / query2 * 100" }]
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 0, "y": 7, "width": 12, "height": 4 },
+            "definition": {
+              "type": "query_table",
+              "title": "Orders by store x order.fulfillmentType",
+              "has_search_bar": "auto",
+              "requests": [
+                {
+                  "response_format": "scalar",
+                  "aggregator": "sum",
+                  "queries": [
+                    {
+                      "data_source": "spans",
+                      "name": "query1",
+                      "search": { "query": "service:rey-storefront-processor" },
+                      "compute": { "aggregation": "count" },
+                      "group_by": {
+                        "fields": [
+                          "@function.request.Records.0.body.store",
+                          "@function.request.Records.0.body.order.fulfillmentType"
+                        ],
+                        "limit": 100
+                      },
+                      "indexes": ["*"]
+                    }
+                  ],
+                  "formulas": [{ "formula": "query1" }],
+                  "sort": { "count": 100, "order_by": [{ "type": "formula", "index": 0, "order": "desc" }] }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "layout": { "x": 0, "y": 16, "width": 12, "height": 6 },
+      "definition": {
+        "type": "group",
+        "layout_type": "ordered",
+        "title": "Raw Inspection & Caveats",
+        "show_title": true,
+        "widgets": [
+          {
+            "layout": { "x": 0, "y": 0, "width": 9, "height": 6 },
+            "definition": {
+              "type": "list_stream",
+              "title": "Processor Spans — Raw Payload Inspection",
+              "requests": [
+                {
+                  "response_format": "event_list",
+                  "columns": [
+                    { "field": "timestamp", "width": "auto" },
+                    { "field": "service", "width": "auto" },
+                    { "field": "resource_name", "width": "full" },
+                    { "field": "duration", "width": "auto" }
+                  ],
+                  "query": {
+                    "data_source": "trace_stream",
+                    "query_string": "service:rey-storefront-processor",
+                    "indexes": ["*"],
+                    "sort": { "column": "timestamp", "order": "desc" }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "layout": { "x": 9, "y": 0, "width": 3, "height": 6 },
+            "definition": {
+              "type": "note",
+              "content": "**Caveats**\n\n- Every facet above was created by hand — there's no schema-discovery API to enumerate them for you.\n- Only the first element of an array is reliably addressable (`lineItems.0.*`, `experiments.0.*`) — a 3-item order and a 1-item order look identical on those facets.\n- Datadog's Log Patterns (`logs_pattern_stream`) clusters *log* message shapes, but has no equivalent for span/payload attribute values — the \"payload-value pattern clustering\" gap the `rey-settlement-processor` retrospectives called out.",
+              "background_color": "yellow",
+              "font_size": "14",
+              "text_align": "left",
+              "vertical_align": "top",
+              "has_padding": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

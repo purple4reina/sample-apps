@@ -136,38 +136,7 @@ A `group` widget titled **"Raw Inspection & Caveats"** containing:
 
 ## Layout drawing
 
-12-column dashboard grid. Widget numbers refer to the list above; sizes are
-approximate (width × height in grid units).
+![Dashboard layout: 3 groups (Service Health, Schema & Attribute Discovery, Raw Inspection & Caveats) on a 12-column grid, widgets 1-20 sized and positioned per the sections above](dashboard-layout.png)
 
-```
-┌─ GROUP: Service Health ─────────────────────────────────────────────────────┐
-│ ┌────────┬────────┬────────┬────────┐  ┌───────────────┬───────────────┐   │
-│ │ 1  QV  │ 2  QV  │ 3  QV  │ 4  QV  │  │ 5  Timeseries │ 6  Timeseries │   │
-│ │ 3w×2h  │ 3w×2h  │ 3w×2h  │ 3w×2h  │  │   6w×3h       │   6w×3h       │   │
-│ └────────┴────────┴────────┴────────┘  └───────────────┴───────────────┘   │
-└──────────────────────────────────────────────────────────────────────────┘
-┌─ GROUP: Schema & Attribute Discovery ────────────────────────────────────────┐
-│ ┌──────────┬──────────┬──────────┬──────────┬──────────┐                    │
-│ │ 7 Toplist│ 8 Toplist│ 9 Toplist│10 Toplist│11 Toplist│  channel / store /  │
-│ │  channel │  store   │  tier    │  method  │fulfilltyp│  tier / method /   │
-│ │                                                       │  fulfillmentType   │
-│ │        each ~2.4w × 3h (5 across a 12-col row)        │                    │
-│ └──────────┴──────────┴──────────┴──────────┴──────────┘                    │
-│ ┌────────────┬────────────┬────────────┐  ┌────────────┬────────────┬─────┐ │
-│ │12 QV       │13 QV       │14 QV       │  │15 QV %     │16 QV %     │17 QV%│ │
-│ │distinct    │distinct    │distinct    │  │shipping    │promo       │exp   │ │
-│ │customers   │skus        │IPs         │  │present     │present     │pres. │ │
-│ │        each 4w×2h                       │        each 4w×2h              │ │
-│ └────────────┴────────────┴────────────┘  └────────────┴────────────┴─────┘ │
-│ ┌───────────────────────────────────────────────────────────────────────┐   │
-│ │ 18  Query Table — store × fulfillmentType crosstab       (12w × 4h)   │   │
-│ └───────────────────────────────────────────────────────────────────────┘   │
-└──────────────────────────────────────────────────────────────────────────┘
-┌─ GROUP: Raw Inspection & Caveats ────────────────────────────────────────────┐
-│ ┌───────────────────────────────────────────────────────┐  ┌───────────────┐│
-│ │ 19  List Stream (trace_stream) — raw captured payloads │  │ 20  Note      ││
-│ │      service:rey-storefront-processor       (9w × 6h)  │  │  caveats      ││
-│ │                                                         │  │  (3w × 6h)    ││
-│ └───────────────────────────────────────────────────────┘  └───────────────┘│
-└──────────────────────────────────────────────────────────────────────────┘
-```
+Widget numbers match the lists above; sizes are `width×height` in grid units.
+Every row's widget widths sum to exactly 12.
