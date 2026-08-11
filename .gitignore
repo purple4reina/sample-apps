@@ -344,3 +344,5 @@ gradle-app.setting
 .aws-sam/
 
 cdk.out/
+
+.claude
